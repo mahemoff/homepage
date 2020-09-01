@@ -1,0 +1,273 @@
+body {
+	background: #fff; /* #b0d8fd; */
+	font-size: 12px;
+}
+body, a { color: #123; }
+ 
+@font-face {
+  font-family: "diavlo";
+  src: url("Diavlo_II_37/Diavlo_BLACK_II_37.otf");
+}
+
+#projects li { cursor: pointer; }
+#projects img { display: none; }
+.unscripted #projects img { display: block; position: static; }
+#projects img { position: absolute;
+                top: 0; left: 280px;
+                width: 150px; height: 150px; }
+
+a { text-decoration: none; }
+
+a:hover {
+	text-decoration: underline;
+}
+
+h2 {
+	/* text-align: center; */
+  margin: 20px 0 0;
+}
+
+ul  {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 0;
+  margin: 5px 0;
+}
+
+h1 {
+	font-family: Georgia, serif;
+	font-weight: normal;
+	text-align: center;
+  padding: 10px 0;
+  margin: 0;
+  background: #ff0;
+}
+
+h1 a {
+  margin: 0;
+}
+* html h1 a, * html h1 a strong { font-weight: bold; }
+
+h1 div {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+* html #aboutContainer { width: 100%; height: 100%; }
+#aboutContainer {
+  padding: 1em;
+  background-color: #00b8dd;
+  filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#aed8fd,EndColorStr=#00b8dd);
+  background: -webkit-gradient(linear, left top, left bottom, from(#a0e8fd), to(#00b8dd));
+  background: -moz-linear-gradient(top, #aed8fd, #00b8dd);
+  text-align: center;
+}
+#aboutContainer a { background: #90e8fd; padding: 0 0.3em; }
+#aboutContainer a:hover { background: #d0f8fd; text-decoration: none; }
+#aboutContainer div, #aboutContainer a {
+  color: #123;
+}
+
+#about { font-size: 120%; }
+#about p { margin-top: 1em; }
+#about ul { margin-bottom: 3em; }
+#about #mainContacts { text-align: center; margin: 0;}
+#about #mainContacts img { margin: 0 10px; }
+#about #mainContacts a, #about #mainContacts a:hover { background: none; }
+
+.blogType { float: left; margin: 0 0 5px 15px; font-weight: normal; }
+.timeAgo { float: left; background: white; padding: 2px; border-radius: 4px 4px 0 0; position: relative; bottom: 6px; margin-left: 5px; font-weight: normal; }
+
+.postTitle { display: block; clear: left; margin-top: -5px; font-size: 120%; float: left; padding: 3px 7px 7px; min-width: 200px; 
+  -o-border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; --border-radius: 5px; 
+}
+a.postTitle:hover { text-decoration: none; background: #d0f8fd; }
+.clearance { clear: left; height: 1px; }
+
+#nextEvent .postTitle { margin-top: 0; font-weight: bold; }
+
+#projects ul {
+  position: relative;
+}
+
+#projects li a {
+  width: 280px; 
+}
+
+#more {
+  font-style: italic; color: #e9e988;
+}
+
+h1 strong { font-weight: normal; }
+h1:hover a { text-decoration: none; }
+h1:hover a strong { color: #00f; }
+
+#about a {  }
+
+.container_12 { position: relative; padding: 20px 0 0; }
+
+.post { font-weight: bold; clear: left; padding-bottom: 10px; }
+.post:hover { -webkit-transform: rotate(0deg); }
+.post:nth-child(1) {
+  -webkit-transform: rotate(-1deg); -moz-transform: rotate(-1deg); -o-transform: rotate(-1deg); transform: rotate(-1deg);
+}
+.post:nth-child(2) {
+  -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); transform: rotate(0deg);
+}
+.post:nth-child(3) {
+  -webkit-transform: rotate(2deg); -moz-transform: rotate(2deg); -o-transform: rotate(2deg); transform: rotate(2deg);
+}
+.post:nth-child(4) {
+  -webkit-transform: rotate(-1deg); -moz-transform: rotate(-1deg); -o-transform: rotate(-1deg); transform: rotate(-1deg);
+}
+.post:nth-child(5) {
+  -webkit-transform: rotate(1deg); -moz-transform: rotate(1deg); -o-transform: rotate(1deg); transform: rotate(1deg);
+}
+#profile li { margin-bottom: 10px; }
+
+#stuff, #stuff div { background: #80d8fd; }
+
+/*
+#latestContainer, #latestContainer div { background: white; color: #123; }
+#latest, #latest div { background: white; color: #123; }
+*/
+#latest { text-align: center; }
+
+dt { font-weight: bold; }
+dd { font-style: italic; margin-bottom: 10px; }
+
+#places h2 { padding-left: 10px; background: #fff0f5; margin-bottom: 2px; }
+#places a { background: #fff0f5; display: block; margin-bottom: 2px; }
+#places .title { font-weight: bold; }
+#places .title, #places .description {  padding-left: 10px; padding-right: 10px; }
+#places a:hover { background: #ffe0f5; cursor: pointer; text-decoration: none; }
+#places a:hover .title { text-decoration: underline; }
+
+#writings a { display: block; margin-bottom: 1em; padding: 5px; text-decoration: none; }
+#writings .title { font-weight: bold; text-decoration: underline; }
+
+#ancient li a { padding: 5px; }
+
+#places dt { font-weight: bold; padding-top: 5px; }
+#places dd { font-style: normal; padding-bottom: 5px; margin-bottom: 2px; }
+
+#projects a:hover { background: #fff0f5; }
+
+/*
+ * @vendor:     Dieter Steffmann
+ * @vendorurl:  http://www.steffmann.de
+ * @licenseurl: http://www.fontsquirrel.com/license/Marketing-Script
+ */
+@font-face {
+    font-family: 'MarketingScriptRegular';
+    src: url('MarketingScript.eot');
+    src: local('Marketing Script Regular'), local('MarketingScript'), url('MarketingScript.ttf') format('truetype');
+}
+
+#cardWrapper {
+  float: left;
+  width: 21mm;
+  height: 14mm;
+  z-index: 1;
+  position: absolute;
+  margin-left: 30px;
+  margin-top: -50px;
+}
+
+#card {
+    position: relative;
+    padding: 1em;
+    opacity: 0.5;
+    width: 21mm;
+    height: 14mm;
+    overflow: hidden;
+    font-size: 0.2em;
+
+    -webkit-box-shadow: 2mm 2mm rgba(0,0, 0, 0.5);
+    -moz-box-shadow: 2mm 2mm rgba(0,0, 0, 0.5);
+    box-shadow: 2mm 2mm rgba(0,0, 0, 0.5);
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    /* -webkit-transition: -webkit-transform,width,height 0.6s,0.6s,0.6s ease-in-out,ease-in-out,ease-in-out; */
+    -webkit-transition-property: -webkit-transform,width,height,top,left;
+    -webkit-transition-duration: 200ms;
+    -webkit-transition-timing: ease-in-out;
+}
+
+/*
+ *  retro :- 1940's business card
+ *  background crop of http://www.flickr.com/photos/playingwithpsp/2558159491/
+ */
+#card {
+  float: left;
+  opacity: 1;
+  color: #333;
+  background-image: url('card.png');
+  background-color: #FDC;
+  font-family: 'Gill Sans', 'Arial';
+  text-shadow: 0 2px 2px #fff;
+  text-align: center; 
+
+  -webkit-transform: rotate(-6deg); 
+  -moz-transform: rotate(-6deg); 
+  -o-transform: rotate(-6deg); 
+  transform: rotate(--6deg); 
+}
+
+/*
+#card:hover {
+  z-index: 1000;
+  width: 85mm;
+  height: 55mm;
+  font-size: 1em;
+  top: 50px;
+  left: 50px;
+
+  -webkit-box-shadow: 3mm 4mm rgba(0,0, 0, 0.5);
+  -moz-box-shadow: 3mm 4mm rgba(0,0, 0, 0.5);
+  box-shadow: 3mm 4mm rgba(0,0, 0, 0.5);
+
+  -webkit-transform: rotate(0deg) scale(1.25);
+  -moz-transform: rotate(0deg) scale(1.25);
+  transform: rotate(0deg) scale(1.25);
+}
+*/
+#card { transform-origin: 0% 0%; }
+#card:hover { transform: scale(3); }
+
+#card .fn {
+  font-family: 'MarketingScriptRegular';
+  font-size: 2em;
+  text-align: center;
+}
+
+#card .role {
+  font-family: "diavlo";
+}
+
+#card .fn,
+#card .tel,
+#card .adr {
+    margin: 0;
+    padding: 0;
+}
+
+#card .adr {
+    width: 30mm;
+    float: right;
+    padding-right: 6mm;
+    text-align: right;
+}
+
+#card .geo { display: none; }
+.vcardlinks { display: none; }
+#card .photo { width: 35px; height: 35px; }
+/* #card:hover .photo { width: 120px; height: 120px; } */

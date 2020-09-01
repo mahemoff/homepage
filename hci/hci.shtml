@@ -1,0 +1,121 @@
+<HTML>
+<HEAD>
+<TITLE>Software Engineering and Human-Computer Interaction</TITLE>
+<LINK REL="made" HREF="mailto:moke@cs.mu.oz.au">
+</HEAD>
+
+<BODY BGCOLOR="white" TEXT="black">
+<FONT Color="black">
+
+<center>
+<H1> Software Engineering and Human-Computer
+Interaction</font><br> </H1>
+</center>
+
+<Font size=-1>This is a general introduction to usability and its place in
+overall software engineering. I wrote it as a general background on my
+thesis for non-IT people, inspired by the glazed eyes which tend to follow
+from uttering the letters &quot;H-C-I&quot.</Font>
+
+<H2> Three Worlds </H2>
+
+    Saying "software engineering" and "human-computer interaction" in the
+    same sentence is somewhat tedious. But that's what I'm researching:
+    ways of incorporating <A
+    HREF="http://www.ida.liu.se/%7Emiker/hci/index1.html">human-computer
+    interaction</A> theory into the <A
+    HREF="http://www.qucis.queensu.ca/Software-Engineering/">software
+    engineering</A> process. I became interested in this area when I
+    studied psychology and software engineering as an undergraduate.
+    <Strong> On the one hand, I'd be learning about how people think and
+    work, and on the other hand, I'd see how software is developed, often
+    without taking the user's perspective into account. </Strong> So to
+    explain it further, here are a few different perspectives on software
+    usability (stated, naturally enough, according to my own perspective).
+
+<H2> Software Usability from the User's Perspective </H2>
+
+    Most people view software as a tool to help them achieve something:
+    write a report, mail a friend, learn to speak Chinese. When they back
+    up their documents, for example, it is undesirable for them to recall
+    the command they type in to copy a file, or even have to remember how
+    to achieve this task in a graphical environment. In fact, the entire
+    file system is a pretty uninteresting topic to many people, who would
+    rather just get on with their work. <Strong> Users should be able to
+    perform their tasks quickly and easily, and maybe even have some fun on
+    the way.  </Strong>
+
+<H2> Software Usability from the Manager's Perspective </H2>
+
+    Given that people struggle with many programs, it is only logical that
+    building usability into products can improve a company's revenues. Of
+    course, with the constant innovation activity in technology, as well as
+    the tendency for people to be locked into certain systems, usability is
+    not the be-all-and-end-all. However, <Strong> if people are not willing
+    to use a system, its seemingly infinite range of Cool Features won't
+    save it </Strong>.  Even if they're happy to use it, if they make errors
+    frequently, or don't work very efficiently, it will cost money in the
+    long run.  A software manufacturer therefore has substantial incentives
+    to differentiate its products according to how well they satisfy users'
+    needs.
+
+<H2> Software Usability from the Developer's Perspective </H2>
+
+    <Strong> Producing software can be tricky. </Strong>  Developers need
+    to have the product out yesterday, with all two-thousand functional
+    requirements satisfied.  Furthermore, the software must fail zero times
+    every fifty years and work on desktop PCs, Unix workstations, and an
+    obscure mainframe from the early 1980s. And even if it does do all
+    that, how de we know it is what the client really wanted?  Herein lies
+    the sad tale of software usability; with all of these forces, how on
+    earth can you even think about the user? Exactly how well a program
+    accounts for the human factor is difficult to measure, anyway, so there
+    is uncertainty about whether it is worth the effort trying.
+    Furthermore, <Strong> techniques for building usable software are not
+    particularly well-integrated into popular development
+    methodologies</Strong>.  This problem is more acute for smaller
+    companies, who cannot afford the luxury of human-factors specialists.
+
+<H2> So that's the Situation </H2>
+    
+    <P> Clearly, there is a tension between the needs of users and those of
+    developers. <Strong> Users need software which takes account of their needs,
+    usability can contribute to a company's well-being, but developers have
+    many other pressures and are often unsure about how to achieve
+    usability.</Strong> A lot of work has already been done in making
+    software faster, more reliable, and cheaper to produce, because these
+    were the main concerns a few years ago. More and more, usability will
+    also become a priority. So the fact that the creators of software
+    sometimes <A HREF="http://www.iarchitect.com/mshame.htm">overlook
+    usability</A> is partly because more work needs to be done in providing
+    practical techniques to consider it.
+
+    <P> So what can be done? Obviously, it is important for developers to
+    appreciate the impact of usability. This can still be a challenge,
+    given that many programmers never meet the people who user their
+    products! Being able to evaluate usability is certainly valuable.
+    However, what do you do if you find a usability problem? People often
+    assume that software is easy to change, but that's not entirely true.
+    Altering a complex piece of code can result in all sorts of problems.
+    Remember the <a href="http://www.anesi.com/y2kfaq.htm"> Millenium
+    Bug</A> frenzy, where billions of dollars were spent essentially to change
+    two-digit representations of the year ("55") to four-digit
+    representations ("1955")?  The fact it that it is often too expensive,
+    and sometimes impossible, to remove a defect that is discovered after
+    the product has been built.
+
+    <P> <Strong> The most useful approach, then, is to prevent defects
+    by designing for usability in the first place. </Strong> My work
+    involves looking at <A
+    HREF="http://hillside.net/patterns/">patterns</A> of
+    human-computer interaction. I am looking at typical tasks which users
+    perform, and investigating how different programs support these tasks.
+    The aim is to build up a set of inter-related patterns (a "pattern
+    language") which can help developers and potential users to understand
+    how to design for usability.
+
+<P> <FONT FACE="ariel" SIZE="3"> <STRONG> <EM>
+Return to <A HREF="../"> Michael's
+Homepage</A></STRONG></EM>.
+</BODY>
+</HTML>

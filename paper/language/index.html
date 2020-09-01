@@ -1,0 +1,1040 @@
+<html>
+
+  <TITLE>Usability Pattern Languages: the "Language" Aspect</TITLE>
+</head>
+
+<body>
+<a href="/">Mahemoff.com</a>
+
+
+<BODY >
+
+<P>
+<span class="note"><span class="title">NOTE:</span>. <A
+Href="language.pdf">PDF Version</A> also available.</span>
+
+<BR><span class="note"><span class="title">Update April 2004.</span>I've
+further hand-edited the Latex2Html output - no more ugly images containing just
+text.  The content remains identical to the original article.</span>
+
+<HR>
+
+<H1 ALIGN="CENTER"> Usability Pattern Languages: the "Language" Aspect</H1>
+<P ALIGN="CENTER"><span class="author">Michael Mahemoff <IMG
+ WIDTH="11" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$^*$"> &amp; Lorraine J.  Johnston <IMG
+ WIDTH="11" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$^\dagger$"></span></P><BR>
+<P ALIGN="LEFT"><span class="authorFootnote"><IMG
+ WIDTH="11" HEIGHT="15" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$^*$"> CSSE Dept., University of Melbourne, Parkville, Victoria,
+        3052, Australia.
+<BR>    <IMG
+ WIDTH="11" HEIGHT="18" ALIGN="BOTTOM" BORDER="0"
+ SRC="img2.png"
+ ALT="$^\dagger$"> School of IT, Swinburne University, Hawthorn,
+    Victoria, 3122, Australia.
+<BR>    <BR>
+<BR>
+    m.mahemoff@csse.unimelb.edu.au, lorraine@it.swin.edu.au
+</span></P>
+
+<P>
+
+<P>
+
+<P>
+
+<H3>Abstract:</H3>
+<DIV>
+    The pattern language concept, adapted from building architecture and
+    detailed software design, has recently been applied to HCI by a number
+    of researchers. We argue that the "language" aspect of pattern languages
+    is critical and outline thirteen research efforts in HCI patterns. Many
+    pattern collections have broad scopes, and we argue that this results in
+    patterns which are not as interdependent as a narrow scope would allow.
+    The argument is illustrated with our Planet pattern language, which helps
+    developers reuse knowledge for internationalised software. The narrow
+    scope, namely a focus on the needs of internationalised users, allows us to
+    produce interdependent patterns which range in abstraction level, from
+    organisational process to high-level specification to detailed software
+    design. Thus, the language supports a generative, interdisciplinary,
+    approach to reusing knowledge in HCI.
+</DIV>
+<P>
+
+<P>
+
+<H1><A NAME="SECTION00010000000000000000">
+1. Introduction</A>
+</H1> 
+    Patterns for HCI have recently been developed by a significant number of
+    researchers (e.g. Borchers, 1999; Sutcliffe, 1999; Tidwell, 1998).  There
+    are now several pattern collections which are intended to improve reuse of
+    human-computer interaction.  Yet, there continues to be a question about
+    the efficacy of the approach.  Some patterns are obvious and others are
+    unproven speculations which defy the term "pattern".  It is often
+    difficult to see how a pattern collection could offer true benefits to a
+    practitioner.  Our view is that the critical notion of "language" in
+    "pattern language" is all too often overlooked.  In this paper, we
+    explain what constitutes a true pattern language and argue that it is
+    pattern languages, and not "pattern  collections" or isolated patterns,
+    which will provide the greatest long-term benefits to HCI.
+
+<P>
+In this paper, we discuss what is meant by patterns and pattern languages,
+    and explain how pattern languages can benefit HCI (Section 2). We
+    argue that a tight focus facilitates a well-integrated set of patterns, and
+    observe that few present approaches do have narrow scopes
+    (Section 3). We then describe the Planet pattern language for
+    software internationalisation, which demonstrates the relationship between
+    scope and language coherence (Section 4).
+
+<P>
+
+<H1><A NAME="SECTION00020000000000000000"></A>
+    <A NAME="background"></A><BR>
+2. Background: Patterns and Pattern Languages
+</H1>
+
+<P>
+The design pattern approach was originally developed for town planning
+        and building architecture. Christopher Alexander, an architect who was
+        disaffected with modern architectural practice, argued that a rigid
+        design process had led to the prevalence of impractical solutions.  He
+        drew inspiration from ancient cultures, which had evolved buildings and
+        town plans over generations (Alexander, 1964), and noticed there were
+        recurring features, or "patterns". With his colleagues, he published
+        253 patterns for town planning and building architecture
+        (Alexander, 1977), for reuse in new projects.
+
+<P>
+A pattern has defined fields, including Context, Problem,
+        Forces, and Solution.  A pattern is used in a certain design
+        Context, and considers a recurring design Problem
+        in this context.  It focuses on
+        the Forces which confront the designer, before 
+        describing a Solution--a proposed approach to the
+        situation which resolves the tensions among forces.  Consider
+        Alexander's A Place to Wait
+	pattern (Alexander, 1977).
+	The context is any situation where people are waiting for
+        something, such as a doctor's surgery.  Two forces conflict: (a)
+        patients must be present when the doctor is ready, but (b) the
+        timing of this event is uncertain, leading to an anxious situation.  A
+        suggested solution is to draw in people who are <I>not</I> waiting.
+        One hospital created a neighbourhood playground which doubled as a
+        children's waiting area, so that the young patients felt at ease before
+        their consultation.
+
+<P>
+An individual pattern can contribute to increased
+	reuse, but the biggest gains arise
+        when patterns are carefully combined.  Once the solution to a pattern
+        has been applied, a new context arises in which more detailed problems
+	require solution.
+        Further patterns can be invoked to
+        capture the problem-solving processes inherent in this new context.  A
+        <I>pattern language</I> is formed when a collection of patterns is
+        arranged into a network of interdependent patterns,
+	especially where higher-level patterns yield
+        contexts which are resolved by more detailed patterns.  This allows
+        a designer to apply the pattern language generatively, beginning with
+        a specific context, and working through all relevant patterns to
+        generate the design.  In A Place to Wait, the essential
+        solution is to mix people who are waiting with others who are not
+        waiting, and also to provide a quiet place where people can retreat
+        while waiting.  Alexander suggests several ways to achieve the first
+        goal, by pointing to other patterns in the language, e.g.
+        Street Cafe.  The propagative
+	nature explains why Alexander's
+        patterns vary so widely in their granularity.  The language begins with
+        the distribution of towns (City Country Fingers), works into
+        town-planning (Ring Roads) and building architecture
+        (Staircase as a Stage), and finishes at the level of detailed
+        construction (Paving with Cracks Between the Stones).
+
+<P>
+To appreciate the importance of a pattern <I>language</I>, it is
+        necessary to comprehend the subjective basis of pattern languages.  Far
+        from being the objective and exhaustive catalogue of ideas they may
+        initially seem, patterns are based heavily on an underlying set of
+        values.  They explain how forces are identified and resolved according
+        to certain principles; in doing so, they are encapsulating a particular
+        approach. Alexander identified, valued, and discarded patterns in a
+        process which embodied his own architectural philosophy
+        (Kerth, 1997).
+
+<P>
+	A language should generate artifacts aligned to the
+        philosophy on which the language is based; the artifact does not have
+        to be derived directly from the philosophy.  Gabriel (1996)
+        has likened this phenomenon to that of a tennis player learning to hit
+        a ball.  The goal is to hit smoothly and powerfully, but the instruction
+        is to aim for a point just beyond the ball.  There is no obvious
+        connection between the goal and the instruction.  Yet, following the
+        instruction achieves the goal.
+
+
+<P>
+To achieve the goal of a usable system, the typical HCI approach is
+    to advocate the use of guidelines.  However, such guidelines can
+    conflict with each other, and designers need concrete examples illustrating
+    how to resolve these conflicts. Patterns illustrate how conflicting forces
+    can be resolved in typical design settings. Furthermore, guidelines
+    generally have no inter-relational structure. In contrast, pattern
+    languages aid the designer by beginning with high-level problems and
+    working down to detailed problems.  An individual pattern cannot be used in
+    this way.  Real-life projects warrant a tightly-related set of patterns,
+    which work together to create a consistent design.
+
+<P>
+
+	The following scenario explains how a
+        good pattern language can work in practice.  The designer begins a
+        program design by applying pattern A.  This leads to a lower-level
+        design problem, which pattern A notes is solved by one of the
+	patterns B or C.
+        The designers settle on C because it fits their needs.  Applying pattern
+        C to the existing design is straightforward because pattern C assumes
+        pattern A has been applied where necessary.  The design is coded, and a
+        change request arrives after a few months.  The designers realise
+        pattern D would be helpful, and pattern D is again straightforward to
+        implement because it is based on the same concepts as the previous
+        patterns.
+
+
+<P> As long ago as 1975, Fred Brooks declared that conceptual integrity was a
+    key issue in system design (Brooks, 1995).  By applying closely-related
+    patterns which propagate from one to another, it is possible to achieve
+    this unity of approach.
+
+<P> A good example of a well-integrated pattern language for HCI is provided
+    by Bradac (1998).  The language has a very specific focus: design of
+    GUI-based forms.  The first of five patterns, Subform, suggests breaking a
+    form into subforms.  This is a good example of a straightforward
+    prescriptive pattern, and it forms the groundwork for the rest of the
+    language.  The other patterns provide guidance on the decomposition of the
+    form, and the dynamic communication mechanisms between the various
+    components.  Alternative Subforms suggests using state data to produce an
+    appropriate subform.  For example, a user who selects a Home Country of
+    USA needs a particular address format, while a user who selects Australia
+    requires a different format.  The Address subform then depends on the Home
+    Country field.  But this opens up a new problem: what if the user alters
+    Home Country? The Subform Selection pattern shows how to handle it with a
+    polling mechanism.  Subsequent patterns offer further resolution.
+
+<P>
+A designer can approach Bradac et al.'s language with a very specific
+        goal in mind: to design a form-style window.  The patterns then take the
+        designer through the various decisions which must be made.  This makes
+        the language <I>generative</I>.  Furthermore, a common set of
+        principles lies beneath the patterns.  These are implicit and,
+        in this language, relate to the usual high-level principles associated
+        with GUIs (e.g.  Recognise Not Recall).  The patterns work together to
+        produce systems which adhere to these principles.  It would be
+        nonsensical to produce a collection of patterns which are based on
+        incompatible principles.
+
+<P>
+Pattern languages have mainly been the domain of the architectural
+        software design community.  While attributes such as maintainability
+        and reliability are considered, usability is not often a primary 
+        concern.  However, 
+        unlike a computer program, user reactions cannot be accurately
+        predicted.  Usability patterns can document features which worked for users,
+	reducing the costly trial-and-error cycle.
+
+<P>
+
+<H1><A NAME="SECTION00030000000000000000"></A>
+<A NAME="current"></A><BR>
+3. Patterns in HCI: Current Research Efforts
+</H1>
+
+<P>
+In analysing existing research efforts, it is helpful to categorise
+    approaches according to three dimensions:
+
+        <LI><B>Level of Abstraction.</B> Possibilities include patterns of
+            user-interfaces, of tasks, of users, and so on.
+        <LI><B>Target Medium.</B> Possibilities include conventional GUIs, websites,
+            handhelds.
+        <LI><B>Specialised Requirements.</B> Possibilities include specialised
+            application domains (banking), specialised user characteristics
+            (blind users), specialised software qualities (safety-critical
+            systems)
+<P>
+Several HCI pattern collections have been developed in recent years, in
+    parallel to the present work.  Table 1 summarises the
+    best-known contributions, inferring where each lies according to the
+    classification above. In each case, the descriptions of the dimensions have
+    necessarily been simplified.
+
+<P>
+
+<BR><DIV ALIGN="CENTER">
+</DIV>
+<P>
+<DIV ALIGN="CENTER"><TABLE CELLPADDING=3 BORDER="1" ALIGN="CENTER">
+<TR><TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=142>Approach</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=113>Level of Abstraction</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=85>Target Medium</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=74>Specialised Requirements</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=142>Tidwell (1998):
+            Interaction Design Patterns</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=113>Systems, Multiple &amp; single UI elements,
+         Functionality</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=85>GUI Applications, Websites</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=74>None</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=142>Brighton Usability Group (2001) Pattern:
+        Brighton Usability Pattern Collection</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=113>Entire systems, Multiple &amp; single UI elements,
+         Functionality</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=85>GUI Applications</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=74>None</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=142>Van Welie (2000):
+         Amsterdam Pattern Collection</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=113>Multiple UI elements, Functionality</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=85>GUI Applications, Websites</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=74>None</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=142>Coram (1996): Experiences</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=113>Multiple and single UI elements, Functionality</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=85>GUI Applications</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=74>None</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=142>Wake (1998): Patterns for Interactive Applications&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=113>Multiple UI elements, Functionality</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=85>GUI Applications</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=74>None</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=142>Borchers (1999):
+            Interdisciplinary Design Patterns</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=113>Both High-level and low-level, Functionality</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=85>Various</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=74>Can be Domain-Specific</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=142>Cybulski (2000): Multimedia Patterns</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=113>Multiple UI elements, Functionality</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=85>Multimedia Applications</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=74>None</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=142>Bradac (1998): Patterns for Form Style Windows</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=113>Multiple UI elements</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=85>GUI Forms</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=74>None</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=142>Perzel (1999):
+            Usability Patterns for Applications on the World Wide Web&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=113>Multiple and single UI elements, Functionality</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=85>Websites</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=74>None</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=142>Riehle (1995): Tool Construction and Integration</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=113>Multiple UI elements, Functionality, Software Design</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=85>Desktop Applications</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=74>Artifact Manipulation</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=142>(Breedvelt, 1997):
+                 Reusable Structures in Task Models</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=113>Tasks</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=85>Various</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=74>None</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=142>(Stimmel, 1999): Patterns for Developing Prototypes</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=113>Development process</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=85>Various</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=74>None</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=142>Mahemoff (1999), Mahemoff (2001):
+       Planet Patterns</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=113>Development Process, High-Level Specification, Software Design</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=85>Various</TD>
+<TD ALIGN="LEFT" VALIGN="MIDDLE" WIDTH=74>Software Internationalisation</TD>
+</TR>
+</TABLE>
+        <BR>
+</DIV>
+<P>
+<DIV ALIGN="CENTER"><FONT SIZE="-1"><B>Table 1:</B> A Survey of Recent HCI Pattern Collections
+       
+       <A NAME="applying-summary"></A>       
+</FONT></DIV>
+<BR>
+
+<P> The first five approaches (Tidwell, Brighton Usability Group, Van Welie
+    and Traetteberg, Coram and Lee, Wake) address mostly user-interface issues
+    for desktop applications.  Borchers' approach devotes more attention to
+    the application domain.  The next few approaches (Cybulski and Linden,
+    Bradac and Fletcher, Perzel and Kane, Riehle) look at particular types of
+    systems, i.e.  multimedia, software with forms, websites, software for
+    manipulating artifacts.  The two approaches other than ours
+    (Breedvelt-Schouten et al., Stimmel) relate to various systems, but
+    feature different levels of abstraction: task models, development process.
+
+<P> At present, few pattern collections are tightly constrained to their
+    target medium or specialised requirements.  Many have a target medium of
+    GUI applications, and occasional evidence that websites have been
+    considered.  However, this is still a very broad category--while the
+    principles of design for GUIs are well-understood, they do vary across
+    platforms.  Collections of patterns which are not tightly constrained in
+    some way are unlikely to produce an end product which is conceptually
+    self-consistent.  In terms of specialised requirements, few approaches
+    constrain their scope.
+
+<P> In aiming for a pattern language, the most effective approach is to
+    constrain the scope of the language.  A tight scope implies a more
+    homogeneous set of example applications from which patterns are derived.
+    More homogeneous applications will share similar design features, and
+    these features will work better with other features, even if the other
+    features belong to different systems.
+
+<P> There is certainly a benefit in capturing successful design concepts,
+    whatever the format.  A large catalogue of HCI patterns would be an
+    excellent resource for students and practitioners alike. But while
+    reusable knowledge repositories are developed, it is important to
+    recognise the importance of the <span class="em">language</span> aspect. A
+    pattern language makes generative design possible and contributes
+    significantly to the conceptual integrity of the end product.  Furthermore,
+    it is possible that constraining scope in some areas may enable us to
+    expand scope in other areas. We are particularly interested in expanding
+    the levels of abstraction covered by a pattern language.  By constraining
+    the target medium or specialised requirements, it should be possible to
+    create patterns which relate high-level concepts to detailed software.
+    Perhaps the closest approach to our work is Borchers' patterns.  In this
+    interdisciplinary approach, there are separate languages for software
+    patterns, HCI patterns, and domain-specific patterns--musical patterns in
+    Borchers' example.  Our approach differs in that all patterns focus on our
+    area of interest--in this case, software internationalisation.  The
+    patterns are highly inter-dependent--they are intended to work effectively
+    with each other, and would have little use in isolation.
+
+<P> Pattern <span class="em">languages</span> for HCI may not immediately gain
+widespread acceptance. They require more effort to construct than
+general-purpose HCI pattern collections, as each pattern must be consistent
+with the others, and all must work towards  common goals.  If they address
+situations with limited scope, they will not be as broadly applicable. Yet, a
+prerequisite to a "general-purpose" HCI language is a series of highly-focused
+pattern languages. Such languages would also be valuable to practitioners
+working in the target area.
+
+<P>
+
+<H1><A NAME="SECTION00040000000000000000"></A>
+<A NAME="planet"></A><BR>
+4. Planet: An Example of an HCI Pattern Language
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION00041000000000000000">
+Background</A>
+</H2>
+
+<P>
+Planet is our attempt to demonstrate that, by constraining the scope, a
+        rich set of inter-pattern relationships can be captured.  The language
+        has a specialised requirement: software internationalisation.
+        This tight focus has enabled us to look at a variety of target media
+        and, more importantly, to address multiple levels of abstraction.
+        The patterns were created by studying the issues involved in software
+        internationalisation and studying successful features of
+        internationalised systems.  We have documented the language and a
+        sample application, Critique, which realises many of the patterns
+        (Mahemoff, 2001).
+
+<P>
+        As mentioned, a pattern language is based on an underlying set of
+        principles.  Although principles often remain implicit, we now state
+        those of Planet's to illustrate our point.
+
+      <UL>
+         <LI><B>Developers should Acknowledge Cultural Diversity.</B> Cultures
+                 differ in obvious areas such as units of measurement as well
+                 as in more subtle areas such as social rules.
+         <LI><B>A Universal Version is Unrealistic.</B> Instead of seeing
+                 cultural diversity as a barrier, designers can exploit the
+                 fact that people will have a particularly strong connection
+                 with features targeting their own needs.
+         <LI><B>Every Person has Individual Needs.</B> Cultural differences are
+                 important only to the extent they establish all the
+                 parameters of the software; individuals should still be free to
+                 choose their own values of these parameters.
+         <LI><B>Developers should Reuse Knowledge about Users.</B> Since
+                 the process of learning about foreign cultures is 
+		 difficult and time-consuming, reusing information saves
+		 time and money.
+         <LI><B>Enable Then Localise.</B> For optimal efficiency, the core
+                 software components should not have to be duplicated.
+      </UL>
+
+<P>
+
+<H2><A NAME="SECTION00042000000000000000">
+Language Structure</A>
+</H2>
+
+<P>
+As Figure&nbsp;1 shows, the Planet language consists of Patterns at
+        three levels of abstraction:
+
+        <UL>
+          <LI><B>Organisational process patterns</B> help an organ-isation
+                track information about the cultures their software supports.
+          <LI><B>High-Level Specification Patterns</B> guide decisions
+                 regarding functionality, user-interfaces, and configuration of
+                 preferences.
+          <LI><B>Detailed Design Patterns</B> support detailed software
+                 design, at a similar level to conventional software design
+                 patterns.
+        </UL>
+<P>
+
+<P>
+The patterns are structured so that they can be used generatively:
+        high-level patterns lead to more detailed patterns.  This large
+        variation in abstraction level is unusual for an HCI language, but has
+        precursors in work such as Alexander's patterns (Alexander, 1977).
+
+<P>
+<BR>
+
+<P>
+
+              <Img src=langpaperdetailedmap.png>
+
+<P>
+<A NAME="langpaperdetailedmap"></A>            <FONT SIZE="-1"><B>Figure 1:</B> Map of Planet Pattern Language, showing
+            three layers: organisational patterns, high-level specification
+            patterns, detailed design patterns.</FONT>
+            <P>
+
+<H2><A NAME="SECTION00043000000000000000">
+Planet's Patterns</A>
+</H2>
+
+<P>
+
+<P>
+In this section, we show the core solution of each pattern. Referencs
+        to other patterns are shown in <TT>Typewriter</TT> font.  First, the
+        organisational patterns:
+
+<P><BR>
+
+    <LI><B>Export Schedule</B>
+    Produce a schedule which indicates <I>when</I> each target culture will be
+    supported, and <I>how important</I> it is to support each target culture.
+
+    <LI><B>Culture Model</B>
+    Construct models of cultures which are relevant to your projects.  When
+    you discover new information about a culture, add it to the culture model.
+
+    <LI><B>Vector Metamodel</B>
+    Determine the dimensions of cultures that interest you, and characterise
+    each <TT>CultureModel</TT> as a vector with a value for each dimension.
+
+    <LI><B>Online Repository</B>
+    Create an online repository accessible organisation-wide.  Use
+    <TT>CultureModels</TT> all from the same <TT>VectorMetamodel</TT>.
+
+<P>Next are the high-level specification patterns.  These begin with a
+  meta-pattern, , which serves to structure the overall language:
+
+<P><BR>
+
+    <LI><B>Flexible Function</B>
+    When you generate a new function, check if it is culture-specific, and if
+    so, refine it to meet the needs of your target cultures.
+
+    <LI><B>Elastic User-Interface</B>
+    Design the overall structure for the user-interface flexibly, so that UI
+    elements can subsequently be redefined and rearranged without massive
+    design changes.
+
+    <LI><B>Targeted Element</B>
+    For each abstract element contained in the <TT>ElasticUI</TT>
+    specification, provide an instantiation targeted to each culture in the
+    <TT>ExportSchedule</TT>.
+
+    <LI><B>Universal Default</B>
+    For each culture-dependent feature in the target system, make a default
+    which is universally meaningful.
+
+    <LI><B>Cultural Profile</B>
+    Provide a default profile for each target culture, a profile which
+    specifies the value of each culture-dependent feature.
+
+    <LI><B>Citizen ID</B>
+    Determine the user's culture on first use and permit this preference to
+    persist.  Select the <TT>CulturalProfile</TT> based on the user's Citizen
+    ID.
+
+    <LI><B>Integrated Preferences</B>
+    Integrate culture-related preferences with general preferences.
+
+    <LI><B>Preference Group</B>
+    Group related preferences, so the user must make only one choice to set
+    all preferences in the group to logically-related values.
+
+  <P>A small set of patterns can be used to drive the detailed design for
+  systems specified according to the patterns above.  This set of patterns
+  constitutes the detailed software patterns of Planet:
+
+<P><BR>
+    <LI><B>Global Data Model</B>
+    Encapsulate data required to support all cultures in a global data model,
+    independent of the user-interface.
+
+    <LI><B>Preference Dictionary</B>
+    Encapsulate all of the user's current preferences, whether
+    culture-specific or not, in a single dictionary (i.e.  key-value pairs)
+    class.
+
+    <LI><B>Best-Guess Locale</B>
+    Create a "global culture" <TT>PreferenceDictionary</TT> object which
+    contains <TT>UniversalDefaults</TT>.  For each supported culture mentioned
+    in your <TT>ExportSchedule</TT>, create a <TT>PreferenceDictionary</TT>
+    object to override the global <TT>PreferenceDictionary</TT>.
+
+    <LI><B>Independent View</B>
+    Create one or more views of the <TT>GlobalDataModel</TT>, and store the
+    user's preferred view within the <TT>PreferenceDictionary</TT>.
+
+    <LI><B>Expression Template</B>
+    Encapsulate each culture-specific expression in a template string.  Store
+    the template string in the culture's <TT>PreferenceDictionary</TT>.
+
+    <LI><B>Flexible Strategy</B>
+    Create an abstract class which declares the interface for the algorithm,
+    then create culture-specific implementations of this class (based on Gamma
+    et al.'s (1995) <TT>Strategy</TT> pattern.
+
+<H2><A NAME="SECTION00044000000000000000">
+Examples of Patterns</A>
+</H2>
+
+<P>
+In this section, a sketch is provided for one pattern in each of
+	the three levels of abstraction.
+
+<P>
+<A NAME="Best-Guess_Locale"></A>
+
+<DIV ALIGN=LEFT> <TABLE BGCOLOR="#eeeeee" Border=1 WIDTH="85%" CELLPADDING="8"> <TR> <TD>
+
+  <H3>Organisational Pattern: Online Repository</H3>
+
+    <B>Context:</B> You have begun to maintain <TT>Culture Models</TT> according
+             to a selected <TT>Vector Metamodel</TT> (i.e. same factors for
+             each culture).<BR>
+
+    <B>Problem:</B> <B>How can a collection of culture models be
+                organised to be useful for software projects?</B><BR>
+
+    <B>Forces:</B> <UL>
+             <LI> Organisation-wide <TT>Culture Models</TT> avoid duplication;
+             it is feasible and desirable to transfer information learnt from
+             one project to other projects.
+             <LI> Information about cultures is often discovered in physically
+             distant locations.
+             <LI> If developers cannot access models quickly and easily,
+             the information will be ignored.
+             <LI> If developers cannot update models easily, the
+             information will lose accuracy over time.
+             <LI> Developers may wish to look up a specific Culture Model, but
+             they may also wish to explore information in other ways, e.g.
+             comparing two cultures, or considering a single factor across
+             numerous cultures.
+
+      </UL>
+
+    <B>Solution:</B> <B>Create an online repository for the
+        entire organisation.  Compose it of <TT>Culture Models</TT> all based on the
+        same <TT>Vector Metamodel</TT>.</B>
+
+        <P>The following guidelines make it easy to <I>access</I>
+        information in the repository:
+            <UL>
+            <LI>Provide browsing facilities which present each culture and 
+                factor.  
+            <LI> Provide facilities to search the <TT>Culture Models</TT>.
+            <LI> Link from one model to another if it helps to demonstrate
+                a point of similarity or difference.
+            <LI> Link to the original artifacts if they are online, or
+                identify sources if they are not.
+          </UL>
+
+        <P> The following guidelines make it easy to <I>update</I> the
+        repository:
+            <UL>
+            <LI> Facilitate discussion among contributors, e.g. via
+                  a mailing list or within the repository system.
+            <LI> Make one individual responsible for managing the overall
+                  repository,  promoting the repository within
+                  the organisation.
+            <LI> Make one person responsible for
+                  maintaining each <TT>Culture Model</TT>.
+           </UL>
+
+
+    <B>Examples</B>
+    
+      <UL>
+        <LI> Fernandes (1995) contains some tables
+        showing factors versus culture.  However, the text stops short of
+        exhaustively listing this information; the cultures listed varies
+        according to the factor.
+
+        <LI>Ito and Nakakoji (1996) have prototyped a system for retrieving
+        culture-specific details.<BR>
+
+      </UL>
+
+
+    <B>Resulting Context:</B> The repository enables developers to easily
+    access a corpus of culture-specific information.  You can use this
+    information to specify a <TT>Multicultural System</TT>.
+
+</TD> </TR> </TABLE> </DIV>
+
+
+
+<P>
+<DIV ALIGN=LEFT> <TABLE BGCOLOR="#eeeeee" Border=1 WIDTH="85%" CELLPADDING="8"> <TR> <TD>
+
+<H3>High-Level Specification Pattern: Cultural Profile</H3>
+
+    <B>Context:</B> You are designing a <TT>MulticulturalSystem</TT>.<BR>
+
+    <B>Problem:</B> <B>How do you handle the configuration of features
+        which are culture-specific?</B><BR>
+
+    <B>Forces:</B> 
+      <UL>
+        <LI>
+            A <TT>Multicultural System</TT> offers many choices because each
+            feature has several culture-specific variants, all of which exist
+            in a single version.  Configuring can be time-consuming for users.
+
+        <LI>  Most users want to begin working on a product right away,
+                  rather than exert effort configuring it.  
+
+        <LI> Users may not be capable of specifying the appropriate settings
+        for some variables, even in their own country.  Imagine asking a user
+        to state rules for a grammar-checker!
+      </UL>
+
+    <B>Solution:</B> <B>Provide a default profile for each target culture, a
+            profile which specifies the value of each culture-dependent
+            feature.</B> As soon as the user specifies the culture, they are
+            able to begin working, and can tweak settings later to their
+            idiosyncratic preferences whenever desired.
+
+            <P> An additional benefit is that users can dynamically switch
+            between cultures.  This may be of use when two people share the
+            same application.  It can also be useful to some users who work in
+            different ``culture modes''.  Some people think in one language
+            while they work, but think in their own language during recreation.
+            The phenomenon of ``code-switching'', i.e. alternating between
+            languages, is common when someone has acquired technical skills in
+            a foreign language (Grosjean, 1982).  Many people in
+            multinational firms may work with software in English, but perform
+            personal functions such as online banking and email in their native
+            languages.
+
+    <P><B>Examples:</B> The Locale library in Linux defines several
+      culture-related options, e.g.  language, currency.  However, instead of
+      setting these individually, the user can simply set the LC_ALL variable,
+      which ensures each setting is appropriate.
+
+        <P> Many websites of multinational companies produce different pages
+        depending on the country of origin (e.g. Dell, 2001).
+        Information such as product pricing and local offices are tailored
+        to the specified locale.
+
+    <P> <B>Resulting Context:</B>  A number of cultural profiles are available.
+      <TT>Citizen ID</TT> provides a mechanism for the system to determine which
+      profile to adopt.<BR>
+
+</TD> </TR> </TABLE> </DIV>
+
+<P>
+
+<DIV ALIGN=LEFT> <TABLE BGCOLOR="#eeeeee" Border=1 WIDTH="85%" CELLPADDING="8"> <TR> <TD>
+
+<H3>Detailed Design Pattern: Preference Dictionary</H3>
+
+    <B>Context:</B> You have created the <TT>Global Data Model</TT>.<BR>
+
+    <B>Problem:</B> There are many preferences which can change, some
+        culture-specific and others culture-neutral. <B>How do you track those
+        parameters which a user can change?</B><BR>
+
+    <B>Forces:</B>
+        <UL>
+          <LI><TT>Culture Models</TT> will change as developers learn more and
+            as the actual cultures themselves undergo change.  A preference may
+            be culture-neutral one day and specific to culture the next day, or
+            vice-versa.  You should not be hindered by such transitions.
+          <LI> The user can tailor preferences to their own selection, so
+            culture alone is an inadequate specification of the current
+            ``preferences''.
+          <LI> This information will be used by many 
+            modules.  It should be as compact as possible.
+        </UL>
+
+    <P><B>Solution:</B> <B>Encapsulate all of the user's current preferences,
+        whether culture-specific or not, in a single dictionary (i.e. key-value
+        pairs) class.</B> Each parameter, whether or not culture-specific, has a
+        defined key.  The preference dictionary can be shared and
+        inspected whenever some code needs to perform a task which depends on
+        the preferences.
+
+        The nature of preference values will vary widely.  They may be a string
+        representing some natural-language text, an image for a logo, or even a
+        reference to a database table.  Therefore, a suitably flexible
+        mechanism for your programming language must be adopted.
+
+        Since some preferences may form a \PreferenceGroup, this may be a
+        recursive class.  You may have a message preference dictionary inside a
+        global preference dictionary.
+
+      <P>
+      <DIV ALIGN=CENTER>
+      <Table border=0> <TR> <TD>
+      <P> 
+      <TABLE Border=1>
+        <TR> <TD>
+
+            <UL>
+                Keys for the <TT>preferenceBundle</TT> dictionary:
+
+                <LI> BackgroundColor
+
+                <LI> FontFamily
+
+                <LI> MessageBundle
+
+                <LI> EvaluationBundle
+
+                <LI> NumberFormat
+            </UL>
+
+            <P> (The <TT>preferenceBundle</TT> object is a member of the
+                 <TT>ResourceBundle</TT> class)
+
+        </TR> </TD>
+        </TABLE>
+
+        <B>Figure 2:</B> <TT>PreferenceDictionary</TT> Example: Critique's
+        <TT>preferenceBundle</TT><BR>
+        has key-value pairs for all user-changeable parameters,
+        culture-specific or not.
+        </TD> </TR> </TABLE> </DIV>
+
+    <P>
+
+    <P><B>Examples:</B>
+    <UL>
+
+        <LI> Java's <TT>ResourceBundle</TT> class is used by Critique for all
+        preferences.  The Preferences Dialog (<TT>PreferenceDialog</TT> class)
+        sets the <TT>preferenceBundle</TT> object, and it is then sent to the
+        <TT>ArtModel</TT>, which propagates it to the view.  The
+        <TT>preferenceBundle</TT> is a dictionary with five keys (Figure 2).
+
+        <LI> In Java, the default values are also specified in the
+        <TT>ResourceBundle</TT>.  Note there is an
+        <TT>EvaluationBundle</TT> and
+        <TT>MessageBundle</TT>.  These are nested <TT>ResourceBundle</TT>s.
+
+        <L> The <TT>vim</TT> text editor has dozens of options, including
+        culture-related options such as right-left editing and alternative
+        keymaps.  From the user's perspective, these are defined in the same
+        context as all other options, and therefore follow the
+        <TT>Integrated Preferences</TT> pattern.
+
+    </UL>
+
+    <P><B>Resulting Context:</B> You have declared the parameters by which your
+        software will vary.  Now you need to define culture-specific
+        information relating to the preferences with <TT>Best Guess
+        Locales</TT>.  If your preferences vary according to the functionality
+        performed, create <TT>Flexible Strategies</TT>.  Complement your
+        <TT>Global Data Model</TT> with <TT>Independent Views</TT>.<BR>
+
+</TD> </TR> </TABLE> </DIV>
+
+<H1><A NAME="SECTION00050000000000000000"></A>
+<A NAME="discussion"></A><BR>
+5. Discussion
+</H1>
+
+<P>
+HCI patterns research is still relatively new, and researchers have been
+    debating the basic concepts of patterns.  Many existing pattern collections
+    do not exploit the "language" property of patterns to a large degree.
+    Pattern languages, while they are less simple to produce, provide a way to
+    achieve the design goal of conceptual integrity, thereby producing a more
+    consistent user interface, and better support for reuse and
+    maintainability.
+
+<P>
+Planet demonstrates what we mean by a pattern language.  To create a
+    tightly-connected language, we constrained our scope to focus specifically
+    on supporting international audiences.  The language is based on an
+    explicit set of principles, with the patterns guiding the developer in a
+    direction which adheres to these principles. For instance, the patterns
+    guiding preference configuration show how to consider cultural factors
+    ("Designers should Acknowledge Cultural Diversity"), while keeping the
+    settings flexible ("Every Person is an Individual").  The narrow scope
+    means that a broad range of issues could be covered.  Organisational
+    patterns facilitate the ongoing process of learning about cultures and
+    documenting them.  Once an organisation has identified its target cultures
+    and sufficiently investigated their needs, high-level specification can
+    proceed.  The patterns at this next level address software functionality,
+    user-interface design, and configuration of preferences.  Detailed design
+    patterns follow from the high-level specification.
+
+<P>
+Pattern languages fulfill many of the goals of HCI.  Because they can cross
+    levels of abstraction, they can facilitate a more integrated,
+    interdisciplinary approach.  This interdisciplinary approach is also
+    evident in their concrete nature, which makes them approachable for non-HCI
+    specialists, including end-users.
+
+<P>
+Pattern languages also support an
+    iterative design process: a well-integrated language allows software to be
+    developed with some patterns, then improved with more patterns from the
+    language at a later date.  The compromise
+    is a more limited scope; the patterns are not applicable to all situations.
+    Whether a more general language can be created which still has a strong
+    sense of connection among patterns is an open research topic.  In the
+    meantime, most organisations create applications which are very similar to
+    one another.  They could benefit by capturing their own patterns at
+    differing levels of abstraction, and using them as a basis for
+    interdisciplinary work and ongoing process improvement.
+
+<P>
+
+<H2>References</H2>
+
+<UL>
+  <LI> Alexander, C. (1964), Notes on the Synthesis of Form, Harvard University
+       Press, Cambridge, MA.
+  <LI> Alexander, C., Ishikawa, S., Silverstein, M., Jacobson, M.,
+       Fiksdahl-King, I. & Angel, S. (1977), A Pattern Language, Oxford
+       University Press, New York.
+  <LI> Borchers, J. O. (1999), Designing Interactive Music Systems: A Pattern
+       Approach, in H. Bullinger & J. Ziegler (eds.), 8th International
+       Conference on Human-Computer Interaction, Lawrence Erlbaum Associates,
+       London, pp.276-280.
+  <LI> Bradac, M. & Fletcher, B. (1998), A Pattern Language for Developing Form
+       Style Windows, in R. Martin, D. Riehle & F. Buschmann (eds.), Pattern
+       Languages of Program Design 3, Addison-Wesley Longman, Reading, MA,
+       pp.347-357.
+  <LI> Breedvelt-Schouten, I. M., Paterno,´ F. & Severijns, C. A. (1997),
+       Reusable Structures in Task Models, in H. D. Harrison & J. C. Torres
+       (eds.), Design, Specification and Verification of Interactive Systems,
+       Springer, New York, pp.225-238.
+  <LI> Brighton Usability Group (2001), "The Brighton Patterns Collection".
+       Maintained by Griffiths, R. N. at http:
+       //www.it.bton.ac.uk/cil/usability/patterns/. Accessed February 18, 2001.
+  <LI> Brooks Jr., F. P. (1995), The Mythical Man-Month, 20th anniversary
+       edition, Addison-Wesley. Coram, T. & Lee, J. (1996), Experiences -- A
+       Pattern Language for User Interface Design, in Pattern Languages of
+       Program Design 1996 Proceedings.
+       http://www.maplefish.com/todd/papers/experiences/ Experiences.html.
+       Accessed August 5, 1999.
+  <LI> Cybulski, J. & Linden, T. (2000), Composing Multimedia Artifacts for
+       Reuse, in N. Harrison, B. Foote & H. Rohnert (eds.), Pattern Languages
+       of Program Design 4, Addison-Wesley Longman, pp.461-488.
+  <LI> Dell (2001), "Dell Computer Website". http://www.dell.com. Accessed
+       February 18, 2001.
+  <LI> Fernandes, T. (1995), Global Interface Design, AP Professional, Chesnut
+       Hill, MA.
+  <LI> Gamma, E., Helm, R., Johnson, R. & Vlissides, J. (1995), Design
+       Patterns: Elements of Reusable ObjectOriented Software, Addison-Wesley,
+       Reading, MA.
+  <LI> Grosjean, J. (1982), Life with Two Languages, Harvard University Press,
+       Cambridge, MA.
+  <LI> Ito, M. & Nakakoji, K. (1996), Impact of Culture on User Interface
+       Design, in E. M. del Galdo & J. Nielsen (eds.), International User
+       Interfaces, John Wiley & Sons, New York, chapter 6, pp.105-126.Kerth, N.
+       L. & Cunningham, W.  (1997), "Using Patterns to Improve Our
+       Architectural Vision", IEEE Software 14(1), 53­59.
+  <LI> Mahemoff, M. (2001), "Weaving High-Level and Low-Level Patterns: An
+       Extended of the Planet Pattern Language".  Report 2001/21, CSSE Dept.,
+       Melbourne.  Version Technical University of http://www.cs.mu.oz.au/tr
+       submit/test/ cover db/mu TR 2001 21.html.
+  <LI> Mahemoff, M. J. & Johnston, L. J. (1999), The Planet Pattern Language
+       for Software Internationalisation, in Pattern Languages of Programs 1999
+       Proceedings, Monticello, IL. http://jerry.cs.uiuc.edu/~plop/plop99/
+       proceedings/. Accessed September 5, 1999.
+  <LI> Perzel, K. & Kane, D. (1999), Usability Patterns for Applications on the
+       World Wide Web, in Pattern Languages of Program Design 1999 Proceedings,
+       Monticello, IL. http://jerry.cs.uiuc.edu/~plop/plop99/ proceedings/.
+       Accessed September 18, 1999.
+  <LI> Riehle, D. & Zulligho¨ ven, H. (1995), A Pattern Language for Tool
+       Construction and Integration Based on the Tools and Materials Metaphor,
+       in J.  O. Coplien & D. C. Schmidt (eds.), Pattern Languages of Program
+       Design, Addison-Wesley, Reading, MA, pp.9-42.
+  <LI> Stimmel, C. L. (1999), Hold Me, Thrill Me, Kiss Me, Kill Me: Patterns
+       for Developing Effective Concept Prototypes, in Pattern Languages of
+       Program Design 1999 Proceedings, Monticello, IL.
+       http://jerry.cs.uiuc.edu/~plop/plop99/proceedings/. Accessed September
+       18, 1999.
+  <LI> Sutcliffe, A. & Dimitrova, M. (1999), Patterns, Claims and Multimedia,
+       in M. A. Sasse & C. Johnson (eds.), Human-Computer Interaction: Interact
+       '99, IOS Press (for IFIP), Amsterdam, pp.329-335.
+  <LI> Van Welie, M. & Traetteberg, H. (2000), Interaction Patterns in User
+       Interfaces, in Pattern Languages of Programs 2000 Proceedings,
+       Monticello, IL.
+       http://monkey.icu.ac.kr/sslab/proceeding/PLoP2000/papers/papersIndex.html.
+       2000.
+  <LI> Tidwell, J. (1998), Interaction Patterns, in Pattern Languages of
+       Program Design 1998 Proceedings, Monticello, IL.
+       http://jerry.cs.uiuc.edu/~plop/plop98/ finalsubmissions/. Accessed March
+       30, 1999.
+  <LI> Wake, W. C. (1998). Patterns for Interactive Applications.
+       http://jerry.cs.uiuc.edu/plop/plop98/finalsubmissions/. Accessed June
+       19, 1999.
+</UL>
+
+<H1><A NAME="SECTION00070000000000000000">
+About this document ...</A>
+</H1>
+ <STRONG> Usability Pattern Languages: the "Language" Aspect</STRONG><P>
+This document was generated using the
+<A HREF="http://www.latex2html.org/"><STRONG>LaTeX</STRONG>2<tt>HTML</tt></A> translator Version 2002 (1.62)
+<P>
+Copyright &#169; 1993, 1994, 1995, 1996,
+<A HREF="http://cbl.leeds.ac.uk/nikos/personal.html">Nikos Drakos</A>, 
+Computer Based Learning Unit, University of Leeds.
+<BR>Copyright &#169; 1997, 1998, 1999,
+<A HREF="http://www.maths.mq.edu.au/~ross/">Ross Moore</A>, 
+Mathematics Department, Macquarie University, Sydney.
+<P>
+The command line arguments were: <BR>
+ <STRONG>latex2html</STRONG> <TT>-split 0 language.tex</TT>
+<STRONG>NOTE: </STRONG>Formatting manually edited by Michael Mahemoff after generation.
+<P>
+<!--End of Navigation Panel-->
+<ADDRESS>
+momo
+2003-08-25
+</ADDRESS>
+
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+</p>
+

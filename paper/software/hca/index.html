@@ -1,0 +1,182 @@
+<html>
+
+  <TITLE>Human-Centered Architecture: Overview</TITLE>
+  <Meta name="description" content="Human-Centered Architecture -
+    Making Software that's Intuitive to Work With">
+</head>
+
+<body>
+<a href="/">Mahemoff.com</a>
+
+
+  <H1>Human-Centered Architecture: Overview</H1>
+
+    <P><span class="summary">Let's treat technical architecture as an exercise
+    in human-centered design, and learn from ergonmics and human-computer
+    interaction.</span>
+
+    <P><span class="note"><span class="title">NOTE:</span> CURRENTLY IN
+    RAMBLING DRAFT MODE! - TODO Add examples of human-centered principles and
+    show the parallels</span>
+
+    <H2>Why Architecture Should Be Human-Centered</H2>
+
+    <P>The stereotypical techie got into software because he (yes, "he") can't
+    deal with people. If this is true, he chose the wrong business. Many
+    techies have to deal with managers, clients, and analysts. But forget about
+    them for now, because what I'm talking about is strictly t2t: techies
+    dealing with other techies.
+
+    <P>Even the most hardcore geek - the mythical beast fed pizza through a
+    slot in the door - interacts with techies. In some cases, he may actually
+    talk to them. In all cases, he is writing software which will have to be
+    understood by an audience of techies, even if the audience consists of
+    himself at a later point in time. So hopefully he can see others' point of
+    view and communicate accordingly.
+
+    <P><span class="keyText">When software is written without empathy,
+    maintainability suffers.</span> You get interfaces which defy logic and data
+    structures not representative of any construct in this universe.
+    Consequently, fixes and enhancements are extremely slow. Even if the
+    maintainer is the original developer, he will have difficulty recalling how
+    everything works.  Complicated systems cannot easily be stored in one's
+    head; human memory is imperfect, and works by retaining broad patterns. It
+    won't do much to help you remember that your <TT>sysFunkFactr</TT> variable
+    was actually a counter for potential errors, and it will do do even less to
+    help you recall that you should never attempt to reset
+    <TT>sysFunkFactr</TT> when <TT>systemXFactr</TT> is negative and today is
+    Tuesday. These concepts are almost as difficult for the original developer
+    to recall as they are for a new maintainer to learn.
+
+    <P>Software architecture is a human-centered activity. "Architecture" here
+    means anything as minor as the names of a variable and as grand as the
+    blueprint of a multi-organisational distributed database. The common
+    element is that humans must understand, evaluate, and maintain these
+    artifacts. So they had better be designed by someone who is cognisant of
+    human cognition.
+
+    <P>These ideas are hardly controversial and not barely original. My point,
+    though, is that human-centered design should be an explicit part of
+    mainstream software architecture. Before I discuss what should be done,
+    let's look at what we already have.
+
+    <H2>How Architecture is Already (Sort Of) Human-Centered</H2>
+
+    <P> Gerard Weinberg wrote about psychology and software as long back as the
+    1970s. Likewise for Constantine and Yourdon, who argued that diagrams such
+    as their data flow models were all about working with the strengths and
+    weaknesses of human psychology. And Peopleware, focusing more on
+    process issues, was penned by DeMarco and Lister in 1987.
+
+    <P> One might have thought the industry would have carried these ideas
+    forward as it matured. It hasn't. Human-centered design and psychology of
+    software are hardly mainstream topics. However, we should not be too
+    pessimistic, because many of today's practices certainly are
+    human-centered. The only problem is we have stumbled upon them by
+    trial-and-error, rather than based the work on explicit application of
+    human-centered design principles.
+
+    <P>Here are some contemporary approaches which respect human facilities:
+
+      <UL>
+
+        <LI> <span class="listTitle">Object orientation.</span> The previous
+          dominant paradigm, structured programming, had a semantic gap between
+          real-world objects and their encapsulation in software.
+          Object-orientation is a paradigm that exploits the familiarity of
+          real-world objects and bridges that semantic gap.
+
+        <LI> <span class="listTitle">Service-oriented architecture.</span>. Too
+        many systems in the past have been plagued by interfaces that are based
+        on the internals of the implementing code. Service-oriented
+        architecture advocates designing interfaces to suit the needs of the
+        calling code. Therefore, the author of the calling code need only be
+        concerned about the logic at that level, rather than the idiosyncracies
+        of the code it calls.
+
+        <LI> <span class="listTitle">Principles and patterns of
+          design.</span> Most of these also support human-centered design.
+          Standard principles such as "low coupling" and patterns such as the
+          <A Href="/paper/software/learningGoFPatterns/">GoF Patterns</A> make
+          resulting systems easier to learn and work with.
+
+        <LI> <span class="listTitle">Modern libraries</span> are extremely
+        powerful. Programmers can focus much more on requirements without being
+        distracted by having to maintain code for lists, widgets, and so on.
+
+        <LI> <span class="listTitle">Agile development methodologies </span>
+        stem mostly from the surpising mid-1990s discovery that programmers are
+        not robots.
+
+      </UL>
+
+    <H2>Beyond Trial-And-Error</H2>
+
+    <P>Each of these approaches evolved through a slow process of
+      trial-and-error. Any human-centered rationale given is usually vague,
+      rarely based on human-centered design principles, and almost never
+      validated by empirical evidence. Typically, the closest it gets is a
+      statement like "the language is cool because it lets me work the way I
+      think". Or, "this API is much improved because you don't have to call
+      it a million times just to do the most basic thing". It's nice to know
+      many contributions are intended to support human cognition, but there is
+      a distinct lack of theory and validation.
+
+   <P>Software architecture has progressed in this way not by design, but by a
+      process of trial-and-error. Better than nothing, but we have a long way
+      to go. There are several benefits to explicitly considering how
+      software architecture can be more human-centered. I call this approach
+      "Human-Centered Architecture", and it promises these benefits:
+
+      <UL>
+
+        <LI> The field of architecture improves faster. Technologies move
+          faster than human-centered design, which is after all grounded in
+          something that moves quite slowly: human psychology. Instead of
+          waiting to stumble upon best practices for each new technology,
+          human-centered design allows us to be proactive.
+
+        <LI> Real-world software becomes more maintainable, as it is usable by
+          maintainers and maybe even the original developers.
+
+        <LI> Students of architecture will learn faster if they have some
+          underlying principles. "High cohesion, low coupling" --- is that the
+          best we can do after fifty years of software architecture? We have a
+          long way to go. Patterns are a big improvement, but it is interesting
+          to note how Christopher Alexander, who originally documented the <a
+          href="http://downlode.org/etext/patterns/">253 town planning and
+          building patterns</A>, has spent the past couple of decades producing
+          a set of <A
+          href="http://www.wired.com/wired/archive/12.03/play.html"> 15
+          universal design principles</A>. Abstract and concrete thinking: both
+          aid learning. In the case of principles, the real principles are
+          those that aid human understanding; cohesion and coupling are the
+          consequences.
+
+      </UL>
+
+      A good example of research that considers human-centered architecture is
+      <A Href="http://www.dcs.gla.ac.uk/~hcp/">Helen Purchase's work in
+      visualisation</A>. Here is a field which should be 100% human-centered
+      --- there's no point representing data visually unless a human can
+      benefit from seeing it. And yet, few have dared to go beyond fancy
+      algorithms and actually see if there is any benefit. The results can be
+      different from expected, and are certainly worth studying. Here is a
+      paper which considers <A
+      href="crpit.com/confpapers/CRPITV9Purchase1.pdf">performance using UML
+      diagrams)</A>.
+
+    <H2>So What?</H2>
+
+    Everything above should be pretty obvious to you. And equally apparent is
+    that I've said nothing of any practical benefit. If I finished here, you
+    could accuse me of being a truism-spouter, and I would not find that very
+    pleasant. So I intend to provide some concrete examples, patterns, and
+    advice on how to make your architecture more human-centered. To start with,
+    check out the <A href="/ps/">Programmasaurus</A>, which supports
+    self-documenting code, a key practice of human-centered architecture.
+
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+</p>
+

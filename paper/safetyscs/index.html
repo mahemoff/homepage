@@ -1,0 +1,2488 @@
+<html>
+
+  <TITLE>Safety-Critical Usability Patterns</TITLE>
+  <Meta name="description" content="Design Patterns to Improve Usability in
+    Safety-Critical Systems">
+</head>
+
+<body>
+<a href="/">Mahemoff.com</a>
+
+
+<H1>Safety-Critical Usability: Pattern-based Reuse of
+Successful Design Concepts </H1>
+<P>
+Andrew Hussey <BR>
+<I>Software Verification <BR>
+Research Centre <BR>
+</I>The University of Queensland <BR>
+<I>Brisbane, Qld, 4072, Australia <BR>
+</I>email: ahussey@ svrc. uq. edu. au <BR>
+<P>
+Michael Mahemoff <BR>
+<I>Department of Computer Science <BR>
+and Software Engineering <BR>
+</I>The University of Melbourne <BR>
+<I>Parkville, Vic, 3052, Australia <BR>
+</I>email: moke@ cs. mu. oz. au <BR>
+<P>
+<B>Abstract <BR>
+</B><I>Users of safety-critical systems are expected to effectively <BR>
+control or monitor complex systems, with errors poten-tially <BR>
+leading to catastrophic consequences. For such high-consequence <BR>
+systems, safety is of paramount importance <BR>
+and must be designed into the human-machine interface. <BR>
+There are many case studies available which show how in-adequate <BR>
+design practice led to poor safety and usability, <BR>
+but concrete guidance on good design practices is scarce. <BR>
+This paper argues that the pattern language paradigm— <BR>
+which is widely used in the software design community— is <BR>
+a suitable means of documenting appropriate design strate-gies. <BR>
+We discuss how typical usability-related properties <BR>
+(e. g., flexibility) need some adjustment to be used for as-sessing <BR>
+safety-critical systems and document a pattern lan-guage <BR>
+which is based on corresponding "safety-usability" <BR>
+principles. <BR>
+</I><P>
+<B>Keywords: </B><I>Safety-critical, user-interface, usability, design <BR>
+patterns. <BR>
+</I><P>
+<B>1 Introduction <BR>
+</B>Almost every safety-critical system involves some element <BR>
+of human-machine interaction. When an accident occurs, <BR>
+incorrect behaviour by operators is often blamed. Although <BR>
+some operators really are guilty of irresponsible actions (or <BR>
+inactions), a more frequent scenario is that the designers did <BR>
+not pay enough attention to user abilities and limitations. <BR>
+For example, humans are not good at monitoring of auto-mated <BR>
+systems (e. g., autopilots) [2]. When, after several <BR>
+hours of monitoring the system, an operator fails to respond <BR>
+<P>
+adequately to a system malfunction the true accident cause <BR>
+may be the system design, which did not account for human <BR>
+capabilities. <BR>
+<P>
+While this sort of advice is straightforward, in practice pro-ducing <BR>
+systems that are both usable and safe can be a jug-gling <BR>
+act. In any case, while it may be clear to a designer <BR>
+how not to design, the characteristics of <I>good </I>design are <BR>
+more elusive. The present paper explains how design pat-terns <BR>
+can provide a step in the right direction, enabling de-signers <BR>
+to reuse ideas which have been proven successful <BR>
+over time. <BR>
+<P>
+<B>1.1 Background <BR>
+</B>A system's <I>usability </I>can be divided into five sub-properties: <BR>
+robustness (likelihood of user error and ease with which <BR>
+users can correct errors), task efficiency, reusability of <BR>
+knowledge, effectiveness of user-computer communication, <BR>
+and flexibility [17]  In the safety-critical context, we are <BR>
+primarily concerned with the robustness component; the de-signer <BR>
+of a safety-critical interactive system should strive to <BR>
+reduce system-induced user error. At the same time, de-signers <BR>
+should not ignore the other usability properties, be-cause <BR>
+they can also influence the system's overall robust-ness. <BR>
+This is a consequence of the non-orthogonality among <BR>
+traditional usability attributes. For example, a system with <BR>
+poor user-computer communication could lead users to mis-interpret <BR>
+indications of a hazard. Furthermore, the normal <BR>
+motivations for usability, such as productivity and worker <BR>
+satisfaction, still hold and should be achieved to the max-imum <BR>
+extent possible, within the safety constraint. When <BR>
+<P>
+ For the purposes of this paper, comprehensibility has been removed from Mahemoff and Johnston's original list in [17] because it is essentially <BR>
+a subset of user-computer communication. 
+1
+<BR>
+<A href=#page1>1</A>
+<strong><A name=page2> Page 2</A></strong>
+<A href=#page3>3</A>
+<BR>
+pure safety concerns are combined with user psychology, a <BR>
+complex design task emerges. This paper applies the pattern <BR>
+language concept to deal with the overall issue of <I>safety-usability. <BR>
+</I>Safety-usability defines usability properties and <BR>
+principles for safety-critical interactive systems. <BR>
+<P>
+Safety-usability is particularly challenging because in the <BR>
+field of safety, disaster reports and other negative case <BR>
+studies far outweigh public documentation of best prac-tice. <BR>
+Reason [28, p. 484] has commented that "just as in <BR>
+medicine, it is probably easier to characterise sick systems <BR>
+rather than healthy ones. Yet we need to pursue both of <BR>
+these goals concurrently if we are to understand and then <BR>
+create the organisational bases of system reliability". There <BR>
+is no guarantee that showing someone how something was <BR>
+performed incorrectly means that they will be able to infer <BR>
+how to do it correctly. We should consider how we may <BR>
+reuse knowledge which has been gained while designing <BR>
+systems which have stood the test of time. <BR>
+<P>
+<B>1.2 The Pattern Paradigm <BR>
+</B>Patterns describe common problems designers encounter <BR>
+and document solutions which have proven to be useful. <BR>
+Considerable attention has been focused on design patterns <BR>
+in recent years, from industry and academia alike. Alexan-der <BR>
+formulated the idea of a pattern language as a tool <BR>
+for documenting features of architecture and town-planning <BR>
+[1]. More recently, the software community has captured <BR>
+numerous patterns. These include patterns for software de-sign <BR>
+[10], user-interfaces [30], and development process <BR>
+[5]. In this paper, we look at the specific domain of safety-critical <BR>
+systems, and consider the usability of such systems, <BR>
+rather than their detailed design. We refer to the resulting <BR>
+patterns as <I>safety-usability patterns. <BR>
+</I><P>
+An illustrative example is the software design pattern, "Fa-cade" <BR>
+[10]. This pattern suggests that it is sometimes use-ful <BR>
+to create a class which acts as the only interface to a <BR>
+multiple-class module. The pattern promotes the principle <BR>
+of reuse. However— as with all patterns— it is not a princi-ple <BR>
+itself, but an observation of a feature which frequently <BR>
+occurs in software written with this principle in mind. In <BR>
+this way, patterns are an excellent way to demonstrate what <BR>
+is implied by underlying principles or goals. In the present <BR>
+context, we are concerned with patterns which show how to <BR>
+build usable safety-critical systems. <BR>
+<P>
+Together, a collection of related patterns is said to form a <BR>
+pattern language— a hierarchical structure where patterns <BR>
+provide basic solutions and delegate details and variants to <BR>
+other patterns. This guidance boosts developer productivity <BR>
+and also contributes to a better overall understanding of the <BR>
+patterns. Patterns provide several benefits to system devel-opers <BR>
+[10]: <BR>
+<P>
+<B>Communication: </B>a common language for dis-cussing <BR>
+design issues and for communi-cating <BR>
+principles of design; <BR>
+<P>
+<B>Documentation: </B>a common basis for under-standing <BR>
+a system; <BR>
+<P>
+<B>Reuse: </B>a storehouse of available solutions for <BR>
+common design scenarios. <BR>
+<P>
+As well as inheriting the regular benefits of software pat-tern <BR>
+languages, usability-oriented patterns enjoy additional <BR>
+advantages. They are closer to Alexander's original concept <BR>
+of patterns, which focused on the ways users interact with <BR>
+their environments. Furthermore, our inability to accurately <BR>
+predict human cognition means that it is even more impor-tant <BR>
+to reuse existing knowledge about usability than it is <BR>
+to reuse detailed design information. There is now a sub-stantial <BR>
+amount of material in the field of interaction pat-tern <BR>
+languages [8], but as Section 3 discusses, certain us-ability <BR>
+issues exist which are peculiar to safety-critical sys-tems; <BR>
+hence the need to provide a domain-specific pattern <BR>
+language. <BR>
+<P>
+<B>1.3 Methodology for Pattern Discovery <BR>
+</B>To capture safety-usability patterns, the following tasks <BR>
+were conducted in an iterative fashion: <BR>
+<P>
+1. We considered how the five sub-properties of usabil-ity <BR>
+must be adjusted to fit our concept of safety-usability. <BR>
+One sub-property— robustness— was con-sidered <BR>
+in depth, and we have described several prin-ciples <BR>
+which improve robustness. However, we were <BR>
+also interested in the relevance of traditional usability <BR>
+properties such as task efficiency to the safety-critical <BR>
+setting. <BR>
+<P>
+2. Case studies were located in which the system at least <BR>
+partially supported safety-usability. For example, a <BR>
+system might provide feedback to the user in a man-ner <BR>
+that improved safety. The sub-properties of us-ability <BR>
+are an explicit statement of the criteria we used <BR>
+to determine how appropriate these features are. The <BR>
+case studies were derived from the literature and from <BR>
+industrial clients. <BR>
+<P>
+3. The set of appropriate features which occur in the <BR>
+various systems, were informally placed into groups. <BR>
+Each group contained a family of system features <BR>
+which addressed the same sort of problem. Most of <BR>
+these groups evolved into design patterns. <BR>
+<P>
+4. We looked for relationships among the patterns, and <BR>
+this led to the formation of a well-structured pattern <BR>
+language. 
+2
+<BR>
+<A href=#page2>2</A>
+<strong><A name=page3> Page 3</A></strong>
+<A href=#page4>4</A>
+<BR>
+<B>1.4 Organisation of this Paper <BR>
+</B>Section 2 lists several principles which facilitate robust <BR>
+human-computer interaction. Section 3 considers the impli-cations <BR>
+of usability-related properties other than robustness. <BR>
+In that section, we summarise the distinguishing character-istics <BR>
+of safety-critical systems and consider the extent to <BR>
+which usability criteria can be satisfied in the safety-critical <BR>
+domain. Section 4 discusses the structure of our pattern lan-guage <BR>
+for safety-critical interactive systems and gives an ex-ample <BR>
+pattern. Section 5 considers the outcomes of this pa-per <BR>
+and future work. Appendix A gives the complete pattern <BR>
+language including examples drawn from case studies. Ap-pendix <BR>
+B summarises several illustrative case studies (e. g., <BR>
+the <I>Druide </I>air-traffic control system) that we use to demon-strate <BR>
+good design practices. <BR>
+<P>
+<B>2 Robust Human-Computer Interaction: De-sign <BR>
+Guidelines <BR>
+</B><P>
+Hussey [12] provides high-level principles that summarise <BR>
+the content of design guidelines for safety-critical systems, <BR>
+as given by Leveson [16, Ch. 12], Reason [27] and Redmill <BR>
+and Rajan [29]. The principles can be grouped according to <BR>
+the error mitigation strategy [13] that they fall within. <BR>
+<P>
+<B>2.1 Error Prevention <BR>
+</B>Where possible, the user should be prevented from placing <BR>
+the system in an unsafe state. Ideally, unsafe states can be <BR>
+identified in advance and the system can be designed such <BR>
+that the unsafe state is impossible (unsafe actions or inputs <BR>
+are not accepted by the system). Other error prevention <BR>
+mechanisms include hardware interlocks that prevent haz-ardous <BR>
+system actions and automation of user tasks. <BR>
+<P>
+<B>2.2 Error Reduction <BR>
+</B>Errors can be reduced by addressing causes of autonomous <BR>
+execution errors and rule selection errors (principles for <BR>
+<I>Slips and Rule-based Mistakes, Clear Displays </I>and <I>User <BR>
+Awareness) </I>and planning errors (Knowledge-<I>based Reason-ing). <BR>
+</I><P>
+<B>Slips and Rule-based Mistakes: </B>Rather than forcing the <BR>
+user to choose safe actions, the user procedures, inter-face <BR>
+and training may be designed so that the chance <BR>
+of the user making an unsafe choice is low. Such re-duction <BR>
+measures are referred to by Norman [22] as <BR>
+<I>forcing functions. </I>Such a design approach is weaker <BR>
+than forcing safe actions. <BR>
+<P>
+<B>Clear Displays: </B>Provide the user with a clear representa-tion <BR>
+of the system's modes and state. The display of <BR>
+information to the user provides the user's view of <BR>
+the state of the system. The user's ability to diag-nose <BR>
+and correct failures and hazards depends on the <BR>
+clarity and correctness of the information that is dis-played. <BR>
+<P>
+<B>User Awareness: </B>The user should be involved in the rou-tine <BR>
+operation of the system to ensure the user's men-tal <BR>
+model is current and de-skilling does not occur [2]. <BR>
+When a failure occurs, the user will be better able to <BR>
+respond to the failure in a constructive and correct <BR>
+manner that restores the system to a safe state. <BR>
+<P>
+<B>Knowledge-based Reasoning: </B>Provide <BR>
+the user with memory aids and training to support <BR>
+knowledge-based construction of plans. If the user <BR>
+does not have an existing rule for the situation with <BR>
+which they have been confronted, they will have to <BR>
+construct a rule from their broader knowledge base. <BR>
+<P>
+<B>2.3 Error Recovery <BR>
+</B>Provide mechanisms for users to recover from errors (where <BR>
+possible) by providing feedback, checking procedures, su-pervision <BR>
+and automatic monitoring of performance (Warn <BR>
+and <I>Independent information/ Interrogation) </I>and the ability <BR>
+to return the system to a safe state (Safe <I>State). <BR>
+</I><P>
+<B>Safe State: </B>Tolerate user errors by enabling the user to <BR>
+recognise potential hazards and return the system <BR>
+from a potentially hazardous state to a safe state. <BR>
+<P>
+<B>Warn: </B>If the system has entered (or is about to enter) a haz-ardous <BR>
+state, the user should be notified of the state <BR>
+that the system is currently in and the level of urgency <BR>
+with which the user must act. <BR>
+<P>
+<B>Independent information/ Interrogation: <BR>
+</B>The user should be able to check the correctness of <BR>
+warnings and double-check the status of the system <BR>
+through multiple independent sources. If the state of <BR>
+the system can only be judged from one source, the <BR>
+system has a single point of failure and the user may <BR>
+either believe there to be a hazard when there is none <BR>
+or believe there to be no hazard when one exists. <BR>
+<P>
+<B>3 Safety-Usability <BR>
+</B>Safety-critical interactive systems should be both safe (ac-ceptable <BR>
+risk) and usable. In this section we examine the ef-fect <BR>
+on usability of applying the robustness enhancing prin-
+3
+<BR>
+<A href=#page3>3</A>
+<strong><A name=page4> Page 4</A></strong>
+<A href=#page5>5</A>
+<BR>
+ciples given in the previous section. We explore the differ-ences <BR>
+between conventional usability and safety-usability. <BR>
+<P>
+We assume an appropriate development process occurs and <BR>
+we assume users are trained where appropriate, even though <BR>
+this may not be the case in reality. This is because the pat-terns <BR>
+in the next section are intended to facilitate design of <BR>
+safe usable systems, rather than act as a snapshot of the <BR>
+present reality (which is nevertheless another valid appli-cation <BR>
+of patterns [4]). <BR>
+<P>
+To produce safety-usability patterns, it is necessary to con-sider <BR>
+exactly how usability is constrained by safety consid-erations. <BR>
+In safety-critical systems, safety must always be <BR>
+given first priority. Ideally safety-enhancing design deci-sions <BR>
+should also improve usability but in practice this is not <BR>
+always possible. The following section considers the dif-ferences <BR>
+between safety-critical and conventional systems, <BR>
+motivating the need for special treatment of usability in the <BR>
+safety-critical context. <BR>
+<P>
+<B>3.1 Distinguishing Features of Safety­ Critical Systems <BR>
+</B><P>
+Following are several ways by which safety-critical systems <BR>
+differ from conventional desktop applications (e. g., word-processors, <BR>
+browsers), and the implications of this differ-ence <BR>
+for safety-usability: <BR>
+<P>
+ Aspects of usability relating to robustness and relia-bility (as measured by failures, mistakes, accidents, <BR>
+etc.) take preference over other usability attributes <BR>
+such as efficiency, reusability of knowledge (learn-ability <BR>
+and memorability), effectiveness of commu-nication <BR>
+and flexibility, relative to their importance in <BR>
+non-safety-critical systems. Of course, these other at-tributes <BR>
+are still important, especially where they en-hance <BR>
+or have a neutral effect on safety. <BR>
+<P>
+ Safety-critical systems often involve monitoring and/ or control of physical components (aeroplanes, <BR>
+nuclear reactors, etc.). These systems usually oper-ate <BR>
+in real-time. Another implication is that physical <BR>
+interaction environments may be quite diverse, and a <BR>
+model of the user quietly sitting at their desk is often <BR>
+inadequate. Furthermore, the systems may also be <BR>
+distributed across many users and/ or locations, e. g., a <BR>
+plane trip involves co-ordination between the plane it-self, <BR>
+its start and end locations, as well as other planes <BR>
+and flight controllers along the way. <BR>
+<P>
+ Safety-critical systems often involve automation. Cruise control and auto-pilots are well-known exam-ples. <BR>
+Automation alone is not sufficient to remove hu-<BR>
+<P>
+man error. Bainbridge describes the following ironies <BR>
+of automation [2]: <BR>
+<P>
+<B>– </B>Designers may assume that the human should <BR>
+be eliminated due to unreliability and ineffi-ciency, <BR>
+but many operating problems come from <BR>
+designer errors. <BR>
+<P>
+<B>– </B>Automated system are implemented because <BR>
+they can perform better than the operator, <BR>
+yet the operator is expected to monitor their <BR>
+progress. <BR>
+<P>
+<B>– </B>The operator is reduced mostly to monitoring, <BR>
+but this leads to fatigue, which in turn reduces <BR>
+effectiveness. <BR>
+<P>
+<B>– </B>In the long-term, automation reduces physical <BR>
+and cognitive skills of workers, yet these skills <BR>
+are still required when automation fails. In fact, <BR>
+the skills may be in more demand than usual <BR>
+when automation fails, because there is likely <BR>
+to be something wrong. De-skilling also affects <BR>
+workers' attitudes and health adversely. <BR>
+<P>
+ Users are generally trained. Although the user in-terface should be as intuitive as possible, it is usu-ally <BR>
+not necessary to assume novice usage will take <BR>
+place. This contrasts with the principles which might <BR>
+be required for a mobile phone or a web browser. Be-cause <BR>
+users are trained, the diminished flexibility that <BR>
+may arise from enhanced robustness is of less con-sequence <BR>
+than would be the case in a conventional <BR>
+setting. <BR>
+<P>
+ Likewise, we assume that a quality ethic is prevalent in safety-critical projects, to achieve robustness and <BR>
+to ensure that the system functions as it is designed <BR>
+to. Developers should be highly qualified and the pro-cess <BR>
+should allow for steps which might not normally <BR>
+be considered, such as formal methods and parallel <BR>
+design [20]. <BR>
+<P>
+<B>3.2 From Usability to Safety­ Usability <BR>
+</B>To produce safety-usability properties, we have adjusted <BR>
+the existing set of usability properties given in Mahemoff <BR>
+and Johnston [17] (robustness, task efficiency, reuse, user-computer <BR>
+communication, and flexibility). Robustness has <BR>
+been described sufficiently in section 2 and is essential for <BR>
+safety-critical systems. Each remaining property will now <BR>
+be summarised, followed by a consideration of how it is <BR>
+affected by the robustness principle discussed in section 2, <BR>
+and the distinguishing characteristics of safety-critical sys-tem, <BR>
+listed in section 3.1 above. 
+4
+<BR>
+<A href=#page4>4</A>
+<strong><A name=page5> Page 5</A></strong>
+<A href=#page6>6</A>
+<BR>
+<B>Task Efficiency: </B>Software should help users of varied ex-perience <BR>
+levels to minimise effort in performing their tasks. <BR>
+<P>
+<I>Implications: </I>In real-time systems involving co-ordination <BR>
+among different people and systems, there is a large risk <BR>
+of overloading user's cognitive capabilities. This makes it <BR>
+important to carry out task analyses, and develop systems <BR>
+that are compatible with user's tasks and ensure that users <BR>
+are given appropriate workloads. Matching the system to <BR>
+the task has implications for both software and hardware <BR>
+design. Automation is another tool which can be used to <BR>
+improve system efficiency. At the same time, the overall <BR>
+experience of users must be considered to ensure that au-tomation <BR>
+is effective. Some systems over-automate and this <BR>
+has led to accidents in the past (e. g., [21]). <BR>
+<P>
+Error reduction techniques enhance task efficiency because <BR>
+they reduce the likelihood of errors occurring, rather than <BR>
+requiring that users correct errors after they have occurred. <BR>
+Error prevention techniques (forcing functions) prevent <BR>
+rather than reduce the likelihood of errors and therefore also <BR>
+enhance efficiency. Error recovery techniques may reduce <BR>
+overall efficiency if the likelihood of user error is relatively <BR>
+low. For example, incremental and redundant inputs enable <BR>
+detection of errors but slow user input. Efficiency might be <BR>
+a good thing if it reduces user fatigue and improves their <BR>
+motivation to work with the system. On the other hand, ef-ficiency <BR>
+generally implies that the user only has to enter in-formation <BR>
+once (as indicated by principles such as "Provide <BR>
+output as input" [24]), but in some situations it is safer to <BR>
+force a user to enter the same information twice; a familiar <BR>
+example is changing one's password on most Unix systems. <BR>
+Redundant inputs catch many execution slips (autonomous <BR>
+errors such as mistyping), but reduce the efficiency with <BR>
+which a user can perform the input task. <BR>
+<P>
+<B>Reuse: </B>Ensure that users can reuse existing effort and <BR>
+knowledge. Knowledge reuse is usually achieved via con-sistent <BR>
+look-and-feel. <BR>
+<P>
+<I>Implications: </I>The safety requirement means that tech-niques <BR>
+for reuse— such as consistency— can be a double-edged <BR>
+sword. It is certainly an important way to reduce cog-nitive <BR>
+workload; safety can be improved by making routine <BR>
+actions become subconscious so that users can concentrate <BR>
+on higher-level issues [19]. But reuse of previous erroneous <BR>
+inputs and reuse of actions from one task in another task can <BR>
+also be a source of error. Reuse circumvents error reduction <BR>
+techniques such as redundancy and checking, incremental <BR>
+tasks and avoidance of capture errors. Capture errors occur <BR>
+whenever two different action sequences have their initial <BR>
+stages in common, with one sequence being unfamiliar and <BR>
+the other being well practised. It is rare for the unfamil-iar <BR>
+sequence to capture the familiar one, but common for <BR>
+the familiar sequence to capture the unfamiliar. For exam-<BR>
+<P>
+ple, driving to the office rather than the store on a Sunday <BR>
+(the intent to go to the store remains unchanged). By pro-viding <BR>
+one distinct action sequence for each task, the like-lihood <BR>
+of capture errors can be diminished. For example, <BR>
+reuse enables a user to rapidly move through a dialogue, <BR>
+entering reused inputs, potentially inappropriately. Another <BR>
+common example of error arising from reuse is when a user <BR>
+habitually clicks "Yes" when asked if they wish to remove <BR>
+a file. One cause of the Therac-25 disaster (in which several <BR>
+people were overdosed by a medical radiation therapy ma-chine <BR>
+and subsequently died) was a feature which let users <BR>
+continually hit the Return key to request the default [16]. <BR>
+<P>
+<B>User-Computer Communication: </B>Facilitate collabora-tion <BR>
+between humans and computers by appropriately rep-resenting <BR>
+changes to the system (which have been instigated <BR>
+by humans or computers). <BR>
+<P>
+<I>Implications: </I>Real-time systems represent the state of dy-namic <BR>
+systems, and if the state changes too frequently, users <BR>
+can become confused. The representation should account <BR>
+for such variances, and show only those changes that are <BR>
+necessary. An example of designing the appropriate repre-sentation <BR>
+is a car speedometer, which is analogue because <BR>
+a changing digital meter would be incomprehensible [23]. <BR>
+The physical environment should also take into account <BR>
+human input and output needs. Leveson cites an exam-ple <BR>
+where this principle was clearly not applied: a nuclear <BR>
+power plant where controls are placed thirty feet from the <BR>
+panel meters, yet users must be within a few feet to read the <BR>
+display. Automation should be clearly displayed, as many <BR>
+accidents have arisen when users were unaware of the extent <BR>
+and effects of computer control (e. g., [21]). The system also <BR>
+needs an appropriate way for dynamically distributing con-trol <BR>
+between the various human and computer agents work-ing <BR>
+in the system. The diversity of human agents is also an <BR>
+issue here: the system must provide a representation com-patible <BR>
+with their needs and capabilities. A rail control sys-tem <BR>
+should show the driver upcoming conditions, indicate <BR>
+the status of trains in the vicinity to traffic controllers, and <BR>
+provide passengers with the information they desire: when <BR>
+the next train is coming. <BR>
+<P>
+<B>Flexibility: </B>Account for users of different backgrounds <BR>
+and experience by allowing for multiple ways to perform <BR>
+tasks and future changes to the system. <BR>
+<P>
+<I>Implications: </I>Error prevention techniques such as forcing <BR>
+functions essentially introduce additional modes to a sys-tem; <BR>
+moded systems are, by definition, less flexible: the <BR>
+user must follow the order of actions to perform the task <BR>
+that was envisaged by the designer of the system. Error re-duction <BR>
+mechanisms may diminish flexibility because cap-ture <BR>
+errors can arise from autonomous competition between 
+5
+<BR>
+<A href=#page5>5</A>
+<strong><A name=page6> Page 6</A></strong>
+<A href=#page7>7</A>
+<BR>
+different action sequences for performing a task. <BR>
+User-initiated flexibility is often unacceptable for safety-critical <BR>
+systems, because frequent changes to the user-interface <BR>
+may lead to errors if users forget the change was <BR>
+made, and this is certainly possible in emergency situa-tions. <BR>
+Another possibility is one user taking over another <BR>
+user's environment; this could be a source of error if each <BR>
+user has customised their interface. In contrast, a system <BR>
+like a word-processor should help users to customise their <BR>
+interface "on the fly", i. e., without switching to a special <BR>
+<TT>Options </TT>mode. <BR>
+<P>
+<B>4 Safety-Usability Patterns <BR>
+</B>In this section, we document the safety-usability pattern <BR>
+language. The patterns are based on elements of safety-critical <BR>
+systems which are considered usable according to <BR>
+our safety-usability criteria defined in the previous two sec-tions. <BR>
+Therefore, designing safety-critical systems accord-ing <BR>
+to the patterns should improve safety-usability. Read-ers <BR>
+unfamiliar with patterns should note that the technique <BR>
+is not supposed to be foolproof or strictly-algorithmic. In-stead, <BR>
+designers should learn from the patterns and feel free <BR>
+to alter them according to their own views or needs. <BR>
+<P>
+<B>4.1 Pattern Template <BR>
+</B>The patterns contain several fields. The convention for pre-senting <BR>
+each pattern is shown below. <BR>
+<P>
+<B>Name of Pattern <BR>
+Context: </B>The preconditions which define situations where <BR>
+the pattern is relevant. <BR>
+<P>
+<B>Problem: </B>The problem to which the pattern provides a <BR>
+solution. This section motivates why the pattern is <BR>
+likely to prove useful to designers. Note that a given <BR>
+context might have more than one problem to solve. <BR>
+<P>
+<B>Forces: </B>Principles that influence the decision-making pro-cess <BR>
+when a designer is confronted with the problem <BR>
+in this context. Forces can conflict with one another. <BR>
+<P>
+<B>Solution: </B>The solution describes a way to take the forces <BR>
+into account and resolve them. <BR>
+<P>
+<B>Examples: </B>Real-life examples of successful system fea-tures <BR>
+that embody the solution. The validity of the <BR>
+pattern can be enhanced by considering relevant ex-amples <BR>
+from situations not directly concerned with <BR>
+<P>
+safety-usability. For this reason, we sometimes con-sider <BR>
+patterns of detailed software design or non-safety-<BR>
+critical applications. At the same time, each <BR>
+pattern contains at least one directly-relevant exam-ple. <BR>
+The examples are described in detail in Appendix <BR>
+B. <BR>
+<P>
+<B>Design Issues: </B>The decisions which may arise in imple-menting <BR>
+the solution (Optional). <BR>
+<P>
+<B>Resulting Context: </B>The post-state of the system, after ap-plying <BR>
+the pattern. In particular, this section discusses <BR>
+what other patterns may be applicable after this pat-tern <BR>
+has been applied. If a specific pattern name is <BR>
+cited, it will appear in <TT>Sans-serif </TT>font. <BR>
+<P>
+<B>4.2 Overview <BR>
+</B>The Safety-Usability pattern language is given in full in Ap-pendix <BR>
+A. This section provides an overview of the lan-guage, <BR>
+explaining what patterns are contained in the lan-guage <BR>
+and how they relate to one another. Figure 1 shows <BR>
+the patterns and pattern groups within the language and the <BR>
+references to other patterns in the resulting context for each <BR>
+pattern. <BR>
+<P>
+There are four groups of patterns, each concerned with re-ducing <BR>
+user error or the consequences of user error by con-sidering <BR>
+the following aspects of the human-computer inter-action: <BR>
+<P>
+<B>Task Management </B>: the control flow of the human-computer <BR>
+interaction; <BR>
+<P>
+<B>Task Execution </B>: the physical mechanisms by which users <BR>
+perform tasks; <BR>
+<P>
+<B>Information </B>: the information that is presented to users; <BR>
+<B>Machine Control </B>: removing responsibility for the correct <BR>
+operation of the system from the user, and instead <BR>
+placing such responsibility on machines. <BR>
+<P>
+Within each group there are several patterns. The following <BR>
+sections give brief summaries of the problem addressed by <BR>
+each pattern and the solution provided. Appendix A gives <BR>
+full explanations, including examples for six of the patterns. <BR>
+<P>
+<B>4.2.1 Task Management <BR>
+Recover </B>: If the system enables users to place the system in <BR>
+a hazardous state, then users need a facility to recover <BR>
+to a safe state (when this is possible). 
+6
+<BR>
+<A href=#page6>6</A>
+<strong><A name=page7> Page 7</A></strong>
+<A href=#page8>8</A>
+<BR>
+<B>Behaviour Constraint <BR>
+Execution Task <BR>
+Management Task <BR>
+</B><P>
+<B>Separation <BR>
+</B><P>
+<B>Affordance <BR>
+</B><P>
+<B>Preview <BR>
+Reality Mapping <BR>
+</B><P>
+<B>Trend <BR>
+</B><P>
+<B>Mapping <BR>
+Abstract Redundant <BR>
+</B><P>
+<B>Information <BR>
+</B><P>
+<B>Memory Aid <BR>
+Interrogation <BR>
+Warning Automation Shutdown <BR>
+</B><P>
+<B>Machine Control <BR>
+Interlock <BR>
+</B><P>
+<B>Recover Stepladder Transaction Conjunction Task <BR>
+</B><P>
+<B>Information <BR>
+Distinct Interaction <BR>
+</B><P>
+<B>Figure 1. Pattern Language Structure <BR>
+Stepladder </B>: Systems that require operators to perform <BR>
+complex tasks should explicitly split the tasks into a <BR>
+hierarchy of simpler tasks. <BR>
+<P>
+<B>Task Conjunction </B>: The system can check that a user's <BR>
+action matches their intention by requiring that the <BR>
+user repeat tasks and checking for consistency. <BR>
+<P>
+<B>Transaction </B>: The need for recovery facilities in the sys-tem <BR>
+is lessened if related task steps are bundled into <BR>
+transactions, so that the effect of each step is not re-alised <BR>
+until all the task steps are completed and the <BR>
+user commits the transaction. <BR>
+<P>
+<B>4.2.2 Task Execution <BR>
+Affordance </B>: User-interfaces should be designed so that <BR>
+affordances (user-interface design features) are pro-vided <BR>
+that reduce the likelihood that an error (an un-intended <BR>
+action) will occur when the user executes a <BR>
+task. <BR>
+<P>
+<B>Separation </B>: Components of the user-interface that are <BR>
+operated similarly and for which incorrect operation <BR>
+could be hazardous, should be physically or logically <BR>
+separated. <BR>
+<P>
+<B>Distinct Interaction </B>: Components of the user-interface <BR>
+that could be confused if they were operated similarly <BR>
+should be operated by distinct physical actions. <BR>
+<P>
+<B>Preview </B>: Where the consequences of an action could be <BR>
+undesirable, the user may obtain a preview of the out-come <BR>
+of an action. <BR>
+<P>
+<B>Behaviour Constraint </B>: Users should be prevented from <BR>
+requesting hazardous actions by anticipating such ac-tions <BR>
+and allowing only those that are safe. <BR>
+<P>
+<B>4.2.3 Information <BR>
+Reality Mapping </B>: To facilitate user understanding of the <BR>
+state of the system, the system should provide a close <BR>
+mapping to reality where possible and supplement it <BR>
+with abstract representations that enable a rapid as-sessment <BR>
+to be made where necessary. <BR>
+<P>
+<B>Abstract Mapping </B>: Where reality mapping is infeasible, <BR>
+unneccessary to ensure safety, or would detract from <BR>
+safety, abstract representations should be used that <BR>
+enable rapid assessment of the system state. <BR>
+<P>
+<B>Redundant Information </B>: Where information presented <BR>
+to the user is complex or could be misinterpreted, pro-
+7
+<BR>
+<A href=#page7>7</A>
+<strong><A name=page8> Page 8</A></strong>
+<A href=#page9>9</A>
+<BR>
+vide multiple views so that the likelihood of error is <BR>
+reduced. <BR>
+<P>
+<B>Trend </B>: Humans are not good at monitoring, so when the <BR>
+system state changes, the system should compare and <BR>
+contrast the current state with previous states. <BR>
+<P>
+<B>Interrogation </B>: Presenting the entire state of the system to <BR>
+the user would be overwhelmingly complex in many <BR>
+cases. The user should be presented only with the <BR>
+most salient features of the system state, but be able <BR>
+to interrogate the system for more information where <BR>
+necessary. <BR>
+<P>
+<B>Memory Aid </B>: If users have to perform interleaved tasks, <BR>
+mechanisms (memory aids) should be provided for <BR>
+recording information about the completion status of <BR>
+tasks. <BR>
+<P>
+<B>4.2.4 Machine Control <BR>
+Interlock </B>: Interlocks provide a hardware-based way of de-tecting <BR>
+and blocking hazards, so that even if errors <BR>
+occur, they cannot lead to harmful outcomes. <BR>
+<P>
+<B>Automation </B>: If a task is unsuitable for human perfor-mance, <BR>
+because it involves continuous or close moni-toring <BR>
+or exceptional skill or would be dangerous for <BR>
+a user to perform, then it should be automated. <BR>
+<P>
+<B>Shutdown </B>: When shutting down the system is simple and <BR>
+inexpensive, and leads to a safe, low risk state, the <BR>
+system should shut down in the event that a hazard <BR>
+arises. <BR>
+<P>
+<B>Warning </B>: To ensure that users will notice hazardous sys-tem <BR>
+conditions when they have arisen and take ap-propriate <BR>
+action, warning devices should be provided <BR>
+that are triggered when identified safety-critical mar-gins <BR>
+are approached. <BR>
+<P>
+<B>4.3 Example Pattern <BR>
+</B>In this section we give the complete text of an example pat-tern <BR>
+from the Task Management group, to illustrate instan-tiation <BR>
+of the pattern template from section 4.1. <BR>
+<P>
+<B>Recover <BR>
+Context: </B>A task has been designed which could lead to a <BR>
+hazardous state, it is possible to recover to a safe state <BR>
+and: <BR>
+<P>
+ Risk is known; <BR>
+<P>
+ Risk can be effectively reduced by providing re-covery paths for users, rather than reducing er-ror <BR>
+likelihood; <BR>
+ Risk is relatively low compared to cost of pre-vention. <BR>
+<P>
+<B>Problem: Howcan we reduce the likelihood of accidents <BR>
+arising from hazardous states? <BR>
+</B><P>
+<B>Forces: <BR>
+</B> Hazardous states exist for all safety-critical sys-tems; it is often too complex and costly to trap <BR>
+<P>
+every state by modelling all system states and <BR>
+user tasks; <BR>
+<P>
+ Risk can be effectively reduced by reducing the consequence of error rather than its likelihood; <BR>
+<P>
+ When a hazardous state follows a non-hazardous state, it may be possible to return to <BR>
+a non-hazardous state by applying some kind of <BR>
+recovery operation. <BR>
+<P>
+<B>Solution: Enable users to recover from hazardous ac-tions <BR>
+they have performed. </B>Recovering a task is <BR>
+similar to undoing it, but promises to return the sys-tem <BR>
+to a state that is essentially identical to the one <BR>
+prior to the incorrect action. In many safety-critical <BR>
+systems, this is impossible. If a pilot switched to a <BR>
+new hydraulic reservoir five minutes ago, then it is <BR>
+impossible to undo a loss of fluid in the meantime if <BR>
+the associated servodyne for that reservoir is leaking <BR>
+(see Figure 3). However, it may be useful to provide <BR>
+a Recover operation giving a fast, reliable, mecha-nism <BR>
+to return to the initial reservoir. Recovering a <BR>
+task undoes as much of the task as is necessary (and <BR>
+possible) to return the system to a safe state. <BR>
+<P>
+This function can be assisted by: <BR>
+<P>
+1. helping users to anticipate effects of their ac-tions, <BR>
+so that errors are avoided in the first place; <BR>
+<P>
+2. helping users to notice when they have made an <BR>
+error (provide feedback about actions and the <BR>
+state of the system); <BR>
+<P>
+3. providing time to recover from errors; <BR>
+4. providing feedback once the recovery has taken <BR>
+place. <BR>
+<P>
+If this solution is not feasible, a more extreme way <BR>
+to deal with unwanted system states is to perform a <BR>
+<TT>Shutdown. <BR>
+</TT><P>
+<B>Examples: </B>The Druide system (see Appendix B) imple-ments <BR>
+message-sending via a <TT>Transaction </TT>mech-anism. <BR>
+Air-traffic controllers can compose a message 
+8
+<BR>
+<A href=#page8>8</A>
+<strong><A name=page9> Page 9</A></strong>
+<A href=#page10>10</A>
+<BR>
+to an aircraft but then cancel it without sending (see <BR>
+Figure 5). In the Hypodermic Syringe case study, <BR>
+users can recover from an error by using the +/-but-ton <BR>
+to alter the entered value to a safe value. <BR>
+<P>
+<B>Resulting Context: </B>After applying this pattern, it should <BR>
+be possible for users to recover from some of their <BR>
+hazardous actions. The <TT>StepLadder </TT>pattern facili-tates <BR>
+recovery by breaking tasks into sub-steps, each <BR>
+of which may be more easily recovered than the orig-inal <BR>
+task. The user should be informed of what the <BR>
+previous state is that the system will revert to, hence <BR>
+<TT>Trend </TT>may help users execute <TT>Recover. <BR>
+</TT><P>
+<B>5 Conclusions <BR>
+</B>Conventional principles of usability require adjustments in <BR>
+the safety-critical context. We have presented patterns that <BR>
+promote safety of interactive systems, with minimal detri-mental <BR>
+impact on the "raw" usability of a system. The pat-terns <BR>
+should help developers of safety-critical systems to <BR>
+learn from past successes during design. They are not just a <BR>
+catalogue of patterns; they form a well-connected language. <BR>
+Developers can apply a pattern and its <I>Resulting Context <BR>
+</I>will give clues as to which patterns might then be relevant. <BR>
+The development process becomes a sequence of pattern ap-plications <BR>
+that can be documented for future reference by <BR>
+system maintainers. In addition, we have described exam-ples <BR>
+that illustrate each pattern. Patterns can also be used to <BR>
+justify a design decision and might therefore be integrated <BR>
+into traditional safety rationale methods, e. g., safety cases. <BR>
+<P>
+There are four groups of patterns in our language, each con-cerned <BR>
+with reducing user error. Task management patterns <BR>
+consider the control flow and task structure of the human-computer <BR>
+interaction; task execution patterns deal with the <BR>
+mechanisms by which users perform tasks; information pat-terns <BR>
+are concerned with the information that is presented to <BR>
+users; machine control patterns promote removing respon-sibility <BR>
+for the correct operation of the system from the user, <BR>
+and instead placing such responsibility on machines. In to-tal <BR>
+there are 14 patterns. <BR>
+<P>
+We encourage more research aimed at uncovering the ways <BR>
+in which successful systems are built. It is tempting to <BR>
+only spot faults in systems, especially when well-publicised <BR>
+catastrophes have occurred. Certainly, it is vital to do so. <BR>
+However, design knowledge is built on good examples as <BR>
+well as bad, and currently documentation of bad examples <BR>
+is far more prevalent. Successful features do not have to be <BR>
+breathtaking works of art; they are simply design concepts <BR>
+which: (a) are based on valid principles, and (b) have been <BR>
+applied enough times with success to make us confident that <BR>
+we can learn from them. <BR>
+<P>
+<B>Acknowledgments <BR>
+</B>The authors thank George Nikandros (Queensland Rail) for <BR>
+permitting the Railway Control system case study to be used <BR>
+for research purposes and David Tombs (Software Verifica-tion <BR>
+Research Centre) for his time in explaining how the <BR>
+system worked. We also thank Philip Dart (The University <BR>
+of Melbourne) and Anthony MacDonald (Software Verifi-cation <BR>
+Research Centre) for their suggested improvements <BR>
+to drafts of this paper. <BR>
+<P>
+<B>A Pattern Language <BR>
+</B>This Appendix gives the entire safety-usability pattern lan-guage, <BR>
+as described in section 4, except <TT>Recover </TT>from the <BR>
+<I>Task Management and Control Flow </I>group, which has been <BR>
+already given in section 4.3. <BR>
+<P>
+<B>A. 1 Task Management Patterns <BR>
+Stepladder <BR>
+Context: </B>The system is defined by a set of tasks that are <BR>
+decomposed into logically simpler tasks and the ef-fect/ <BR>
+consequence of misperforming a task cannot be <BR>
+readily diminished. <BR>
+<P>
+<B>Problem: How can we guide the user through complex <BR>
+tasks? <BR>
+</B><P>
+<B>Forces: <BR>
+</B> It is desirable for the user to remain familiar with low-level tasks, so they are capable of deal-ing <BR>
+<P>
+with novel situations; <BR>
+ When performing a complex task, it is easy for users to forget what they have and have not <BR>
+done. This is especially true when there are <BR>
+other distractions; <BR>
+<P>
+ Users may eventually see the task sequence as a single, aggregate, task. <BR>
+<P>
+<B>Solution: Identify complex tasks and explicitly split <BR>
+them into sequences of simpler tasks. </B>In some <BR>
+cases, the task sequence may form a new task it-self, <BR>
+for example a Wizard in MS-Windows is con-sidered <BR>
+a separate task which enables several smaller <BR>
+tasks to be performed in a sequence. In other <BR>
+cases, there is no explicit representation; it is sim-ply <BR>
+a design consideration which has led to the cre-ation <BR>
+of several individual tasks. Even in this case, <BR>
+though, the user's tasks may be controlled by the sys-tem's <BR>
+mode, and <TT>Behaviour Constraints </TT>and 
+9
+<BR>
+<A href=#page9>9</A>
+<strong><A name=page10> Page 10</A></strong>
+<A href=#page11>11</A>
+<BR>
+<TT>Affordance </TT>can be applied to help the user iden-tify <BR>
+what task comes next. <BR>
+<P>
+<B>Examples: </B>The concept of explicit procedures is well-established <BR>
+in safety-critical systems design. Aircraft <BR>
+crew are provided with reference cards explaining <BR>
+step-by-step what to do in emergencies [9]. Some-times, <BR>
+controls on machines are arranged in a way <BR>
+which suggests a certain execution order. As an <BR>
+example from the non-safety-critical domain, Mel-bourne's <BR>
+public transport ticket machines require the <BR>
+user to specify three variables (zone, concession, ex-piry <BR>
+time), place money in the machine, and then col-lect <BR>
+the ticket. Even though the three variables can be <BR>
+entered in any order, the design of the machine sug-gests <BR>
+a particular order, arbitrary though it may be. <BR>
+The overall left-to-right ordering of controls provides <BR>
+a <TT>Affordance </TT>as to the appropriate sequence and <BR>
+suggests to users what to do next. <BR>
+<P>
+In the Hypodermic Syringe case study, in the usual <BR>
+case, several simpler actions are required to equate to <BR>
+the corresponding action when using a keypad. The <BR>
+positioning of the +/-buttons affords the appropriate <BR>
+sequence. <BR>
+<P>
+<B>Resulting Context: </B>After applying this pattern, the user <BR>
+should have an improved idea of what tasks need to <BR>
+be performed at any given time. The pattern works <BR>
+best in tandem with <TT>Transaction. </TT>Each few rungs <BR>
+of the stepladder forms a <TT>Transaction. </TT>This way, <BR>
+many of the individual tasks will be easily recovered <BR>
+from, because they will not be conveyed immediately <BR>
+to the broader system. By splitting the original task <BR>
+into sub-tasks, the consequence of each step may be <BR>
+less than for the original task and <TT>Recover </TT>may be-come <BR>
+easier to apply. <BR>
+<P>
+The stepladder can be used to structure <BR>
+<TT>Affordances. <BR>
+</TT><P>
+<B>Task Conjunction <BR>
+Context: </B>A task has been designed which has a relatively <BR>
+high risk of producing a hazardous state and error <BR>
+cannot be prevented, e. g., because the task involves <BR>
+data-entry. The task is not time critical so it can be <BR>
+replaced by a duplicate task, all of which must be <BR>
+completed before the users actions take effect. <BR>
+<P>
+<B>Problem: How can we check whether a user's action <BR>
+matches their intention? <BR>
+</B><P>
+<B>Forces: <BR>
+</B><P>
+ Redundancy is widely used in the safety indus-try to avoid hazards arising due to a component <BR>
+of the system failing. The system is said to have <BR>
+no single point of failure; <BR>
+<P>
+ Entry fields, or screens in a user-interface can be regarded as components of the system. <BR>
+<P>
+<B>Solution: Reduce errors by requiring that the user per-form <BR>
+tasks multiply. </B>The user's performances on <BR>
+each iteration of the task are compared and the out-come <BR>
+used to determine whether the task has been <BR>
+correctly performed. <BR>
+<P>
+Redundant tasks are an error detection technique. Re-dundancy <BR>
+reduces the efficiency with which users can <BR>
+perform tasks and therefore the "raw" usability of the <BR>
+system, but often enhances system safety by enabling <BR>
+error detection. Another variant is requiring the same <BR>
+task to be performed by two different users, as in a <BR>
+detonator which can only be activated by two people. <BR>
+<P>
+<TT>Task Conjunction </TT>is similar <BR>
+to <TT>Transaction, </TT>in that it requires several actions <BR>
+before any commitment is made. However, the inten-tion <BR>
+differs. In <TT>Task Conjunction, </TT>there is only <BR>
+one fundamental change, but it is subject to verifi-cation <BR>
+actions. In <TT>Transaction, </TT>each action pro-vides <BR>
+<I>new information </I>about desired changes. <BR>
+<P>
+The conjunction must not be able to be circumvented, <BR>
+e. g., on the Therac-25 machine, users could press <BR>
+"Enter" to confirm a value rather than re-type the <BR>
+value. Pressing "Enter" soon became automatic for <BR>
+the users [16]. <BR>
+<P>
+<B>Examples: </B>Redundancy in software has a long history. <BR>
+Communication protocols, for example, use check-bits <BR>
+and other data to enable error detection and/ or <BR>
+correction. <BR>
+<P>
+The Railway Control system requires that codes be <BR>
+exchanged between controllers and train drivers three <BR>
+times before a command is issued. The redundancy <BR>
+helps reduce the likelihood of an inconsistency be-tween <BR>
+the controller's perception of the command <BR>
+that is issued and the driver's perception of the com-mand. <BR>
+<P>
+<B>Resulting Context: </B>The original task is redefined as <BR>
+a conjunction of redundant sub-tasks, to which <BR>
+<TT>Transaction </TT>may be applied. <BR>
+<P>
+<B>Transaction <BR>
+Context: </B>Actions are not time-critical and hence can be <BR>
+"stored-up" before being applied and: 
+10
+<BR>
+<A href=#page10>10</A>
+<strong><A name=page11> Page 11</A></strong>
+<A href=#page12>12</A>
+<BR>
+ Sub-steps can be undone; <BR>
+ The effect of the task as a whole is difficult to undo; <BR>
+<P>
+ Risk is relatively low compared to cost of pre-vention. <BR>
+<B>Problem: </B>For many real-time systems, it is difficult to <BR>
+provide a <TT>Recover </TT>action which has any practi-cal <BR>
+value, because the system usually changes irre-versibly <BR>
+by the time the user tries to recover from the <BR>
+unwanted action. <BR>
+<P>
+<B>How can we improve reversibility? <BR>
+</B><P>
+<B>Forces: <BR>
+</B> It is relatively easy to recover tasks that do not impact on real-world objects. <BR>
+<P>
+ Often, reversal is useful to iteratively define a task's parameters. <BR>
+ Transactions are used in data-processing to en-able the effect of a sequence of actions to be <BR>
+"rolled-back" to the state at the commencement <BR>
+of the transaction; <BR>
+<P>
+ Transactions bundle a sequence of task steps into a single task, hence they are ideal for struc-turing <BR>
+interaction in terms of overall goals and <BR>
+sub-tasks. <BR>
+<P>
+<B>Solution: Bundle several related task steps into a trans-action, <BR>
+such that the effect of each step is not re-alised <BR>
+until all the task steps are completed and <BR>
+the user commits the transaction. </B>By grouping task <BR>
+steps in this way, it becomes very easy to <TT>Recover <BR>
+</TT>the effect of a sub-step before the transaction as a <BR>
+whole has been committed. In addition, because er-rors <BR>
+are deferred until the transaction is committed, <BR>
+users have more time to consider their actions and to <BR>
+recover from them if appropriate. <BR>
+<P>
+Each transaction should involve task executions and <BR>
+information that is physically grouped on the users <BR>
+console or display. For example, a data entry transac-tion <BR>
+might be implemented as a pop-up window with <BR>
+commit and abort buttons to either accept or reject the <BR>
+information entered by the user. <BR>
+<P>
+<B>Examples: </B>In the Druide system, messages to aircraft are <BR>
+first constructed, and then sent to the aircraft using the <BR>
+"SUBMIT" button. The user can cancel a message <BR>
+before they submit it. A similar facility is available <BR>
+in some email systems which actually hold mail for <BR>
+several minutes before sending it. <BR>
+<P>
+A standard dialogue box supports this pattern. The <BR>
+user can easily enter data via text fields and buttons, <BR>
+<P>
+but none of these choices matter until they hit a con-firmation <BR>
+button (e. g., one labeled "OK"). <BR>
+<P>
+<B>Resulting Context: </B>Task steps are grouped into transac-tions <BR>
+with commit and abort options for each group. <BR>
+The commit step in a transaction can quickly be-come <BR>
+automatic for the skilled user. To reduce the <BR>
+chance of users committing transactions that they <BR>
+meant to abort, the <TT>Affordance, Separation <BR>
+</TT>and <TT>Distinct Interaction </TT>patterns should be <BR>
+applied. If it is appropriate for the transaction's sub-tasks <BR>
+to be constructed iteratively, then the transac-tion <BR>
+can be viewed as a form of <TT>Stepladder. </TT>A <BR>
+sequence of transactions themselves can also form a <BR>
+<TT>Stepladder. <BR>
+</TT><P>
+<B>A. 2 Task Execution Patterns <BR>
+Affordance <BR>
+Context: </B>A task has a limited range of valid ways in which <BR>
+it can be performed and failure to perform the task <BR>
+correctly has hazardous consequences. For many sys-tems, <BR>
+it is possible for the user to perform a variety of <BR>
+physical actions at each point in performing the task; <BR>
+not all will produce the required actions for the task. <BR>
+<P>
+<B>Problem: How can we enhance assurance that the phys-ical <BR>
+actions performed by users produce the de-sired <BR>
+effect? <BR>
+</B><P>
+<B>Forces: <BR>
+</B> It is possible for the user to have the right in-tentions, but perform the wrong action due to a <BR>
+<P>
+slip; <BR>
+ Slips can be reduced by providing appropriate affordances [22]. <BR>
+<P>
+<B>Solution: Provide cues to an operator that enhance the <BR>
+likelihood that the operator will perform the phys-ical <BR>
+actions appropriate to performing a particu-lar <BR>
+action. <BR>
+</B><P>
+The cues are effectively memory aids that remind the <BR>
+user to perform an action by a particular sequence <BR>
+of executions, avoiding slips. Such cues include dis-tinctive <BR>
+executions for distinct actions and distinctive <BR>
+identifiers for distinct objects that the user can manip-ulate. <BR>
+The actions performed are matched to the out-comes <BR>
+of the actions and the user's physical expecta-tions <BR>
+and capabilities. In addition, the same execution <BR>
+should not have several different outcomes according <BR>
+to the model or type of equipment that the user is us-ing; <BR>
+Incorrect executions should clearly indicate that <BR>
+the operation has not been performed successfully. 
+11
+<BR>
+<A href=#page11>11</A>
+<strong><A name=page12> Page 12</A></strong>
+<A href=#page13>13</A>
+<BR>
+<B>Examples: </B>Norman [22] gives several examples of doors <BR>
+that provide affordances, the physical characteristics <BR>
+of the door indicate the way in which the door should <BR>
+be used: for example a door knob may indicate by <BR>
+its shape that it should be twisted, whereas a flat bar <BR>
+on a door indicates that the door should simply be <BR>
+pushed. Failure to perform the operation of opening <BR>
+the door is indicated clearly because the door remains <BR>
+shut. Similarly, the landing gear on an aircraft is op-erated <BR>
+by a lever that is pulled downwards, mimick-ing <BR>
+the effect of the operation on the position of the <BR>
+aircraft's undercarriage. <BR>
+<P>
+Graphical toolkit components such as tabbed dia-logues <BR>
+afford correct action by the user, because they <BR>
+mimic "real-world" entities that offer particular oper-ations <BR>
+and indicate the availability of those operations <BR>
+by physical cues. Similarly, data blocks in Druide <BR>
+afford clicking because that is the characteristic op-eration <BR>
+to be applied to regions of marked text in a <BR>
+graphical display. <BR>
+<P>
+<B>Design Issues: </B>Selection of cues depends on the user's per-ceptual <BR>
+limitations. A user may not notice small dif-ferences <BR>
+in shape if they are occupied by other activ-ities. <BR>
+General user characteristics must also be con-sidered, <BR>
+e. g., distinguishing between red and green <BR>
+might not be appropriate if colour-blind males inter-act <BR>
+with the system. Customisation of the interface <BR>
+may be necessary to accommodate the needs of all <BR>
+users. <BR>
+<P>
+<B>Resulting Context: </B>Certain types of user error (" slips" as <BR>
+described by Norman [22]) are less likely. <TT>Warning <BR>
+</TT>should be used to notify the user if an operation <BR>
+has not succeeded. There should be a <TT>Reality <BR>
+Mapping </TT>to provide the user with the state of the <BR>
+system, so they can determine whether the opera-tion <BR>
+has occurred correctly. Because error may oc-cur, <BR>
+<TT>Recover </TT>should be applied to enable the ef-fects <BR>
+of error to be recovered from where possible. <BR>
+For those errors for which risk is too high for this <BR>
+pattern to be applied, <TT>Behaviour Constraint <BR>
+</TT>or <TT>Interlock </TT>should be considered. If affordance <BR>
+involves use of toolkit components, <TT>Separation <BR>
+</TT>should be considered. A <TT>Preview </TT>is a simple way <BR>
+of affording correct actions by showing what the out-come <BR>
+of an action will be. <BR>
+<P>
+<B>Separation <BR>
+Context: </B>The system provides several actions for which <BR>
+the corresponding executions are very similar. Al-ternatively, <BR>
+several information displays are provided <BR>
+<P>
+for which the layout and presentation are very similar. <BR>
+When one is appropriate, the other is not and possi-bly <BR>
+vice versa. In addition, it is not feasible to predict <BR>
+hazards and remove the potentially hazardous action. <BR>
+<P>
+<B>Problem: </B>A system is constructed from components that <BR>
+limit the scope for distinct executions and presenta-tions <BR>
+(e. g., a graphical toolkit), so that the potential <BR>
+for confusion between components in different con-texts <BR>
+arises. <BR>
+<P>
+<B>How can we reduce the likelihood that users will <BR>
+inadvertently perform the wrong action or misin-terpret <BR>
+information? <BR>
+</B><P>
+<B>Forces: <BR>
+</B> We would like to reuse components because modern systems usually incorporate graphical <BR>
+<P>
+interfaces and it is impracticable to not use them <BR>
+where safety will not be compromised; <BR>
+<P>
+ Even if a toolkit is custom-built, the widgets and interaction mechanisms must then be reused in <BR>
+the design; <BR>
+ Systems are always built within a budget; <BR>
+ When widgets are reused, unless the customisa-tion is extensive, components will often appear <BR>
+<P>
+similar to users; <BR>
+ Reusing commercial components means we cannot as easily customise them; <BR>
+<P>
+ The potential for user error increases as the sim-ilarity and proximity of controls increases. <BR>
+<B>Solution: </B>Separate two controls (physically or logically) if <BR>
+they are operated in a similar way. <BR>
+<P>
+<B>Examples: </B>In the Druide system, the pop-up menu sepa-rates <BR>
+the buttons corresponding to the "SEND" and <BR>
+"ABORT" actions. Most style guides recommend <BR>
+separation for distinct operations that are accessed by <BR>
+similar controls (e. g., most Windows programs sepa-rate <BR>
+the "OK" and "Cancel" buttons in dialogues [6]). <BR>
+<P>
+<B>Resulting Context: </B><TT>Affordance </TT>and <TT>Distinct <BR>
+Executions </TT>may also be used to reduce operator <BR>
+execution errors. <BR>
+<P>
+<B>Preview <BR>
+Context: </B>The same physical action has different outcomes <BR>
+according to the system mode. The user cannot be <BR>
+reasonably expected to recall the current mode. <BR>
+<P>
+<B>Problem: How can we provide hints as to the outcomes <BR>
+of physical executions within the constraints of <BR>
+graphical toolkits? </B>
+12
+<BR>
+<A href=#page12>12</A>
+<strong><A name=page13> Page 13</A></strong>
+<A href=#page14>14</A>
+<BR>
+<B>Forces: <BR>
+</B> Graphical toolkits diminish the extent to which affordances can be incorporated into the design <BR>
+<P>
+of a system; <BR>
+ Use of toolkits enhances the consistency of a system design and economic viability of a sys-tem; <BR>
+<P>
+ Affordances provide cues that indicate to the user the likely outcome of physical executions. <BR>
+<B>Solution: Provide an explicit preview of the outcome of <BR>
+a physical execution for a system mode. </B>Preview <BR>
+only works well when there is only one execution that <BR>
+can be performed and the issue is whether the user <BR>
+should perform the execution or not, rather than what <BR>
+execution they should perform. <BR>
+<P>
+<B>Examples: </B>Changing the mouse cursor, according to the <BR>
+effect of physical executions for the screen region that <BR>
+the mouse is over. Postage stamp sized pictures of <BR>
+screen shots for viewer software. <BR>
+<P>
+<B>Distinct Interaction <BR>
+Context: </B>Two or more tasks are performed by a similar se-quence <BR>
+of physical actions, and confusion between <BR>
+the tasks (e. g., by performing the terminating steps <BR>
+of task B following the commencing steps of task A) <BR>
+may result in a hazard. In addition, it is not possible to <BR>
+predict hazards and remove the potentially hazardous <BR>
+action at the point at which it might be erroneously <BR>
+selected. <BR>
+<P>
+<B>Problem: How can we reduce the likelihood that users <BR>
+will confuse similar tasks? <BR>
+</B><P>
+<B>Forces: <BR>
+</B> Reuse of graphical toolkit components en-hances consistency and makes a user-interface <BR>
+<P>
+easier to learn; <BR>
+ Reuse of such components also increases the consistency of the operations required to per-form <BR>
+tasks, so that distinct tasks may be ac-cessed <BR>
+by similar physical executions; <BR>
+<P>
+ Tasks that have similar executions sequences are likely to be confused by users; <BR>
+<P>
+ Users confuse tasks because of memory fail-ures. <BR>
+<B>Solution: Distinct actions that can be confused, lead-ing <BR>
+to hazardous consequences, should be accessed <BR>
+by distinct physical executions. </B>However, distinct <BR>
+physical executions reduce reuse, making the system <BR>
+<P>
+harder to learn. Training and memory aids can help <BR>
+overcome errors arising from users not remembering <BR>
+the correct execution to perform a task. <BR>
+<P>
+<B>Examples: </B>The Hypodermic Syringe system uses align-ment <BR>
+of +/-buttons with the corresponding display <BR>
+digit to reduce motor errors in which a wrong button <BR>
+is pressed. <BR>
+<P>
+<B>Resulting Context: </B>Two or more controls are operated by <BR>
+distinct physical interactions. The interactions re-quired <BR>
+to operate a control should be afforded by <BR>
+the control (see <TT>Affordance). Separation </TT>and <BR>
+<TT>Preview </TT>are alternative solutions. <BR>
+<P>
+<B>Behaviour Constraint <BR>
+Context: </B>It is possible to determine system states where <BR>
+certain actions would lead to an error. <BR>
+<P>
+<B>Problem: </B>The most direct solution to improving assurance <BR>
+through diminished user error is to prevent users from <BR>
+making errors. <BR>
+<P>
+<B>How can we prevent users from requesting unde-sirable <BR>
+actions? <BR>
+</B><P>
+<B>Forces: <BR>
+</B> Even if we provide appropriate information and guide users by providing <TT>Affordances, <BR>
+</TT>users will inevitably make some slips and mis-takes; <BR>
+<P>
+ The system has a large amount of data available concerning the state of objects; <BR>
+ In some circumstances, designers will be aware that certain tasks will be undesirable in certain <BR>
+situations; <BR>
+ It is preferable to trap user errors before they impact on the system, rather than detecting in-correct <BR>
+system states and then attempting to rec-tify <BR>
+the situation. <BR>
+<P>
+<B>Solution: For any given system state, anticipate erro-neous <BR>
+actions and disallow the user from perform-ing <BR>
+them. </B>The idea here is to prevent the action <BR>
+from occurring in the first place, rather than dealing <BR>
+with whatever the user does. The logic could be pro-grammed <BR>
+directly, e. g., "If the plane is in mid-air, <BR>
+disable Landing Gear button". It could also be im-plemented <BR>
+via some intelligent reasoning on the ma-chine's <BR>
+behalf, which would require the machine to <BR>
+understand what tasks do and where they are appro-priate. 
+13
+<BR>
+<A href=#page13>13</A>
+<strong><A name=page14> Page 14</A></strong>
+<A href=#page15>15</A>
+<BR>
+This is a very fragile approach which should be used <BR>
+with extreme caution. It assumes that the condition is <BR>
+measured accurately and that ignoring the constraints <BR>
+always implies a worse hazard than following them. <BR>
+It is therefore risky in unforeseen circumstances. This <BR>
+can be somewhat alleviated by a mechanism allowing <BR>
+an appropriate authority to override the constraint. <BR>
+<P>
+A further disadvantage is that this pattern leads to <BR>
+a less flexible user-interface (i. e., the interface is <BR>
+moded) and the user may become frustrated with the <BR>
+structured form of interaction if they do not properly <BR>
+understand the tasks they are performing. In a safety-critical <BR>
+domain, this should be a less severe prob-lem <BR>
+than normal, because the user should be highly <BR>
+trained. <BR>
+<P>
+Behaviour constraints are usually implemented as an <BR>
+additional system mode, e. g., by "greying out" menu <BR>
+items or buttons where appropriate. As such, be-haviour <BR>
+constraints require close automatic monitor-ing <BR>
+of system state and therefore a frequently used <BR>
+partner pattern is <TT>Automation. <BR>
+</TT><P>
+<B>Examples: </B>Kletz [14] gives everyday examples, such as <BR>
+components that will only fit together in one way, <BR>
+making incorrect assembly impossible. Norman [22] <BR>
+also gives such everyday examples, such as fire stairs <BR>
+that have a rail blocking access to the basement stairs; <BR>
+the error of proceeding all the way to the basement is <BR>
+prevented. In the Druide system, users are only given <BR>
+access to menus to change the system state, prevent-ing <BR>
+errors associated with entering invalid data. In the <BR>
+Railway Control system, users cannot direct a train to <BR>
+move to an occupied section of track. <BR>
+<P>
+<B>Resulting Context: </B>Some user errors are no longer possi-ble. <BR>
+The system will usually be more heavily moded <BR>
+than prior to applying the pattern. The system may <BR>
+inform the user that a requested operation is unavail-able <BR>
+(i. e., applying the <TT>Warning </TT>pattern). <BR>
+<P>
+<B>A. 3 Information Patterns <BR>
+Abstract Mapping <BR>
+Context: </B>The system enables users to interact with com-plex <BR>
+real-world objects. <BR>
+<P>
+<B>Problem: </B>Modern computer-based systems may have ex-tremely <BR>
+complex internal state. To operate the sys-tem, <BR>
+the user needs to be able to understand what the <BR>
+state of the system is. <B>How can we reveal to the user <BR>
+what they need to know about the state of the sys-tem <BR>
+without swamping them with information? <BR>
+</B><P>
+<B>Forces: <BR>
+</B> Humans have a limited capacity for processing information. <BR>
+<P>
+ For many safety-critical systems, the amount of information that is relevant to the users opera-tion <BR>
+of the system exceeds the processing ca-pacity <BR>
+of the user. <BR>
+<P>
+ Many decisions that the user must make in en-suring safe operation of the system depend on <BR>
+the overall trend of the system state, rather than <BR>
+precise details. <BR>
+<P>
+ Many systems allow some margin for error so that precise representation of the system state is <BR>
+not necessary for safe operation. <BR>
+<P>
+<B>Solution: Provide an abstract representation of com-plex <BR>
+information so that it is comprehensible by <BR>
+the user. </B>Abstract representations can be used when <BR>
+it is not feasible to directly represent the real-world <BR>
+objects. One benefit of computers is that we can <BR>
+construct summaries— indirect mappings— which aid <BR>
+human decision-making. More abstract representa-tions <BR>
+can also be used in situations where we are <BR>
+prevented from showing real-world objects. For in-stance, <BR>
+bandwidth might be constrained. Display-ing <BR>
+unnecessary parameters increases system load but <BR>
+redundant parameters can be used to automatically <BR>
+check the consistency of information which can then <BR>
+be displayed as a single value [19]. <BR>
+<P>
+<B>Examples: </B>The Druide interface provides the plane's <BR>
+speed, an abstract mapping. This is a variable which <BR>
+could be derived from the reality mapping, but it is <BR>
+better to simply show it to the user, because a user's <BR>
+estimate would lack accuracy, consume time, and dis-tract <BR>
+them from other tasks. <BR>
+<P>
+<B>Resulting Context: </B>Some information will not be suited <BR>
+to abstract representation. In that case <TT>Reality <BR>
+Mapping </TT>should be considered. <BR>
+<P>
+<B>Redundant Information <BR>
+Context: </B>The user is required to perceive and interpret in-formation <BR>
+and act on that information in maintaining <BR>
+the safe function of the system. The information is <BR>
+complex, or could be misperceived or misinterpreted. <BR>
+<P>
+<B>Problem: How can we enhance the likelihood that the <BR>
+user correctly perceives and interprets safety-critical <BR>
+information? <BR>
+</B><P>
+<B>Forces: </B>
+14
+<BR>
+<A href=#page14>14</A>
+<strong><A name=page15> Page 15</A></strong>
+<A href=#page16>16</A>
+<BR>
+ Safety-critical systems may be complex, with large amounts of information that needs to be <BR>
+available to the user; <BR>
+ The amount of display space available is lim-ited; <BR>
+<P>
+ Providing too much information will swamp the user; the information that is displayed needs to <BR>
+be chosen carefully. <BR>
+<B>Solution: Provide more than one way of viewing the in-formation, <BR>
+so that the likelihood that it is misun-derstood <BR>
+or ignored is lessened. </B>Redundancy in <BR>
+user-interface designs can be viewed as an extension <BR>
+of the usual safety-critical viewpoints advocating re-dundant <BR>
+hardware and "n-version programming" (but <BR>
+note that such approaches are often unsuccessful in <BR>
+software design). The field of communication studies <BR>
+has looked at situations such as combination of audio <BR>
+and visual cues in television (e. g., both auditory and <BR>
+visual warnings). <BR>
+<P>
+<B>Examples: </B>The use of the international phonetic alphabet <BR>
+(" Alfa, Bravo, Charlie ..." instead of "A, B, C ...") <BR>
+[14] is a form of redundant input that has been in <BR>
+use for many years to improve human-human com-munication. <BR>
+Similarly, the purpose of levers can <BR>
+be more readily comprehended if there are adequate <BR>
+cues beyond just a label, e. g., shape, position, colour <BR>
+(see [14]). <BR>
+<P>
+<B>Resulting Context: </B><TT>Redundant Information </TT>will <BR>
+usually take the form of an <TT>Abstract Mapping. <BR>
+</TT><P>
+<B>Reality Mapping <BR>
+Context: </B>The system enables users to interact with real-world <BR>
+objects. <BR>
+<P>
+<B>Problem: </B>Digital systems usually create a degree of sep-aration <BR>
+between users and physical objects. In some <BR>
+aircraft, for example, the visual feedback is entirely <BR>
+virtual. Benefits notwithstanding, there is a risk that <BR>
+vital information may be unavailable. <BR>
+<P>
+<B>How can the user check that objects under their <BR>
+own control, or under the system's control, are <BR>
+aligned with their expectations? <BR>
+</B><P>
+<B>Forces: <BR>
+</B> Information concerning the current state of a safety-critical system needs to be displayed <BR>
+clearly and succinctly, so that the user can <BR>
+quickly ascertain whether a hazard has arisen <BR>
+or could arise and can take appropriate action. <BR>
+<P>
+While low-level idioms are useful for improv-ing <BR>
+display clarity, a holistic approach to display <BR>
+design is necessary to ensure understandability <BR>
+of the information that is being presented. <BR>
+<P>
+ When parts of the system have been automated, there is a temptation to assume that the user <BR>
+does not need to see the state of certain objects. <BR>
+However, failures do arise, and human interven-tion <BR>
+is often necessary[ 21]. Information about <BR>
+the environment is necessary to help humans <BR>
+monitor the system, and, if necessary, intervene. <BR>
+<P>
+<B>Solution: Provide a close mapping to reality where pos-sible <BR>
+and supplement it with abstract representa-tions. <BR>
+</B>Users should not have to perform complicated <BR>
+mental operations to assess the margins of system op-eration <BR>
+[19]. To help the user build an accurate model <BR>
+of the domain, it is important to maintain a close map-ping <BR>
+between physical objects and their virtual coun-terparts. <BR>
+A close mapping to reality will help the user <BR>
+observe and diagnose problems effectively. <BR>
+<P>
+<B>Examples: </B>Druide provides an accurate, <BR>
+directly-manipulable, display of the airspace and the <BR>
+aircraft in it. The Oil Pressure system provides ana-logue <BR>
+displays of oil pressure and uses proximity of <BR>
+components to convey relationships. <BR>
+<P>
+<B>Design Issues: </B>When mapping to reality, the appropriate <BR>
+level of detail will be guided by knowledge of the <BR>
+user's characteristics and tasks. Object-orientation <BR>
+provides a good way to reduce semantic distance (dis-tance <BR>
+between the human's model and the real world) <BR>
+because each object in the display for the system rep-resents <BR>
+a corresponding object in the task domain. <BR>
+Analogue displays also reduce semantic distance be-cause <BR>
+they enable direct comparison of magnitudes <BR>
+(e. g., [19]). Similarly, minimise articulator distance <BR>
+so that physical actions mimic their meanings. <BR>
+<P>
+In situations when the representation is complex, ab-stract <BR>
+representations can be used to extract from re-ality <BR>
+any information which is likely to help users in <BR>
+their task. <BR>
+<P>
+<B>Resulting Context: </B>The result is a mapping from reality <BR>
+into suitable display objects. Since the display will <BR>
+not be optimal for all cases, the <TT>Interrogation <BR>
+</TT>pattern can be used to help the user refine the infor-mation <BR>
+provided. An <TT>Abstract Mapping </TT>may be <BR>
+used when detailed representation of state is not nec-essary <BR>
+for safety. 
+15
+<BR>
+<A href=#page15>15</A>
+<strong><A name=page16> Page 16</A></strong>
+<A href=#page17>17</A>
+<BR>
+<B>Trend <BR>
+Context: </B>Users need to formulate and follow task plans <BR>
+that involve attention to the change in state of the sys-tem, <BR>
+e. g., where an action must occur if the state is in <BR>
+a certain configuration, or when a state change oc-curs. <BR>
+<P>
+<B>Problem: How can the user be notified that the state has <BR>
+changed (i. e., the trend of the system is towards a <BR>
+hazardous state)? <BR>
+</B><P>
+<B>Forces: <BR>
+</B> Many user errors stem from memory limita-tions. Users may not notice that the state of the <BR>
+system has changed and that they should take <BR>
+action; <BR>
+<P>
+ Memory-based errors may occur even when the user has previously formulated a plan to per-form <BR>
+a particular action when the state of the <BR>
+system reaches a particular configuration. For <BR>
+example, in air-traffic control, the user may <BR>
+need to change the altitude of an aircraft before <BR>
+it reaches a particular waypoint but may not be <BR>
+able to do so immediately because of other more <BR>
+pressing concerns; a hazard arises when the user <BR>
+fails to return to the original aircraft and change <BR>
+its altitude, after resolving the immediate con-cern. <BR>
+<P>
+<B>Solution: Allow the user to compare and contrast the <BR>
+current state with previous states. </B>This will help <BR>
+users assess the current situation and formulate plans <BR>
+for the future. <BR>
+<P>
+<B>Examples: </B>The Druide system displays aircraft as a trail <BR>
+of locations, with the most prominent location dis-played <BR>
+being the immediate location (see Figure 5). <BR>
+The Oil Pressure system displays oil pressures in the <BR>
+left and right ailerons and a shaded region that indi-cates <BR>
+the oil pressure in the previous 5 minute interval <BR>
+(see Figure 2). <BR>
+<P>
+<B>Design Issues: </B>One common technique is to overlay previ-ous <BR>
+states on the same display, showing the previous <BR>
+state in a less visually striking manner (e. g., muted <BR>
+colours). This is particularly effective for motion, as <BR>
+a trail of past motion can be formed. If this technique <BR>
+causes too much clutter, a replica of the past state can <BR>
+be placed alongside the current state. This, however, <BR>
+occupies valuable screen real estate, and may hamper <BR>
+direct comparison. <BR>
+<P>
+<B>Resulting Context: </B>State changes are explicitly displayed <BR>
+to the user. Display of the state change is a <TT>Reality <BR>
+</TT><P>
+<TT>Mapping. </TT>The change in state may also be brought <BR>
+to the users attention via a <TT>Warning, </TT>if it has a read-ily <BR>
+identifiable safety implication. <BR>
+<P>
+<B>Interrogation <BR>
+Context: <BR>
+</B> The system is complex, with much information of potential use to the user in performing their <BR>
+<P>
+work and not all attributes can be displayed at <BR>
+one time; <BR>
+<P>
+ Some of the information is more salient, or more often necessary than other components of <BR>
+the information; <BR>
+ Some of the information is more readily dis-played than other components of the informa-tion. <BR>
+<P>
+<B>Problem: </B>Most safety-critical interactive systems display <BR>
+to the user a representation of the system state. For <BR>
+many such systems, the state of the system is complex <BR>
+and cannot be represented in a comprehensible way. <BR>
+For such systems, displaying the entire system state <BR>
+at one time may obscure the most important compo-nents <BR>
+of the state and represent a potential source of <BR>
+user error. <BR>
+<P>
+<B>How can the user have access to the entire state of <BR>
+the system without being overwhelmed by infor-mation? <BR>
+</B><P>
+<B>Forces: <BR>
+</B> Users have limited attentional capacity. For ex-ample, Halford [11] has shown that an upper <BR>
+<P>
+limit of about 4 items can be processed in par-allel; <BR>
+<P>
+ Display devices have limited resolution and ca-pacity and can quickly become cluttered with <BR>
+information. Users have difficulty locating spe-cific <BR>
+features on cluttered screens and this is par-ticularly <BR>
+problematic when urgent information <BR>
+or control is desired; <BR>
+<P>
+ Designers cannot realistically envisage every possible information requirement. <BR>
+<P>
+<B>Solution: Provide ways for the user to request addi-tional <BR>
+information. </B>This way, not all information <BR>
+needs to be shown at once. <BR>
+<P>
+If the user is monitoring automatic systems, provide <BR>
+independent information on the state of the system in <BR>
+case instrumentation fails; instrumentation meant to <BR>
+help users deal with a malfunction should not be able <BR>
+to be disabled by the malfunction itself. 
+16
+<BR>
+<A href=#page16>16</A>
+<strong><A name=page17> Page 17</A></strong>
+<A href=#page18>18</A>
+<BR>
+The capability to interrogate should be obvious or <BR>
+intuitive; menus at the top of the screen or window <BR>
+are preferable to pop-up menus or mouse actions per-formed <BR>
+on the object of interest. The results of the <BR>
+interrogation should be able to be saved and reviewed <BR>
+at a later time. <BR>
+<P>
+<B>Examples: </B>The Druide system displays aircraft locations, <BR>
+relative speed, direction of travel, position trail, ra-dio <BR>
+frequency, call-sign, altitude and beacon. Aircraft <BR>
+have many other attributes such as their flight plan, <BR>
+which are not displayed at all times because the re-sult <BR>
+would produce unmanageable display complex-ity. <BR>
+Instead, controllers may query aircraft for such <BR>
+additional information, when it is needed. <BR>
+<P>
+<B>Resulting Context: </B>The mapping of system state to the <BR>
+display is now a mapping of only part of the state, the <BR>
+remainder of the state is hidden. The result is more <BR>
+efficient use of the display. <BR>
+<P>
+<B>Memory Aid <BR>
+Context: </B>The task being performed by a user enables arbi-trary <BR>
+interleaving of actions, with the possibility that <BR>
+an action will be forgotten. <BR>
+<P>
+<B>Problem: </B>Some safety-critical systems, such as air-traffic <BR>
+control, require the user to perform several tasks con-currently, <BR>
+with interleaving of task actions. In such <BR>
+systems, the potential is much greater than in non-interleaved <BR>
+systems for actions to be forgotten, lead-ing <BR>
+to hazards arising. <BR>
+<P>
+<B>How can users reliably perform interleaved tasks? <BR>
+</B><P>
+<B>Forces: <BR>
+</B> The user must remember to finish all the tasks, including interrupted tasks; <BR>
+<P>
+ The user must not inadvertently perform a task step more often than is required (for some sys-tems <BR>
+and steps, a hazard may result). <BR>
+<B>Solution: Provide ways to record the completion status <BR>
+of steps. </B>This will help the user to recommence later <BR>
+on without omitting or repeating tasks. Such memory <BR>
+aids may be either components of the computer sys-tem <BR>
+itself, or adjuncts to the computer system. Mem-ory <BR>
+aids may be proactive, cuing the user to perform <BR>
+an action at a particular point in time, or when the <BR>
+system reaches a particular state; such memory aids <BR>
+may be warnings. <BR>
+<P>
+<B>Examples: </B>The Druide system uses paper strips to record <BR>
+flight details and the instructions that have been given <BR>
+<P>
+to aircraft; such paper strips are commonly used in <BR>
+air-traffic control systems. The paper strips provide <BR>
+context for the controllers, they enable controllers to <BR>
+determine whether an aircraft is currently behaving <BR>
+in accordance with the instructions that have previ-ously <BR>
+been issued and they enable the last action per-formed <BR>
+for a particular aircraft to be recorded. How-ever <BR>
+because paper strips are an adjunct to the com-puterised <BR>
+ATC system, they cannot <I>actively </I>cue the <BR>
+user to perform an action at a particular point in time, <BR>
+or when the system reaches a particular state. Fields <BR>
+[9] describe checklists as a simple memory aid to en-sure <BR>
+that all the steps in a safety-critical procedure are <BR>
+completed (e. g., piloting an aircraft). <BR>
+<P>
+<B>Design Issues: </B>Proactive memory aids may be set by the <BR>
+user or by the system. However system initiated <BR>
+warnings require that the system be aware that a user <BR>
+task has not been completed. Memory aids should <BR>
+cue the user with an urgency corresponding to that <BR>
+set by the user or in the case of system initiated warn-ings, <BR>
+with an urgency corresponding to risk. Passive <BR>
+memory aids should be visible to the user at all times, <BR>
+e. g., tags associated with an object in the display. <BR>
+<P>
+<B>Resulting Context: </B>The user is provided with active and <BR>
+passive memory aids. Passive memory aids may re-quire <BR>
+<TT>Reality Mapping. </TT>Active memory aids <BR>
+may use <TT>Warning </TT>to notify the user that a condition <BR>
+(user or system defined) has been reached (and that <BR>
+the user should take appropriate action). Trend dis-plays <BR>
+are a form of passive memory aid (see pattern <BR>
+<TT>Trend). <BR>
+</TT><P>
+<B>A. 4 Machine Control Patterns <BR>
+Interlock <BR>
+Context: </B>Risk is sufficiently high that measures to block <BR>
+the occurrence of error do not give sufficient assur-ance <BR>
+and the bounds of acceptable system outputs can <BR>
+be defined. <BR>
+<P>
+<B>Problem: How can we be sure that errors cannot lead <BR>
+to high risk hazards, even if they occur? <BR>
+</B><P>
+<B>Forces: <BR>
+</B> Risk is sufficiently high that measures to dimin-ish user errors are not necessarily sufficient as-surance; <BR>
+<P>
+ <TT>Behavioural Constraints </TT>may not pre-vent all incorrect commands because systems <BR>
+are too complex to predict all possible states and <BR>
+events; 
+17
+<BR>
+<A href=#page17>17</A>
+<strong><A name=page18> Page 18</A></strong>
+<A href=#page19>19</A>
+<BR>
+ Measures to diminish user errors should not necessarily be regarded as sufficient evidence of <BR>
+system safety and additional evidence may be <BR>
+required if risk is sufficiently high. <BR>
+<P>
+<B>Solution: Anticipate errors and place interlocks in the <BR>
+system to detect and block the hazards that would <BR>
+otherwise arise. </B>Interlocks can be embodied in hard-ware <BR>
+or software, preferably both. But there is no <BR>
+point creating an interlock if the system failure causes <BR>
+the interlock itself to work incorrectly. <BR>
+<P>
+<B>Examples: </B>Many modern motor cars come equipped with <BR>
+Anti-Lock Braking Systems (ABS). Such systems are <BR>
+interlocks, screening aberrant driver behaviour. If <BR>
+the driver presses too hard on the brake pedal, the <BR>
+ABS will override the driver's actions and maintain <BR>
+brake pressure at an optimum rate. The Therac-20 <BR>
+and Therac-25 machines are medical equipment de-signed <BR>
+to administer radiation doses to patients [15]. <BR>
+The Therac-20 machine has a hardware interlock that <BR>
+prevents extreme doses of radiation but the Therac-25 <BR>
+machine does not. The Therac-25 machine was in-volved <BR>
+in several well-publicised accidents that arose <BR>
+because of an error in the software which failed to <BR>
+correctly update the dose after the user had corrected <BR>
+it on screen. Detection of errors assumes that the haz-ard <BR>
+situation can be formulated in a straight-forward <BR>
+and error-free way. As an example in which this was <BR>
+not so, consider the Warsaw accident in which A320 <BR>
+braking was prevented because braking logic required <BR>
+both wheels on the ground (e. g., see [15]). These is-sues <BR>
+are considered further in <TT>Automation. <BR>
+</TT><P>
+<B>Design Issues: </B>If a system is designed using only in-terlocks <BR>
+to prevent hazards arising from user er-ror, <BR>
+removal of the interlocks opens the system to <BR>
+the possibility of hazardous operation. Interlocks <BR>
+therefore should always be used with <TT>Behaviour <BR>
+Constraint </TT>and <TT>Intended Action </TT>to pro-vided <BR>
+'defence in depth'. <BR>
+<P>
+<B>Automation <BR>
+Context: </B>Consider this pattern if performing a function in-volves <BR>
+danger to a user, performing the function re-quires <BR>
+exceptional skill, e. g., as when the response <BR>
+time is far shorter than a human can normally achieve <BR>
+or performing the function requires tedious or repeti-tive <BR>
+work. <BR>
+<P>
+<B>Problem: </B>Many safety-critical processes, such as nuclear <BR>
+power generation or aircraft control, also require ma-nipulation <BR>
+of a large number of parameters to keep the <BR>
+<P>
+system within safe margins of operation. However <BR>
+humans are not very good at monitoring and control-ling <BR>
+a large number of parameters in real time. Ma-chines <BR>
+are good at such monitoring and control but <BR>
+typically cannot detect and correct all possible abnor-mal <BR>
+component failures. <BR>
+<P>
+<B>How can system parameters be reliably main-tained <BR>
+within safety margins even in the presence <BR>
+of component failure? <BR>
+</B><P>
+<B>Forces: <BR>
+</B> Part of the operation of the system involves maintaining parameters within defined safety <BR>
+<P>
+margins; <BR>
+ Users become fatigued when monitoring pa-rameters to ensure they stay within safety mar-gins; <BR>
+<P>
+ Users need to remain informed of what the sys-tem is doing so they can intervene in the event <BR>
+of component failure. <BR>
+Bainbridge [2] maintains that it is not possible for <BR>
+even a highly motivated user to maintain attention to-ward <BR>
+a source of information on which little happens <BR>
+for more than half an hour. Hence it is humanly im-possible <BR>
+to carry out the basic monitoring function <BR>
+needed to detect unlikely abnormalities. In addition, <BR>
+the user will rarely be able to check in real-time the <BR>
+decisions made by the computer, instead relying on a <BR>
+meta-level analysis of the 'acceptability' of the com-puters <BR>
+actions. Such monitoring for abnormalities <BR>
+must therefore be done by the system itself and ab-normalities <BR>
+brought to the user's attention via alarms. <BR>
+<P>
+<B>Solution: Automate tasks which are either too difficult <BR>
+or too tedious for the user to perform. </B>Mill sug-gests <BR>
+that a function should be automated if [19]: <BR>
+<P>
+ performing the function involves danger to a user [19]; <BR>
+<P>
+ performing the function requires exceptional skill, e. g., as when the response time is far <BR>
+shorter than a human can normally achieve; <BR>
+ performing the function requires tedious or repetitive work. <BR>
+<P>
+and should not be fully automated (i. e., a human <BR>
+should be included in the control loop with respon-sibility <BR>
+for decisions) if a decision must be made that: <BR>
+<P>
+ cannot be reduced to uncomplicated algorithms; <BR>
+ involves fuzzy logic or qualitative evaluation; <BR>
+ requires shape or pattern recognition. 
+18
+<BR>
+<A href=#page18>18</A>
+<strong><A name=page19> Page 19</A></strong>
+<A href=#page20>20</A>
+<BR>
+Appropriate design of automatic systems should as-sume <BR>
+the existence of error, it should continually <BR>
+provide feedback, it should continually interact with <BR>
+users in an effective manner and it should allow for <BR>
+the worst situations possible [21]. <BR>
+<P>
+<B>Examples: </B>Typical examples of automation are cruise con-trol <BR>
+in cars and auto-pilots. Autopilots reduce pilot <BR>
+workload; without autopilots pilot fatigue would be a <BR>
+very significant hazard in flight. Further, some highly <BR>
+sophisticated aircraft (e. g., military aircraft) could not <BR>
+be flown without automatic control of some aircraft <BR>
+functions. However experience from case studies <BR>
+of crashes indicates that there is not always enough <BR>
+feedback and that this can lead to accidents [21]. <BR>
+<P>
+<B>Design Issues: </B>The automated system needs to provide <BR>
+continuous feedback on its behaviour in a non-obtrusive <BR>
+manner. Careful consideration is therefore <BR>
+required of what aspects of the controlled process are <BR>
+most salient to safety and to ensure prominence of <BR>
+their display. If the system has been given sufficient <BR>
+intelligence to determine that it is having difficulty <BR>
+controlling the process, then active seeking of user <BR>
+intervention is appropriate. <BR>
+<P>
+<B>Resulting Context: </B>Automation of a system will usually <BR>
+require that the system also notify the user of failures <BR>
+(see <TT>Warning). <BR>
+</TT><P>
+<B>Shutdown <BR>
+Context: </B>Shutting down the system leads to a fail-safe state <BR>
+and the service provided by the system can be halted <BR>
+for at least a temporary period, and: <BR>
+<P>
+ failure can lead to a serious accident within a very short time; <BR>
+<P>
+ shutdown is simple and low cost; <BR>
+ reliable automatic response is possible. <BR>
+<P>
+<B>Problem: How can safety be assured if a serious hazard <BR>
+has occurred? <BR>
+</B><P>
+<B>Forces: <BR>
+</B> In the event of component failure, a safety-critical system may continue to function, with <BR>
+graceful degradation of service, however such <BR>
+a malfunctioning system is inherently less safe <BR>
+than a fully-functional system. <BR>
+<P>
+ Systems such as factory plant can often be shut down in a safe state; <BR>
+<P>
+ Systems where failure of service is a hazard usually cannot be shutdown, e. g., aircraft, Air-Traffic-<BR>
+Control services, missiles. <BR>
+<B>Solution: When shutdown is simple and inexpensive, <BR>
+and leads to a safe, low risk state, the straightfor-ward <BR>
+solution is to shut down automatically. <BR>
+</B><P>
+When a system cannot be shut down automatically <BR>
+because of cost or complexity, then the system must <BR>
+instead be stabilised, either manually or automati-cally <BR>
+[2]. If a failure can lead to a serious accident <BR>
+within a very short time, without shutdown, then reli-able <BR>
+automatic response is necessary, and if this is not <BR>
+possible, then the system should not be built if risk is <BR>
+unacceptable. <BR>
+<P>
+<B>Examples: </B>McDermid and Kelly [18] give an example of <BR>
+an industrial press that automatically moves to a safe <BR>
+failure state (i. e., press closed) when the sensors for <BR>
+press movement are inconsistent (i. e., and therefore <BR>
+mitigations against user error are not operative so that <BR>
+a hazard exists). <BR>
+<P>
+<B>Design Issues: </B>Shutdown should be annunciated by a <BR>
+warning to the user that the system is no longer oper-ating. <BR>
+<P>
+<B>Resulting Context: </B>If a system cannot be simply shut-down, <BR>
+then <TT>Automation </TT>might be used to stabilise <BR>
+the system and <TT>Warning </TT>is indicated to bring the <BR>
+failure to the user's attention. <BR>
+<P>
+<B>Warning <BR>
+Context: </B>Identifiable safety margins exist so that likely <BR>
+hazards can be determined automatically and warn-ings <BR>
+raised. <BR>
+<P>
+<B>Problem: </B>Computers are better than humans at monitoring <BR>
+the environment to check if a certain set of conditions <BR>
+are true. This is because humans become fatigued <BR>
+performing a tedious task repetitively. Furthermore, <BR>
+their attention can be distracted by other tasks, which <BR>
+might lead to them missing a critical event, or, upon <BR>
+returning, forgetting what they were monitoring. <BR>
+<P>
+<B>How can we be confident the user will notice new <BR>
+system conditions and take appropriate action? <BR>
+</B><P>
+<B>Forces: <BR>
+</B> Computers are good at monitoring changes in state; <BR>
+<P>
+ Computers are good at maintaining a steady state in the presence of minor external aberra-tions <BR>
+that would otherwise alter system state; 
+19
+<BR>
+<A href=#page19>19</A>
+<strong><A name=page20> Page 20</A></strong>
+<A href=#page21>21</A>
+<BR>
+ Computers are not good at determining the im-plications of steady state changes and appropri-ate <BR>
+hazard recovery mechanisms; <BR>
+ Although users should still be alert for failures, their workload can be lightened and the over-all <BR>
+hazard response time decreased, if searching <BR>
+for failures is at least partially automated. This <BR>
+requires a mechanism to inform users when a <BR>
+failure has occurred; <BR>
+<P>
+ Conditions may be user defined. <BR>
+<B>Solution: Provide warning devices that are triggered <BR>
+when identified safety-critical margins are ap-proached. <BR>
+</B>The warnings provided by the system <BR>
+should be brief and simple. Spurious signals and <BR>
+alarms should be minimised and the number of <BR>
+alarms should be reduced to a minimum [19]. Users <BR>
+should have access to straightforward checks to dis-tinguish <BR>
+hazards from faulty instruments. Safety criti-cal <BR>
+alarms should be clearly distinguishable from rou-tine <BR>
+alarms. The form of the alarm should indicate <BR>
+the degree of urgency and which condition is respon-sible. <BR>
+The user should be guided to the disturbed part <BR>
+of the system and aided in the location of disturbed <BR>
+parameters in the affected system area [3]. In addi-tion <BR>
+to warning the user if identifiable hazards may <BR>
+occur, the system also should inform the user when <BR>
+a significant change has taken place in the system <BR>
+state: see the <TT>Trend </TT>pattern. The absence of an <BR>
+alarm should not be actively presented to users [19]. <BR>
+Warnings should be provided well in advance of the <BR>
+point at which a serious accident is likely. Warnings <BR>
+should be regarded as supplementary information; a <BR>
+system should never be designed to operate by an-swering <BR>
+alarms [19]. <BR>
+<P>
+<B>Examples: </B>The Oil Pressure system raises an alarm when <BR>
+the oil pressure in the current aileron falls below a <BR>
+threshold. The HALO system (discussed in [3]) uses <BR>
+logical expressions to generate a reduced number of <BR>
+alarms from a total array of alarm signals. HALO <BR>
+alarms are formed on the basis of a combination <BR>
+of signals in contrast to conventional systems where <BR>
+alarms arise from violation of a single parameter. The <BR>
+Druide system alerts the user when a separation con-flict <BR>
+develops between two or more users. <BR>
+<P>
+<B>Design Issues: </B>For serious failures constituting actual haz-ards, <BR>
+warnings may be moded, requiring the user to <BR>
+acknowledge the warning before proceeding further. <BR>
+Such moded warnings are called alerts. Alerts will <BR>
+often be auditory because hearing is a primary sense <BR>
+that is detected automatically; auditory alerts are less <BR>
+prone to being ignored due to "tunnel vision" [26]. <BR>
+<P>
+Patterson [26] has shown that only four to six differ-ent <BR>
+auditory alerts can be distinguished reliably and <BR>
+that careful attention must be paid to ensuring sounds <BR>
+do not conflict, making combinations of alerts diffi-cult <BR>
+to distinguish. Auditory alerts should be loud <BR>
+and urgent initially, softer for an intervening period <BR>
+allowing user action and cancelling of the alert, then <BR>
+load again if no action has occurred after the inter-vening <BR>
+period. <BR>
+<P>
+<B>Resulting Context: </B>Hazards are identified and logic in-stalled <BR>
+in the system to warn users when hazard mar-gins <BR>
+are approached. Warnings should be replaced <BR>
+by <TT>Automation </TT>where possible. Warnings may be <BR>
+structured hierarchically, so that only primary fail-ures <BR>
+that are responsible for a system or subsystem <BR>
+failure are displayed initially, with secondary failures <BR>
+appearing only at the user's request (i. e, applying the <BR>
+<TT>Interrogation </TT>pattern) [19]. If a warning is trig-gered, <BR>
+the user should have access to mechanisms for <BR>
+recovery (Recover) where possible. <BR>
+<P>
+<B>B Case Studies <BR>
+</B>In this Appendix we give summaries of the case studies that <BR>
+are used as examples for the patterns described in section 4 <BR>
+and Appendix A. <BR>
+<P>
+<B>B. 1 Oil Pressure System <BR>
+</B>Fields and Wright [9] describe a aircraft hydraulic monitor-ing <BR>
+system. The system consists of two dials which show <BR>
+the current hydraulic fluid level in each of two reservoirs <BR>
+and two switches (one for each reservoir) which indicate <BR>
+which of two control surfaces the reservoir currently sup-plies. <BR>
+A reservoir can supply both rudder and aileron but a <BR>
+rudder or aileron can be supplied by only one reservoir. The <BR>
+design of the system is shown in Figure 2. <BR>
+<P>
+Blue Green <BR>
+<P>
+Rudder <BR>
+Aileron <BR>
+<P>
+<B>Figure 2. UI design for the hydraulic system <BR>
+(adapted from Fields and Wright [9]). </B>
+20
+<BR>
+<A href=#page20>20</A>
+<strong><A name=page21> Page 21</A></strong>
+<A href=#page22>22</A>
+<BR>
+When confronted with a loss of fluid from either reservoir, <BR>
+the pilot of the aircraft must select a setting of the switches <BR>
+that minimises fluid loss and simultaneously determine the <BR>
+parts of the system that are leaking. The structure of the <BR>
+system is represented in Figure 3. <BR>
+<P>
+Reservoir Blue 2 1 1 2 <BR>
+1 <BR>
+2 <BR>
+<P>
+Rudder <BR>
+Aileron <BR>
+Reservoir Green <BR>
+<P>
+Valves <BR>
+3 <BR>
+4 <BR>
+<P>
+Servodynes <BR>
+<P>
+<B>Figure 3. The physical hydraulics system en­vironment from Fields and Wright <BR>
+[9]). <BR>
+</B><P>
+represent the display informally as shown in Figure 2. <BR>
+In the worst <I>correctable </I>case, there may be a leak in a ser-vodyne <BR>
+of one colour and a reservoir. For example, both <BR>
+the blue rudder servodyne and also the blue reservoir may <BR>
+be leaking. To correct the leaks, the pilot must switch both <BR>
+control surfaces to the green reservoir. <BR>
+<P>
+<B>B. 2 Hypodermic Syringe <BR>
+</B>Dix [7, p. 6] describes an automatic (computerised) syringe. <BR>
+The primary task engaged in by a user is to enter a dose <BR>
+the syringe before applying the device to a patient. The <BR>
+original user-interface for the system has a calculator style <BR>
+that enables doses to be rapidly entered (see Fig-ure <BR>
+4( a)). However, because the syringe could be inject-<BR>
+<P>
+-<BR>
++ <BR>
+-<BR>
++ <BR>
+-<BR>
++ <BR>
+1 4 7 2 <BR>
+<P>
+(a) (b) <BR>
+7 <BR>
+1 <BR>
+4 5 <BR>
+2 <BR>
+<P>
+8 9 <BR>
+6 <BR>
+<P>
+3 <BR>
+0 <BR>
+<P>
+1 7 2 4 4 <BR>
+CANCEL APPLY <BR>
+-<BR>
++ <BR>
+<P>
+APPLY CANCEL <BR>
+<P>
+<B>Figure 4. Syringe design: (a) original; (b) <BR>
+vised (adapted from Dix [7, p. 6]). <BR>
+</B><P>
+ing pharmaceuticals that are lethal outside a safe range, the <BR>
+original design does not sufficiently consider risk. When <BR>
+risk is taken account of, a better design is given in Figure <BR>
+4( b). <BR>
+<P>
+In the modified design, the user cannot enter doses as <BR>
+quickly and more effort is required to do so (so usability <BR>
+is reduced), but the system is safer because a single extra <BR>
+key press is less likely to produce an order of magnitude <BR>
+dose error. Additionally, the modified system provides er-<BR>
+ror tolerance by allowing the dose to be changed (which <BR>
+also enhances usability). <BR>
+<P>
+<B>B. 3 Druide <BR>
+</B>The Druide system is a prototype Air-Traffic Control (ATC) <BR>
+system under development by the French aviation author-(adapted <BR>
+ity, CENA (Centre ´ d'Etudes de la Navigation Aerienne). <BR>
+The prototype has formed the basis for a CHI (Computer-Human <BR>
+Interaction Conference) workshop on designing <BR>
+user-interfaces for safety-critical systems [25]. Our anal-We <BR>
+ysis of Druide in this paper is based on the descriptions of <BR>
+Druide given in [25]. A typical instantiation of the interface <BR>
+for Druide is shown in Figure 5. <BR>
+<P>
+The Druide ATC system is based on a data-link channel that <BR>
+is accessed from a menu-driven graphical user-interface, a <BR>
+radar screen annotated with flight information for each air-craft <BR>
+(call-sign, speed, heading and next beacon on its route) <BR>
+and paper strips that describe the flight plan for each air-craft. <BR>
+The paper strips are originally produced from flight <BR>
+plans submitted by the airlines. A controller is responsible <BR>
+for a sector of airspace including maintaining separation be-for <BR>
+tween aircraft. When changes are made to the flight plan for <BR>
+an aircraft in a sector, the changes are recorded on the cor-interface <BR>
+responding paper strip. When an aircraft enters a sector, <BR>
+its pilot must communicate with the controller. The con-troller <BR>
+manages that aircraft while it is in their sector before <BR>
+"shooting" the aircraft to a new sector (notifying the next <BR>
+controller of the handover of control). Managing an aircraft <BR>
+involves communicating via radar view and manipulating <BR>
+the paper strips. The controller may request that an aircraft <BR>
+change altitude, beacon, frequency, heading or speed. <BR>
+<P>
+In Figure 5, the user is shown communicating a new altitude <BR>
+(CFL or Current Flight Level) to an aircraft. The selected <BR>
+aircraft with which the user is communicating is displayed <BR>
+in a distinguishable colour; selecting an aircraft produces <BR>
+a pop-up menu. When the user clicks on the "CFL" entry <BR>
+in the menu, a further menu of altitude possibilities appears. <BR>
+The user selects from this menu and then clicks the "SEND" <BR>
+<P>
+re­button (alternatively, if a mistake has been made, the user may click "ABORT"). <BR>
+<P>
+<B>B. 4 Railway Control <BR>
+</B>The Railway Control system is an Australian system, cur-<BR>
+rently under development, for controlling the movement of 
+21
+<BR>
+<A href=#page21>21</A>
+<strong><A name=page22> Page 22</A></strong>
+<A href=#page23>23</A>
+<BR>
+ 	
+	 <BR>
+	 <BR>
+<P>
+	
+ <BR>
+
+
+ 	
+ <BR>
+<P>
+ <BR>
+ 	
+ <BR>
+<P>
+	
+ <BR>
+ <BR>
+<P>
+  <BR>
+<B>Figure 5. The Druide radar display (adapted from [25]); because the picture is greyscale in this paper, we have circled the selected aircraft for ease of identification. <BR>
+</B><P>
+trains on inland freight and passenger lines, preventing col-<BR>
+lisions between trains and maximising usage. The system <BR>
+is similar to an ATC system (with rail-traffic controllers and <BR>
+train drivers in lieu of air-traffic controllers and pilots) but <BR>
+is concerned with train movement, for which traffic <BR>
+ment and hence collision risk is more restricted. Figure 6 <BR>
+shows the controllers screen for the system. <BR>
+<P>
+The controller and driver are in communication via a mo-<BR>
+bile phone or radio. For example, controllers may request <BR>
+drivers to move their trains from one location to another. <BR>
+When a controller issues such a command to a driver the <BR>
+sequence is as follows: <BR>
+<P>
+1. controller (command)  driver <BR>
+2. controller  (confirm) driver <BR>
+3. controller (reissue)  driver <BR>
+<P>
+The first step sends the command in coded form. The sec-ond <BR>
+step sends it back in coded form using a simple transfor-<BR>
+mation of the original message. The third step sends aux-<BR>
+iliary information that is compared against the command <BR>
+sent in the first step as a double-check of correctness. In <BR>
+case, the recipient of a message types the code that <BR>
+is received into an entry field on their display. If all three <BR>
+steps are passed, the driver and controller will be presented <BR>
+with a text version of the command which is checked by the <BR>
+driver reading the text to the controller and the controller <BR>
+<P>
+confirming that the command received is correct. Finally, <BR>
+if agreement is reached that the message has been correctly <BR>
+received, the driver commences execution of the command <BR>
+(e. g., by moving their train to a new location). <BR>
+move-Commands to move a train to a new location are formulated <BR>
+<P>
+by the train controller double-clicking on the train that is <BR>
+the subject of the command and then on the location that <BR>
+the train is to move to (see Figure 6). In Figure 6, the train <BR>
+is at Torrens Creek station and has been cleared through to <BR>
+just after Warreah station. Once a train has been instructed <BR>
+to move to a new location, all the track that the train must <BR>
+occupy in the course of executing that command becomes <BR>
+unavailable for use by any other trains. As the train moves <BR>
+along the track, the driver of the train contacts the con-<BR>
+troller to release sections of the track, so that other trains <BR>
+may move onto that track. <BR>
+<P>
+<B>References <BR>
+</B><P>
+[1] C. Alexander, S. Ishikawa, M. Silverstein, M. Jacobson, <BR>
+I. Fiksdahl-King, and S. Angel. <I>A Pattern Language. </I>Oxford <BR>
+University Press, New York, 1977. [2] L. Bainbridge. <I>New Technology and Human Error, </I>chap-each <BR>
+<P>
+ter 24, pages 271– 283. John Wiley and Sons Ltd., 1987. [3] L. Bainbridge and S. A. R. Quintanilla, editors. <I>Developing <BR>
+Skills with Information Technology. </I>John Wiley and Sons <BR>
+Ltd., 1989. [4] E. Bayle, R. Bellamy, G. Casaday, T. Erickson, S. Fincher, <BR>
+<P>
+B. Grinter, B. Gross, D. Lehder, H. Marmolin, B. Moore, 
+22
+<BR>
+<A href=#page22>22</A>
+<strong><A name=page23> Page 23</A></strong>
+<A href=#page24>24</A>
+<BR>
+<B>Figure 6. Controller's screen for the Railway Control system <BR>
+</B>C. Potts, G. Skousen, and J. Thomas. Putting it all together. <BR>
+Towards a pattern language for interaction design: A CHI <BR>
+97 workshop. <I>SIGCHI Bulletin, </I>30( 1): 17– 23, Jan. 1998. <BR>
+[5] J. O. Coplien. A generative development-process pattern <BR>
+language. In J. O. Coplien and D. C. Schmidt, editors, <BR>
+<I>Pattern Languages of Program Design, </I>pages 183– 237. <BR>
+Addison-Wesley, Reading, MA, 1995. <BR>
+[6] M. Corporation. <I>The Windows Interface Guidelines for Soft-ware <BR>
+Design. </I>Microsoft Press, Redmond, WA, 1995. <BR>
+[7] A. Dix, J. Finlay, G. Abowd, and R. Beale. <I>Human-Computer <BR>
+Interaction. </I>Prentice Hall, 1998. <BR>
+[8] T. Erickson. <BR>
+Interaction design patterns. http:// www. pliant. org/ personal/ -Tom <BR>
+Erickson/ InteractionPatterns. html. <BR>
+[9] R. Fields and P. Wright. Safety and human error in activity <BR>
+systems: A position. CHI'98 Workshop (5) on Designing <BR>
+User Interfaces for Safety Critical Systems, 1998. <BR>
+[10] E. Gamma, R. Helm, R. Johnson, and R. Vlissides. <I>Design <BR>
+Patterns: Elements of Reusable Object-Oriented Software. <BR>
+</I>Addison-Wesley, Reading, MA, 1995. <BR>
+[11] G. S. Halford, W. H. Wilson, and S. Phillips. Processing <BR>
+capacity defined by relational complexity: Implications for <BR>
+comparative, developmental, and cognitive psychology. <I>Be-havioural <BR>
+and Brain Sciences, </I>21( 6): 803– 831, 1998. <BR>
+[12] A. Hussey. Patterns for Safer Human-Computer Interfaces. <BR>
+To appear in <I>SAFECOMP'99, </I>1999. <BR>
+[13] B. Kirwan. Human reliability assessment. In <I>Evaluation of <BR>
+Human Work, </I>chapter 28. Taylor and Francis, 1990. <BR>
+[14] T. Kletz. <I>Plant design for safety : a user-friendly approach. <BR>
+</I>Hemisphere, 1991. <BR>
+[15] N. Leveson. Final Report: Safety Analysis of Air Traffic <BR>
+Control Upgrades. <BR>
+www. cs. washington. edu/ homes/ leveson/ CTAS/ ctas. html, <BR>
+1997. <BR>
+<P>
+[16] N. G. Leveson. <I>Safeware, system safety and computers. <BR>
+</I>Addison-Wesley, 1995. <BR>
+[17] M. J. Mahemoff and L. J. Johnston. Principles for a <BR>
+usability-oriented pattern language. In P. Calder and <BR>
+B. Thomas, editors, <I>OZCHI '98 Proceedings, </I>pages 132– <BR>
+139. IEEE Computer Society, Los Alamitos, CA, 1998. <BR>
+[18] J. McDermid and T. Kelly. <I>Industrial Press: Safety Case. <BR>
+</I>High Integrity Systems Engineering Group, University of <BR>
+York, 1996. <BR>
+[19] R. C. Mill, editor. <I>Human Factors in Process Operations. <BR>
+</I>Institution of Chemical Engineers, 1992. <BR>
+[20] J. Nielson. <I>Usability Engineering. </I>AP Professional, New <BR>
+York, 1993. <BR>
+[21] D. Norman. The 'problem' with automation: inappropriate <BR>
+feedback and interaction, not 'over-automation'. <I>Philosph-ical <BR>
+Transactions of the Royal Society of London, Series B, <BR>
+</I>327( 1241): 585– 593, 1990. <BR>
+[22] D. A. Norman. <I>The Design of Everyday Things. </I>Doubleday, <BR>
+1990. <BR>
+[23] D. A. Norman. <I>Things That Make Us Smart. </I>Addison-Wesley, <BR>
+Reading, MA, 1993. <BR>
+[24] Open Software Foundation. <I>OSF/ Motif Style Guide: Revi-sion <BR>
+1.2. </I>Prentice Hall International, Englewood Cliffs, NJ, <BR>
+1993. <BR>
+[25] P. Palanque, F. Paterno, and P. Wright. CHI'98 Workshop <BR>
+(5) on Designing User Interfaces for Safety Critical Systems. <BR>
+ACM SIGCHI Conference on Human Factors in Computing <BR>
+Systems: "Making the Impossible Possible", 1998. <BR>
+[26] R. D. Patterson. Auditory warning sounds in the work envi-ronment. <BR>
+<I>Philosphical Transactions of the Royal Society of <BR>
+London, Series B, </I>327( 1241): 485– 492, 1990. <BR>
+[27] J. Reason, editor. <I>Human Error. </I>Cambridge University <BR>
+Press, 1990. 
+23
+<BR>
+<A href=#page23>23</A>
+<strong><A name=page24> Page 24</A></strong>
+<BR>
+[28] J. Reason. The contribution of latent human failures to the <BR>
+breakdown of complex systems. <I>Philosphical Transactions <BR>
+of the Royal Society of London, Series B, </I>327( 1241): 475– <BR>
+484, 1990. <BR>
+[29] F. Redmill and J. Rajan. <I>Human Factors in Safety-Critical <BR>
+Systems. </I>Butterworth Heinemann, 1997. <BR>
+[30] J. Tidwell. Interaction patterns, 1998. http:// -jerry. <BR>
+cs. uiuc. edu/~ plop/ plop98/ final submissions. 
+24
+<H1> <A name=PageLinks>Page Navigation Panel </H1>
+<A href=#page1>1</A>
+<A href=#page2>2</A>
+<A href=#page3>3</A>
+<A href=#page4>4</A>
+<A href=#page5>5</A>
+<A href=#page6>6</A>
+<A href=#page7>7</A>
+<A href=#page8>8</A>
+<A href=#page9>9</A>
+<BR>
+<A href=#page10>10</A>
+<A href=#page11>11</A>
+<A href=#page12>12</A>
+<A href=#page13>13</A>
+<A href=#page14>14</A>
+<A href=#page15>15</A>
+<A href=#page16>16</A>
+<A href=#page17>17</A>
+<A href=#page18>18</A>
+<A href=#page19>19</A>
+<BR>
+<A href=#page20>20</A>
+<A href=#page21>21</A>
+<A href=#page22>22</A>
+<A href=#page23>23</A>
+<A href=#page24>24</A>
+
+
+<H1>About This Document</H1>
+
+This document is a machine-generated (ie ugly) text-only version of the
+paper. The original PDF format can be downloaded from <A
+Href="/paper">the papers page</A>.
+
+<HR>
+
+
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+</p>
+

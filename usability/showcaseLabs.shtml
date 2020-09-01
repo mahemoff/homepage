@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+"http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+  <Meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <Meta name="author" content="Michael Mahemoff">
+  <Meta name="keywords" lang="en-us" content="Michael Mahemoff, Usability, Software Engineering, Patterns, Agile">
+  <link rel="made" HREF="mailto:michael@REMOVETHIS.mahemoff.com">
+  <link rel="stylesheet" type="text/css" media="screen" href="/mahemoff.css">
+
+  <TITLE>Showcase Usability Labs</TITLE>
+  <META name="keywords" lang="en" 
+        content="Mahemoff, Java, J2EE, Usability, Human-Computer-Interaction,
+        Software Engineering, Patterns, Extreme Programming, Agile">
+  <META name="description" lang="en" 
+        content="Homepage---Human-Computer Interaction, software development,
+        design patterns, architecture">
+</HEAD>
+
+<BODY BGCOLOR="white" TEXT="black" onload="javascript:initFeedback('feedback_wrapper');">
+  <table class="headerTable">
+        <TR class="navbar">
+      <TD ALIGN=LEFT>
+        <A HREF="/">Mahemoff.com</A>
+  &nbsp;&gt;&nbsp;
+<A HREF="http://softwareas.com">Blog</A> |
+<A HREF="/paper/software/">Software</A> |
+<A HREF="/paper/patternLanguages.shtml">Usability&nbsp;Patterns</A> |
+<A HREF="/paper/">Thesis&nbsp;Papers</A>
+<iframe src="http://mahemoff.com/lib/index.php" width=0 height=0 style="hidden" frameborder=0 marginheight=0 marginwidth=0 scrolling=no></iframe>
+        <? require_once "../include/sitelinks.html" ?>
+      </TD>
+      <TD ALIGN=RIGHT>
+          <A Href="/contact/">Contact</A> |
+          <A Href="/about/">About</A>
+      </TD>
+    </TR>
+
+    <? require_once "../include/navbar.shtml" ?>
+  </table>
+<BR>
+
+
+<H1>Showcase Usability Labs</H1>
+
+This is a list of labs which have web presence. But they're not available for
+hire.
+
+<P>
+
+<A Href="http://www.microsoft.com/usability/tour.htm">Microsoft
+Usability Research</A> <BR>
+
+<A Href="http://ui.us.oracle.com/">Oracle</A><BR>
+
+<A Href="http://www.census.gov/srd/userworks/services.htm">US Census</A>
+
+<P>
+
+<TABLE class="footerTable">
+
+      <TR class="navbar">
+      <TD ALIGN=LEFT>
+        <A HREF="/">Mahemoff.com</A>
+  &nbsp;&gt;&nbsp;
+<A HREF="http://softwareas.com">Blog</A> |
+<A HREF="/paper/software/">Software</A> |
+<A HREF="/paper/patternLanguages.shtml">Usability&nbsp;Patterns</A> |
+<A HREF="/paper/">Thesis&nbsp;Papers</A>
+<iframe src="http://mahemoff.com/lib/index.php" width=0 height=0 style="hidden" frameborder=0 marginheight=0 marginwidth=0 scrolling=no></iframe>
+        <? require_once "../include/sitelinks.html" ?>
+      </TD>
+      <TD ALIGN=RIGHT>
+          <A Href="/contact/">Contact</A> |
+          <A Href="/about/">About</A>
+      </TD>
+    </TR>
+
+
+  <TR> <TD class="siteSearch">
+
+  <!-- Search Google -->
+  <FORM method=GET action="http://www.google.com/custom">
+    <A HREF="http://www.google.com/search"><IMG SRC="http://www.google.com/logos/Logo_40wht.gif" border=0 ALT=Google align=middle></A>
+  <INPUT TYPE=text name=q size=20 maxlength=255 value="">
+  <INPUT type=submit name=sa VALUE="Google Search">
+  <INPUT type=hidden name=cof VALUE="S:http://mahemoff.com;AH:center;BGC:#bbffff;AWFID:616b79ba803d4e6f;">
+  <input type=hidden name=domains value="mahemoff.com"><input type=radio
+  name=sitesearch value="">Web <input type=radio name=sitesearch
+  value="mahemoff.com" checked>Mahemoff.com
+  </FORM>
+  <!-- Search Google -->
+
+    </TD>
+  </TR>
+</TABLE>
+
+  
+    <!--
+
+    <rdf:RDF xmlns="http://web.resource.org/cc/"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <Work rdf:about="">
+       <dc:type rdf:resource="http://purl.org/dc/dcmitype/Interactive" />
+       <license rdf:resource="http://creativecommons.org/licenses/by/1.0/" />
+    </Work>
+
+    <License rdf:about="http://creativecommons.org/licenses/by/1.0/">
+       <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+       <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+       <requires rdf:resource="http://web.resource.org/cc/Notice" />
+       <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+       <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+    </License>
+
+    </rdf:RDF>
+
+    -->
+
+
+
+
+<div id="feedback_wrapper"></div>
+</BODY>
+</HTML>
+

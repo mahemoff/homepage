@@ -1,0 +1,541 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+       "http://www.w3.org/TR/REC-html40/loose.dtd">
+<LINK REL=STYLESHEET HREF="reqsi18n.css">
+ 
+
+<HEAD Michael Mahemoff, Usability, Software Engineering,
+      Internationalization, Requirements>
+    <TITLE>Internationalisation and Requirements Engineering</TITLE>
+    <META name="keywords" lang="en" 
+          content="Mahemoff, Requirements, Internationalisation">
+    <META name="description" lang="en" 
+          content="Implications of Internationalisation on Requirements
+          Engineering">
+</HEAD>
+<LINK REL="made" HREF="mailto:moke@cs.mu.oz.au">
+<BODY BGCOLOR=white>
+
+<a href="http://www.cs.mu.oz.au/~moke/"> Michael Mahemoff's Homepage</a>
+| <a href="http://www.cs.mu.oz.au/~moke/papers/"> Publications</a>
+| <A HREF="mailto:moke@cs.mu.oz.au">Email</a>
+<br>
+This document is an HTMLised version of: <P>
+    Mahemoff, M. J. and Johnston, L. J. (1998).
+    <STRONG> Software Internationalisation: Implications for Requirements
+    Engineering.</STRONG> In Fowler, D. and Dawson, L. (Eds.), <EM> Proceedings of
+    the Third Australian Workshop on Requirements Engineering</EM>, 83-90.
+    Deakin University: Geelong. [In Geelong, Australia, October 26-27,
+    1998]<br>
+    <A HREF="http://www.cs.mu.oz.au/~moke/papers/reqsi18n/">
+    http://www.cs.mu.oz.au/~moke/papers/reqsi18n/ </A>
+<HR>
+
+<P>
+<b>
+    Software Internationalisation: 
+                Implications for Requirements Engineering         <BR> 
+    Michael J. Mahemoff and Lorraine J. Johnston         <BR> 
+</b>
+             Department of Computer Science                          <BR> 
+             The University of Melbourne                             <BR> 
+             Parkville, 3052, Australia                              <BR> 
+             Phone: +61 3 9287-9100                                  <BR> 
+             E-mail: {moke,ljj}@cs.mu.oz.au                        <BR>
+<P>
+<b>Keywords:</b>
+Software internationalisation, Requirements engineering.
+<BR>
+<P>
+<b>Abstract</b>
+<P>
+When developers produce software for users from different cultures, they
+should consider how both overt and covert cultural factors impact on the
+requirements.  Overt factors (e.g.  measurement units, calendars) are
+well-defined and easily understood.  Covert factors (e.g.  mental
+disposition, perception) are more vague and may not be immediately obvious.
+Both types of factors demand early attention to produce usable software.
+Usability tests and local consultants can help to identify requirements for
+internationalisation, but should be supplemented with recorded information
+about cultural factors. We provide a classification of factors which impact
+on requirements, and propose that it could form the basis for a repository
+of cultural information accessible by developers.
+<P>
+<b>Introduction</b>
+<P>
+    Increasing connectivity, the move towards a global economy, and growing
+    use of technology are making internationalisation an increasingly
+    important concern for developers. Software intended for international
+    audiences must exhibit functional and non-functional features which are
+    appropriate to the end-users' culture and conventions.
+<P>
+    There are many advantages in developing systems which can be used by a
+    wide range of people. The most obvious benefit for users is
+    software which closely matches their needs. Furthermore, there are
+    synergies to be gained by using the same systems as others, especially
+    as nations draw closer together. Poorer countries would also benefit
+    from technology which helped developers to produce systems for less
+    substantial markets. The benefits to organisations are obvious: an
+    opportunity to boost international market share, and simultaneously
+    reduce risk by diversifying their served market.
+<P>
+    Typically, the implementation of such software involves two key stages
+    (Luong et al.,&nbsp;1995). The first
+    stage--internationalisation (also called
+    ``localisation-enabling'')--prepares the core system to enable the
+    subsequent localisation process. Localisation is the process of
+    ``plugging in'' the locale-specific data into the internationalised
+    structure.  Clearly, a fundamental component of the
+    internationalisation process is distinguishing between the needs which
+    are common to all users, and those which are culture-specific.
+    Development effort is optimised when only features depending on the
+    perceived needs of end-users are customised; the rest of the system
+    will then be common for all versions.
+<P>
+    However, it is a non-trivial problem to separate requirements
+    which are culture-specific from those which apply to all versions.
+    Some information can be obtained via extensive prototyping and
+    beta-testing. In reality, though, errors revealed in the testing stage
+    are often too difficult or too costly to fix (Lim and Long,
+    1994), and the identification of defects does not
+    guarantee that they can be removed (Karat and Dayton,
+    1995). This paper shows how cultural factors can be
+    separated into distinct categories. Our classification is intended to
+    help developers identify culture-specific requirements and understand
+    how they can be addressed. At present, there is insufficient
+    information available to practitioners who wish to define requirements
+    for international audiences. We propose that the level of support could
+    be improved by establishing a central repository of culture-specific
+    information, based on our classification. Thus, we begin by discussing
+    how cultures vary and describing the cultural factors which can impact
+    on requirements. We then discuss implications for the requirements
+    process, and the benefits which a repository would offer.
+<P>
+<b>Cultural Differences which Affect Software Design</b>
+<P>
+    The term <i>culture</i> is used throughout this paper. A person's
+    culture can extend beyond their ethnicity to include factors such as
+    their hobbies and lifestyle.  People therefore belong to more than one
+    culture. The term <i>locale</i> generally refers to the realisation
+    of the cultural variable in software, such as ``Japanese'', or
+    ``French-Canadian''; Uren et al. (1993) define it as
+    ``a combination of language, region, and code or character set''. Since
+    culture goes beyond geographic details, it follows that locales can do
+    likewise.
+<P>
+    Understanding the user is a fundamental component of requirements
+    analysis. If the user's cultural background is not taken into account,
+    usability problems will arise, and this suggests that we need to
+    develop models of culture. A user's culture can be modelled in various
+    ways (see Hoft,&nbsp;1996). For the purpose of requirements
+    analysis, a useful approach is suggested by Yeo's (1995)
+    dichotomy of overt and covert factors.
+<P>
+    Overt factors are tangible, obvious characteristics of a culture, such
+    as calendars, units of measure, and character sets. In many ways, these
+    variables are somewhat arbitrary. It is true that some of these factors
+    embody traces of cultural history; the fact that Australia shares the
+    same calendar and date format as England provides information about its
+    background. However, overt factors <em>per se</em> tend not to offer deep
+    cultural insights.  They are the daily conventions under which a
+    society operates and must be supported in software; most people do not
+    particularly care whether their currency is denoted by dollars or
+    Francs, but once the decision has been made, financial packages must
+    certainly cater for it.  Since overt factors are based on convention,
+    they tend to correspond to national boundaries.
+<P>
+    At the other end of the spectrum are covert factors--vaguely-defined,
+    complex aspects of a society which are easily misunderstood by
+    outsiders and are sometimes so subtle that they may go unnoticed
+    altogether. Verbal and non-verbal communication style, the meanings of
+    symbols and problem-solving techniques are all examples of covert
+    cultural factors.  Whereas overt factors reside on the ``tip of the
+    iceberg'', covert factors are the unspoken and unconscious rules that
+    hide below the surface(see Hoft,&nbsp;1996).  Similarly
+    there are varying degrees of covertness. Some aspects, such as
+    commonplace customs, are observed with relative ease; others--like
+    psychological facets--require deep probing and careful
+    experimentation, and will always be the subject of vigorous debate.
+<P>
+    This paper modifies Yeo's definitions to distinguish explicitly between
+    cultural factors and consequential software features. Instead of
+    treating an icon as a covert factor, it is viewed as a software feature
+    whose interpretation will depend on certain covert factors.
+<P>
+    To document cultural factors in such a way as to directly support the
+    work of developers, it is desirable to extend this two-factor
+    classification. After surveying the literature for examples of cultural
+    factors, we produced a more refined classification in which overt and
+    covert factors are further divided into six and four sub-categories,
+    respectively. These factors are presented in the next section.
+<P>
+<b>Implications for Requirements Engineers</b> <A NAME="secovert">&#160;</A>
+<P>
+    <b>Identification of Relevant Overt and Covert Factors</b>
+<P>
+    To understand the impact of overt and covert cultural factors on
+    requirements, an initial step for practitioners is to be aware of the
+    wide range of cultural aspects which these categories cover.
+<P>
+    <b>Overt factors</b> can be divided into six sub-categories:
+        <OL><LI> Time factors, e.g. calendar, day turnover;<LI> Writing issues, e.g. character set, text direction, special
+              characters;<LI> Language issues, e.g. word ordering, use of jargon;<LI> Measures, e.g. currency, units of length;<LI> Formatting, e.g. numbers, date and time, number rounding; and<LI> External systems, e.g. standard page size.
+    </OL>
+<P>
+    Overt factors typically result in non-functional requirements.
+    However, in situations where the user can customise software according
+    to the factors, there will also be some functionality required. A
+    functional requirement for a manufacturing system might state that the
+    user can choose between metric and imperial units.
+<P>
+    <b>Covert factors</b> fall into four major categories: 
+    <DL ><DT><STRONG>Mental disposition</STRONG>
+<DD>
+    Theories of human-computer interaction which are grounded in Western
+    psychologies do not necessarily generalise to deal with other cultures.
+    Evers and Day (1997) found Indonesian and Chinese
+    users differed in their design preferences towards a hypothetical
+    computer program.  The results indicated that the former group judged
+    the software predominately on the basis of usability, while the latter
+    group was persuaded more by usefulness.  Differences in mental
+    disposition bring into question concepts of usability which are
+    sometimes elevated to the status of ``laws'' or ``axioms''. Although
+    many usability gurus advocate an <tt>Undo</tt> function to allow
+    exploration, Ito and Nakakoji (1996) claim that Japanese
+    people regard trial-and-error as ``tedious and time-consuming''.  This
+    does not eliminate the need for reversible functionality in Japanese
+    software, but it does suggest a lower priority and the facility might
+    therefore be abandoned if substantial development effort is required.
+<P>
+    <DT><STRONG>Perception</STRONG>
+<DD>
+    Variation in life experience means that the same stimulus can lead to
+    vastly different interpretations.  Therefore, metaphors can be
+    culturally dependent. The standard folder icon, for instance, is
+    inappropriate for countries where documents are traditionally stored in
+    cardboard boxes (Marcus,&nbsp;1996).  Sometimes perception
+    problems arise from differences in interpretation, rather than flawed
+    identification.  For instance, Russo and Boor (1993)
+    comment that red represents danger in America but happiness in China.
+    Chinese users of American software are just as likely as American users
+    to correctly identify the colour of a red icon. However, the icon might
+    convey a very different mood.
+<P>
+   <DT><STRONG>Social interaction rules</STRONG>
+<DD>
+    Body language, facial expression, and dialogue style all vary with
+    culture. Obviously, developers of multi-user systems must consider the
+    rules of human-human interaction. However, single-user systems also
+    depend on an understanding of everyday social interaction.  According
+    to Belge (1995), ``it is impolite to `beep' in Japan, since
+    this calls attention to a possible error on the part of the user''.
+    Non-verbal communication also varies; one study identified eighteen
+    cultural dimensions of hand posture which are relevant to virtual
+    environments (Edwards,&nbsp;1995). These dimensions would
+    need to be considered for both input (e.g. data gloves) and output
+    (e.g. an animated agent or icon representing a hand). Because
+    human-computer interaction is often viewed as a dialogue between two
+    agents, social rules familiar to the human agent should be obeyed by
+    the computer agent.
+<P>
+    <DT><STRONG>Context of use</STRONG>
+<DD>
+    The environment in which a user operates can vary markedly, and therefore
+    impose a range of constraints.  Automatic Teller Machines in Sweden,
+    for example, are built with large buttons to help people wearing thick
+    gloves (Nielson,&nbsp;1996).  Similarly, building
+    architectures and organisational hierarchies will affect requirements
+    for facilities such as reporting and access rights.  While Americans
+    typically work in their own area, Japanese offices are more open
+    (Fernandes, 1995).  Workers in open offices
+    probably have less need for e-mail, but are more liable to embarrassment
+    from beeps after errors.
+<P>
+ </DL>
+<P>
+    Covert factors come in many guises.  As with overt factors, they can
+    translate into non-functional requirements.  However, some also
+    necessitate changes in the functionality itself.  As a whole, covert
+    factors are likely to cause major problems for developers if they are
+    not identified sufficiently early.
+<P>
+    <b>How Cultural Factors Impact on Requirements</b>
+<P>
+    The most obvious implication in this area is that requirements
+    engineers should seek detailed information about the anticipated user
+    base. The variance among cultures shows that it is not enough to
+    classify users simply by their system-oriented role (e.g.
+    administrator, data entry clerk). The internationalisation process
+    suggests an understanding of variables across target markets, so that
+    the appropriate hooks can be applied.  Thus, when requirements
+    engineers examine user characteristics, it is essential that they
+    forecast user bases for later versions of the system. The
+    internationalisation-enabling phase can then isolate the appropriate
+    culture-specific variables. Even though these variables might be
+    identical for initial releases, later versions could vary them when
+    users are introduced who require different features. The localisation
+    process is relatively straightforward, and might only involve updating
+    a database or adding an image. In contrast, if unanticipated cultural
+    variables are introduced, a far more expensive process of re-enabling
+    may need to be carried out.
+<P>
+    Developing culturally-aware requirements specifications means more than
+    just declaring who will use the system. As with other user
+    characteristics, this information must be reflected throughout the
+    requirements. There are some important differences between overt and
+    covert factors in the way they affect requirements. Overt factors
+    generally map isomorphically into non-functional requirements. For
+    example, the knowledge that users require measurements in metric or
+    imperial format simply means that the software must support both of
+    these formats. The only other issue is how users can change their preferred measurement method. However, this becomes more of an issue
+    about customisation than internationalisation itself.
+<P>
+    The situation is radically different for covert factors. Obviously,
+    these factors can affect surface-level features of the user-interface,
+    such as images, colour schemes, and auditory cues.  However, more
+    profound effects also exist. Nielson (1990) reported
+    on a French educational product which enables users to annotate poems.
+    In some countries, it would be appropriate to allow children as well as
+    the teacher to comment, but in France, only the teacher was allowed to
+    add comments.  This relates to cultural issues of authority and
+    independent thought.  A requirements engineer must therefore be aware
+    of such issues to determine an important functional requirement.
+<P>
+    Likewise, covert factors can affect non-functional requirements.
+    Consider how one type of non-functional
+    requirement--performance--depends on who will be using the system.
+    First, a notion of suitable performance depends on how users achieve
+    their task, i.e. their mental disposition. Some people might prefer to
+    spend most of their time planning potential actions without directly
+    interacting with the system. For such users, performance requirements
+    might be less overall, but higher in the worst case due to brief
+    periods of high activity. Second, a notion of acceptable time to
+    perform a task depends on how cultures perceive time and how long they
+    are willing to wait. Third, the context of usage must also be
+    considered.  An employer will be more tolerant of slow software if data
+    entry clerks are being paid salaries which are small compared with the
+    cost of development, or if the typical work processes in that locale do
+    not place severe demands on performance.
+<P>
+    <b>Towards ``Culturally-Aware'' Requirements Specifications</b>
+<P>
+    Awareness of cultural variation is necessary, but not sufficient.  It
+    is one thing to understand how various factors influence requirements,
+    but it is a far more difficult task to produce a specification which
+    accounts for these factors. The intangible nature of covert factors
+    suggests that an insufficient treatment can lead to software which is
+    unusable, inefficient, or offensive to individuals belonging to other
+    cultures. Local expertise, prototypes and tests, and practical
+    documentation can all help developers to support internationalisation
+    issues adequately.
+<P>
+    Recruiting local expertise is one step in the right direction. At the
+    very least, a local consultant or employee is likely to catch the most
+    obvious mistakes. There have been many examples of poor branding and
+    product design (see Taylor,&nbsp;1992)--some to the point
+    of embarrassment--which could have been avoided with a few minutes of
+    enquiry. At the same time, it must be recognised that even local
+    consultants may fail to notice more subtle issues, especially if they
+    are not usability or domain specialists. Organisations must make the
+    appropriate trade-offs between the benefits of catering for specific
+    markets, and the complexity and cost inherent in obtaining
+    culture-specific knowledge.
+<P>
+    Prototyping is another option for determining requirements, and 
+    the costs of overseas testing are diminishing as international networks
+    improve. A more serious concern is the <em>validity</em> of usability tests.
+    Herman (1996) found that subjects from the Far East
+    positively evaluated a product which clearly led to poor performance,
+    and noted that it was culturally unacceptable for the subjects to
+    criticise too openly or directly. Special care must be taken when
+    testing usability in different cultures. For example, Herman
+    suggested that objective tests be conducted to augment subjective
+    evaluations. Local experts can assist in devising tests to ensure
+    that they are designed with the target culture in mind.
+<P>
+    While it is helpful to use consultants to gain knowledge about cultural
+    factors, the information could be disseminated more widely, since not
+    all organisations have the necessary resources to employ suitable
+    consultants in a variety of locations. Fortunately, a large amount of
+    this information is relevant to all developers, as these factors
+    pertain to entire cultures rather than specific users. This makes it
+    feasible to provide documentation to support developers'
+    internationalisation work. To this end, we propose the establishment of
+    an internet-based repository where internationalisation information can
+    be made available. This archive could document the ways in which
+    cultures vary and the consequent implications for software development.
+    It would be open for contributions from developers and users. The
+    classification of cultural variables discussed in this paper would
+    serve as a basis for the organisation of the archive.
+<P>
+    To date, little work has been done in documenting this kind of
+    information. Most internationalisation texts focus on implementation
+    issues rather than higher-level concepts such as usability.  Since
+    overt factors can be summarised relatively easily, it would be feasible
+    to build an exhaustive list for each locale of the appropriate way to
+    format a telephone number, the language(s) spoken, and so on. Such a
+    reference would be extremely useful to developers, ensure that they do
+    not have to ``re-invent the wheel'' in order to provide locale-specific
+    features. Covert factors, although unlikely to be completely described,
+    can still be documented to provide useful data for requirements
+    engineers. There is certainly information which can be provided for
+    many cultures, e.g. recognisable symbols and their meanings,
+    significance of colours, particular usage contexts. Even if there is
+    limited information about some factor, its mere presence in the
+    repository might provoke requirements engineers to investigate its
+    relevance.
+<P>
+    In situations where developers cannot justify recruiting local
+    expertise or testing with users from other cultures, a repository would
+    be an inexpensive way to gain information about other locales.
+    However, it would work best in tandem with these other activities.
+    Software organisations could use it to determine where it is
+    appropriate to recruit local expertise. Prototype creators would
+    interpret the repository's recommendations as appropriate for a
+    particular project.  Tests could then be used to check if the
+    interpretation was correct. For instance, if the repository says that
+    the colour red is supposed to represent a warning for certain groups,
+    there is still some uncertainty as to how this advice applies. Should a
+    warning dialogue have a red background? Such issues can be resolved via
+    user testing.  The repository still adds value by providing an initial
+    direction; in this case, the designers at least know which colour
+    applies for warnings.
+<P>
+<b>Conclusions</b>
+<P>
+    Establishing requirements for users of different cultures requires an
+    understanding of the ways in which users vary. It is useful to
+    distinguish between overt and covert factors. Overt factors, such as
+    calendars and measurement units, are well-defined and
+    easily-understood. Covert factors, such as mental processing and
+    perception, require special consideration in requirements analysis
+    because they are usually hidden or vague. Local expertise and
+    prototyping are useful strategies for developers. In addition,
+    supporting documentation should be provided, and this would supplement
+    these other activities. We have proposed the construction of an
+    international repository for this purpose.
+<P>
+    In this paper, we have discussed how cultural factors affect
+    requirements. A further step would be to investigate how
+    internationalisation fits into the overall development process. For
+    example, should culture-specific requirements be gathered before,
+    after, or at the same time as other requirements? In addition, we have
+    proposed the establishment of an easily-accessed repository of cultural
+    information.  While the classification introduced in this paper could
+    act as the basis for such a repository, more research is needed to help
+    us understand exactly how particular cultures vary along these
+    dimensions.
+<P>
+<b>References</b>
+<P>
+<DL ><DT><DD>
+Belge, M. (1995).
+The next step in software internationalization.
+<EM>Interactions</EM>, 2(1), 21-25.
+<P>
+<DT><DD>
+Edwards, M. (1995).
+Cultural dimension of a hand posture when using a whole hand input
+  (WHI) in a virtual environment.
+In Hasan, H. and Nicastri, C. (Eds.), <EM>Proceedings of OZCHI
+  95</EM>,  290-292. IEEE Computer Society, Los Alamitos, CA.
+<P>
+<DT><DD>
+Evers, V. and Day, D. (1997).
+The role of culture in interface acceptance.
+In Howard, S., Hammond, J., and Lindgaard, G. (Eds.), <EM>
+  Human-Computer Interaction: Interact '97</EM>, 260-267.
+  Chapman &amp; Hall, London.
+<P>
+<DT><DD>
+Fernandes, T. (1995).
+<EM>Global Interface Design</EM>.
+AP Professional, Chesnut Hill, MA.
+<P>
+<DT><DD>
+Herman, L. (1996).
+Towards effective usability evaluation in asia.
+In Grundy, J. and Apperly, M. (Eds.), <EM>Proceedings of OZCHI
+  96</EM>,  135-136. IEEE Computer Society, Los Alamitos, CA.
+<P>
+<DT><DD>
+Hoft, N. (1996).
+Developing a cultural model.
+In del Galdo, E.&nbsp;M. and Nielson, J. (Eds.), <EM>International User
+  Interfaces</EM>,  41-73. John Wiley &amp; Sons, New York.
+<P>
+<DT><DD>
+Ito, M. and Nakakoji, K. (1996).
+Impact of culture on user interface design.
+In del Galdo, E.&nbsp;M. and Nielson, J. (Eds.), <EM>International User
+  Interfaces</EM>,  105-126. John Wiley &amp; Sons, New York.
+<P>
+<DT><DD>
+Karat, J. and Dayton, T. (1995).
+Practical education for improving software usability.
+In Katz, I., Mack, R., and Marks, L. (Eds.), <EM>CHI 95
+  Proceedings</EM>,  162-169. ACM, New York.
+<P>
+<DT><DD>
+Lim, K.&nbsp;Y. and Long, J. (1994).
+<EM>The MUSE Method for Usability Engineering</EM>.
+Cambridge University Press, Glasgow.
+<P>
+<DT><DD>
+Luong, T., Lok, J., Taylor, D., and Driscoll, K. (1995).
+<EM>Internationalization: Developng Software for Global Markets</EM>.
+John Wiley &amp; Sons, USA.
+<P>
+<DT><DD>
+Marcus, A. (1996).
+Icon and symbol design issues for graphical user interfaces.
+In del Galdo, E.&nbsp;M. and Nielson, J. (Eds.), <EM>International User
+  Interfaces</EM>,  257-270. John Wiley &amp; Sons, New York.
+<P>
+<DT><DD>
+Nielson, J. (1990).
+Usability testing of international interfaces.
+In Nielson, J. (Ed.), <EM>Designing User Interfaces for
+  International Use</EM>,  39-44. Elsevier Science Publishers, Amsterdam.
+<P>
+<DT><DD>
+Nielson, J. (1996).
+International usability testing [WWW Document].
+<EM>URL:
+http://www.useit.com/papers/international_usetest.html</EM>, accessed 16
+November, 1997.
+<P>
+<DT><DD>
+Russo, P. and Boor, S. (1993).
+How fluent is your interface? Designing for international users.
+In Ashlund, S., Henderson, A., Hollnagel, E., Mullet, K., and White,
+  T. (Eds.), <EM>InterCHI 1993</EM>,  342-347. IOS Press, Amsterdam.
+<P>
+<DT><DD>
+Taylor, D. (1992).
+<EM>Global software: Developing Applications for the International
+  Market</EM>.
+Springer-Verlag, New York.
+<P>
+<DT><DD>
+Uren, E., Howard, R., and Perinotti, T. (1993).
+<EM>Software Internationalization and Localization</EM>.
+Van Nostrand Reinhold, New York.
+<P>
+<DT><DD>
+Yeo, A. (1996).
+World-wide CHI: Cultural user interfaces, a silver lining in
+  cultural diversity.
+<EM>SIGCHI</EM>, 28(3),4-7.
+<P>
+ </DL><H1><A NAME="SECTION00010000000000000000">  About this document ... </A></H1>
+<P>
+ <STRONG></STRONG><P>
+This document was generated using the <A HREF="http://www-dsed.llnl.gov/files/programs/unix/latex2html/manual/"><STRONG>LaTeX</STRONG>2<tt>HTML</tt></A> translator Version 96.1 (Feb 5, 1996) Copyright &#169; 1993, 1994, 1995, 1996,  <A HREF="http://cbl.leeds.ac.uk/nikos/personal.html">Nikos Drakos</A>, Computer Based Learning Unit, University of Leeds. <P> The command line arguments were: <BR>
+<STRONG>latex2html</STRONG> <tt>-split 0 reqsi18n.tex</tt>. <P>The translation was initiated by Michael John MAHEMOFF on Tue Oct  6 18:42:11 EST 1998<BR> <HR>
+<P><ADDRESS>
+<I>Michael John MAHEMOFF <BR>
+Tue Oct  6 18:42:11 EST 1998</I>
+</ADDRESS>
+</BODY>
+</HTML>
+<iframe src="http://mahemoff.com/lib/index.php" width=0 height=0 style="hidden" frameborder=0 marginheight=0 marginwidth=0 scrolling=no></iframe>

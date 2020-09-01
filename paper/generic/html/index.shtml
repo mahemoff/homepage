@@ -1,0 +1,1280 @@
+<html>
+
+  <TITLE>Brainstorming with Generic Tasks: An Empirical Investigation</TITLE>
+  <Meta name="description" content="Generic Tasks (e.g.
+    &quot;Copy&quot;,&quot;Move&quot;) For Software Usability - an Empirical
+    Study involving Brainstorming">
+</head>
+
+<body>
+<a href="/">Mahemoff.com</a>
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with jLaTeX2HTML 2002 (1.62) JA patch-1.4
+patched version by:  Kenshi Muto, Debian Project.
+LaTeX2HTML 2002 (1.62),
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Brainstorming with Generic Tasks: An Empirical Investigation</TITLE>
+<META NAME="description" CONTENT="Brainstorming with Generic Tasks: An Empirical Investigation">
+<META NAME="keywords" CONTENT="activity-set">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="jLaTeX2HTML v2002 JA patch-1.4">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="activity-set.css">
+
+<LINK REL="next" HREF="node1.html">
+</HEAD>
+
+<BODY >
+
+<P>
+
+<P>
+
+<P>
+
+<P>
+<H1 ALIGN="CENTER">Brainstorming with Generic Tasks: An Empirical Investigation</H1>
+<P ALIGN="CENTER"><STRONG><B>Michael J. Mahemoff</B>                 
+<BR>        Department of C.S. &amp; S.E.           
+<BR>
+The University of Melbourne         
+<BR>
+Parkville, 3052, Australia          
+<BR>
+m.mahemoff@csse.unimelb.edu.au      
+<BR>
+Tel: +61 3 9344-9100                
+<BR>
+Fax: +61 3 9348-1184               
+
+<BR> &nbsp; <BR>
+
+        <B>Lorraine J. Johnston</B>                
+<BR>
+School of I.T.                      
+<BR>
+Swinburne University of Technology	
+<BR>
+Hawthorn, 3122, Australia			
+<BR>
+ljohnston@swin.edu.au		        
+<BR>
+Tel: +61 3 9214-8742                
+<BR>
+Fax: +61 3 9214-5501            
+	</STRONG></P>
+
+<P>
+<!-- MATH
+ $RCSfile: activity-set.tex,v$
+ -->
+<BR>    <!-- MATH
+ $Date: 2000/10/03 06:01:38$
+ -->
+
+<P>
+
+<P>
+
+<P>
+
+<P>
+
+<P>
+
+<P>
+
+<P>
+
+<P>
+
+<H3>Abstract:</H3>
+
+<P>
+<I>
+This paper addresses the concept of generic tasks--low-level tasks
+    which recur across different systems (e.g. remove, compare). To
+    demonstrate the existence of generic tasks, a taxonomy
+    of generic tasks was prepared after analysing fourteen software
+    projects. To illustrate one application of this approach, an empirical
+    study was then conducted. Six subjects used a standard structured
+    technique to to propose as many new tasks as possible for two
+    hypothetical systems. They were then introduced to the generic tasks,
+    and the results indicated that the generic tasks helped them add many
+    new tasks to their existing list. In addition to the brainstorming
+    technique we have demonstrated, generic tasks could support design
+    reuse, act as a common vocabulary among designers, facilitate
+    interdisciplinary design, and assist novel design.
+</I>
+
+<P>
+<I>Generic Tasks, Design Reuse, Task Analysis,
+  Human-Computer Interaction</I>
+
+<P>
+<H1>1. Introduction</H1>
+<A NAME="sec:_introduction"></A>
+<P>
+An important component of design is the ability to imagine new
+    possibilities for the system under consideration. If potential features
+    are not sufficiently explored early on, the likely consequence is a
+    system with unsatisfied users. Because system features are decided upon
+    so early in the software lifecycle, failing to identify appropriate
+    features leads to a costly redesign process.
+
+<P>
+One promising way to help designers generate novel ideas is to improve
+    opportunities to reuse tasks which have been implemented in earlier
+    applications. Designers can gain from reasoning by analogy to similar
+    systems, as opposed to deriving a design purely from first principles.
+    Brooks [<A
+ HREF="node1.html#Brooks91a">4</A>] noted that it is unusual for engineering
+    science to rely only on basic science to formulate new ideas. Pure
+    scientific theory can provide <I>too much</I> detail, making it
+    difficult for practitioners to draw analogies between their current
+    situation and their past experiences.
+
+<P>
+Tasks which are typically performed by users can be placed into a
+    taxonomy of ``generic tasks'', and designers of a new system can draw
+    ideas from this taxonomy.  In a survey of user interface development
+    processes and methodologies, Hartson and Boehm-Davis [<A
+ HREF="node1.html#Hartson93a">7</A>]
+    suggested the need for task taxonomies in HCI. According to the
+    authors, taxonomies would help us to reuse task analyses.
+    Taxonomies of HCI-related concepts such as tasks and user
+    classes would also be valuable to designers.  Reuse of detailed software
+    design has also become very popular, evidenced by widespread interest
+    in software design patterns and frameworks (e.g.
+    [<A
+ HREF="node1.html#Beck96a">2</A>,<A
+ HREF="node1.html#Kovitz98a">8</A>]).  This heightens the need to reuse artefacts
+    related to software design and code, such as task models; there are
+    synergies to be gained if we can map between recurrent task models and
+    recurrent software design constructs.
+
+<P>
+The concept of generic tasks also provides a structured way to generate
+    novel ideas. It is based on the assumption that there is a small set of
+    generic tasks which can form the basis for many systems. For example,
+    many systems are equipped with a ``Compare'' task (e.g. comparing two
+    graphs, comparing two word-processor documents). Involved in a vigorous
+    design process, designers (and users) may not even consider the possibility
+    of allowing this functionality in their work. Once the system has been
+    implemented, including the ``Compare'' task would probably require a
+    substantial re-engineering effort. A couple of hours browsing through a
+    list of generic tasks including the ``Compare'' task would reduce the
+    likelihood of such events.
+
+<P>
+Of course, practitioners need to guard against ``feature creep'', i.e.
+    using a list of generic tasks to derive obscure ideas and then
+    implementing them without appropriate consideration of their
+    usefulness. Indeed, the central aim of the generic task approach as a
+    brainstorming technique is not feature generation for its own sake, but
+    rather risk prevention; it helps to ensure designers do not overlook
+    critical features. The proposal here is that generic tasks be
+    incorporated into an integrative process of the developer's choosing,
+    which would include a selection of regular HCI techniques (user and
+    domain analysis, participatory design, evaluation, etc.).  A sensible
+    application of generic tasks would take into account the capability of
+    generic tasks to help explore avenues which might otherwise have
+    been overlooked, and to do so at a very early stage.  Brooks argues
+    that in HCI, the problem and the solution are both in need of
+    consideration.  That is, we need to analyse the tasks users perform and
+    the resultant systems which satisfy those tasks. This is analogous to a
+    doctor describing a disease and its cure.  
+
+<P>
+In this paper, we describe how we obtained a list of twenty-two generic
+    tasks from the requirements for fourteen industry-based, year-long,
+    student projects. This process served to demonstrate that certain tasks
+    do recur across different systems, and also laid the foundations for
+    our pilot study. The predominately qualitative study was conducted to
+    understand how people apply generic tasks and how they feel about the
+    design technique. It should be noted that brainstorming is not the only
+    application for generic tasks: the concept could also be used to form a
+    common vocabulary. This would support interdisciplinary design and may
+    also aid techniques for design reuse.
+
+<P>
+<H1>2. Identifying generic tasks</H1>
+
+<P>
+Some researchers have attempted to classify low-level tasks, e.g. Foley
+    et al.'s [<A
+ HREF="node1.html#Foley90a">5</A>] concept of ``basic interaction tasks'' for
+    interactive graphics. For programs modelling two-dimensional space,
+    they proposed four basic tasks: specifying a position, selecting an
+    element, interacting with text, and specifying a numeric value.  The
+    taxonomy also describes three ``composite interaction tasks'': dialogue
+    boxes, construction techniques (e.g. specifying a line), and dynamic
+    manipulation (adjusting previously-constructed objects, e.g.  rotating
+    an object).
+
+<P>
+More recently, Baber [<A
+ HREF="node1.html#Baber97a">1</A>] described several ``generic
+    actions'' of human-computer interaction (HCI), on the basis of
+    ISO/DP&nbsp;7942. The purpose was to establish a framework for discussing
+    how various input devices compare in supporting particular tasks. Under
+    this scheme, four categories were identified (with a total of seven
+    actions): selecting objects, dragging objects, changing the orientation
+    of objects (e.g.  rotation), and entering data.
+
+<P>
+There are also higher-level approaches to reuse, e.g.
+    Breedvelt-Schouten et al. have demonstrated that segments of task
+    hierarchies can be reused [<A
+ HREF="node1.html#Breedvelt97a">3</A>]. This work attempts to
+    formalise the notion of recurring task hierarchies, e.g. ``Define
+    Query'' consists of a number of ``Enter Query parameters'' followed
+    by ``Submit''.
+
+<P>
+Our work extends these contributions by capturing a broad list of
+    generic tasks. We have also performed the analysis in a systematic
+    manner which could be repeated, for instance, by an organisation
+    wishing to capture recurring tasks among its own projects. Fourteen
+    software projects were analysed. The projects were performed by teams
+    of about four people, as a full-year third or fourth-year
+    software project, and each was in the order of 10,000 lines of code.
+    Clients were drawn from both industry and academia.
+
+<P>
+We narrowed down fifty candidate projects to the final fourteen
+    according to two criteria:
+    <DL>
+<DT><STRONG>Human-computer interaction</STRONG></DT>
+<DD>The system had to interact
+             directly with humans.
+        
+</DD>
+<DT><STRONG>Complete documentation</STRONG></DT>
+<DD>Complete software requirement
+             specifications and user documentation were necessary.
+             Requirements specifications had to contain usage scenarios.
+             (Incidentally, all but one team provided design and
+             testing documents, which could be used for later research).
+    
+</DD>
+</DL>
+
+<P>
+There were no criteria relating to the the final product. In
+    fact, the final product's usability was not considered because we were
+    focusing on the <I>tasks</I> which emerged after
+    requirements-gathering, rather than the ways in which the software
+    supported these tasks. 
+
+<P>
+Key tasks were extracted from the usage scenarios. This enabled us to
+    quickly identify a large number of tasks from a variety of domains.
+    However, there was a concern about the depth of this approach; it is
+    conceivable that particular families of tasks are systematically left
+    out of these scenarios. Furthermore, scenarios are only single 
+    episodes and can be difficult to generalise from--for example, to
+    reason about common task sequences.
+
+<P>
+
+    <BR>
+<DIV ALIGN="CENTER">
+    <A NAME="table:_projects"></A>    <A NAME="221"></A>
+<TABLE CELLPADDING=3 BORDER="1" ALIGN="CENTER">
+<CAPTION><STRONG>Table 1:</STRONG>
+Descriptions and sample generic tasks for the projects which
+             underwent task analyses. <BR>
+<BR></CAPTION>
+<TR><TH ALIGN="LEFT" VALIGN="TOP" WIDTH=198><B>Project Description</B></TH>
+<TH ALIGN="LEFT" VALIGN="TOP" WIDTH=255><B>Key Tasks</B></TH>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=198>Contractor selection tool: To produce a ``shortlist'' of tenderers</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=255>Summarise, Add, Remove (tenderers); Navigate (through quality factors)</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=198>Timetabling tool: To construct tutorial timetables</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=255>Change Display Options (of timetable view); Add, Remove, Move
+    (details); Update system state (to check against domain constraints);</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=198>3D Weather Visualiser: To explore weather prediction data</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=255>Change display options (e.g. wire-frame vs. solid), Enter data
+    (display option parameters).</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=198>Radar Tracking System: To visualise objects being tracked by a radar</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=255>Navigate (to different map areas), Obtain guidance (about how to use
+    the system).</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=198>Source Code Visualiser: To help programmers visualise source code</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=255>Change Display Options (e.g. direction of arrows), Add, Remove, Move
+    (nodes representing source code modules).</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=198>Multi-lingual Botany Database: To enable queries to a plant database</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=255>Search (for matching data), Change Task Parameters (to set query 
+    language).</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=198>Online Tutorial System: To support real-time online interaction between
+    tutors and students</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=255>Navigate (tutorial material), Enter Data (to answer questions).</TD>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+
+<P>
+To address these concerns, seven diverse projects were selected for
+    detailed task analysis (Table&nbsp;<A HREF="activity-set.html#table:_projects">1</A>), although key
+    tasks from the other seven were also retained. There were three
+    principles in selecting the projects to undergo task analyses: (a) we
+    required a diverse cross-section of projects; (b) relatively complex
+    requirements were favoured; (c) successful projects were preferred.
+    User documentation and requirements specifications were consulted to
+    extract task models for the systems.  The Jackson System Design (JSD)
+    notation, adopted in the MUSE methodology for task analysis
+    [<A
+ HREF="node1.html#Lim94a">9</A>], was used to document the models. JSD was appropriate in
+    this situation primarily because it is graphical and has a well-defined
+    syntax. In combination, these attributes facilitate the process of
+    analysing typical patterns.
+
+<P>
+<BR>
+<H1>3. The task taxonomy</H1>
+<A NAME="sec:_taxonomy"></A>
+<P>
+<BR>
+
+<P>
+
+    <BR>
+<DIV ALIGN="CENTER">
+</DIV>
+<P>
+<DIV ALIGN="CENTER">
+</DIV>
+<P>
+<DIV ALIGN="CENTER"><A NAME="table:_taxonomy"></A></DIV>
+<P>
+<DIV ALIGN="CENTER"><A NAME="235"></A>
+<TABLE CELLPADDING=3 BORDER="1" ALIGN="CENTER">
+<CAPTION><STRONG>Table 2:</STRONG>
+Generic tasks, ordered into categories. The ``Example''
+             column shows instances of the tasks captured from the projects
+             being analysed. The ``Word-Processor'' column demonstrates the
+             applicability of the generic tasks to a typical
+             application--Microsoft Word.
+<BR>
+<BR></CAPTION>
+<TR><TH ALIGN="LEFT" VALIGN="TOP" WIDTH=105><B>Tasks</B></TH>
+<TH ALIGN="LEFT" VALIGN="TOP" WIDTH=184><B>Example from Analysed Projects</B></TH>
+<TH ALIGN="LEFT" VALIGN="TOP" WIDTH=184><B>Corresponding Word-Processor Task</B></TH>
+</TR>
+<TR><TH ALIGN="LEFT" VALIGN="TOP" WIDTH=105><B>Change Material</B></TH>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Add</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Add a new lesson to a multimedia tutorial.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Add text.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Remove</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Delete a company from a list of tenderers.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Delete text.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Replace</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Replace currently-loaded video sequence with a new sequence</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Over-write a selected text block.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Move</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>In a timetable representation, drag a subject cell to a new
+        timeslot.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Move a drawing object.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Transform</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Re-layout a network of nodes and edges.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Underline a text block.</TD>
+</TR>
+<TR><TH ALIGN="LEFT" VALIGN="TOP" WIDTH=105><B>Handle Entire Material</B></TH>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Store (Special case of Move; moving to storage location)</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Save a recently-generated animation</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Cut text to clipboard.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Retrieve from Storage (Special case of Move; moving from storage
+        location)</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Load source code which is to be visualised.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Paste from clipboard.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Duplicate</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Copy a file</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Copy to clipboard.</TD>
+</TR>
+<TR><TH ALIGN="LEFT" VALIGN="TOP" WIDTH=105><B>Browse Material</B></TH>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Search</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Search for text from an online product database.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Search for text pattern within document.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Navigate</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Request information about an element in a multimedia chemistry
+        tutorial.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Scroll to a desired text region.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Summarise</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Show a summary of objects which have been shown in an animation.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Perform word count.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Compare</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Compare a weather chart on two different days.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Track document changes by comparing two different versions.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Change Display Options</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Select desired language of query results.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Enable text-wrapping.</TD>
+</TR>
+<TR><TH ALIGN="LEFT" VALIGN="TOP" WIDTH=105><B>Specify Material</B></TH>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Enter Data</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Enter data from keyboard.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Enter data from keyboard.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Select</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Choose an internet relay channel.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Select a font.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Compose</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Group together several graph nodes to form a single node
+        representing the entire group.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Select several drawing objects at once.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Decompose</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Ungroup a grouped node.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Select an individual object when several drawing objects have been
+        selected.</TD>
+</TR>
+<TR><TH ALIGN="LEFT" VALIGN="TOP" WIDTH=105><B>Meta-Tasks</B></TH>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Preview Task Effect</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Change cursor to indicate effect of clicking within a certain area
+        of a multimedia tutorial</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>View a preview of the document as it will appear after printing.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Obtain Guidance</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Request context-sensitive help by clicking on a Help link</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Select Help from an object's Properties menu.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Undo</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Click Back button to return to previous page.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Reverse a text change.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Update System State</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Click Verify button to see timetable cells which meet specified
+        constraints.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Update an Include Text Field after a change to the file
+        corresponding to this field.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105>Change Task Parameters</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>On a graph visualiser, modify default number of expansion levels
+        which apply when a user adds a node's ancestors or descendants.</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>Change text entry mode from Insertion to Overtype.</TD>
+</TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP" WIDTH=105><P></TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>&nbsp;</TD>
+<TD ALIGN="LEFT" VALIGN="TOP" WIDTH=184>&nbsp;</TD>
+</TR>
+</TABLE>
+</DIV>
+<BR>
+Removed iterate; part of nav. Also part of nav: Goto
+
+    
+<P>
+After recording tasks for each project and placing them into
+    categories, we obtained a classification reflected in Table&nbsp;<A HREF="#table:_____taxonomy"><IMG  ALIGN="BOTTOM" BORDER="1" ALT="[*]"
+ SRC="file:/usr/share/latex2html/icons/crossref.png"></A>. Although exploring these relationships is beyond the scope
+    of this study, it is worthwhile acknowledging a few ways the tasks can
+    be related to each other. One possible relationship is for a task to be
+    a special case of another task. Another relationship is where two tasks
+    complement each other.  Search and Navigate could be
+    used in tandem by a user trying to locate a passage of text, for example.
+    Sometimes two tasks are necessarily connected to each other, but can be
+    performed in either order, e.g. when the system allows either ``noun-verb''
+    or ``verb-noun'' actions.
+
+<P>
+The tasks were placed into five groups. Note that the term
+    <TT>material</TT> is used to describe software artefacts, after Riehle
+    and Z&#252;llighoven [<A
+ HREF="node1.html#Riehle95a">11</A>]. The groups are:
+
+<P>
+OZ compress?
+    <DL>
+<DT><STRONG>Change Material</STRONG></DT>
+<DD>These tasks enable the user to add, remove,
+             or change the material.
+        
+</DD>
+<DT><STRONG>Handle Entire Material</STRONG></DT>
+<DD>These tasks do not change a material,
+             but operate on it as a whole. For instance, saving a file is
+             an operation on a material which does not actually change its
+             contents or structure.
+        
+</DD>
+<DT><STRONG>Browse Material</STRONG></DT>
+<DD>Browsing helps a user explore a material,
+            and might be used for viewing only, or to facilitate the
+            changing of material. Examples are searching and navigating.
+        
+</DD>
+<DT><STRONG>Specify Material</STRONG></DT>
+<DD>To help users change material, as well as
+            perform other tasks, these tasks 
+            let them specify information to the computer, such as choosing
+            from a list of items.
+        
+</DD>
+<DT><STRONG>Meta-tasks</STRONG></DT>
+<DD>Meta-tasks exist purely to moderate or expose the
+             effects of other tasks. In isolation, they would not be very
+             useful, but they can make tremendous contributions to overall
+             usability when other tasks are possible. For instance, there
+             are often functions which allow users to change the way
+             certain tasks work, enabling a flexible workflow.  This is
+             somewhat analogous to Sutchman and Trigg's concept of a
+             procedural utterance in collaborative research--an element of
+             speech which focuses on the collaboration process itself
+             rather than the task at hand
+    
+</DD>
+</DL>
+
+<P>
+The second column of the table shows examples of the tasks extracted
+    from the selected projects. The third column demonstrates the external
+    validity of these tasks by showing how each is supported by
+    a typical word-processor, MS-Word in this case. The list presents a
+    wide range of tasks, but no attempt has been made to produce an
+    exhaustive collection of recurring tasks. The purpose is to show that
+    generic tasks can be systematically captured, and to investigate how
+    such a list might be used.
+
+<P>
+The tasks are a reflection of real-life projects, rather than an
+    idealised set of activities. It might be argued that since the system
+    should always be up-to-date, there should be no need for an ``Update
+    System State'' task. In reality, however, systems may not have the
+    processing power or bandwidth to continually synchronise with the
+    user-interface. 
+    
+
+  <P>
+<H1>4. Pilot study of generic task applicability</H1>
+
+<P>
+<H2>4.1. Aims</H2>
+
+<P>
+One possible use of the generic tasks is to provide rapid
+        generation of ideas for new software functions. We wanted to
+        investigate whether such a brainstorming technique was possible.
+        Furthermore, the generalisability of tasks could be demonstrated by
+        taking generic tasks from one set of systems, and applying them to
+        other systems.
+
+<P>
+<H2>4.2. Method</H2>
+
+<P>
+The methodology was to provide subjects with a standard structured
+        method for devising new tasks, and then investigate whether
+        introducing the generic task list could help them think of
+        additional tasks. Six subjects volunteered to participate in the
+        pilot study. Four were postgraduate students in the Department of
+        Computer Science and Software Engineering Uni of Melb, and two
+        were final-year undergraduate students in that department. All
+        students had extensive programming experience. The subjects sat in
+        individual sessions lasting 1.5-2 hours.
+
+<P>
+Two hypothetical systems were initially shown to subjects. One was
+        ShopCart, a client-side application for internet shopping
+        (independent of a web browser), and the other was Ready Reader, a
+        hand-held reading device (Figure&nbsp;<A HREF="activity-set.html#fig:_bothapps">1</A>). Several
+        sketches of screens were provided for each, along with accompanying
+        descriptions of possible tasks at each stage. Written instructions
+        informed the subjects about the techniques they were being asked to
+        employ.
+
+<P>
+
+<HR>
+<DIV ALIGN="CENTER"><A NAME="fig:_bothapps"></A><A NAME="259"></A>
+
+  <IMG SRC="bothapps.gif">
+
+  <P>
+  <STRONG>Figure 1:</STRONG>
+  Sample hand-drawn sketches for ShopCart and Ready
+              Reader applications. ShopCart screen shown is main menu, one of
+              five screens. Ready Reader screen is document view, one of two
+              screens.</CAPTION>
+</DIV>
+
+<HR>
+
+<P>
+In the first phase, subjects could use any means to produce the
+        tasks. To make this stage comparable to the second phase involving
+        generic tasks, a structured method was offered; however, it was
+        made clear that this was only a brainstorming tool, and any other
+        ideas were encouraged.  The structured method involved
+        asking subjects to write down users' goals in using the system, and
+        then to identify the problems users might have in achieving these
+        goals. From these goals and problems, subjects were asked to write
+        additional tasks which users might be able to perform with the
+        system. Subjects were given guidance on the structured technique,
+        as well as a worked example, and were informed that it did not
+        matter if they got the concepts confused (e.g. defined something as
+        a task instead of as a goal) because the administrator would
+        interpret their work later on. Our aim here was to encourage
+        subjects to provide as much information as possible before being
+        introduced to generic tasks.
+
+<P>
+When subjects felt they had exhausted their ideas for each system,
+        they entered the second phase. The generic task list was introduced
+        to them as an alternative method, from which more tasks could be
+        added to their initial list.  Subjects were asked to use the
+        generic task list in a similar manner to the first approach, i.e.
+        as a flexible brainstorming tool, so that they could feel free to
+        suggest tasks which may not correspond directly to the generic
+        tasks. To provide some structure, subjects were asked to step
+        through each task, recording ideas for the system as they
+        proceeded. Then, they were asked to write any other tasks they
+        could think of. Finally, they were asked to step through the list
+        and check if anything could be added. The experiment concluded with
+        a semi-structured de-briefing discussion to clarify subjects' work
+        and help us compare the approaches.
+
+<P>
+<H2>4.3. Results and discussion</H2>
+
+<P>
+Subjects' work was initially processed, with any identified goals
+        or problems being converted to tasks if that was more appropriate.
+        Tasks were eliminated if they seemed more like goals or problems,
+        and counted once only if the person repeated them (it was quite
+        common for people to rewrite a Phase 1 task as a generic task).
+
+<P>
+Many tasks proposed before the generic task list was introduced
+        nevertheless mapped to a particular task (e.g. many people
+        suggested a search function in the initial phase). Conversely,
+        some tasks proposed after the list was introduced did not map to
+        any particular generic task. Thus, we classified tasks according to
+        (a) which phase they were identified in, and (b) whether or not they
+        fitted a generic task.
+
+<P>
+<H3>4.3.1. Examples of new tasks</H3>
+
+<P>
+Before describing more detailed analyses, we now describe the
+            tasks which were proposed more frequently, in both Phase 1
+            and 2.  Following is a list of ShopCart tasks proposed by three
+            or more people during Phase 1, accompanied by the matching
+            generic task (the figures in parentheses indicate how many
+            subjects listed each task).
+
+<P>
+<TABLE CELLPADDING=3>
+<TR><TH ALIGN="LEFT"><B>Phase 1:</B></TH>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Search for item (6)</TD>
+<TD ALIGN="LEFT">Search</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Remove item from cart (4)</TD>
+<TD ALIGN="LEFT">Remove</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Look at previous carts (4)</TD>
+<TD ALIGN="LEFT">Retrieve</TD>
+</TR>
+<TR><TH ALIGN="LEFT"><B>Phase 2:</B></TH>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Specify item quantity (5)</TD>
+<TD ALIGN="LEFT">Duplicate</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Change language (3)</TD>
+<TD ALIGN="LEFT">Change display options</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Help on usage (3)</TD>
+<TD ALIGN="LEFT">Obtain Guidance</TD>
+</TR>
+</TABLE>
+
+<P>
+For Ready Reader, tasks suggested by three or more people in
+            the Ready Reader were as follows: 
+            <TABLE CELLPADDING=3>
+<TR><TH ALIGN="LEFT"><B>Phase 1:</B></TH>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Show tree/list of all files at once (4)</TD>
+<TD ALIGN="LEFT">Summarise</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Search for word across documents (4)</TD>
+<TD ALIGN="LEFT">Search</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Create a new folder (3)</TD>
+<TD ALIGN="LEFT">Add</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Search for documents, e.g. by date (3)</TD>
+<TD ALIGN="LEFT">Search</TD>
+</TR>
+<TR><TH ALIGN="LEFT"><B>Phase 2:</B></TH>
+<TD ALIGN="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Change font (3)</TD>
+<TD ALIGN="LEFT">Change Display</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">Options</TD>
+</TR>
+<TR><TD ALIGN="LEFT">Group documents for delete/move (3)</TD>
+<TD ALIGN="LEFT">Compose</TD>
+</TR>
+</TABLE>
+
+<P>
+It is also important to consider specific useful tasks which
+            arose from the generic task concept.  Some examples of tasks
+            which were <I>only</I> suggested during Phase 2 of the
+            ShopCart application are shown below. It is interesting to note
+            that most of these tasks are supported by existing e-commerce
+            sites, but the generic task list seemed to trigger subjects to
+            consider them.
+
+<P>
+
+            <BR>
+
+<P>
+Useful or novel tasks proposed only in Phase 2 for Ready Reader
+            were:
+
+<UL>
+<LI>Change document orientation (Change Display Options)
+</LI>
+<LI>Show space used or free (Summarise)
+</LI>
+<LI>Show language of document or change language (Change
+                      Display Options)
+</LI>
+<LI>Merge documents (Compose)
+</LI>
+<LI>Summarise bookmarks (Summarise, after the subject
+                      suggested allowing bookmarks). 
+            
+</LI>
+</UL>
+
+<P>
+That subjects considered these possibilities only after being
+            exposed to the generic tasks lends support to the notion that
+            brainstorming can improve quality and reduce the likelihood of
+            tasks being overlooked.
+
+<P>
+<H3>4.3.2. Comparison of methods</H3>
+
+<P>
+
+    <BR><P></P>
+<DIV ALIGN="CENTER">
+        
+        <A NAME="table:_individuals"></A>        <DIV ALIGN="CENTER">
+</DIV>
+<P>
+<DIV ALIGN="CENTER"><A NAME="263"></A>
+<TABLE CELLPADDING=3 BORDER="1">
+<CAPTION><STRONG>Table 3:</STRONG>
+For each subject, number of tasks generated before generic
+        task list shown (Phase 1) and after generic task list shown (Phase
+        2). Mean and standard deviation are also shown.</CAPTION>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER" COLSPAN=3><B>ShopCart</B></TD>
+<TD ALIGN="CENTER" COLSPAN=3><B>Ready Reader</B></TD>
+</TR>
+<TR><TH ALIGN="CENTER"><B>Subject # </B></TH>
+<TD ALIGN="CENTER"><B>Phase 1 </B></TD>
+<TD ALIGN="CENTER"><B> New in  </B></TD>
+<TD ALIGN="CENTER"><B> Total
+</B></TD>
+<TD ALIGN="CENTER"><B> Phase 1 </B></TD>
+<TD ALIGN="CENTER"><B> New in  </B></TD>
+<TD ALIGN="CENTER"><B> Total</B></TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><B>Phase 2 </B></TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><B>Phase
+           2 </B></TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">A</TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">10</TD>
+<TD ALIGN="CENTER">6</TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">11</TD>
+</TR>
+<TR><TD ALIGN="CENTER">B</TD>
+<TD ALIGN="CENTER">13</TD>
+<TD ALIGN="CENTER">7</TD>
+<TD ALIGN="CENTER">20</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">24</TD>
+<TD ALIGN="CENTER">26</TD>
+</TR>
+<TR><TD ALIGN="CENTER">C</TD>
+<TD ALIGN="CENTER">13</TD>
+<TD ALIGN="CENTER">6</TD>
+<TD ALIGN="CENTER">19</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">6</TD>
+<TD ALIGN="CENTER">8</TD>
+</TR>
+<TR><TD ALIGN="CENTER">D</TD>
+<TD ALIGN="CENTER">12</TD>
+<TD ALIGN="CENTER">12</TD>
+<TD ALIGN="CENTER">24</TD>
+<TD ALIGN="CENTER">7</TD>
+<TD ALIGN="CENTER">14</TD>
+<TD ALIGN="CENTER">21</TD>
+</TR>
+<TR><TD ALIGN="CENTER">E</TD>
+<TD ALIGN="CENTER">9</TD>
+<TD ALIGN="CENTER">6</TD>
+<TD ALIGN="CENTER">15</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="CENTER">10</TD>
+</TR>
+<TR><TD ALIGN="CENTER">F</TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">8</TD>
+<TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">11</TD>
+</TR>
+<TR><TD ALIGN="CENTER">Average No. of Tasks</TD>
+<TD ALIGN="CENTER">9.8</TD>
+<TD ALIGN="CENTER">5.7</TD>
+<TD ALIGN="CENTER">15.5</TD>
+<TD ALIGN="CENTER">4.50</TD>
+<TD ALIGN="CENTER">9.7</TD>
+<TD ALIGN="CENTER">14.5</TD>
+</TR>
+</TABLE>
+</DIV>
+</DIV>
+<BR>
+
+<P>
+Overall, both phases yielded results in favour of the generic
+            task intervention, as shown in Table&nbsp;<A HREF="activity-set.html#table:_individuals">3</A>.
+            Mean and standard deviation were calculated, although there is
+            no statistical test performed. It is clear, however, that the
+            generic task list had a marked effect. All subjects were able
+            to think of several tasks before being shown the generic task
+            list, and introducing the list led them to add several more.
+            This result was true for both hypothetical systems.
+
+<P>
+One interesting result is the wide individual variation which
+            occurred for both phases. This is not entirely surprising,
+            since people will have different abilities in solving this type
+            of problem. Some people seem to gain a lot of support using the
+            generic tasks (Subjects B and D), while others appear to derive
+            less benefit (Subject A). All subjects experienced relative
+            increases in usage of generic tasks during the second exercise,
+            Ready Reader. De-briefing discussions suggested that this was
+            due to a learning effect in which the unusual concept of
+            generic tasks becomes more familiar.
+
+<P>
+<H3>4.3.3. Number of unique tasks generated</H3>
+
+<P>
+The previous table considered individual performances, so that
+            a task was counted twice if two people suggested it. In this
+            section, we consider the tasks generated by the group as a
+            whole.  In other words, we are looking at the number of
+            unique tasks generated.
+
+<P>
+Table&nbsp;<A HREF="activity-set.html#table:_unique">4</A> shows that in both applications,
+            introducing the generic tasks more than doubled the number of
+            unique tasks suggested. This is despite the fact that
+            individuals added fewer tasks on average in Phase 2 than they
+            initially proposed in Phase 1 (Table&nbsp;<A HREF="activity-set.html#table:_individuals">3</A>).
+            This demonstrates that generic tasks led to more variation
+            among individuals; they led to many tasks which only one
+            individual thought of. In contrast, there was more commonality
+            among the initial tasks. People commonly proposed typical tasks
+            such as Search for a book and Show cart total.
+
+<P>
+
+        <BR><P></P>
+<DIV ALIGN="CENTER">
+        
+        <A NAME="table:_unique"></A>        <DIV ALIGN="CENTER">
+</DIV>
+<P>
+<DIV ALIGN="CENTER"><A NAME="289"></A>
+<TABLE CELLPADDING=3 BORDER="1">
+<CAPTION><STRONG>Table 4:</STRONG>
+Unique tasks generated by the overall group. The top row
+                 shows tasks which mapped closely to generic tasks (e.g.
+                 ``Group items'' relates to compose) and the
+                 second row shows tasks which does not relate strongly to
+                 any of the generic tasks.  ``Only in Phase 1'' shows
+                 tasks generated before the generic task list was
+                 introduced (even though many suggestions mapped to generic
+                 tasks), ``Only in Phase 2'' shows those after the list was
+                 introduced, and ``In Both Phases'' shows tasks which at least
+                 one person suggested before and at least one person
+                 suggested afterwards.</CAPTION>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER" COLSPAN=4><B>ShopCart</B></TD>
+<TD ALIGN="CENTER" COLSPAN=4><B>Ready Reader</B></TD>
+</TR>
+<TR><TH ALIGN="CENTER"><B>Task Type</B></TH>
+<TD ALIGN="CENTER"><B>Only in</B></TD>
+<TD ALIGN="CENTER"><B>Only in</B></TD>
+<TD ALIGN="CENTER"><B>In Both</B></TD>
+<TD ALIGN="CENTER"><B>Total</B></TD>
+<TD ALIGN="CENTER"><B>Only in</B></TD>
+<TD ALIGN="CENTER"><B>Only in</B></TD>
+<TD ALIGN="CENTER"><B>In Both</B></TD>
+<TD ALIGN="CENTER"><B>Total</B></TD>
+</TR>
+<TR><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><B>Phase 1</B></TD>
+<TD ALIGN="CENTER"><B>Phase 2</B></TD>
+<TD ALIGN="CENTER"><B>Phases</B></TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><B>Phase 1</B></TD>
+<TD ALIGN="CENTER"><B>Phase 2</B></TD>
+<TD ALIGN="CENTER"><B>Phases</B></TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD ALIGN="CENTER">Generic mapping</TD>
+<TD ALIGN="CENTER">9</TD>
+<TD ALIGN="CENTER">30</TD>
+<TD ALIGN="CENTER">7</TD>
+<TD ALIGN="CENTER">46</TD>
+<TD ALIGN="CENTER">14</TD>
+<TD ALIGN="CENTER">22</TD>
+<TD ALIGN="CENTER">9</TD>
+<TD ALIGN="CENTER">45</TD>
+</TR>
+<TR><TD ALIGN="CENTER">No generic mapping</TD>
+<TD ALIGN="CENTER">12</TD>
+<TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">0</TD>
+<TD ALIGN="CENTER">13</TD>
+<TD ALIGN="CENTER">6</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">0</TD>
+<TD ALIGN="CENTER">8</TD>
+</TR>
+<TR><TD ALIGN="CENTER">Total</TD>
+<TD ALIGN="CENTER">21</TD>
+<TD ALIGN="CENTER">31</TD>
+<TD ALIGN="CENTER">7</TD>
+<TD ALIGN="CENTER">59</TD>
+<TD ALIGN="CENTER">20</TD>
+<TD ALIGN="CENTER">24</TD>
+<TD ALIGN="CENTER">9</TD>
+<TD ALIGN="CENTER">53</TD>
+</TR>
+</TABLE>
+</DIV>
+</DIV>
+<BR>
+
+<P>
+The table also shows that quite a few Phase 1 tasks mapped to a
+            generic task. This makes sense, as designers presumably have
+            their own models of generic tasks, some of which corresponds to
+            those considered in this investigation. In de-briefing
+            conversations, subjects indicated that in the first phase they were
+            often considering software they had seen before. Several people
+            commented that they had features of Amazon.com in mind when
+            designing ShopCart.
+
+<P>
+Many tasks were suggested in Phase 2 only. A concern about this
+            methodology is that subjects may not consider items important
+            enough to record in the first phase, but will record them in
+            the second phase if they see a corresponding generic task. This
+            may have happened in a couple of instances. For instance, a
+            Help function was not recorded initially, but on seeing the
+            generic task ``Obtain Guidance'', three subjects proposed it.
+            However, this was not the case for most tasks. Two useful Ready
+            Reader tasks suggested by three people in Phase 2 but
+            overlooked by everyone during Phase 1 were (a) grouping
+            documents together for deleting or moving (``Compose'') and (b)
+            changing font (``Change Display Options'').  Furthermore, the
+            ``Both Phases'' column suggests that at least for some tasks,
+            there can be high assurance that the generic list was helpful.
+            This column shows that there were some tasks which some users
+            thought of initially, and others thought of later on.
+
+<P>
+<H3>4.3.4. De-briefing discussion</H3>
+
+<P>
+Most subjects reported that they had some difficulties using the
+            first technique to map from goals to problems to tasks. They 
+            had difficulties understanding the distinction between goals
+            and tasks, and also found there was a very close mapping
+            between problems and tasks (Problem: ``Does not have Search'',
+            Task: ``Let user Search''). However, we asked subjects to show
+            mappings between goals, problems, and tasks.  This let us check
+            how close the mappings were. It turned out that subjects were
+            not overly-constrained by this technique, since they chose to
+            add many tasks which did not correspond to particular goals or
+            problems.
+
+<P>
+All subjects stated that they found it relatively easy to map
+            from generic tasks to specific tasks in the system. Subject
+            F--who did not perform many mappings-- stated that he did not
+            have problems doing this, but felt that he had proposed the
+            major tasks already.
+
+<P>
+One surprise for us was that several subjects perceived the two
+            phases as a cohesive methodology. We had intended the first
+            phase as an initial benchmark for the generic tasks, and we
+            structured our instructions to give the impression that two
+            separate techniques were being investigated (we did not
+            identify whether any technique was our own). In fact, one
+            Subject (Subject D) suggested that the goals helped to consider
+            tasks based on users' perspectives, and the generic tasks act
+            as a safeguard to ensure that any other useful tasks had not
+            been omitted.  Another (Subject F) confirmed this view, stating
+            that if she had started with generic tasks she may not have
+            covered everything.  Therefore, she explained, it was good to
+            start by considering users' goals, then moving on to tasks.
+
+<P>
+<BR>
+<BR>
+<H1>5. Conclusions</H1>
+<BR>
+<BR>
+
+<P>
+In the first half of this paper, we explained how studying tasks across
+    a wide range of systems led us to a generic task list. This process
+    demonstrated that certain tasks do recur across different programs and
+    that generic tasks can be systematically documented. The initial
+    classification we have provided may prove of some use to developers, as
+    well as the method for capturing generic tasks.
+
+<P>
+In the second half, we described a pilot study which demonstrated that
+    generic tasks can have practical implications for designers. A repeated
+    measures methodology was adopted, in which the generic task list was
+    introduced once subjects felt their ideas had been exhausted. Since
+    there was no control group, it is not possible to be certain that the
+    subjects would not have arrived at the new tasks without the generic
+    tasks being provided. However, there is significant evidence to suggest
+    the generic tasks themselves had at least a significant influence on
+    the ideas of subjects during the second phase.  Firstly, the second
+    phase took place immediately after the first phase, rather than a day
+    or even an hour later. Secondly, many of the tasks proposed during the
+    second phase were related to the generic tasks, with subjects
+    indicating the associations.  Thirdly, the de-briefing discussions
+    indicated that subjects felt comfortable with the generic task concept
+    and most felt they had been able to apply them directly to the design
+    problem.
+
+<P>
+A useful property of this brainstorming technique is that it only needs
+    one or two hours of work, even in an industrial setting (although
+    several iterations may be required). Thus, we were able to conduct an
+    experiment similar in duration to an industry setting. We did not have
+    to use contrived, small-scale, systems as examples; the hypothetical
+    ShopCart and Ready Reader applications have a similar degree of
+    complexity to many real-life projects.
+
+<P>
+It would be useful to expand the technique into a more integrative
+    process which takes into account users' goals and contexts.  The
+    technique might also involve participative design, since it should be
+    very easy for users to comprehend the generic task concept. Further
+    research might form more quantitative findings related to factors such
+    as individual differences and application type. 
+
+<P>
+The brainstorming technique can be used to design for systems which
+    have no obvious direct analogy. Researchers have previously suggested
+    the consideration of related systems, e.g. MUSE's extant system
+    analysis [<A
+ HREF="node1.html#Lim94a">9</A>], and the competitive analysis described in
+    Nielson's Usability Engineering approach [<A
+ HREF="node1.html#Nielson93a">10</A>]. Generic
+    tasks provide developers with a knowledge base, leading to
+    greater confidence that existing systems have been considered.
+
+<P>
+The notion of generic tasks may be most beneficial when applied to
+    a particular organisation's projects or confined to a specific domain.
+    Using a method similar to the one presented here, it would be possible
+    to ``mine'' tasks typically supported by a certain class of software.
+    Databases, for example, support tasks such as ``View record'', ``Filter
+    records'', ``Search for data''. Such a tool might prevent late change
+    requests for a developer working on small projects where large-scale
+    usability studies are prohibitive; for example, someone developing a
+    database for video library holdings or staff management.
+
+<P>
+This paper has focused on only one application of generic tasks, i.e.
+    as a rapid brainstorming technique.  In fact, there is a broad spectrum
+    of possible applications for generic tasks. Reusable HCI knowledge
+    bases and design techniques, exemplified by the popular design
+    patterns paradigm [<A
+ HREF="node1.html#Griffiths99a">6</A>], can be informed by an
+    understanding of the tasks users typically perform. The
+    interdisciplinary HCI community can benefit from a common vocabulary;
+    when a human factors specialist asks a software engineer to implement a
+    ``Change Display Options'' task, the software engineer has a pool of
+    knowledge to draw upon about how generic tasks may be implemented in
+    different environments. In this way, generic tasks raise the level of
+    abstraction from commonly-known GUI elements (``scrollbar'',
+    ``button'') to user tasks. Researchers can also benefit, by being able
+    to compare interaction styles according to baseline generic tasks.
+
+<P>
+
+<H2><A NAME="SECTION00010000000000000000">
+Bibliography</A>
+</H2><DL COMPACT><DD>
+<P></P><DT><A NAME="Baber97a">1</A>
+<DD>
+C.&nbsp;Baber.
+<BR><EM>Beyond the Desktop</EM>.
+<BR>Academic Press, London, 1997.
+
+<P></P><DT><A NAME="Beck96a">2</A>
+<DD>
+K.&nbsp;Beck, J.&nbsp;Coplien, R.&nbsp;Crocker, L.&nbsp;Dominick, G.&nbsp;Meszaros, F.&nbsp;Paulisch, and
+  J.&nbsp;Vlissides.
+<BR>Industrial experience with design patterns.
+<BR>In <EM>Proceedings of the 18th International Conference on Software
+  Engineering</EM>, pages 103-114. IEEE Computer Society, Washington, D.C., 1996.
+
+<P></P><DT><A NAME="Breedvelt97a">3</A>
+<DD>
+I.&nbsp;M. Breedvelt-Schouten, F.&nbsp;Patern&#243;, and C.&nbsp;A. Severijns.
+<BR>Reusable structures in task models.
+<BR>In H.&nbsp;D. Harrison and J.&nbsp;C. Torres, editors, <EM>Design,
+  specification and verification of interactive systems '97</EM>, pages 225-238.
+  Springer, New York, 1997.
+
+<P></P><DT><A NAME="Brooks91a">4</A>
+<DD>
+R.&nbsp;Brooks.
+<BR>Comparative task analysis: An alternative direction for
+  human-computer interaction science.
+<BR>In J.&nbsp;M. Carroll, editor, <EM>Designing Interaction: Psychology at
+  the Human-Computer Interface</EM>, pages 50-59. Cambridge University Press,
+  Cambridge, UK, 1991.
+
+<P></P><DT><A NAME="Foley90a">5</A>
+<DD>
+J.&nbsp;D. Foley, A.&nbsp;van Dam, S.&nbsp;K. Feiner, and J.&nbsp;F. Hughes.
+<BR><EM>Computer Graphics: Principles and Practice</EM>.
+<BR>Addison-Wesley, Reading, MA, 2nd edition, 1990.
+
+<P></P><DT><A NAME="Griffiths99a">6</A>
+<DD>
+R.&nbsp;N. Griffiths, L.&nbsp;Pemberton, and J.&nbsp;Borchers.
+<BR>Usability pattern language: Creating a community.
+<BR>In S.&nbsp;Brewster, A.&nbsp;Cawsey, and G.&nbsp;Cockton, editors, <EM>  Human-Computer Interaction: Interact '99</EM>, volume&nbsp;2, page 135. BCS (for
+  IFIP), Wiltshire, UK, 1999.
+
+<P></P><DT><A NAME="Hartson93a">7</A>
+<DD>
+H.&nbsp;R. Hartson and D.&nbsp;Boehm-Davis.
+<BR>User interface development processes and methodologies.
+<BR><EM>Behaviour &amp; Information Technology</EM>, 12(2):98-114, Mar. 1993.
+
+<P></P><DT><A NAME="Kovitz98a">8</A>
+<DD>
+B.&nbsp;L. Kovitz.
+<BR><EM>Practical Software Requirements</EM>.
+<BR>Manning, 1998.
+
+<P></P><DT><A NAME="Lim94a">9</A>
+<DD>
+K.&nbsp;Y. Lim and J.&nbsp;Long.
+<BR><EM>The MUSE Method for Usability Engineering</EM>.
+<BR>Cambridge University Press, Glasgow, 1994.
+
+<P></P><DT><A NAME="Nielson93a">10</A>
+<DD>
+J.&nbsp;Nielson.
+<BR><EM>Usability Engineering</EM>.
+<BR>AP Professional, New York, 1993.
+
+<P></P><DT><A NAME="Riehle95a">11</A>
+<DD>
+D.&nbsp;Riehle and H.&nbsp;Z&#252;llighoven.
+<BR>A pattern language for tool construction and integration based on the
+  tools and materials metaphor.
+<BR>In J.&nbsp;O. Coplien and D.&nbsp;C. Schmidt, editors, <EM>Pattern Languages
+  of Program Design</EM>, chapter&nbsp;2, pages 9-42. Addison-Wesley, Reading, MA,
+  1995.
+</DL>
+
+<HR>
+<I>Generated with latex2hml and manually adjusted. All text retained as in
+published version.</I>
+
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+</p>
+

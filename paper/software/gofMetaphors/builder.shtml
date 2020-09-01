@@ -1,0 +1,189 @@
+<html>
+
+  <TITLE>Gamma/GoF Builder Pattern Metaphor</TITLE>
+  <Meta name="description" content="Builder Pattern - Learning Patterns By
+    Metaphor">
+</head>
+
+<body>
+<a href="/">Mahemoff.com</a>
+
+
+  <H1>GoF Builder Metaphor: Full Description</H1>
+
+        <span class="note"><span class="title">Note:</span> This is a detailed
+    example of <A href="./">the GoF Metaphors</A>.  If you are learning the
+    patterns, you might try writing your own detailed description of other
+    patterns.</span>
+
+
+
+
+    <H2>Problem</H2>
+
+    How do you use the same process to create different kinds
+    of instruments?
+
+    <H2>Motivation</H2>
+
+    Imagine you are manufacturing pianos and drums. A naieve structure would be
+    to assign a different person to control each process: <span
+    class="pattern">PianoManager</span> and <span
+    class="pattern">DrumManager</span>.
+
+    <P>Now, each of these <span class="pattern">Managers</span>
+    should be a specialist in the type of instrument they are building. The
+    <span class="pattern">PianoManager</span> must know how to
+    arrange the keys, tune the strings, and so on. The <span
+    class="pattern">DrumManager</span>, likewise, must be able
+    to create a drum from hoops, heads, and all the other stuff. So far, so
+    good ... we're not going to find someone who's smart enough to do that, so
+    we've created a different role for each manager.
+
+    <P>But there's a problem. Knowing the details of building an instrument is
+    not enough: there's a second kind of knowledge, higher-level knowledge
+    aboute the overall process. For example, "retrieve parts, prepare
+    machinery, start production, test results". Far from being about piano keys
+    and drum hoops, we are talking here about a general product development
+    process.
+
+    <P>The solution here is to specialise further. So we create a third role:
+    the <span class="pattern">InstrumentDirector</span>. This
+    role will free the instrument specialists to focus on what they're good at,
+    while ensuring the overall process is consistent. The specialists are not
+    managers under this arrangement, but builders, so we call them <span
+    class="pattern">InstrumentBuilders</span>.
+
+    <P> The <span class="pattern">InstrumentDirector</span> has
+    a fixed process. The process may be quite sophisticated, but the fact is he
+    needs to know nothing about pianos or drums. All he needs to know is how to
+    delegate tasks to someone who knows the specifics of an instrument - an
+    <span class="pattern">InstrumentBuilder</span>.
+
+    <P>So to make pianos and drums, we need a <span
+    class="pattern">PianoBuilder</span> and a <span
+    class="pattern">DrumBuilder</span>. Here is how the <span
+    class="pattern">Director</span> directs a <span
+    class="pattern">Builder</span> without knowing what kind of
+    instrument will be built (along with some outrageous assumptions about the
+    craft of instrument-building):
+
+    <P><B><span class="pattern">CEO (Client)</span>:</B> <span
+    class="pattern">InstrumentDirector</span>, Go build me an
+    instrument - your <span class="pattern">InstrumentBuilder</span>
+    will be this <span class="pattern">PianoBuilder</span>.
+
+    <BR><B><span class="pattern">InstrumentDirector</span>:</B>
+    OK, no probs. Well, <span class="pattern">InstrumentBuilder</span>, we have
+    an instrument to build.  OK, so first up, do we have the parts?
+
+    <BR><B><span class="pattern">PianoBuilder</span>:</B> Yep.
+
+    <BR><B><span class="pattern">InstrumentDirector</span>:</B>
+    OK, then fetch the parts.
+
+    <BR><B><span class="pattern">PianoBuilder</span>:</B> Done.
+
+    <BR><B><span class="pattern">InstrumentDirector</span>:</B>
+    Great, now you can start the
+
+    <BR><B><span class="pattern">PianoBuilder</span>:</B> The
+    machine's broken.
+
+    <BR><B><span class="pattern">InstrumentDirector</span>:</B>
+    Well, can you fix it?
+
+    <BR><B><span class="pattern">PianoBuilder</span>:</B> Aha.
+
+    <BR><B><span class="pattern">InstrumentDirector</span>:</B>
+    OK, then fix it.
+
+    <BR><B><span class="pattern">PianoBuilder</span>:</B>
+    Fixed.
+
+    <BR><B><span class="pattern">InstrumentDirector</span>:</B>
+    Alright, now start production.
+
+    <BR><B><span class="pattern">PianoBuilder</span>:</B> OK.
+
+    <BR><B><span class="pattern">InstrumentDirector</span>:</B>
+    Great, that's enough. Shut her down. Then test the result.
+
+    <BR><B><span class="pattern">PianoBuilder</span>:</B>
+    Great. She's finished and all tested.
+
+    <BR><B><span class="pattern">InstrumentDirector</span>:</B>
+    OK, we have the Instrument built by the <span
+    class="pattern">InstrumentBuilder</span> you sent me.
+
+    <BR><B><span class="pattern">CEO (Client)</span>:</B> Good
+    work, thanks.
+
+    <H2>Comments on the <span class="pattern">Builder</span>
+    Pattern</H2>
+
+    <P> Did you notice how the <span class="pattern">InstrumentDirector</span>
+    knows nothing about pianos? All he knows is how to deal
+    with an <span class="pattern">InstrumentBuilder</span>. The
+    client could have provided a <span class="pattern">DrumBuilder</span>
+    and the result would have been a drum, built using the
+    same set of steps - retrieve parts, prepare machinery, etc.
+
+    <P>Actually, it wasn't just the set of steps. The <span
+    class="pattern">InstrumentDirector</span> also made a
+    decision about what to do if the machine is broken. In a more complex
+    environment, the directing logic will involve iteration (looping) and
+    if-then decisions, as well as looking up data and perhaps responding to
+    triggers such as external input.
+
+    <P>This sort of logic is a specialisation in itself, and actually has very
+    little to do with the particular <span class="pattern">Instrument</span>
+    being built. As long as <span class="pattern">Builders</span> are trained
+    so that they can be directed in a standard manner, the <span
+    class="pattern">Director</span> is able to ensure they do the building
+    using a standard procedure.
+
+    <P>The analogy to software should be clear. The pattern is used when a
+    client needs to build different, related, classes using a consistent
+    procedure.  It requests an object from the <span
+    class="pattern">Director</span>, ensuring it has an
+    appropriate <span class="pattern">Builder</span> associated
+    with it. The <span class="pattern">Director</span> has the
+    general algorithm for conducting the build, while the <span
+    class="pattern">Builder</span> actually carries out each
+    phase on the specific product type is is capable of building.
+
+    <P>When we say we should be able to direct the <span
+    class="pattern">InstrumentBuilders</span> in a standard
+    manner, we are talking <I>polymorphism</I>. That is, the <span
+    class="pattern">Builder</span> classes must all comply to
+    the same interface, so the <span class="pattern">Director</span> can make
+    the same method calls and have a consistent expectation about what will
+    happen.
+
+    <H2>Related Patterns</H2>
+
+    <UL>
+
+      <LI><B>Strategy:</B></LI>The <span class="pattern">Builder</span>
+      class is a kind of <span class="pattern">Strategy</span>
+      - we can plug in different <span
+      class="pattern">Builders</span> to receive different
+      objects. The <span class="pattern">Director</span> itself
+      also encapsulates a <span class="pattern">Strategy</span>
+      which could be substituted (this is slightly inconsistent with the
+      pattern as presented, which doesn't actually advise using a standard
+      interface for the <span class="pattern">Director</span>).
+
+      <LI><B>Abstract Factory:</B></LI>Another way to build classes.  <span
+      class="pattern">Builder</span> is about choosing a single
+      class from several related classes (usually, but not always, having a
+      common parent class).  <span class="pattern">Abstract Factory</span>
+      concerns the choice of an entire family of products.
+
+    </UL>
+
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+</p>
+

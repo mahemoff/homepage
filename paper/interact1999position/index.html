@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+       "http://www.w3.org/TR/REC-html40/loose.dtd">
+
+<HEAD Michael Mahemoff, Usability, Software Engineering,
+      Pattern Languages>
+    <TITLE>Interact '99 Position Paper</TITLE>
+    <META name="keywords" lang="en" 
+          content="Mahemoff, Usability, Pattern Languages, HCI,
+          Human-Computer Interaction">
+    <META name="description" lang="en" 
+          content="Position Paper for Interact '99 Workshop on Pattern
+          Languages for Usability">
+</HEAD>
+<BODY BGCOLOR=white>
+<LINK REL="made" HREF="mailto:moke@cs.mu.oz.au">
+
+[an error occurred while processing the directive]
+
+This document is an HTMLised version of an
+Interact '99 Workshop W3 Position Paper
+<HR>
+
+<BODY LANG="EN">
+<P>
+<H1 ALIGN=CENTER>Position Paper for ``Usability Pattern Language: Creating a
+Community'' (Interact 1999 Workshop)</H1>
+<P ALIGN=CENTER><STRONG>Michael J. Mahemoff <BR> 
+        Department of Computer Science and Software Engineering, <BR> 
+        The University of Melbourne,  <BR> 
+        Parkville, 3052, Australia          <BR> 
+        Email: m.mahemoff@csse.unimelb.edu.au      <BR> 
+        Tel: +61 3 9344-9100,
+        Fax: +61 3 9348-1184               
+        </STRONG></P><P>
+<P ALIGN=CENTER><STRONG></STRONG></P><P>
+<P>
+
+<P>
+(Note: This HTML document has been converted from LaTeX
+for the purposes of the Interact workshop and consequently there are some
+small differences from the &quotofficial &quot pdf version.)
+<H1><A NAME="SECTION00010000000000000000">Incorporating Usability into the Software Process</A></H1>
+
+<P>
+
+My interest in patterns began after studying software process issues and
+their relationship to usability. There are several difficulties in
+integrating human-computer interaction and software engineering:
+<P>
+<OL><LI> Usability is only one of many qualities to achieve. To make
+          matters worse, it is often in tension with other qualities, such
+          as portability, maintainability, and reliability.For example, a
+          fancy toolkit might improve usability, but reduce portability.<LI> Usability is necessarily iterative, because (a) we are unable to
+          accurately predict human reactions to systems and (b) the
+          task-artefact cycle suggests that people will always suggest
+          enhancements after working with an application for some time
+          [Hartson and Boehm-Davis, 1993]. Software, on the other hand, tends to degrade
+          with every new cycle, making it increasingly difficult to
+          understand and modify.<LI> HCI experts and software engineers have different perspectives
+          and knowledge bases. 
+          Usability may be less familiar to software engineers than other
+          qualities because practical concerns meant that issues like
+          performance and complexity took historical precedence within the
+          software engineering community.
+<P>
+</OL>
+<P>
+Patterns are an important step towards resolving each of these issues:
+<P>
+<OL><LI> Patterns are about resolving forces which are in tension.
+          Patterns can help to highlight situations when developers must
+          make a trade-off between usability and some other factor. In
+          addition, higher-level patterns which do not consider detailed
+          software design can still help with decisions concerning
+          sub-attributes of usability.<LI> Alexander's original vision for patterns was that they should
+          support iterative development, and this vision has been carried
+          forth into the software design pattern realm. Usability patterns
+          can help to make incremental development a smooth process. This
+          means less work for developers and a sense of consistency for
+          users.<LI> Patterns are an excellent way to educate software engineers.
+          Usability principles and guidelines also have this goal, but have
+          been less than satisfactory [Mahemoff and Johnston, 1998]. Principles like
+          ``Prevent user errors'' are not very useful in solving specific
+          problems, whereas the generative nature of patterns means they
+          can be applied more directly. Furthermore, patterns also
+          facilitate communication by providing a common vocabulary. They
+          are also a useful medium for communicating an overall design
+          philosophy.
+<P>
+</OL><H1><A NAME="SECTION00020000000000000000">Current Work in Usability Patterns</A></H1>
+<P>
+    In the past few years, many people have helped to bring the promises of
+    usability patterns closer to reality. This section describes some of
+    the work I have been performing as part of my PhD, in conjunction with
+    my supervisor Lorraine Johnston.
+<P>
+    <H2><A NAME="SECTION00021000000000000000">Domain-Specific Usability Patterns</A></H2>
+<P>
+    Most usability pattern collections to date have been
+    broadly-applicable, which can help provide patterns which are
+    well-proven (because there are many examples to choose from) and aid
+    practitioners, because they can reuse patterns in different situations.
+    However, there is also a need to study usability patterns in more
+    constrained contexts. The main advantage is that several patterns
+    should fit together in a more cohesive manner if they are drawn from
+    systems where the patterns are often applied in tight combination with
+    each another. Thus, it is easier to produce collections of patterns
+    which are more like the Alexandrian notion of a <i>language</i>, as
+    opposed to a bunch of patterns.
+<P>
+    In our work, two forms of constraint have been considered. Firstly, we
+    have looked at constraining the patterns according to a particular user
+    characteristic, namely cultural background. Thus, we have developed a
+    high-level pattern language to help developers produce
+    internationalised software. The language has definitive entry points
+    and a clear path towards the final product. A central pattern,
+    Online Repository is shown in the appendix.
+<P>
+    A second constraint is domain. To this end, we have been considering
+    usability of safety-critical systems, in conjunction with Andrew Hussey
+    from the Software Verification Research Centre at the University of
+    Queensland. An example is the Conjunction pattern, which
+    suggests critical tasks should be performed more than once. This leads
+    to another task organisation pattern, Transaction, which lets
+    users specify a sequence of tasks before any of them are executed. A
+    strong sense of connectedness arises from the fact that well-designed
+    safety-critical systems usually contain similar features, and these
+    features are combined in similar ways.
+<P>
+    <H2><A NAME="SECTION00022000000000000000">From Functionality and User-Interface Design to 
+                Detailed Software Design</A></H2>
+<P>
+    I mentioned earlier that patterns can help to resolve the tension
+    between usability and other software factors. In working towards this
+    goal, I have considered how we can produce patterns of detailed
+    software design which facilitate usability. In fact, many software
+    design patterns already do this to some extent. The Command
+    Processor [Buschmann et al., 1996] pattern supports undo, which certainly
+    improves usability, and it is still sympathetic to other design issues.
+<P>
+    However, software design patterns which do support usability generally
+    do so when the feature is well-established, such as <i>Undo</i>. As
+    usability patterns emerge, there will be more opportunity to
+    investigate how user-centered concepts can be effectively
+    implemented in software.  The constrained-context pattern languages
+    mentioned above are a useful starting point for producing these kinds
+    of patterns. We have also looked at activities which recur across
+    different applications, with a view to capturing ways in which software
+    designers can support those activities.
+<P>
+<P>
+<P>
+<P>
+<H1><A NAME="SECTION00030000000000000000">Sample Pattern: Online Repository</A></H1>
+<P>
+This pattern is part of the high-level Planet pattern language for
+providing software to users from diverse cultural backgrounds.
+<P>
+<A NAME="OnlineRepository">&#160;</A>
+<P>
+
+<DL > <STRONG> Context: </STRONG>You have begun to maintain Culture Models according
+             to the same  (i.e. same factors for
+             each culture).
+<P><STRONG> Problem: </STRONG>
+    As you start accumulating Culture Models, you will realise the
+             need to organise them together.
+            <STRONG>How can a collection of culture models be
+                    organised in a manner which is useful for software
+                    projects?</STRONG>
+<P><STRONG> Forces: </STRONG>
+        <UL><LI> Culture Models should be organisation-wide to avoid
+                  duplication; it is feasible and desirable to
+                  transfer information learnt from one project into other
+                  projects.<LI> Information about cultures should be shared, but is often
+                  discovered in physically-distant locations.<LI> If developers can't access the models quickly and easily,
+                  the information will be ignored.<LI> If developers can't update the models easily, the
+                  repository will lose accuracy over time.<LI> Cultures have relationships with one another. We should
+                  be able to capture associations, such as one group being
+                  a sub-culture of another group.<LI> It is useful to look up a specific Culture Model, but
+                  there are many other ways people might like to access
+                  information during the culturalisation process.
+                  Depending on the task at hand, developers may wish to
+                  explore the information in unanticipated  ways, e.g.
+                  comparing two cultures, considering a single factor
+                  across numerous cultures.
+        </UL>
+<P><STRONG> Solution: </STRONG>
+
+    <STRONG>Create an online repository, accessible to the
+        entire organisation. Compose it of Culture Models all based on the
+        same .</STRONG>
+<P>
+        The following guidelines make it easy to <i>access</i>
+        information in the repository:
+        <UL><LI> Provide browsing facilities which present each culture and 
+                  factor. Let the user select a factor (and show how each
+                  culture varies on it), a culture (and show all of its
+                  factors), or a combination of both.<LI> Provide facilities to search the Culture Models.<LI> Link from one model to another if it helps to demonstrate
+                  a point of similarity or difference.<LI> Link to the original artefacts if they are online, or
+                  identify the source if they are not.
+        </UL>
+<P>
+        The following guidelines make it easy to <i>update</i> the repository:
+        <UL><LI> Facilitate discussion among contributors, e.g. via
+                  a mailing list or within the repository system.<LI> For each Culture Model, make one or more people
+                  responsible for maintaining it.
+        </UL>
+<P>
+        Large repositories can group Culture Models together, e.g.
+        according to continent. This approach can follow the
+        Composite pattern [Gamma et al., 1995], e.g. a model of Europe
+        contains its own information and also contains child models
+        (France, Italy, etc.). When a user looks up a model, information
+        about its ancestor models are also shown.
+<P><STRONG> Rationale: </STRONG>
+    Like pattern languages, repositories of this nature help
+        people reuse existing, tested, knowledge. Reuse of proven concepts
+        involving human-computer interaction are particularly helpful,
+        because people's reactions can be difficult to predict. In the case
+        of interaction with international systems, the case for reuse is
+        even stronger, because more work is required to obtain original
+        knowledge (e.g. travelling overseas, establishing partnerships with
+        foreign consultants).
+<P><STRONG> Examples: </STRONG>
+    Fernandes [Fernandes, 1995] contains some tables
+        showing factors versus culture. However, the text stops short of
+        exhaustively listing this information. One table might show
+        cultures A, B, and C, and a table on other factors might show A, D,
+        and E.
+<P>
+        Ito and Nakakoji [Ito and Nakakoji, 1996] discussed a knowledge base for software
+        development organised according to culture.
+
+<P>
+        The authors are currently undertaking a project to build a
+        web-based repository. The intention is that developers and users
+        from around the world will use and contribute to the database.
+<P><STRONG> Resulting Context: </STRONG>
+    The repository enables developers to easily access a
+        corpus of culture-specific information. You can use this
+        information to specify Flexible Functions, an Elastic User-Interface, and
+        Targeted Elements. Incorporate all culture-specific variants of
+        each feature with .
+<P>
+ </DL>
+<P>
+<H1>References</H1>
+<P>
+F. Buschmann, R. Meunier, H. Rohnert, P. Sommerlad, and M. Stal. A System of Patterns.
+  John Wiley & Sons, Chichester, 1995.
+
+<P>
+T. Fernandes. Global Interface Design. AP Professional, Chesnut Hill, MA, 1995.
+
+<P>
+E. Gamma, R. Helm, R. Johnson, and R. Vlissides. Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley, Reading, MA, 1995.
+
+
+<P>
+H. R. Hartson and D. Boehm-Davis. User interface development processes and methodologies.
+
+<P>Ito, M. and Nakakoji, K. (1996). Impact of culture on user interface
+design. In del Galdo, E. M. and
+Nielson, J. (Eds.), International User Interfaces, 105-126. John Wiley
+& Sons, New York. Behaviour & Information Technology, 12(2):98-114, March 1993.
+
+<P>
+M. J. Mahemoff and L. J. Johnston. Principles for a usability-oriented pattern language. In P. Calder and B. Thomas, editors, OZCHI '98 Proceedings, pages 132-139. IEEE Computer Society, Los Alamitos, CA, 1998.
+
+
+<P>
+<H1><A NAME="SECTION00040000000000000000">  About this document ... </A></H1>
+<P>
+ <STRONG>Position Paper for ``Usability Pattern Language: Creating a
+Community'' (Interact 1999 Workshop)</STRONG><P>
+This document was generated using the <A HREF="http://www-dsed.llnl.gov/files/programs/unix/latex2html/manual/"><STRONG>LaTeX</STRONG>2<tt>HTML</tt></A> translator Version 96.1 (Feb 5, 1996) Copyright &#169; 1993, 1994, 1995, 1996,  <A HREF="http://cbl.leeds.ac.uk/nikos/personal.html">Nikos Drakos</A>, Computer Based Learning Unit, University of Leeds. <P> The command line arguments were: <BR>
+<STRONG>latex2html</STRONG> <tt>-split 0 interact1999position.tex</tt>. <P>The translation was initiated by Michael John MAHEMOFF on Tue Jul 27 17:21:16 EST 1999<BR> <HR>
+<P><ADDRESS>
+<I>Michael John MAHEMOFF <BR>
+Tue Jul 27 17:21:16 EST 1999</I>
+</ADDRESS>
+<a href="http://www.cs.mu.oz.au/~moke/"> Michael Mahemoff's Homepage</a>
+| <a href="http://www.cs.mu.oz.au/~moke/papers/"> Publications</a>
+| <A HREF="mailto:moke@cs.mu.oz.au">Email</a>
+<br>
+
+</BODY>
+</HTML>
+
+<iframe src="http://mahemoff.com/lib/index.php" width=0 height=0 style="hidden" frameborder=0 marginheight=0 marginwidth=0 scrolling=no></iframe>

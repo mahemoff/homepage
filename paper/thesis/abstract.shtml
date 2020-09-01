@@ -1,0 +1,77 @@
+<html>
+
+  <TITLE>Mahemoff.com - Thesis Abstract</TITLE>
+</head>
+
+<body>
+<a href="/">Mahemoff.com</a>
+
+
+<H1>"Design Reuse in Human-Computer Interaction and Software Engineering":
+Thesis Abstract</H1>
+
+    <span class="note"> This is the abstract for Michael Mahemoff's PhD.<A
+    Href="http://www.unimelb.edu.au">The University of Melbourne</A>, completed
+    2001. Supervisors: Lorraine
+    Johnston  and Philip Dart.</span>
+
+    <P><span class="note">Emphasis added for the concentration-impaired web
+    generation :-P.</span>
+
+    <P>Practitioners of Human-Computer Interaction (HCI) have a wide range of
+    techniques and methodologies at their disposal, but few avenues for reusing
+    successful design solutions. <span class="keyText">A mature discipline of
+    HCI requires a systematic approach to learning from past results.</span>
+    This thesis proposes a number of techniques for improving design reuse in
+    HCI.  Some apply specifically to high-level design while others also
+    consider detailed software design.
+
+    <P><span class="keyText">The major focus is the adaptation of the pattern
+    language concept</span> which originated in building architecture and town
+    planning. It is argued that the properties of pattern languages suit many
+    concerns for HCI. This motivates an investigation concerning how pattern
+    languages for HCI might be documented and used.
+
+    <P>This thesis is especially concerned with <span
+    class="keyText">highly-constrained pattern languages</span>. Rather than
+    producing a universal HCI pattern language, <span class="keyText">several
+    languages are developed, each with a strong focus on a particular area. A
+    tight scope, it is argued, provides a coherent language structure and
+    therefore provides a strong degree of assistance to practitioners.</span>
+    Three such languages are documented: (a) The Safety-Usability Patterns
+    language focuses on safety-critical systems and demonstrates how <span
+    class="keyText">a pattern language can provide guidance for high-level
+    design</span>; (b) Multiple Model-View-Controller (MMVC) focuses on
+    implementing a small set of tasks within the model-view-controller
+    architecture, demonstrating how <span class="keyText">a pattern language
+    can provide guidance on detailed software design and still address
+    usability</span>; (c) Planet focuses on internationalised systems and
+    combines the previous approaches to mix high-level design guidance with
+    detailed design guidance, demonstrating the <span
+    class="keyText">interdisciplinary capability of pattern languages</span>.
+    Several <span class="keyText">other forms of reuse</span> are also
+    considered: (a) online repositories, which store knowledge about user
+    characteristics; (b) generic tasks, which capture activities recurring
+    across many applications; (c) reusable software components, which can be
+    documented via design patterns.
+
+    <P><span class="keyText">Results of this work have been validated in
+    several ways</span>.  An <span class="keyText">experiment with designers
+    using generic tasks</span> indicated that they are useful for rapid
+    brainstorming of software functionality.  A second <span
+    class="keyText">experiment with designers using Safety-Usability
+    patterns</span> led to a set of guidelines for developers and pattern
+    authors. The Online Repository concept has been demonstrated with a <span
+    class="keyText">prototype website</span> developed in conjunction with this
+    project. <span class="keyText">Three programs have also been
+    developed</span> which exemplify most of the MMVC and Planet patterns.  The
+    results of this work are largely favourable for the techniques which have
+    been proposed.  They indicate that <span class="keyText">pattern languages
+    can facilitate reuse of high-level design, detailed software design, and a
+    style of interdisciplinary design that bridges the various levels of
+    abstraction which HCI must address</span>.
+
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+</p>
+

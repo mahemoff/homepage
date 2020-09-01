@@ -1,0 +1,254 @@
+<HTML>
+<HEAD>
+  <Meta name="author" content="Michael Mahemoff">
+  <Meta name="keywords" lang="en-us" content="Michael Mahemoff, Usability,
+    Software Engineering, Patterns, Agile">
+
+  <TITLE>Mahemoff.com - Links</TITLE>
+  <META name="keywords" lang="en" 
+        content="Mahemoff, Java, J2EE, Usability, Human-Computer-Interaction,
+        Software Engineering, Patterns, Extreme Programming, Agile">
+  <META name="description" lang="en" 
+        content="Homepage---Human-Computer Interaction, software development,
+        design patterns, architecture">
+  <LINK REL="icon" HREF="/favicon.jpg" TYPE="image/jpeg">
+</HEAD>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+       "http://www.w3.org/TR/REC-html40/loose.dtd">
+
+<LINK REL="made" HREF="mailto:michael@REMOVETHIS.mahemoff.com">
+<BODY BGCOLOR="white" TEXT="black">
+
+<Font size=small>
+    <TABLE bgcolor="#bbffff" width=100% CELLSPACING=0 CELLPADDING=4 BORDER=0>
+      <TR>
+        <TD width=2>
+          &nbsp;
+        </TD>
+        <TD  ALIGN=LEFT>
+          <A HREF="/">Mahemoff.com</A>
+  &nbsp;&gt;&nbsp;
+<A HREF="/paper/software/">Software</A> |
+<A HREF="/paper/patternLanguages.shtml">Usability Patterns</A> |
+<A HREF="/ps/">Programmasaurus</A>
+</Font>
+
+        </TD>
+        <TD bgcolor="bbffff" ALIGN=RIGHT>
+          <A Href="mailto:michaelREMOVETHIS@mahemoff.com">Michael&nbsp;@&nbsp;Mahemoff.com</A>
+
+
+        </TD>
+        <TD width=2>
+          &nbsp;
+        </TD>
+        </TR>
+    </TABLE>
+</Font>
+
+<BR>
+
+<FONT Color="black">
+
+
+<center>
+<H1> Michael Mahemoff's Links <br>
+</H1>
+</center>
+
+<H1> Software Usability </H1>
+
+    <UL>
+        <LI>
+        <A Href="http://www.hcibib.org/hci-sites/"> ACM's Links to
+        Human-Computer Interation Sites</A>
+
+        <LI>
+        <A Href="http://is.twi.tudelft.nl/hci/conference.html"> HCI
+        Conferences and workshops</A> Dates and paper deadlines for
+        anything related to HCI. Also links to the homepages, which can be
+        useful if you want to obtain papers from previous years (when
+        you're lucky enough to find them there!).
+
+        <LI> 
+        <A
+        HREF="http://www.umlchina.com/GUI/ShameRecent.htm">The Interface Hall
+        of Shame</A> Or, "How not to design your software". Don't worry,
+        there's a <A Href="http://www.umlchina.com/GUI/HallFame.htm">Hall of
+        Fame</A> as well. The original iarchitect.com site is gone, and these
+        seem to be mirrors. The bad news is they haven't been updated since
+        2000. The good news is blunders like this are timeless (maybe not such
+        good news, come to think of it).
+
+        <LI>
+        <A Href="http://www.useit.com/">useit.com</A>
+        Web usability Guru Jakob Nielsen's bi-weekly column for web designers.
+    </UL>
+
+<HR>
+
+<H1> HCI/Usability Patterns </H1>
+
+<H2>Portals</H2>
+
+  These portals have much more info on HCI patterns than this page - what are
+  you doing here?!!!
+
+  <UL>
+    <LI> <A Href="http://hcipatterns.org">hcipatterns.org</A>
+    An HCI pattern portal by Jan Borchers. Jan authored the first text on
+    HCI patterns.
+
+    <LI> Tom Erickson's <A Href=
+    "http://www.pliant.org/personal/Tom_Erickson/InteractionPatterns.html"> The
+    Interaction Design Patterns Page </A> Lots of links to work on HCI patterns.
+  </LI>
+
+  </UL>
+
+<H2> Pattern Languages</H2>
+
+  <UL>
+
+        <LI> <A Href="http://www.mit.edu/~jtidwell/interaction_patterns.html"> 
+             Common Ground: A Pattern Language for Human-Computer Interface
+             Design </A> &nbsp [HTML - Jennifer Tidwell] <BR> A substantial
+             language, with patterns covering aspects of the
+             user-interface.
+
+        <LI> <A
+        Href="http://www.mindspring.com/~coram/papers/experiences/Experiences.html">
+        Experiences -- A Pattern Language for User Interface Design </A>
+        &nbsp [HTML - Todd Coram and Jim Lee] <BR> A well-integrated language
+        of about 25 patterns with a similar scope to Tidwell's, although
+        the actual content is quite different. I should mention here that
+        Todd was an excellent shepherd for our PLOP 1999 submission :-). He
+        has a very thorough understanding of the often-overlooked
+        <em>language</em> aspect of patterns. 
+
+        <!-- Dead link
+        <LI> <A Href="http://www.it.bton.ac.uk/cil/usability/patterns/">
+              The Brighton Usability Pattern Collection </A> [HTML - The 
+              University of Brighton Usability Group.] <br>
+        Usability patterns at varying levels of abstractions.
+        -->
+
+        <LI> <A Href="papers/">My research</A>, which applies high-level and
+        low-level patterns with the intention of bringing SE and HCI closer
+        together.
+
+    </UL>
+
+    <H2> Usability Process </H2> 
+
+    <UL>
+        <LI> <A Href="http://www.google.com/search?q=cache:bptkdMzHQsYC:jerry.cs.uiuc.edu/~plop/plop99/">
+        Hold Me, Thrill Me, Kiss Me, Kill Me: Patterns for Developing Effective
+        Concept Prototypes </A>[Google Cache of PDF - Carol L. Stimmel]
+
+        <LI> <A
+        Href="http://www.google.com/search?q=cache:einJD18CxdUC:www.gespro.com/lafrenid/">
+        A Pattern-Supported Approach to the User Interface Design Process </A>
+        &nbsp [Google Cache of PDF - Asa Granlund and Daniel Lafreniere] <BR>
+        Not a pattern language, but a paper about pattern-supported process,
+        with some examples.
+
+    </UL>
+
+    <H2> Other Usability Patterns </H2> 
+    <UL>
+        <LI> <A Href="http://www.pliant.org/Papers-Area.html">
+        Evolution in Action: HCI in a World of Pliant Computing.</A> &nbsp
+        [PDF - Jed Harris and Austin Henderson] <BR>
+        A futuristic paper about pliant systems. Pliant systems researchers
+        claim that human factors should be considered for systems at a deeper
+        level, to fundamentally redesign computer architectures. Patterns? 
+        Part of the vision is the application of patterns as a common language
+        among multiple human and computer agents.<BR>
+        Also look out for Tom Erickson's work while you're there.
+    </UL>
+
+<HR>
+
+<H1> Web Resources on Patterns and Pattern Languages </H1>
+
+    <UL>
+    <LI> <A Href=
+         "http://www.pliant.org/personal/Tom_Erickson/InteractionPatterns.html">
+          The Interaction Design Patterns Page</A> The definitive set of
+          links to HCI-related patterns research.
+    <LI> <A Href="http://hillside.net/patterns/"> The Design
+          Patterns Homepage</A> Resources on software design patterns.
+    <LI> <A Href="http://gee.cs.oswego.edu/dl/pd-FAQ/pd-FAQ.html">
+          Patterns-Discussion FAQ</A> A good introduction to design
+          patterns. Frequently asked questions about the design patterns
+          concept itself, rather than about mailing lists, websites, etc.
+          (See the patterns homepage for that stuff). 
+    </UL>
+
+<HR>
+
+<H1> Patterns of Town Planning and Building</H1>
+
+  Where do patterns come from? Actually, many disciplines have used patterns in
+  one form or another. Formally speaking, though, the roots of software design
+  patterns can be traced back to Christopher Alexander's work on town planning
+  and buildings.
+
+    <UL>
+    <LI> <A Href=
+         "http://downlode.org/etext/patterns/"> Alexander
+         et al.'s Pattern Language</A> A handy summary covering all
+         253 patterns in the original town planning and building architecture
+         pattern language.
+
+    <LI> <A Href="http://g.oswego.edu/dl/ca/ca/ca.html"> Christopher
+         Alexander: An Introduction for Object-Oriented Designers</A>
+         Somewhat dated (1993), but still a good introduction to Alexander
+         if you're coming from the software end.
+    </UL>
+
+<HR>
+
+<H1> Software Engineering </H1>
+
+    <UL>
+        <LI> <A Href="http://www.qucis.queensu.ca/Software-Engineering/">
+        The Software Engineering Archives</A>
+        <LI> <A Href="http://catless.ncl.ac.uk/Risks">The Risks Digest</A>
+        Everything that could go wrong in software, and mostly did. We have a
+        long way to go.</UL>
+
+<P>
+<Font size=small>
+    <TABLE bgcolor="#bbffff" width=100% CELLSPACING=0 CELLPADDING=4 BORDER=0>
+      <TR>
+        <TD width=2>
+          &nbsp;
+        </TD>
+        <TD  ALIGN=LEFT>
+          <A HREF="/">Mahemoff.com</A>
+  &nbsp;&gt;&nbsp;
+<A HREF="/paper/software/">Software</A> |
+<A HREF="/paper/patternLanguages.shtml">Usability Patterns</A> |
+<A HREF="/ps/">Programmasaurus</A>
+</Font>
+
+        </TD>
+        <TD bgcolor="bbffff" ALIGN=RIGHT>
+          <A Href="mailto:michaelREMOVETHIS@mahemoff.com">Michael&nbsp;@&nbsp;Mahemoff.com</A>
+
+
+        </TD>
+        <TD width=2>
+          &nbsp;
+        </TD>
+        </TR>
+    </TABLE>
+</Font>
+
+
+</BODY>
+</HTML>
+

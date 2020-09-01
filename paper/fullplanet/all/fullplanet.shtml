@@ -1,0 +1,2155 @@
+<html>
+
+  <TITLE>Mahemoff.com - Planet Pattern Language for Software
+         Internationalisation</TITLE>
+</head>
+
+<body>
+<a href="/">Mahemoff.com</a>
+
+
+<!--l. 18--><p class="noindent"><H1>Planet Pattern Language for Software Internationalisation</H1>
+<!--l. 20--><p class="indent"><B>Planet supports development of internationalised systems. It guides on development process, high-level design,
+and detailed software design. 
+<P><A Href="/paper/language/">This paper</A>,
+presented at Interact 2001, motivates and summarises the language.</B>
+<!--l. 34--><p class="indent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 34--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-1000"></a><span 
+class="ptmb7t---144">Pattern 1. Export Schedule</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">You are beginning a project where users will come from a wide range of cultural backgrounds.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description">Internationalisation is a resource-intensive exercise.
+          <!--l. 44--><p class="noindent"><span 
+class="ptmb7t-">How can you allocate resources at a level befitting the needs of each culture, and at the same</span>
+          <span 
+class="ptmb7t-">time ensure that no more attention than necessary is devoted to any particular culture?</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span>  </dt><dd 
+class="description">&nbsp;    <ul class="itemize1"><li class="itemize">You should know which cultures will use your software, otherwise you cannot provide features
+                   which meet their needs.
+                   </li>
+                   <li class="itemize">It is often too expensive to produce for all audiences at the same time. Sometimes, a local
+                   version is prepared first and overseas users are considered later on, if at all.
+                   </li>
+                   <li class="itemize">Introducing a new culture may not be a simple localisation procedure. The new culture may
+                   necessitate  changes  to  the  core  product  and  this  can  be  painful.  As  one  example,  different
+                   cultures use different rules for sorting words. An English-language implementation can sort
+                   using  the  &#8220;<span 
+class="zptmcmrm-">&lt;</span>&#8221;  and  &#8220;<span 
+class="zptmcmrm-">&gt;</span>&#8221;  operators,  but  what  if  a  culture  with  a  different  alphabet  order  is
+                   introduced? If the comparisons are scattered across the code, then a programmer will have the
+                   unenviable task of replacing each one with a generic comparison function.
+                   </li></ul>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span>  </dt><dd 
+class="description"><span 
+class="ptmb7t-">Produce a schedule which indicates </span><span 
+class="ptmbi7t-">when </span><span 
+class="ptmb7t-">each target culture will be supported, and </span><span 
+class="ptmbi7t-">how important</span>
+          <span 
+class="ptmb7t-">it is to support each target culture. </span>Some cultures will not use the system until version 3.0 is released, but
+          these cultures should still be considered when version 1.0 is developed. The <span 
+class="pcrr7tn-">Online Repository</span>&nbsp;can be
+          consulted to determine which factors vary across the supported cultures. The localisation phase can then
+          address this variation.
+          <!--l. 79--><p class="noindent">In most businesses, interaction with the marketing department will be essential. When considering
+          attractiveness of foreign markets, consider size and value of customer demand, competitive importance of the
+          market, and availability of expertise <span class="cite">[<a 
+href="#XRafii95a">28</a>]</span>.
+          <!--l. 84--><p class="noindent">At this stage, establish the importance each culture places on different aspects of software. For
+          instance, an empirical study by Evers and Day <span class="cite">[<a 
+href="#XEvers97a">11</a>]</span> found that Indonesian subjects, compared with
+          Chinese subjects, were more attracted towards usability than certain other qualities (It must be
+          acknowledged that such studies represent a generalisation, since, in this case, there is much diversity
+          <span 
+class="ptmri7t-">within </span>the Chinese and Indonesian cultures. The study nevertheless supports the argument that
+          perceived importance of software attributes is culture-dependent.). Since you cannot maximise
+          every quality, this kind of information will tell you which areas to focus on for a given culture.
+          Empirical studies can obviously not be conducted for each culture, but there are certain cues which
+          will enable a rough guess. To understand the importance a culture places on different software
+
+     features:
+         <ul class="itemize1">
+         <li class="itemize">Consult stakeholders from each culture.
+         </li>
+         <li class="itemize">Consider whether certain products have succeeded in their target markets due to a particular
+         feature which their competitors lacked.
+         </li>
+         <li class="itemize">Determine if change requests from a particular culture exhibit recurring themes.</li></ul>
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Rationale:</span> </dt><dd 
+class="description">Identification of cultures in advance is a prerequisite for a functional core and internationalisation
+     framework which are flexible enough to make changes relatively straightforward.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span> </dt><dd 
+class="description">Searching for target markets, choosing how intensive the operation will be, and planning future
+     expansion is a well-established international marketing practice <span class="cite">[<a 
+href="#XJain93a">20</a>]</span>.
+     <!--l. 125--><p class="noindent">Uren et al. <span class="cite">[<a 
+href="#XUren93a">34</a>]</span> suggest that marketing staff should develop a list of target countries, even if translation is not
+     immediately required. Luong et al. <span class="cite">[<a 
+href="#XLuong95a">22</a>]</span> suggest that developers need to decide between a full localisation
+     and a partial localisation, and also consider whether to ship overseas simultaneously with the local
+     release.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">If your organisation has not already done so, start creating <span 
+class="pcrr7tn-">Culture Models</span>. You may need
+     to update existing <span 
+class="pcrr7tn-">Culture Models</span>&nbsp;to reflect any new cultures being considered or to account for aspects of
+     the cultures which are relevant to the new project. Once you have collected <span 
+class="pcrr7tn-">Culture Models</span>&nbsp;into an <span 
+class="pcrr7tn-">Online</span>
+     <span 
+class="pcrr7tn-">Repository</span>, you will be able to create a <span 
+class="pcrr7tn-">Multicultural System</span>&nbsp;suitable for cultures mentioned in the
+     schedule.
+     <!--l. 141--><p class="noindent">Note: For the remainder of this paper, the cultures mentioned in the <span 
+class="pcrr7tn-">Export Schedule</span>&nbsp;are referred to as
+     <span 
+class="ptmri7t-">Target Cultures</span>.
+     </dd></dl>
+<!--l. 151--><p class="indent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 151--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-2000"></a><span 
+class="ptmb7t---144">Pattern 2. Culture Model</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">You are working on software projects with <span 
+class="pcrr7tn-">Export Schedules</span>&nbsp;identifying which cultures will
+          use the system.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description">The  notions  of  usability  and  utility  are  culture-dependent.  You  have  to  understand  the  user
+          before you can begin working towards these qualities.
+          <!--l. 161--><p class="noindent"><span 
+class="ptmb7t-">How  do  you  support  development  decisions  which  depend  on  information  about  specific</span>
+          <span 
+class="ptmb7t-">cultures?</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span>  </dt><dd 
+class="description">&nbsp;    <ul class="itemize1"><li class="itemize">Extensive  information  may  be  required  to  support  development  decisions,  necessitating
+                   potentially expensive research activity. This effort will have to be repeated on new projects
+                   involving the same cultures unless explicit attempts are made to reuse it.
+
+         </li>
+         <li class="itemize">It  is  difficult  &#8212;  sometimes  impossible  &#8212;  to  reverse-engineer  details  about  cultures  just  by
+         looking at the resultant product. The Walkman has been successful in America largely due to
+         the fact that people do not want to be disturbed by the outside world. but it was originally
+         conceived by Sony&#8217;s co-founder to help listeners avoid disturbing others <span class="cite">[<a 
+href="#Xmooij98a">26</a>]</span>. An American
+         designer who simply observed a Walkman would probably not be able to predict its designers&#8217;
+         initial vision.
+         </li>
+         <li class="itemize">Even if you can access process documentation such as meeting minutes, information about
+         cultures will be scattered. This will be difficult to find specific information when it is needed
+         during internationalisation and localisation.</li></ul>
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span> </dt><dd 
+class="description"><span 
+class="ptmb7t-">Construct models of cultures which are relevant to your projects. When you discover new</span>
+     <span 
+class="ptmb7t-">information about a culture, add it to the culture model. </span>To improve opportunities for reuse, these models
+     can, and should, be held in common by the entire organisation, rather than pertaining to a specific
+     project. They are an asset which is refined over time, just like a software library or an estimation
+     technique.
+     <!--l. 197--><p class="noindent">The culture model can also include issues regarding the development process. Luong et al. <span class="cite">[<a 
+href="#XLuong95a">22</a>]</span> discuss the
+     English-language ability of the quality assurance engineers they deal with in Japan. Another
+     culture-dependent process is user testing; some cultures appear to be more reluctant than others to criticise a
+     product <span class="cite">[<a 
+href="#XHerman96a">16</a>]</span>.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Rationale:</span> </dt><dd 
+class="description">Consistent culture models provide a central point for culture-specific details and also help developers
+     compare and contrast cultures. If a developer notices that all of the cultures for a particular program use
+     Latin characters, then the internationalisation phase need not consider the possibility of non-Latin
+     character sets. Localisation will also be more efficient if similarities between cultures can be
+     exploited.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span> </dt><dd 
+class="description">There are several well-known culture models in anthropological and marketing literature. In
+     &#8220;Understanding Cultural Differences&#8221; <span class="cite">[<a 
+href="#XHall90a">15</a>]</span>, Hall and Hall explain several culture-dependent variables, e.g.
+     the level of detail people desire when presented with information, attitudes to personal space, whether or not
+     people like to perform tasks in parallel.
+     <!--l. 220--><p class="noindent">Luong et al. <span class="cite">[<a 
+href="#XLuong95a">22</a>]</span> provide details on localising for Asia. Numerous business texts describe the
+     intricacies of doing business with, or creating products for, a particular country <span class="cite">[<a 
+href="#XHynson90a">18</a>]</span> or region
+     <span class="cite">[<a 
+href="#XDanton90a">9</a>]</span>.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">Now that you&#8217;ve decided to create a culture model, you&#8217;ll need a way to structure it. A culture
+     model can be conceptualised in different ways; an extremely simple form is just an arbitrarily-ordered
+     collection of relevant documentation gathered from various projects. This pattern language focuses on one
+     means of characterising a culture: the <span 
+class="pcrr7tn-">Vector Metamodel</span>&nbsp;form.
+     </dd></dl>
+<!--l. 239--><p class="indent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 239--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-3000"></a><span 
+class="ptmb7t---144">Pattern 3. Vector Metamodel</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">You have decided to create some <span 
+class="pcrr7tn-">Culture Models</span>.
+
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span> </dt><dd 
+class="description">Culture models can be represented in different ways. The form you decide upon will determine
+     who is capable of using the culture models, as well as the range of activities the models will support.
+     <!--l. 249--><p class="noindent"><span 
+class="ptmb7t-">How do you represent all relevant information about each culture in a form which supports</span>
+     <span 
+class="ptmb7t-">internationalisation processes?</span>
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span> </dt><dd 
+class="description">&nbsp;  <ul class="itemize1">
+         <li class="itemize">A culture model should accurately reflect aspects of a culture which may impact on software
+         requirements. It should facilitate the two internationalisation phases &#8212; internationalisation and
+         localisation.
+         </li>
+         <li class="itemize">To ensure that it is always up-to-date, a culture model should be easy for people to contribute
+         to.
+         </li>
+         <li class="itemize">Culture models need to be expressed so as to be easily-accessed and understood by people
+         in diverse roles. This includes software engineers, human factors specialists, anthropologists,
+         marketing staff, and users.
+         </li>
+         <li class="itemize">It should be possible to compare and contrast culture models. A user of the repository should be
+         able to quickly determine how cultures differ from each other, and also notice commonalities.</li></ul>
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span> </dt><dd 
+class="description"><span 
+class="ptmb7t-">Determine the dimensions of cultures that interest you, and characterise each </span><span 
+class="pcrb7t-">Culture Model</span>&nbsp;<span 
+class="ptmb7t-">as</span>
+     <span 
+class="ptmb7t-">a vector with a value for each dimension (or &#8220;factor&#8221;)</span>. A culture model is then a description with each
+     dimension defined for that culture, e.g. if you decide the dimensions are language, timezone, and date
+     format, then <span 
+class="ptmri7t-">every </span>culture model in the repository will have those dimensions defined (definitions can be left
+     blank if it&#8217;s obvious or not yet known).
+     <!--l. 278--><p class="noindent">There are many potential sources for culture models. These include literature reviews, comments from local
+     branches or consultants, results from requirements elicitation and user interviews, and observations of the
+     system in action.
+     <!--l. 283--><p class="noindent">If desired, divide the dimensions into categories. For instance, Mahemoff and Johnston <span class="cite">[<a 
+href="#XMahemoff98b">23</a>]</span>,
+     following a suggestion by Yeo <span class="cite">[<a 
+href="#XYeo95a">36</a>]</span>, discuss two broad categories &#8212; overt and covert factors. The
+     former are obvious, tangible factors (e.g. date format), whereas the latter are ill-defined and
+     potentially controversial. Overt factors can further be divided into several categories: time, language,
+     writing, measures, formatting, and external systems (Table&nbsp;<span 
+class="ptmb7t-">??</span>). Covert factors are composed
+     of mental approach, perception, social rules, and usage context (Table&nbsp;<span 
+class="ptmb7t-">??</span>). The overt factors
+     could provide a valid starting point for your metamodel. The covert factors are more abstract
+     and in need of refining before they are placed into a repository. For example, the Perception
+     factor indicates icons should be chosen according to cultural understanding. Instead of including
+     a broad &#8220;Perception&#8221; factor, it would be worthwhile storing a field for each major icon type
+     you are likely to need. For instance, a &#8220;Mailbox Appearance&#8221; field if your software provides
+     email. With all of these factors, you will need to filter them according to your organisation&#8217;s
+     needs.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Rationale:</span> </dt><dd 
+class="description">The simplicity of this approach makes it accessible to people working in various roles. The metamodel
+     also has a close mapping to software concepts and is closely related to the <span 
+class="pcrr7tn-">Name-Value Pairs </span>pattern <span class="cite">[<a 
+href="#XRogers97a">29</a>]</span>.
+     A culture vector can be viewed as a data structure, with dimensions and cultural information
+     forming key-value pairs. In some instances, this could be mapped directly into a class or a
+     database table. At the very least, it shows that the classification scheme is well-understood by
+     developers.
+
+     <!--l. 323--><p class="noindent">If cultures are classified according to the same dimensions, then it is also easy to see where they are alike and
+     where they vary.
+     <!--l. 326--><p class="noindent">Is it overly simplistic to characterise a culture as merely a set of key-value pairs? This depends on how the
+     model is used. While the approach does not lead to a highly cohesive view of a culture, it is certainly a
+     practical way to enable people to use and update a model. Also, Hoft <span class="cite">[<a 
+href="#XHoft96a">17</a>]</span> discusses a number of
+     metamodels, all resembling this pattern; each lists several factors by which cultures vary. They mainly vary
+     in the ways they classify the factors, and the amount of attention paid to interaction among the
+     factors.
+     <!--l. 335--><p class="noindent">To avoid oversimplification, the value for each field can be a discussion of options, e.g. for
+     units of distance in America, imperial units are used in some contexts and metric units in other
+     contexts.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span> </dt><dd 
+class="description">Del Galdo <span class="cite">[<a 
+href="#XDelgaldo90a">10</a>]</span> presents several attributes of cultures. She divides them into categories, depending
+     on how closely they relate to the user-interface. The factors include character sets, numeric
+     formats, and currency formats (non-UI), as well as icons, colour, and screen text (UI). These
+     factors could form an embryo for a metamodel by which to document a culture model. Hoft <span class="cite">[<a 
+href="#XHoft96a">17</a>]</span>
+     discusses several well-known attempts to characterise a culture. Generally, these models are
+     based on a number of dimensions, e.g. collectivism versus individualism, attitudes towards
+     time.
+     <!--l. 349--><p class="noindent">POSIX has a standard way to define a locale, according to ordering of characters, output formats, message
+     strings, etc <span class="cite">[<a 
+href="#XZlotnick91a">37</a>]</span>. Java&#8217;s Locale class and other libraries provide ways for a developer to identify a resource
+     (<span 
+class="ptmri7t-">WelcomeIcon</span>), and then show how it relates to each supported locale (<span 
+class="ptmri7t-">Hello.jpg</span>, <span 
+class="ptmri7t-">Bonjour.jpg</span>). There is a
+     similar framework available for C++ <span class="cite">[<a 
+href="#XKreft97a">21</a>]</span>.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">: You have a consistent structure for your culture models. As you gather culture models
+     according to the vector metamodel, you&#8217;ll probably want a way to organise them together. To do this,
+     establish a <span 
+class="pcrr7tn-">Online Repository</span>&nbsp;based on a consistent <span 
+class="pcrr7tn-">Vector Metamodel</span>.
+     </dd></dl>
+<!--l. 371--><p class="indent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 371--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-4000"></a><span 
+class="ptmb7t---144">Pattern 4. Online Repository</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">You have begun to maintain <span 
+class="pcrr7tn-">Culture Models</span>&nbsp;according to the same <span 
+class="pcrr7tn-">Vector Metamodel</span>&nbsp;(i.e.
+          same factors for each culture).
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description">As you start accumulating <span 
+class="pcrr7tn-">Culture Models</span>, you will realise the need to organise them together.
+          <!--l. 381--><p class="noindent"><span 
+class="ptmb7t-">How can a collection of culture models be organised in a manner which is useful for software</span>
+          <span 
+class="ptmb7t-">projects?</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span>  </dt><dd 
+class="description">&nbsp;    <ul class="itemize1"><li class="itemize">Organisation-wide  Culture  Models  avoid  duplication;  it  is  feasible  and  desirable  to  transfer
+                   information learnt from one project into other projects.
+                   </li>
+                   <li class="itemize">Information about cultures is often discovered in physically distant locations.
+                   </li>
+                   <li class="itemize">If developers can&#8217;t access models quickly and easily, the information will be ignored.
+
+         </li>
+         <li class="itemize">If developers can&#8217;t update models easily, the repository will lose accuracy over time.
+         </li>
+         <li class="itemize">Cultures have relationships with one another. We should be able to capture associations, such
+         as one group being a sub-culture of another group.
+         </li>
+         <li class="itemize">It is useful to look up a specific <span 
+class="pcrr7tn-">Culture Model</span>, but there are many other ways people might
+         like to access information during the internationalisation process. Depending on the task at
+         hand, developers may wish to explore the information in unanticipated ways, e.g. comparing
+         two cultures, considering a single factor across numerous cultures.</li></ul>
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span> </dt><dd 
+class="description"><span 
+class="ptmb7t-">Create an online repository, accessible to the entire organisation. Compose it of </span><span 
+class="pcrb7t-">Culture</span>
+     <span 
+class="pcrb7t-">Models</span>&nbsp;<span 
+class="ptmb7t-">all based on the same </span><span 
+class="pcrb7t-">Vector Metamodel</span><span 
+class="ptmb7t-">.</span>
+     <!--l. 410--><p class="noindent">The following guidelines make it easy to <span 
+class="ptmri7t-">access </span>information in the repository:
+         <ul class="itemize1">
+         <li class="itemize">Provide browsing facilities which present each culture and factor. Let the user select a factor
+         (and show how each culture varies on it), a culture (and show all of its factors), or a combination
+         of both.
+         </li>
+         <li class="itemize">Provide facilities to search the <span 
+class="pcrr7tn-">Culture Models</span>.
+         </li>
+         <li class="itemize">Link from one model to another if it helps to demonstrate a point of similarity or difference.
+         </li>
+         <li class="itemize">Link to the original artifacts if they are online, or identify sources if they are not.</li></ul>
+     <!--l. 424--><p class="noindent">The following guidelines make it easy to <span 
+class="ptmri7t-">update </span>the repository:
+         <ul class="itemize1">
+         <li class="itemize">Facilitate discussion among contributors, e.g. via a mailing list or on the repository system
+         itself.
+         </li>
+         <li class="itemize">Make  one  individual  responsible  for  managing  the  overall  repository.  This  role  implies
+         promoting  the  repository  within  the  organisation  and  chasing  results  when  it  is  known  that
+         valuable information has been attained but not entered.
+         </li>
+         <li class="itemize">For  each  <span 
+class="pcrr7tn-">Culture Model</span>,  make  one  person  responsible  for  maintaining  it.  Some  <span 
+class="pcrr7tn-">Culture</span>
+         <span 
+class="pcrr7tn-">Models</span>&nbsp;may be maintained by the repository manager, but an expert on the culture is a better
+         candidate.</li></ul>
+     <!--l. 439--><p class="noindent">Large repositories can group <span 
+class="pcrr7tn-">Culture Models</span>&nbsp;together, e.g. according to continent. This approach can
+     follow the <span 
+class="pcrr7tn-">Composite </span>pattern <span class="cite">[<a 
+href="#XGamma95a">13</a>]</span>, e.g. a model of Europe contains its own information and also contains
+     child models (France, Italy, etc.). When a user looks up a model, information about its ancestor models are
+     also shown.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Rationale:</span> </dt><dd 
+class="description">Like pattern languages, repositories of this nature help people reuse existing, tested, knowledge. Reuse
+     of proven concepts involving human-computer interaction are particularly helpful, because people&#8217;s
+     reactions can be difficult to predict. In the case of interaction with international systems, the case for reuse is
+     even stronger, because more work is required to obtain original knowledge (e.g. travelling overseas,
+     establishing partnerships with foreign consultants).
+
+     <!--l. 455--><p class="noindent">The concept of grouping cultures serves a couple of purposes. Firstly, it emphasises commonalities among
+     similar cultures, more so than if both cultures had separate, identical, entries. Secondly, there
+     is obviously a great practical benefit: it prevents the need to create and maintain duplicated
+     entries.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span> </dt><dd 
+class="description">Fernandes <span class="cite">[<a 
+href="#XFernandes95a">12</a>]</span> contains some tables showing factors versus culture. However, the text stops short of
+     exhaustively listing this information. One table might show cultures A, B, and C, and a table on other factors
+     might show A, D, and E.
+     <!--l. 467--><p class="noindent">Ito and Nakakoji have prototyped a system for retrieving culture-specific details <span class="cite">[<a 
+href="#XIto96a">19</a>]</span>.
+     <!--l. 470--><p class="noindent">The authors are currently undertaking a project to build a web-based repository. The intention is that
+     developers and users from around the world will use and contribute to the database.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">The repository enables developers to easily access a corpus of culture-specific information.
+     You can use this information to specify a <span 
+class="pcrr7tn-">Multicultural System</span>.
+     </dd></dl>
+<!--l. 484--><p class="indent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 484--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-5000"></a><span 
+class="ptmb7t---144">Pattern 5. Multicultural System</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">You have created an <span 
+class="pcrr7tn-">Export Schedule</span>&nbsp;for a new product and it shows that a diverse cultural
+          base must be catered for.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description">
+          <!--l. 492--><p class="noindent"><span 
+class="ptmb7t-">How can you create software which is flexible enough to meet the needs of culturally-diverse</span>
+          <span 
+class="ptmb7t-">users?</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span>  </dt><dd 
+class="description">&nbsp;    <ul class="itemize1"><li class="itemize">Your system needs to be general enough to accommodate the users&#8217; needs and characteristics,
+                   which depend somewhat on culture.
+                   </li>
+                   <li class="itemize">System  features  can  take  on  one  of  several  forms.  For  example,  a  text  field  may  appear  in
+                   English or French. For most features, it is not realistic to provide a single form which will
+                   satisfy every culture.
+                   </li>
+                   <li class="itemize">The user is mainly interested in the form which relates most to their own culture, and it is
+                   therefore undesirable to provide more than one form simultaneously.
+                   </li>
+                   <li class="itemize">A software development team is likely to impose its own cultural biases on the target system,
+                   best intentions notwithstanding.
+                   </li>
+                   <li class="itemize">Users  from  different  cultures  may  use  the  same  software.  Your  software  will  become
+                   inaccessible to some users if you permanently fix each feature.
+                   </li>
+                   <li class="itemize">Software should not stereotype the user as belonging to one particular culture. It should let the
+                   user tune settings to meet their own particular needs.</li></ul>
+
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span> </dt><dd 
+class="description"><span 
+class="ptmb7t-">Produce a single version of the software with each all instances of each culture-dependent feature</span>
+     <span 
+class="ptmb7t-">present. Let the user set their preference for each feature.</span>
+     <!--l. 522--><p class="noindent">The user can then mix cultures by choosing forms of features which have been created with
+     different cultures in mind, e.g. an American can leave text in English, but select a European paper
+     format.
+     <!--l. 527--><p class="noindent">Sometimes, it is impractical to provide all forms of all features. This may be due to space constraints,
+     downloading times, or commercial considerations. In these cases, it is tempting to produce a separate version
+     for each culture. However, a better solution is to keep the software flexible, so that users can add and remove
+     the forms pertaining to a particular culture.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span> </dt><dd 
+class="description">Most major operating systems and applications provide versions tailored to specific cultures. Typically,
+     the main difference is language. Other differences include measurement units and currency. Often, it is
+     possible to add culture-specific extensions to the base system, e.g. help files in foreign languages and
+     international fonts.
+     <!--l. 541--><p class="noindent">Unicode, supported in HTML 4.0, is a text format containing characters from every major alphabet in the
+     world. This allows information pertaining to various cultures to be manipulated by the same
+     application.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">You will need to produce tailored features, specifically <span 
+class="pcrr7tn-">Flexible Functions</span>, an <span 
+class="pcrr7tn-">Elastic</span>
+     <span 
+class="pcrr7tn-">User-Interface</span>, and <span 
+class="pcrr7tn-">Targeted Elements</span>. As you develop these features, you will need
+     to develop <span 
+class="pcrr7tn-">Cultural Profiles</span>&nbsp;to specify which features relate to each supported culture.
+     <span 
+class="pcrr7tn-">Integrated Preferences</span>&nbsp;will enable the user to specify both culture-specific and culture-neutral
+     features.</dd></dl>
+<!--l. 558--><p class="noindent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 558--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-6000"></a><span 
+class="ptmb7t---144">Pattern 6. Flexible Function</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">You are producing a <span 
+class="pcrr7tn-">Multicultural System</span>&nbsp;and an <span 
+class="pcrr7tn-">Online Repository</span>&nbsp;has been established.
+          You have begun to specify the user-interface according to <span 
+class="pcrr7tn-">Elastic User-Interface </span>or you feel
+          that it is more appropriate to specify functionality before the user-interface.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description">A  culture-sensitive  user-interface  may  contribute  to  <span 
+class="ptmri7t-">usability</span>,  but  it  is  still  possible  that  the
+          software does not support the tasks users would like to perform, i.e. the functionality lacks utility.
+          These tasks and the context in which they occur can be related to culture.
+          <!--l. 573--><p class="noindent"><span 
+class="ptmb7t-">How  do  you  ensure  the  software  performs  the  functions  that  are  meaningful  and  useful  to</span>
+          <span 
+class="ptmb7t-">people from different cultures?</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span>  </dt><dd 
+class="description">&nbsp;    <ul class="itemize1"><li class="itemize">Software is typically written with specific domains in mind, whether broad (e.g. a spreadsheet)
+                   or narrow (e.g. a code inspection tool).
+                   </li>
+                   <li class="itemize">Domains &#8212; whether broad or narrow &#8212; are not homogeneous with respect to culture.
+                   </li>
+                   <li class="itemize">Usability is also influenced by the user&#8217;s culture, and usability derives from more than just the
+                   user-interface. Flexible searching, for instance, cannot be achieved just by applying <span 
+class="pcrr7tn-">Elastic</span>
+         <span 
+class="pcrr7tn-">User-Interface</span>.</li></ul>
+
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span> </dt><dd 
+class="description"><span 
+class="ptmb7t-">When you generate a new function, check if it is culture-specific, and if so, refine it to meet the</span>
+     <span 
+class="ptmb7t-">needs of your target cultures.</span>
+     <!--l. 592--><p class="noindent">Break the requirements phase into several smaller stages, where each stage consists of creating and/or
+     refining a small set of related requirements. This way, you can progress incrementally, so that each stage can
+     take into consideration the cultures mentioned in the <span 
+class="pcrr7tn-">Export Schedule</span>. At each stage, consider the
+     impact on the target cultures. Some cues which might suggest culture is an important factor
+     include:
+         <ul class="itemize1">
+         <li class="itemize">a requirement depends upon legislation (a taxation rule).
+         </li>
+         <li class="itemize">a requirement implies an organisational role (only certain people are authorised to shut down
+         the assembly line).
+         </li>
+         <li class="itemize">a  requirement  is  based  on  a  philosophical  stance  (a  teacher  can  annotate  text  but  a  student
+         cannot <span class="cite">[<a 
+href="#XNielsen90a">27</a>]</span>).
+         </li>
+         <li class="itemize">a requirement is underpinned by certain ethical values (an employee&#8217;s email may be reviewed
+         by supervisors).</li></ul>
+     <!--l. 611--><p class="noindent">This process may generate new questions about cultures which the repository should be consulted to solve. If
+     it cannot solve them, seek the most important answers by alternative means (e.g. interviews with domain
+     experts) and update the repository. Once the answers to these questions are known, you will be in a better
+     position to refine the requirements. Your initial idea for a requirement may form the basis of a
+     suitable default (a <span 
+class="pcrr7tn-">Universal Default</span>), but you may need to extend it to satisfy all target
+     cultures.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span> </dt><dd 
+class="description">Time-keeping variations imply more than just differences in user-interfaces. Each supported calendar
+     format requires functionality dedicated to handle standard operations (e.g. finding weekday from date,
+     incrementing date). The situation becomes even more complex when differences in other areas, like
+     timezones and work cycles, are considered.
+     <!--l. 629--><p class="noindent">Sometimes, a standard function is undesirable or not worth the effort. Japanese dates are stored according to
+     the number of years of the present Emperor&#8217;s reign. Lotus learned that a feature allowing users to return the
+     year back to zero was offensive, because it implied the Emperor&#8217;s mortality, and removed the feature <span class="cite">[<a 
+href="#XFernandes95a">12</a>]</span>.
+     Another Japanese example is the suggestion that Japanese users prefer planning ahead instead of
+     trial-and-error <span class="cite">[<a 
+href="#XIto96a">19</a>]</span>. There may be a case for scaling down the <span 
+class="ptmri7t-">Undo </span>function, or not implementing it at all, if
+     a large proportion of users are Japanese.
+     <!--l. 640--><p class="noindent">Currency differences can lead to complicated functionality, especially when conversions are required. The
+     introduction of the Euro is a familiar example. A more complicated example is the currency recorded for
+     transactions. Some countries denominate imports in their own currencies, while other countries denominate
+     imports in US dollars.
+     <!--l. 647--><p class="noindent">Nielsen discussed a French educational product which enables teachers to annotate poems <span class="cite">[<a 
+href="#XNielsen90a">27</a>]</span>. He noted
+     that in some countries, it would more appropriate to give students the same ability. The decision
+     to include this kind of functionality rests on cultural values such as attitudes to learning and
+     authority.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">Iterate between this pattern and <span 
+class="pcrr7tn-">Elastic User-Interface</span>&nbsp;until you are satisfied with
+     functionality and user-interface structure. Establish a <span 
+class="pcrr7tn-">Universal Default</span>&nbsp;for each function in case the
+     user&#8217;s culture has not been specifically catered for.
+     </dd></dl>
+
+<!--l. 664--><p class="indent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 664--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-7000"></a><span 
+class="ptmb7t---144">Pattern 7. Elastic User-Interface</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">You are producing a <span 
+class="pcrr7tn-">Multicultural System</span>&nbsp;and an <span 
+class="pcrr7tn-">Online Repository</span>&nbsp;has been established.
+          You have a solid understanding of general functionality after applying <span 
+class="pcrr7tn-">Flexible Function</span>, or you
+          feel that it is more appropriate to specify the user-interface before concentrating on functionality.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description">The same functionality can be presented to the user in different ways.
+          <!--l. 677--><p class="noindent"><span 
+class="ptmb7t-">How do you create a user-interface which can be used easily and effectively by all targeted</span>
+          <span 
+class="ptmb7t-">cultures?</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span>  </dt><dd 
+class="description">&nbsp;    <ul class="itemize1"><li class="itemize">Different  cultures  use  different  schemes  for  representing  information.  Text  direction,  for
+                   example, can be left-to-right, top-to-bottom, right-to-left. Relative positioning of graphics and
+                   highlighting mechanisms also vary <span class="cite">[<a 
+href="#XSukaviriya90a">31</a>]</span>.
+                   </li>
+                   <li class="itemize">Some  cultures  want  more  information,  or  different  information,  than  others.  Some  cultures
+                   are more accustomed than others to inferring missing details <span class="cite">[<a 
+href="#XHall90a">15</a>]</span>. Cultures may also vary in
+                   the nature of information required. The right feature cannot just be plugged in later on (e.g. a
+                   culture-specific icon or language-specific string).
+                   </li>
+                   <li class="itemize">Human-human interaction varies considerably across cultures, and this can translate to style of
+                   human-computer dialogue, e.g. reactivity versus proactivity exhibited by participants.
+                   </li></ul>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span>  </dt><dd 
+class="description"><span 
+class="ptmb7t-">Design the overall structure for the user-interface flexibly, so that UI elements can subsequently</span>
+          <span 
+class="ptmb7t-">be re-defined and rearranged without massive design changes.</span>
+          <!--l. 706--><p class="noindent">The precise details about what information you are presenting, and how it is arranged will not become clear
+          until the localisation phase. Therefore, develop an elastic user-interface so that the user-interface is not fixed
+          during the internationalisation phase.
+          <!--l. 711--><p class="noindent">As with <span 
+class="pcrr7tn-">Flexible Function</span>, break the user-interface specification process into several stages, so that you
+          can plan each subsequent stage in the light of the cultures being targeted.
+          <!--l. 715--><p class="noindent">Two general guidelines apply:
+                   <ul class="itemize1">
+                   <li class="itemize">Consult  the  repository  or  use  other  means  (e.g.  user  testing)  to  discover  how  elastic  the
+                   user-interface structure must be. A culture&#8217;s writing direction can indicate the order in which
+                   material of a non-textual nature is also perceived. Also, text size will vary due to variations
+                   in alphabet, word lengths, grammar, and conventions. This will affect the space allocated for
+                   writing.
+                   </li>
+                   <li class="itemize">Once the overall structure is present, you will have identified the UI elements. However, the
+                   precise details of UI elements depend on culture. Therefore, at this stage, identify which UI
+                   elements are culture-specific and leave them abstract, e.g. a button to delete a file could be
+                   called <span 
+class="ptmri7t-">delete-file </span>and its type simply declared as a button with a bitmap and a label. After this
+                   pattern has been applied, an artist performing localisation might create a cross for one culture
+                   and a skull-and-crossbones for another, with accompanying labels in the appropriate language.
+
+         </li></ul>
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Rationale:</span> </dt><dd 
+class="description">Complicated changes to the user-interface, such as reversing order of elements, can necessitate
+     widespread code changes if they are not designed for. Also, a common problem is the introduction of a
+     language with text too large to fit in its usual location (e.g. a menu bar or dialogue box) <span class="cite">[<a 
+href="#XLuong95a">22</a>]</span>.
+     This would be fairly trivial to prevent if it was known that the language was scheduled for
+     introduction.
+     <!--l. 750--><p class="noindent">According to the Slinky meta-model <span class="cite">[<a 
+href="#XCoutaz94b">8</a>]</span>, it is possible to split user-interface, human-computer dialogue, and
+     functional core. Architectures based on Slinky should provide adequate support for developers who wish to
+     create <span 
+class="pcrr7tn-">Elastic User-Interfaces</span>. Coldewey&#8217;s &#8220;User Interface Software&#8221; pattern language also covers
+     separation of user-interface and domain <span class="cite">[<a 
+href="#XColdewey98a">6</a>]</span>.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span> </dt><dd 
+class="description">Some programs enable text to be shown and inserted in right-to-left as well as left-to-right
+     modes. Farsi support within the Vim text editor <span class="cite">[<a 
+href="#XVim99a">35</a>]</span> lets users dynamically switch between
+     orientations, and can simultaneously show one file in two different windows presented in separate
+     orientations.
+     <!--l. 765--><p class="noindent">The initial website for some browsers depends on the region of the software.
+     <!--l. 768--><p class="noindent">The web supports various layouts. Horizontal orientation of layout (e.g. whether links are on left or right) is
+     correlated with the orientation of text in the originating country <span class="cite">[<a 
+href="#XBarber98a">2</a>]</span>. It is worth noting, though, that an
+     individual site generally does not provide more than one layout.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">Iterate between this pattern and <span 
+class="pcrr7tn-">Flexible Function</span>&nbsp;until you are satisfied with functionality
+     and user-interface structure. You can design specific features according to <span 
+class="pcrr7tn-">Targeted Element</span>. Establish a
+     <span 
+class="pcrr7tn-">Universal Default</span>&nbsp;for the UI structure in case the user&#8217;s culture has not been specifically catered
+     for.
+     </dd></dl>
+<!--l. 787--><p class="indent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 787--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-8000"></a><span 
+class="ptmb7t---144">Pattern 8. Targeted Element</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">You have prepared an <span 
+class="pcrr7tn-">Elastic User-Interface</span>.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description"><span 
+class="ptmb7t-">How can you create specific elements to plug into the user-interface framework?</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span>  </dt><dd 
+class="description">&nbsp;    <ul class="itemize1"><li class="itemize">The  purpose,  state,  and  workings  of  a  user-interface  element  should  be  clear  from  its
+                   appearance.
+                   </li>
+                   <li class="itemize">A  user-interface  element&#8217;s  appearance  can  be  misinterpreted  if  the  user&#8217;s  culture  was  not
+                   considered in designing it. An extreme case is when users are presented with foreign languages,
+                   but there are more subtle instances. The famous Macintosh trashcan looked like a postal box to
+                   Britons, causing great frustration when they tried to e-mail their work <span class="cite">[<a 
+href="#XTaylor92a">32</a>]</span>!
+                   </li>
+                   <li class="itemize">It is also possible for a feature to be correctly identified at a surface level, but still be completely
+                   inappropriate.  Many  applications  use  hand  gestures  to  represent  certain  concepts,  but  some
+                   of these are offensive in some countries <span class="cite">[<a 
+href="#XFernandes95a">12</a>]</span>. Similarly, a given colour can convey different
+                   moods, depending on the culture in question <span class="cite">[<a 
+href="#XRusso93a">30</a>]</span>.</li></ul>
+
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span> </dt><dd 
+class="description"><span 
+class="ptmb7t-">For each abstract element contained in the </span><span 
+class="pcrb7t-">Elastic User-Interface</span>&nbsp;<span 
+class="ptmb7t-">specification, provide</span>
+     <span 
+class="ptmb7t-">an instantiation targeted to each culture in the </span><span 
+class="pcrb7t-">Export Schedule</span><span 
+class="ptmb7t-">.</span>
+     <!--l. 823--><p class="noindent">The <span 
+class="pcrr7tn-">Online Repository</span>&nbsp;can be consulted for guidance. If it proves insufficient, investigate further and
+     remember to feed results back in to the repository for future use.
+     <!--l. 827--><p class="noindent">Many elements will have a common instantiation for an entire group of cultures. This is where the idea of
+     composite cultures discussed in the <span 
+class="pcrr7tn-">Online Repository</span>&nbsp;can be useful. For instance, a group of cultures
+     called &#8220;English-language&#8221; can share the same text (of course, this would be a compromise
+     because it is preferable to have &#8220;USA-English&#8221;, &#8220;Australian-English&#8221;, etc.). Such a grouping
+     system would need to be many-to-many rather than strictly hierarchical, i.e. a country such as
+     England might belong to several groups, e.g. &#8220;English-Language&#8221;, &#8220;Commonwealth&#8221;, &#8220;Great
+     Britain&#8221;.
+     <!--l. 839--><p class="noindent">The <span 
+class="pcrr7tn-">Online Repository</span>&nbsp;can help to identify features which are misleading or offensive. However, user
+     testing is also essential since people from external cultures can overlook this kind of problem. In
+     marketing, there are countless examples of brand-names and advertisements which were actually
+     used, despite the fact that any lay-person could see the folly, such as products named after
+     swear-words and products with unwanted functions (many examples are described by Meloan
+     <span class="cite">[<a 
+href="#XMeloan98a">25</a>]</span>).
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span> </dt><dd 
+class="description">This pattern is exemplified by any software that supports different languages, address formats, units of
+     measurement, currency, etc. Tools and libraries like Java&#8217;s MessageFormat class support the corresponding
+     development process.
+     <!--l. 853--><p class="noindent">The culture-specific partners of the <span 
+class="ptmri7t-">Yahoo! </span>website are another example. They are organised in the same way
+     as their parent, but contain information specialised to their culture, such as weather for certain cities and
+     status of local stockmarkets.
+     <!--l. 858--><p class="noindent">Java&#8217;s MessageFormat class allows programmers to specify a culture-specific format without
+     committing to precise data. An English format can be &#8220;subject-verb-object&#8221;, while a Japanese
+     format can be &#8220;subject-object-verb&#8221;. Then, only a single statement identifying the subject,
+     object, and verb, is required. This avoids having two print statements whenever a message is
+     generated.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">The system contains culture-specific elements, ready to be plugged in whenever a user of the
+     appropriate culture requires them. Since it can be expensive to target every element to every
+     culture, provide a <span 
+class="pcrr7tn-">Universal Default</span>&nbsp;in case the user&#8217;s culture has not been specifically catered
+     for.
+     </dd></dl>
+<!--l. 882--><p class="indent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 882--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-9000"></a><span 
+class="ptmb7t---144">Pattern 9. Universal Default</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">You  have  prepared  functionality  and  the  user-interface  according  to  <span 
+class="pcrr7tn-">Flexible Function</span>,
+          <span 
+class="pcrr7tn-">Elastic User-Interface</span>, and <span 
+class="pcrr7tn-">Targeted Element</span>.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description">Localisation is costly and requires substantial knowledge about target cultures. Providing many
+          features for many cultures can lead to work in the order of <span 
+class="zptmcmrm-">m</span><span 
+class="zpzccmry-">×</span>&nbsp;<span 
+class="zptmcmrm-">n</span>.
+          <!--l. 894--><p class="noindent"><span 
+class="ptmb7t-">How  do  you  optimise  resources  when  there  are  many  features  (functions,  user-interface</span>
+          <span 
+class="ptmb7t-">arrangements, user-interface elements), each of which depends on a wide cross-cultural base?</span>
+
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span> </dt><dd 
+class="description">&nbsp;  <ul class="itemize1">
+         <li class="itemize">Features should generally be tailored, because a single version of a feature is rarely adequate
+         for all cultures. If the single version is targeted to one culture, other cultures may suffer; if
+         the version is intended to be universal and not belong to any particular culture, it may be too
+         general and suit no-one at all.
+         </li>
+         <li class="itemize">Tailoring software features to a culture is an expensive, time-consuming activity. It may involve
+         extensive research and requires local experts.
+         </li>
+         <li class="itemize">It is not always feasible to tailor software for small cultures or to cultures that have unique
+         needs that are difficult to implement.
+         </li>
+         <li class="itemize">An <span 
+class="pcrr7tn-">Export Schedule</span>&nbsp;cannot always correctly anticipate which cultures will use the software.
+         People from unsupported cultures might move to targeted areas or download software from a
+         website.
+         </li></ul>
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span> </dt><dd 
+class="description"><span 
+class="ptmb7t-">For each culture-dependent feature in the target system, make a default which is universally</span>
+     <span 
+class="ptmb7t-">meaningful. </span>The aim is to reach a fallback setting in case nothing has been tailored for some cultures.
+     This will never be as good as a tailored feature, but it is better than producing a default which
+     does not consider the cultural issue at all (e.g. one which is only suitable for the developer&#8217;s
+     culture).
+     <!--l. 926--><p class="noindent">The following guidelines will help when creating universal defaults:
+         <ul class="itemize1">
+         <li class="itemize">Provide text in the most familiar language among supported cultures.
+         </li>
+         <li class="itemize">Endeavour to produce images which are easy to understand and free from cultural bias.
+         </li>
+         <li class="itemize">Since not everyone will know the most familiar language, try to replace text, e.g. button labels,
+         with meaningful images.
+         </li>
+         <li class="itemize">The familiar language may still be non-native for many users. Avoid the use of jargon and
+         concepts which would only be familiar to a subset of supported cultures.
+         </li>
+         <li class="itemize">Avoid concepts which might offend some cultures.</li></ul>
+     <!--l. 942--><p class="noindent">For organisation-specific <span 
+class="pcrr7tn-">Online Repositories</span>, it may be useful to include a &#8220;Universal&#8221; Culture Model
+     in the <span 
+class="pcrr7tn-">Online Repository</span>. This would contain organisation-wide defaults. Such a model would be less
+     useful for a repository shared by the overall community.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Rationale:</span> </dt><dd 
+class="description">In some ways, this pattern resembles the na&iuml;ve approach to internationalisation which claims that we
+     should simply provide universal features. The difference here is that the pattern is seen as a
+     fallback to help reduce development effort, and is certainly not claimed to be ideal from the user&#8217;s
+     point-of-view.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span> </dt><dd 
+class="description">Numerous websites provide versions in two languages: one in the native language and one in English.
+     English is being used as the language which will reach the most people.
+
+     <!--l. 957--><p class="noindent">Some icons and metaphors from popular software paradigms are well-understood in different cultures. Web
+     browsers often use left and right navigation arrows. Word-processors and painting programs use a
+     blank page to represent a new document and scissors for cutting. Help is often represented by a
+     question-mark.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">There is now a default for each user-interface feature, to account for cases when the user&#8217;s
+     culture has not been specifically catered for.
+     </dd></dl>
+<!--l. 983--><p class="indent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 983--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-10000"></a><span 
+class="ptmb7t---144">Pattern 10. Cultural Profile</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">You are designing a <span 
+class="pcrr7tn-">Multicultural System</span>.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description">
+          <!--l. 990--><p class="noindent"><span 
+class="ptmb7t-">How do you handle configuration of features which are culture-specific?</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span>  </dt><dd 
+class="description">&nbsp;    <ul class="itemize1"><li class="itemize">A 
+<span 
+class="pcrr7tn-">Multicultural System</span>&nbsp;has a lot of choices because each feature has several culture-specific
+                   variants, all of which exist in a single version. Configuring can be time-consuming for users.
+                   </li>
+                   <li class="itemize">Most users want to begin working on a product right away, rather than exert effort configuring it.
+                   There is a probably a good reason why the user has just downloaded or purchased the product,
+                   and loaded it up for the first time.
+                   </li>
+                   <li class="itemize">Users may not be capable of specifying the appropriate settings for some variables, even in their
+                   own country. Imagine asking a user to choose among grammatical rules for a grammar-checker!
+                   </li></ul>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span>  </dt><dd 
+class="description"><span 
+class="ptmb7t-">Provide a default profile for each target culture, a profile which specifies the value of each</span>
+          <span 
+class="ptmb7t-">culture-dependent feature. </span>As soon as the user specifies the culture, they can begin working right away,
+          tweaking settings to their idiosyncratic preferences whenever desired.
+          <!--l. 1019--><p class="noindent">An additional benefit is that users can dynamically switch between cultures. This may be of use when two
+          people share the same application. It can also be useful to some users who work in different &#8220;culture modes&#8221;.
+          Some people think in one language while they work, but think in their own language during recreation. The
+          phenomenon of &#8220;code-switching&#8221;, i.e. alternating between languages, is common when someone has
+          acquired technical skills in a foreign language <span class="cite">[<a 
+href="#XGrosjean82a">14</a>]</span>. Many people in multinational firms may work with
+          software in English, but perform personal functions such as online banking and email in their native
+          languages.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span>  </dt><dd 
+class="description">The locale library in Linux defines several culture-related options, e.g. language, currency. However,
+          instead of setting these individually, the user can simply set the LC_ALL variable, which ensures each setting
+          is appropriate.
+          <!--l. 1036--><p class="noindent">The Dell website <span class="cite">[<a 
+href="#XDell00a">7</a>]</span> has different pages depending on country of origin. Various settings then relate to the
+          country, e.g. support phone numbers, available purchase items.
+
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">A number of cultural profiles are available. <span 
+class="pcrr7tn-">Citizen ID</span>&nbsp;provides a mechanism for the system
+     to determine which profile to adopt.
+     </dd></dl>
+<!--l. 1050--><p class="indent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 1050--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-11000"></a><span 
+class="ptmb7t---144">Pattern 11. Citizen ID</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">You have an application with several <span 
+class="pcrr7tn-">Cultural Profiles</span>.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description">Versions must sometimes be released separately for each culture, for technical or commercial
+          purposes. More flexibility can be offered if details for all cultures can be incorporated into the same
+          version. However, not all settings can be active at once.
+          <!--l. 1060--><p class="noindent"><span 
+class="ptmb7t-">How can the program determine the appropriate settings for a given user?</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span>  </dt><dd 
+class="description">&nbsp;    <ul class="itemize1"><li class="itemize">In the absence of other knowledge, the settings are predominately driven by the user&#8217;s culture.
+                   </li>
+                   <li class="itemize">The user&#8217;s culture does not normally vary during the same session, or even across sessions.
+                   </li>
+                   <li class="itemize">Users do not care about the distinction between the present session and future sessions. This is
+                   merely a technical reality because of machines being switched off, and limitations of memory
+                   and other resources. All a user needs to know is that they interact with the same program at
+                   different points in time.
+                   </li>
+                   <li class="itemize">Information  which  is  well-known  to  the  user  and  unlikely  to  change  should  be  represented
+                   minimally within the user-interface, if at all.</li></ul>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span>  </dt><dd 
+class="description"><span 
+class="ptmb7t-">Determine the user&#8217;s culture on first use and ensure that this preference persists into the future.</span>
+          <span 
+class="ptmb7t-">Select the </span><span 
+class="pcrb7t-">Cultural Profile</span>&nbsp;<span 
+class="ptmb7t-">based on the user&#8217;s Citizen ID. </span>Typically, the user selects their location
+          from a menu of names or by clicking on a flag or map. The program may also obtain it from the operating
+          system. Once the user has specified their preference, the choice does not have to be shown. It is sufficient to
+          re-display the preference whenever the user starts the program, e.g. on the splash screen. This ensures
+          they have not accidentally set the wrong culture or inherited someone else&#8217;s preferences. A
+          similar effect can be achieved with websites using persistent cookies or redirecting to a localised
+          subsite.
+          <!--l. 1091--><p class="noindent">When a user specifies or re-specifies their culture, this has the effect of re-setting culture-specific
+          settings.
+          <!--l. 1094--><p class="noindent">It may be possible to obtain the user&#8217;s culture from the external environment &#8212; by querying the operating
+          system or a related product. Use such data as a first guess and confirm with the user on first usage. For
+          instance, if you present a menu of cultures, initially select the best guess.
+          <!--l. 1100--><p class="noindent">There will need to be a mapping from each Citizen ID to a particular <span 
+class="pcrr7tn-">Cultural Profile</span>. A one-to-one
+          mapping is possible, but it will often not be practical. For example, Canada and USA might have the same
+          <span 
+class="pcrr7tn-">Cultural Profile</span>. The operating system might identify users by their country, but this will need to be
+          mapped to the same <span 
+class="pcrr7tn-">Cultural Profile</span>.
+
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span> </dt><dd 
+class="description">Modern operating systems usually ask the user about their location upon installation. They can use this
+     information to set defaults for timezones, character sets, and other information. Other programs can
+     subsequently query this data to set their own defaults.
+     <!--l. 1112--><p class="noindent">Websites often let the user click on a flag or some text to set their language preferences. Alvarez et al. <span class="cite">[<a 
+href="#XAlvarez98a">1</a>]</span>
+     designed a bilingual website which only contains links to the other language from each language&#8217;s
+     homepage. Since the user is not likely to change languages, this strategy optimises screen real
+     estate.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">The users culture is known to the system and will be used to set initial values for
+     culture-specific features, i.e. <span 
+class="pcrr7tn-">Flexible Functions</span>, aspects of the <span 
+class="pcrr7tn-">Elastic User-Interface</span>, and
+     <span 
+class="pcrr7tn-">Targeted Elements</span>.
+     </dd></dl>
+<!--l. 1128--><p class="indent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 1128--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-12000"></a><span 
+class="ptmb7t---144">Pattern 12. Integrated Preferences</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">You have incorporated <span 
+class="pcrr7tn-">Citizen ID</span>&nbsp;into the overall product.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description">The <span 
+class="pcrr7tn-">Citizen ID</span>&nbsp;pattern will inform your programmer about the user&#8217;s culture. It is tempting
+          to pigeon-hole a user as a generic American, a generic Australian, etc., but users within the same
+          culture actually vary widely.
+          <!--l. 1137--><p class="noindent"><span 
+class="ptmb7t-">How do you avoid stereotyping users?</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span>  </dt><dd 
+class="description">&nbsp;    <ul class="itemize1"><li class="itemize">A user thinks of herself as an American, an Australian, and so on; not as an &#8220;international user&#8221;
+                   <span class="cite">[<a 
+href="#XBelge95a">3</a>]</span>. This makes an &#8220;International Settings&#8221; dialogue a bad idea.
+                   </li>
+                   <li class="itemize">A  user&#8217;s  culture  is  more  than  just  his  ethnic  background.  A  person&#8217;s  friends,  hobbies,  or
+                   workplace can also act as cultures. <span 
+class="ptmri7t-">Culture </span>is a fuzzy concept.
+                   </li>
+                   <li class="itemize">There are many more reasons to provide flexible software aside from culture. The user&#8217;s tasks
+                   and context are also vital considerations.</li></ul>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span>  </dt><dd 
+class="description"><span 
+class="ptmb7t-">Integrate internationalisation-related preferences with general preferences. </span>As discussed in
+          <span 
+class="pcrr7tn-">Citizen ID</span>, when the user sets their culture, this simply has the effect of setting internationalisation-related
+          preferences to pre-defined defaults.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span>  </dt><dd 
+class="description">Two culture-related settings in word-processors are font choice and paper size. Rather than placing
+          these in an &#8220;International&#8221; dialogue, the designers typically position them among semantically-related items.
+          Font choice is usually near font style (Bold etc.). Paper size is usually near layout options (margin, headers,
+          etc.).
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span>  </dt><dd 
+class="description">The program accounts for the user&#8217;s culture. At the same time, it does not use their culture
+          to force restrictions. You can help the user tailor their preferences by creating <span 
+class="pcrr7tn-">Preference</span>
+     <span 
+class="pcrr7tn-">Groups</span>.</dd></dl>
+
+<!--l. 1175--><p class="noindent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 1175--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-13000"></a><span 
+class="ptmb7t---144">Pattern 13. Preference Group</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">Your <span 
+class="pcrr7tn-">Integrated Preferences</span>&nbsp;model identifies all features which vary by culture.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description"><span 
+class="pcrr7tn-">Integrated Preferences</span>&nbsp;may contain many variables, culture-dependent and culture-neutral.
+          <span 
+class="ptmb7t-">How do you structure the </span><span 
+class="pcrb7t-">Integrated Preferences</span>&nbsp;<span 
+class="ptmb7t-">for presentation to the user?</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span>  </dt><dd 
+class="description">&nbsp;    <ul class="itemize1"><li class="itemize">
+<span 
+class="pcrr7tn-">Cultural Profile</span>&nbsp;improves  efficiency  by  providing  a  quick  mechanism  to  set  a  whole
+                   sequence of preferences in one hit. But the user must still tailor <span 
+class="pcrr7tn-">Integrated Preferences</span>&nbsp;to
+                   their own needs.
+                   </li>
+                   <li class="itemize">There  are  often  many  features  to  customise.  Each  word  to  be  displayed  is  a  separate
+                   culture-dependent variable. Therefore, customisation can be time-consuming for users.</li></ul>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span>  </dt><dd 
+class="description"><span 
+class="ptmb7t-">Group related preferences, so that only one choice needs to be made by the user to set all of</span>
+          <span 
+class="ptmb7t-">the preferences in the group to logically-related values. </span>The typical example is a message
+          group: the user sets the messages to &#8220;French&#8221;, and all of the individual messages are set to
+          &#8220;French&#8221;.
+          <!--l. 1202--><p class="noindent">In some respects, this is like <span 
+class="pcrr7tn-">Cultural Profile</span>, which also maps one choice to a number of predefined
+          preference values. However, this pattern relates to subsets of the preferences rather than the overall
+          preference vector. Furthermore, the direct nature of the group is often culture-neutral. For instance, a setting
+          of &#8220;I like Warm Colours&#8221; might lead to orange buttons, red menus, and yellow backgrounds.
+          This is a choice relating to the user&#8217;s favourite colour scheme rather than the user&#8217;s culture. Of
+          course, there is still an indirect relationship because certain cultures like certain colours. For this
+          reason, it is useful for the <span 
+class="pcrr7tn-">Cultural Profile</span>&nbsp;to contain pre-set <span 
+class="pcrr7tn-">Preference Groups</span>. In this
+          example, there will be a &#8220;ColourScheme&#8221; preference group object relating to warm colours,
+          i.e. a ColourScheme object with the following settings: &#8220;Button=orange&#8221;, &#8220;Menu=red&#8221;, and
+          &#8220;Background=yellow&#8221;. An alternative ColourScheme object might be a cool colour scheme. We can then
+          decide on a default ColourScheme for each culture. For instance, we might reference the warm
+          ColourScheme object as the ColourScheme in the Australian <span 
+class="pcrr7tn-">Cultural Profile</span>. If we later decide
+          Americans also like the warm colour scheme, we can refer to the same object in the American
+          <span 
+class="pcrr7tn-">Cultural Profile</span>. This is preferable to manually defining the colours for each widget type for
+          two reasons: (a) there is less effort, since the colour scheme has already been defined; (b) the
+          &#8220;ColourScheme&#8221; <span 
+class="pcrr7tn-">Preference Group</span>&nbsp;contains semantic knowledge (i.e. American interfaces default
+          to warm colours) which would not be conveyed if only the individual widget colours were
+          defined.
+          <!--l. 1228--><p class="noindent">Sometimes the user can reach inside the group and set individual variables. This might make sense in
+          the colour example, e.g. the user might prefer a different button colour. This is still possible.
+          Other times, the user would be unlikely to change variables inside a <span 
+class="pcrr7tn-">Preference Group</span>. If the
+          <span 
+class="pcrr7tn-">Preference Group</span>&nbsp;represents translated text messages, the user would likely have no desire to tailor
+          these.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span>  </dt><dd 
+class="description">Any application enabling the user to specify natural language exemplifies this pattern. The GNU locale
+          environment, for example, lets the user set a LC_MESSAGES variable which causes a number of strings to
+          be translated in a particular language.
+
+     <!--l. 1240--><p class="noindent">The example application, Critique, in Chapter&nbsp;<span 
+class="ptmb7t-">??</span> contains an &#8220;Evaluation Style&#8221; preference. This determines
+     how a score is calculated and what data the user sees; the user only sees data which affects the score. There
+     are two views and two score algorithms, leading to four possible combinations. However, a design decision
+     was made to couple these preferences via the group mechanism, so that only two of the four combinations
+     are possible.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">The user can tailor their preferences faster. Developers can save effort by capitalising on the
+     tendency for several cultures to prefer the same combination fo settings for some variables.</dd></dl>
+<!--l. 1257--><p class="noindent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 1257--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-14000"></a><span 
+class="ptmb7t---144">Pattern 14. Global Data Model</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">You have followed the high-level Planet patterns to arrive at a specification of functionality and
+          user-interface for a <span 
+class="pcrr7tn-">Multicultural System</span>.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description"><span 
+class="ptmb7t-">How do you structure your program?</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span>  </dt><dd 
+class="description">&nbsp;    <ul class="itemize1"><li class="itemize">You need to allow for many parameters to be altered after you release the program. Since you
+                   are allowing users to adopt their personal preferences (see <span 
+class="pcrr7tn-">Cultural Profile</span>), the number of
+                   possibilities is virtually infinite.
+                   </li>
+                   <li class="itemize">The user should be able to change preferences while the program is running. Their data should
+                   remain the same, even though it will be processed or rendered in different ways.
+                   </li>
+                   <li class="itemize">When you create a new feature, you should be able to tailor to specific cultures in your own
+                   time, in accordance with your <span 
+class="pcrr7tn-">Export Schedule</span>.
+                   </li>
+                   <li class="itemize">Some  parameters  will  affect  the  user-interface.  It  is  undesirable  for  development  of  new
+                   user-interfaces to hinder development of core functionality.</li></ul>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span>  </dt><dd 
+class="description"><span 
+class="ptmb7t-">Encapsulate data required to support all cultures in a global data model, independent of the</span>
+          <span 
+class="ptmb7t-">user-interface. </span>The user-interface can observe the model and change itself or update the model
+          when appropriate. The model, however, can be developed independent of the user-interface
+          views. When you decide to store some extra data, you can gradually incorporate it into each
+          of your culture-specific views. The model should encapsulate all data and operations on that
+          data.
+          <!--l. 1294--><p class="noindent">The format of the data should enable easy translation to localised formats, if necessary. It is usually okay to
+          store data in the format of a well-supported culture, or the developer&#8217;s culture. A word-processor can store
+          page width in inches and convert to centimetres when necessary (although some caution must taken to
+          prevent problematic rounding errors).
+          <!--l. 1301--><p class="noindent">If conversion is difficult, the information must be stored in an abstract format. With text messages, for
+          example, it is messy for the entire message to be stored in English. A translator must then perform
+          string comparisons to determine the appropriate local variant. If the English ever changes, all
+          of the localised code must be updated. Instead, such information can be stored as message
+          IDs.
+
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span> </dt><dd 
+class="description">
+     <!--l. 1310--><p class="noindent">Critique uses the ArtModel&nbsp;class (Figure&nbsp;<a 
+href="#x1-140011">1<!--tex4ht:ref: pattartmodeleg--></a>. It stores imageFile and ratings, two core objects which are
+     necessary for all cultures.
+     <!--l. 1314--><p class="noindent"><hr class="figure"><div align="center" class="figure" 
+><table class="figure"><tr class="figure"><td class="figure" 
+><a 
+  name="x1-140011"></a>
+     <div class="center" 
+>
+     <img 
+src="images/pattartmodeleg.png" alt=""  class="fbox" >
+     <br> <div align="center" class="caption"><table class="caption" 
+><tr valign="baseline" class="caption"><td class="id">Figure&nbsp;1: </td><td  
+class="content">Global Data Model&nbsp;example: The ArtModel in Critique contains core data which is relevant
+     for all cultures.</td></tr></table></div><!--tex4ht:label?: x1-140011-->
+     </div>
+     </td></tr></table></div><hr class="endfigure">
+     <!--l. 1316--><p class="noindent">In the Vim text editor <span class="cite">[<a 
+href="#XVim99a">35</a>]</span>, implemented in C, users can edit in more than one window. The <span 
+class="pcrr7tn-">buffer </span>data
+     structure stores data relating to the text being entered, independent of user interactions. Data stored includes:
+     the text itself, pathname of corresponding file, &#8220;dirty&#8221; flag (i.e. whether the current text differs from the
+     corresponding file).
+     <!--l. 1325--><p class="noindent">Universal Natural Language <span class="cite">[<a 
+href="#Xias00a">33</a>]</span> is an ambitious attempt by the United Nations University to provide
+     &#8220;a digital metalanguage&#8221; for representing information in a language-independent way. Once
+     it is completed, it would form an ideal format for storing messages in a locale-independent
+     manner.
+     <!--l. 1331--><p class="noindent">Large-scale e-commerce websites use a database to track their inventory and keep information about
+     manufacturers, recommendations, and so on. This database is a <span 
+class="pcrr7tn-">Global Data Model</span>&nbsp;which can be queried
+     by localised websites.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Remarks:</span> </dt><dd 
+class="description">This pattern, combined with <span 
+class="pcrr7tn-">Independent View</span>, runs along the lines of the Model-View-Controller
+     architectural style <span class="cite">[<a 
+href="#XMahemoff99tools">24</a>]</span>, which has been discussed previously in patterns literature <span class="cite">[<a 
+href="#XBuschmann96a">4</a>,&nbsp;<a 
+href="#XColdewey98a">6</a>,&nbsp;<a 
+href="#XGamma95a">13</a>]</span>). In Planet,
+     Model-View-Controller is not specifically advised; this would be unnecessarily constraining. The goal is to
+     separate the presentation from the core data; whether MVC, PAC, or other architectural styles are used is a
+     choice for the development team.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">Your data is stored in a well-contained module and manipulated with culture-neutral methods.
+     You now need to create a <span 
+class="pcrr7tn-">Preference Dictionary</span>&nbsp;to determine how it will be viewed and
+     manipulated.
+     </dd></dl>
+<!--l. 1356--><p class="indent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 1356--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-15000"></a><span 
+class="ptmb7t---144">Pattern 15. Preference Dictionary</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">You have created the <span 
+class="pcrr7tn-">Global Data Model</span>.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description">There are many preferences which can change, some culture-specific and others culture-neutral.
+
+     <!--l. 1364--><p class="noindent"><span 
+class="ptmb7t-">How do you keep track of the parameters which a user can change?</span>
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span> </dt><dd 
+class="description">&nbsp;  <ul class="itemize1">
+         <li class="itemize"><span 
+class="pcrr7tn-">Culture Models</span>&nbsp;will  change  as  developers  learn  more  and  the  actual  cultures  themselves
+         undergo change. A preference may be culture-neutral one day and specific to culture the next
+         day, or vice-versa. You should not be hindered by such transitions.
+         </li>
+         <li class="itemize">The  user  can  tailor  preferences  to  their  own  preferences,  so  culture  alone  is  an  inadequate
+         specification of the current &#8220;preferences&#8221;.
+         </li>
+         <li class="itemize">You will be passing this information around between many modules. It should be as compact
+         as possible.</li></ul>
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span> </dt><dd 
+class="description"><span 
+class="ptmb7t-">Encapsulate all of the user&#8217;s current preferences, whether culture-specific or not, in a single</span>
+     <span 
+class="ptmb7t-">dictionary (i.e. key-value pairs) entity. </span>Each parameter, whether or not culture-specific, has a defined key.
+     The preference dictionary can be passed around and inspected whenever some code needs to perform a task
+     which depends on the preferences.
+     <!--l. 1385--><p class="noindent">The nature of preference values will vary widely. They may be a string representing some natural-language
+     text, an image for a logo, or even a reference to a database table. Therefore, you will need to adopt a suitably
+     flexible mechanism for your programming language.
+     <!--l. 1390--><p class="noindent">Since some preferences may form a <span 
+class="pcrr7tn-">Preference Group</span>, this may be a recursive class. For example, you
+     may have a message preference dictionary inside a global preference dictionary. The message preference
+     dictionary will contain numerous text strings (e.g. English words), but because the entire dictionary is stored
+     as a single reference (&#8220;English Dictionary&#8221;), all of the strings inside it can be switched to a new
+     language (e.g. to French words) simply by switching the reference to a new dictionary (&#8220;French
+     Dictionary&#8221;).
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span> </dt><dd 
+class="description">
+     <!--l. 1402--><p class="noindent">Java&#8217;s ResourceBundle class is used by Critique for all preferences. The PreferenceDialog sets the
+     preferenceBundle object, and it is then sent to the ArtModel, which propagates it to the view. The
+     preferenceBundle is a dictionary with five keys (Figure&nbsp;<a 
+href="#x1-150012">2<!--tex4ht:ref: pattpreferenceeg--></a>).
+     <!--l. 1408--><p class="noindent"><hr class="figure"><div align="center" class="figure" 
+><table class="figure"><tr class="figure"><td class="figure" 
+><a 
+  name="x1-150012"></a>
+     <div class="center" 
+>
+
+  <Table width=50% Border=2> <TR> <TD>
+  <Table width=100% Border=0>
+    <TR>
+      <TD Align=left>
+        <I>Keys for the <span class="ptmb7t-">prefererenceBundle</span>
+           dictionary:</I>
+      </TD>
+    </TR>
+    <TR>
+      <TD Align=left>
+        <UL>
+          <LI> BackgroundColor
+          <LI> FontFamily
+          <LI> MessageBundle
+          <LI> EvaluationBundle
+          <LI> NumberFormat
+        </UL>
+       </TD>
+    </TR>
+  </TABLE>
+  </TD> </TR> </Table>
+
+  </div>
+
+
+       <div align="center" class="caption"><table class="caption" 
+><tr valign="baseline" class="caption"><td class="id">Figure&nbsp;2:  </td><td  
+class="content">Preference  Dictionary&nbsp;example:  Critique&#8217;s  preferenceBundle  has  key-value  pairs  for  all
+     user-changeable parameters, whether culture-specific or not.</td></tr></table></div><!--tex4ht:label?: x1-150012-->
+     </td></tr></table></div><hr class="endfigure">
+     <!--l. 1410--><p class="noindent">In Java, the default values are also specified in the ResourceBundle. Thus, the main code for
+     preferenceBundle is as follows (the structure from the ResourceBundle is adapted from the Java
+     internationalisation tutorial <span class="cite">[<a 
+href="#XCampione98a">5</a>]</span>:
+
+     <table width="100%" 
+class="verbatim"><tr class="verbatim"><td 
+class="verbatim"><pre class="verbatim">
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Object[][]&nbsp;contents&nbsp;=&nbsp;{
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&#34;BackgroundColor&#34;,&nbsp;new&nbsp;Color(200,200,255)},
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&#34;FontFamily&#34;,&nbsp;new&nbsp;String(&#34;Courier&#34;)},
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&#34;MessageBundle&#34;,&nbsp;new&nbsp;MessageBundle_en()},
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&#34;EvaluationBundle&#34;,&nbsp;new&nbsp;EvaluationBundleEveryone()},
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&#34;NumberFormat&#34;,&nbsp;NumberFormat.getInstance(new&nbsp;Locale(&#34;en&#34;,&#34;US&#34;))}
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+     &nbsp;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Object[][]&nbsp;getContents()&nbsp;{
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;contents;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+</pre>
+     </td></tr></table> Note there is an EvaluationBundle and MessageBundle. These are nested ResourceBundles. The ResourceBundles are used in
+     the following way <a 
+href="fullplanet2.html" name="fullplanet2.html" ><sup>1</sup></a>:
+
+     <table width="100%" 
+class="verbatim"><tr class="verbatim"><td 
+class="verbatim"><pre class="verbatim">
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ResourceBundle&nbsp;preferenceBundle&nbsp;=&nbsp;ResourceBundle.
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getBundle(&#34;critique.PreferenceBundle&#34;,currentLocale);
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Font&nbsp;frenchFont&nbsp;=&nbsp;preferenceBundle.getObject(&#34;FontFamily&#34;),Font.BOLD,30));
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ResourceBundle&nbsp;messageBundle&nbsp;=&nbsp;(ResourceBundle)
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;preferenceBundle.getObject(&#34;MessageBundle&#34;);
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;scoreMessage&nbsp;=&nbsp;(String)&nbsp;messageBundle.getObject(&#34;Score&#34;);
+</pre>
+     </td></tr></table>
+     <!--l. 1439--><p class="noindent">The Vim text editor <span class="cite">[<a 
+href="#XVim99a">35</a>]</span> has dozens of options, including culture-related options such as right-left editing
+     and alternative keymaps. From the user&#8217;s perspective, these are defined in the same context as all other
+     options, and therefore follow the <span 
+class="pcrr7tn-">Integrated Preferences</span>&nbsp;pattern. At the code level, the options are mixed
+     with other options in a global options file:
+
+     <table width="100%" 
+class="verbatim"><tr class="verbatim"><td 
+class="verbatim"><pre class="verbatim">
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#ifdef&nbsp;RIGHTLEFT
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXTERN&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p_ari;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;'allowrevins'&nbsp;*/
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXTERN&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p_ri;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;'revins'&nbsp;*/
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#endif
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#ifdef&nbsp;CMDLINE_INFO
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXTERN&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p_ru;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;'ruler'&nbsp;*/
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#endif
+</pre>
+     </td></tr></table>
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">You have declared the parameters by which your software will vary. Now you need to define
+     culture-specific information relating to the preferences with <span 
+class="pcrr7tn-">Best-Guess Locales</span>. If your preferences vary
+     according functionality performed, create <span 
+class="pcrr7tn-">Flexible Strategies</span>. Complement your <span 
+class="pcrr7tn-">Global Data</span>
+     <span 
+class="pcrr7tn-">Model</span>&nbsp;with <span 
+class="pcrr7tn-">Independent Views</span>.
+     </dd></dl>
+<!--l. 1467--><p class="indent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 1467--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-16000"></a><span 
+class="ptmb7t---144">Pattern 16. Best-Guess Locale</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">You have a <span 
+class="pcrr7tn-">Preference Dictionary</span>&nbsp;which identifies parameters by which your software will
+          vary.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description">Although the user can adjust preferences to their own settings, it is important to speed up the
+          process with predefined <span 
+class="pcrr7tn-">Cultural Profiles</span>.
+          <!--l. 1475--><p class="noindent"><span 
+class="ptmb7t-">How do you support </span><span 
+class="pcrb7t-">Cultural Profiles</span><span 
+class="ptmb7t-">?</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span>  </dt><dd 
+class="description">&nbsp;    <ul class="itemize1"><li class="itemize">When the user sets 
+<span 
+class="pcrr7tn-">Cultural Profile</span>, the software must somehow populate every parameter
+                   of the current <span 
+class="pcrr7tn-">Preference Dictionary</span>.
+                   </li>
+                   <li class="itemize">If you try to specify all adjustable parameters for all cultures, you can end up with a huge
+                   number of parameters which must be individually entered.
+                   </li>
+                   <li class="itemize">If you try to specify all adjustable parameters for all cultures, localisation staff will often be
+                   duplicating work in their creation and maintenance efforts. If a group of cultures have many
+                   parameters in common, this information should not be lost.
+                   </li></ul>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span>  </dt><dd 
+class="description"><span 
+class="ptmb7t-">Create a &#8220;global culture&#8221; </span><span 
+class="pcrb7t-">Preference Dictionary</span>&nbsp;<span 
+class="ptmb7t-">object which contains </span><span 
+class="pcrb7t-">Universal</span>
+    <span 
+class="pcrb7t-">Defaults</span><span 
+class="ptmb7t-">. For each supported culture mentioned in your </span><span 
+class="pcrb7t-">Export Schedule</span><span 
+class="ptmb7t-">, create a</span>
+          <span 
+class="pcrb7t-">Preference Dictionary</span>&nbsp;<span 
+class="ptmb7t-">object which overrides the global </span><span 
+class="pcrb7t-">Preference Dictionary</span><span 
+class="ptmb7t-">. </span>The
+          locale-specific vector is used as a <span 
+class="pcrr7tn-">Cultural Profile</span>&nbsp;to simplify the user&#8217;s task of setting preferences.
+          According to <span 
+class="pcrr7tn-">Cultural Profile</span>, the user should be given the option of choosing a culture. This is
+
+     implemented by setting the &#8220;current&#8221; <span 
+class="pcrr7tn-">Preference Dictionary</span>&nbsp;to the particular <span 
+class="pcrr7tn-">Preference</span>
+     <span 
+class="pcrr7tn-">Dictionary</span>&nbsp;belonging to the user&#8217;s desired culture. Parameters unspecified in the culture-specific vector
+     revert to the global <span 
+class="pcrr7tn-">Preference Dictionary</span>&nbsp;object.
+     <!--l. 1506--><p class="noindent">The software will then be as specific as it needs to be. If some cultures do not care about background colour,
+     simply leave it unspecified in their <span 
+class="pcrr7tn-">Preference Dictionary</span>. The default background colour will be
+     chosen, and a single change to that parameter will then propagate all cultures for which background colour
+     needs no tailoring. For some parameters, it is fine if no culture-specific preferences are provided; these are
+     culture-neutral preferences.
+     <!--l. 1514--><p class="noindent">As mentioned in <span 
+class="pcrr7tn-">Online Repository </span>cultures in the repository can be related to each other in a recursive
+     manner. If desired, you can extend this concept to a hierarchical view of cultures, in which you progressively
+     become more detailed. For instance, a French-Canadian user could use whatever French-Canadian
+     preferences in the first instance, followed progressively by Canadian, then North American, then
+     global. An alternative way to view this situation is to consider the algorithm for determining
+     French-Canadian preferences: Begin by setting current preferences to global preferenceBundle.
+     This preferenceBundle should define settings for each variable. Then, for all of the variables
+     which are specified in the North American preferenceBundle, set the current preferences to
+     these variables. Do the same for the Canadian preferenceBundle, then the French-Canadian
+     preferenceBundle. The current preferences will therefore end up as specific to French-Candadian culture as
+     possible.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span> </dt><dd 
+class="description">
+     <!--l. 1532--><p class="noindent">Critique supports French and English locales. The English preferenceBundle overrides the default
+     MessageBundle and EvaluationBundle, while the French preferenceBundle overrides MessageBundle,
+     EvaluationBundle, and also BackgroundColor for demonstration purposes:
+
+     <table width="100%" 
+class="verbatim"><tr class="verbatim"><td 
+class="verbatim"><pre class="verbatim">
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;Object[][]&nbsp;contents&nbsp;=&nbsp;{
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&#34;BackgroundColor&#34;,&nbsp;new&nbsp;Color(100,200,200)},
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&#34;MessageBundle&#34;,&nbsp;new&nbsp;MessageBundle_fr()},
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;&#34;EvaluationBundle&#34;,&nbsp;new&nbsp;EvaluationBundleTeacher()},
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};
+</pre>
+     </td></tr></table>
+     <!--l. 1545--><p class="noindent"><hr class="figure"><div align="center" class="figure" 
+><table class="figure"><tr class="figure"><td class="figure" 
+><a 
+  name="x1-160013"></a>
+     <div class="center" 
+>
+     <img 
+src="images/pattlocaleeg.png" alt=""  class="fbox" >
+     <p> <div align="center" class="caption"><table class="caption" 
+><tr valign="baseline" class="caption"><td class="id">Figure&nbsp;3: </td><td  
+class="content">Best-Guess Locale&nbsp;example: The French preferenceBundles overrides the global
+     preferenceBundle. The resulting preferenceBundle is the default preferenceBundle for French users.</td></tr></table></div><!--tex4ht:label?: x1-160013-->
+     </div>
+     </td></tr></table></div><hr class="endfigure">
+     <!--l. 1547--><p class="noindent">As explained in the examples for <span 
+class="pcrr7tn-">Preference Dictionary</span>, the Vim editor <span class="cite">[<a 
+href="#XVim99a">35</a>]</span> has culture-specific options
+     integrated with other options. Vim also exemplifies <span 
+class="pcrr7tn-">Best-Guess Locale</span>&nbsp;because users can start
+     Vim in Hebrew mode or Farsi mode, which has the effect of defining certain options with the
+     appropriate initial values. Below is the code which checks for the Hebrew command-line flag, &#8217;-H&#8217;. It
+     sets the current window&#8217;s rightleft (w_p_rl) flag and Hebrew Keyboard map (p_hkmap) flag to
+     true.
+
+     <table width="100%" 
+class="verbatim"><tr class="verbatim"><td 
+class="verbatim"><pre class="verbatim">
+     &nbsp;case&nbsp;'H':&nbsp;/*&nbsp;&#34;-H&#34;&nbsp;start&nbsp;in&nbsp;Hebrew&nbsp;mode:&nbsp;rl&nbsp;+&nbsp;hkmap&nbsp;set&nbsp;*/
+     &nbsp;#ifdef&nbsp;RIGHTLEFT
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;curwin-&gt;w_p_rl&nbsp;=&nbsp;p_hkmap&nbsp;=&nbsp;TRUE;
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</pre>
+     </td></tr></table>
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">The user can quickly set up preferences according to their own culture.
+     </dd></dl>
+<!--l. 1570--><p class="indent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 1570--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-17000"></a><span 
+class="ptmb7t---144">Pattern 17. Independent View</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">Your <span 
+class="pcrr7tn-">Preference Dictionary</span>&nbsp;suggests different views will be provided to the user.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description">The <span 
+class="pcrr7tn-">Global Data Model</span>&nbsp;has no user-interface component.
+          <!--l. 1578--><p class="noindent"><span 
+class="ptmb7t-">How does the user view and modify the </span><span 
+class="pcrb7t-">Global Data Model</span><span 
+class="ptmb7t-">?</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span>  </dt><dd 
+class="description">&nbsp;    <ul class="itemize1"><li class="itemize">Your 
+<span 
+class="pcrr7tn-">Global Data Model</span>&nbsp;contains a lot of data. Cultures will want to see different layouts and
+                   orderings, as discussed in <span 
+class="pcrr7tn-">Elastic User-Interface</span>.
+                   </li>
+                   <li class="itemize">The default views for some cultures should hide data which is irrelevant or offensive.
+                   </li>
+                   <li class="itemize">Sometimes, the user wants to see the same data according to two different views. This could
+                   occur  if  they  are  shifting  their  own  &#8220;cultural  mode&#8221;  as  they  deal  with  different  type  of
+                   information (see <span 
+class="pcrr7tn-">Citizen ID</span>), or if they are trying to determine how someone else sees the
+                   data.
+                   </li></ul>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span>  </dt><dd 
+class="description"><span 
+class="ptmb7t-">Create one or more views of the data model, and store the user&#8217;s preferred view within the</span>
+          <span 
+class="pcrb7t-">Preference Dictionary</span><span 
+class="ptmb7t-">. </span>You will need a standard view interface, so that different views can be
+          plugged into the user-interface in a standard way.
+          <!--l. 1600--><p class="noindent">The different view classes can have different layouts and may hide some information if it is irrelevant or
+          offensive to some cultures. Of course, this flexibly provides only some of the variation in the user-interface.
+          A concrete view class is still parameterised according to other preferences. It needs to query
+          the <span 
+class="pcrr7tn-">Preference Dictionary</span>&nbsp;for <span 
+class="pcrr7tn-">Targeted Elements</span>&nbsp;like messages, logos, and background
+          colours.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Remarks:</span>  </dt><dd 
+class="description">With users from multiple cultures, it is desirable to can show two views of the same data at the
+          same time. This is possible with an MVC approach, but may be more difficult in PAC and other
+          styles.
+
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span> </dt><dd 
+class="description">Critique uses the MMVC framework (Chapter&nbsp;<span 
+class="ptmb7t-">??</span>) to separate the <span 
+class="pcrr7tn-">Global Data Model</span>&nbsp;from its views.
+     The ArtModel&nbsp;in Critique is a <span 
+class="pcrr7tn-">Global Data Model</span>. ArtViewEveryone&nbsp;and ArtViewTeacher&nbsp;constitute
+     independent views (Figure&nbsp;<a 
+href="#x1-170014">4<!--tex4ht:ref: pattvieweg--></a>). The model broadcasts its changes to any registered listener, and the views
+     register themselves as listeners.
+     <!--l. 1619--><p class="noindent">ArtViewEveryone&nbsp;is the global default and also the English default, and shows details by all raters.
+     ArtViewTeacher&nbsp;shows only the teacher&#8217;s view, and is the default French view. This is implementing by
+     making the French preferenceBundle(preferenceBundle_fr) specify EvaluationBundleTeacher as the value
+     for EvaluationBundle. EvaluationBundleTeacher, in turn, specifies ArtViewTeacher&nbsp;as the value for
+     ArtView.
+     <!--l. 1627--><p class="noindent"><hr class="figure"><div align="center" class="figure" 
+><table class="figure"><tr class="figure"><td class="figure" 
+><a 
+  name="x1-170014"></a>
+
+     <img 
+src="images/pattvieweg.png" alt=""  class="fbox" width="100%">
+     <br>  <div align="center" class="caption"><table class="caption" 
+><tr valign="baseline" class="caption"><td class="id">Figure&nbsp;4:  </td><td  
+class="content">Independent  View&nbsp;example:  Critique&#8217;s  ArtViewEveryone  and  ArtViewTeacher  are  both
+     capable of rendering the ArtModel and the ArtModel does not depend on these classes.</td></tr></table></div><!--tex4ht:label?: x1-170014-->
+     </td></tr></table></div><hr class="endfigure">
+     <!--l. 1629--><p class="noindent">As explained in <span 
+class="pcrr7tn-">Global Data Model</span>, Vim <span class="cite">[<a 
+href="#XVim99a">35</a>]</span> stores data separately from the user-interface. The main
+     structure which does store the user-interface information is <span 
+class="pcrr7tn-">window</span>, which most importantly stores a <span 
+class="pcrr7tn-">buffer</span>
+     of text (the data model). It also contains attributes which track its own height, the portion of the buffer being
+     displayed, and the cursor position.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">The user receives a tailored presentation and the <span 
+class="pcrr7tn-">Global Data Model</span>&nbsp;is not coupled to any
+     presentation code.
+     </dd></dl>
+<!--l. 1645--><p class="indent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 1645--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-18000"></a><span 
+class="ptmb7t---144">Pattern 18. Expression Template</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">An <span 
+class="pcrr7tn-">Independent View</span>&nbsp;needs to output expressions which have culture-specific formats.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description"><span 
+class="ptmb7t-">How can you incorporate culture-specific formats into the </span><span 
+class="pcrb7t-">Preference Dictionary</span><span 
+class="ptmb7t-">?</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span>  </dt><dd 
+class="description">&nbsp;    <ul class="itemize1"><li class="itemize">Your software probably needs to output text, and in some cases, parse user-inputted text.
+
+         </li>
+         <li class="itemize">Grammar varies widely, e.g. some cultures say &#8220;Subject Verb Object&#8221; and other cultures say &#8220;Subject
+         Object Verb&#8221;. You cannot just write global code which does something like:
+         <br class="newline">
+
+         <table width="100%" 
+class="verbatim"><tr class="verbatim"><td 
+class="verbatim"><pre class="verbatim">
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;&#34;$subject&nbsp;has&nbsp;sent&nbsp;you&nbsp;a&nbsp;message&#34;;
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</pre>
+         </td></tr></table>
+         </li>
+         <li class="itemize">Grammar is not the only reason why expressions vary by culture. There are many formatting concerns
+         (Table&nbsp;<span 
+class="ptmb7t-">??</span>): numbers, date/time, addresses, telephone numbers.
+         </li>
+         <li class="itemize">You could treat the different expression formats as a situation where different code is
+         required, and adopt <span 
+class="pcrr7tn-">Flexible Strategy</span>&nbsp;for each expression. But this would lead to an
+         explosion of classes in most applications, especially if you did this for every affected text
+         message.
+         </li></ul>
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span> </dt><dd 
+class="description"><span 
+class="ptmb7t-">Encapsulate each culture-specific expression in a template string. Store the template string in the</span>
+     <span 
+class="ptmb7t-">culture&#8217;s </span><span 
+class="pcrb7t-">Preference Dictionary</span><span 
+class="ptmb7t-">. </span>Expression templates enjoy native support in many languages,
+     from Fortran&#8217;s <span 
+class="pcrr7tn-">FORMAT </span>to C&#8217;s <span 
+class="pcrr7tn-">printf/scanf </span>to Java&#8217;s <span 
+class="pcrr7tn-">Format</span>. In most cases, it is possible to store the
+     template string in a variable for later use.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span> </dt><dd 
+class="description">
+     <!--l. 1688--><p class="noindent">The number format is flexible in Critique (Figure&nbsp;<a 
+href="#x1-180015">5<!--tex4ht:ref: pattnumformateg--></a>), varying in number of decimal places. The
+     NumberFormat is stored as an entry in the <span 
+class="pcrr7tn-">Preference Dictionary</span>. This is not particularly relevant to
+     culture, though the same mechanism could allow for culture-specific formats like &#8220;302.100,2&#8221; instead of the
+     more common &#8220;302,100.2&#8221;. Formats for addresses and telephone could be handled in the same
+     way.
+     <!--l. 1695--><p class="noindent"><hr class="figure"><div align="center" class="figure" 
+><table class="figure"><tr class="figure"><td class="figure" 
+><a 
+  name="x1-180015"></a>
+     <div class="center" 
+>
+     <img 
+src="images/pattnumformateg.png" alt=""  class="fbox">
+
+     <br> <div align="center" class="caption"><table class="caption" 
+><tr valign="baseline" class="caption"><td class="id">Figure&nbsp;5: </td><td  
+class="content">Expression Template&nbsp;example: Critique&#8217;s NumberFormat is stored in the preferenceBundle.
+     It determines how many decimal places are shown for the overall score, and the same mechanism
+     could also be used to show culture-specific number formats as well as formats for phone numbers or
+     addresses.</td></tr></table></div><!--tex4ht:label?: x1-180015-->
+     </div>
+     </td></tr></table></div><hr class="endfigure">
+     <!--l. 1697--><p class="noindent">Mozilla is a web browser supporting international audiences
+     <a 
+href="fullplanet3.html" name="fullplanet3.html" ><sup>2</sup></a>,
+     implemented in C++. It contains a class which provides a common interface for date and time formats,
+     nsIDateTimeFormat. A key method is <span 
+class="pcrr7tn-">FormatTime </span>(which is virtual because it has OS-specific
+     implementations):
+
+     <table width="100%" 
+class="verbatim"><tr class="verbatim"><td 
+class="verbatim"><pre class="verbatim">
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NS_IMETHOD&nbsp;FormatTime(nsILocale*&nbsp;locale,
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;nsDateFormatSelector&nbsp;dateFormatSelector,
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;nsTimeFormatSelector&nbsp;timeFormatSelector,
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;time_t&nbsp;&nbsp;timetTime,
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nsString&amp;&nbsp;stringOut)&nbsp;=&nbsp;0;
+</pre>
+     </td></tr></table> The implementations of this method use libraries which format time according to locale.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">You have a mechanism for encapsulating a tailored format into a single object, which can be
+     placed in the <span 
+class="pcrr7tn-">Preference Dictionary</span>.
+     </dd></dl>
+<!--l. 1722--><p class="indent">
+<br class="newline">
+_________________________________________________________________________________<!--l. 1722--><p class="indent">
+      <h3 class="sectionHead"><a 
+  name="x1-19000"></a><span 
+class="ptmb7t---144">Pattern 19. Flexible Strategy</span></h3>
+       <dl class="description"><dt class="description">
+<span 
+class="ptmb7t-">Context:</span>  </dt><dd 
+class="description">Your <span 
+class="pcrr7tn-">Preference Dictionary</span>&nbsp;suggests the need for flexible functionality.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Problem:</span>  </dt><dd 
+class="description"><span 
+class="ptmb7t-">How    can    you    incorporate    culture-specific    functionality    into    the    </span><span 
+class="pcrb7t-">Preference</span>
+    <span 
+class="pcrb7t-">Dictionary</span><span 
+class="ptmb7t-">?</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Forces:</span>  </dt><dd 
+class="description">&nbsp;    <ul class="itemize1"><li class="itemize">Your software needs 
+<span 
+class="pcrr7tn-">Flexible Functions</span>&nbsp;to deal with cultural variation (e.g. taxation rules,
+                   operator permissions).
+                   </li>
+                   <li class="itemize">This type of variation often requires tailored code. Your <span 
+class="pcrr7tn-">Preference Dictionary</span>&nbsp;can easily
+                   specify a string or an image, but how does it specify a piece of code?
+                   </li></ul>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Solution:</span>  </dt><dd 
+class="description"><span 
+class="ptmb7t-">Create an abstract class which declares the interface for the algorithm, then create culture-specific</span>
+          <span 
+class="ptmb7t-">implementations of this class.</span>
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Remarks:</span>  </dt><dd 
+class="description">This pattern is essentially Gamma et al.&#8217;s <span 
+class="ptmri7t-">Strategy </span><span class="cite">[<a 
+href="#XGamma95a">13</a>]</span> pattern, re-stated in the context of Planet&#8217;s scope
+          and related patterns.
+          <!--l. 1748--><p class="noindent">In non-OO languages, it might be possible to store a pointer or reference to a culture-dependent
+          function.
+          </dd><dt class="description">
+<span 
+class="ptmb7t-">Examples:</span>  </dt><dd 
+class="description">
+          <!--l. 1753--><p class="noindent">In Critique, there is a <span 
+class="pcrr7tn-">Flexible Function</span>: the score can be based on the teacher&#8217;s ratings or on everyone&#8217;s
+          ratings. This is implemented as a <span 
+class="pcrr7tn-">Flexible Strategy</span>. Scorer&nbsp;defines the interface for accessing the
+          <span 
+class="pcrr7tn-">calculateScore </span>method. The <span 
+class="pcrr7tn-">evaluationBundle </span>stores a reference to the class that implements the
+          desired scoring algorithm.
+          <!--l. 1759--><p class="noindent"><hr class="figure"><div align="center" class="figure" 
+><table class="figure"><tr class="figure"><td class="figure" 
+><a 
+  name="x1-190016"></a>
+
+     <div class="center" 
+>
+     <img 
+src="images/pattstrategyeg.png" alt=""  class="fbox" width="100%">
+
+     <P> <div align="center" class="caption"><table class="caption" 
+><tr valign="baseline" class="caption"><td class="id">Figure&nbsp;6: </td><td  
+class="content">Flexible Strategy&nbsp;Example: Critique&#8217;s ScorerEveryone and ScorerTeacher allow the scoring
+     strategy to be implemented a flexible manner, determined by the user&#8217;s needs.</td></tr></table></div><!--tex4ht:label?: x1-190016-->
+     </div>
+     </td></tr></table></div><hr class="endfigure">
+     <!--l. 1761--><p class="noindent">Gamma et al. list several examples of <span 
+class="pcrr7tn-">Strategy</span>, although these are for general usage rather than
+     culture-specific.
+     </dd><dt class="description">
+<span 
+class="ptmb7t-">Resulting Context:</span> </dt><dd 
+class="description">You have a mechanism for encapsulating tailored code into a single object, which can be
+     placed in the <span 
+class="pcrr7tn-">Preference Dictionary</span>.
+     </dd></dl>
+   <h3 class="likesectionHead"><a 
+  name="x1-20000"></a>References</h3>
+    <div class="thebibliography"><p class="bibitem"><span class="biblabel">
+  [1]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XAlvarez98a"></a>M.&nbsp;G. Alvarez, L.&nbsp;R. Kasday, and S.&nbsp;Todd.  How we made the web site international and accessible:
+    A  case  study.    In  <span 
+class="ptmri7t-">Proceedings  of  the  4th  Conference  of  Human  Factors  and  the  Web</span>.  AT  &amp;  T,
+    1998.   http://www.research.att.com/conf/hfweb/proceedings/proceedings/alvarez/.  Accessed  March
+    28, 1999.
+    </p><p class="bibitem"><span class="biblabel">
+  [2]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XBarber98a"></a>W.&nbsp;Barber      and      A.&nbsp;Badre.                   Culturability:      The      merging      of      culture      and
+    usability, 1998.  http://www.research.att.com/conf/hfweb/proceedings/proceedings/barber/. Accessed
+    March 28, 1999.
+    </p><p class="bibitem"><span class="biblabel">
+  [3]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XBelge95a"></a>M.&nbsp;Belge. The next step in software internationalization. <span 
+class="ptmri7t-">Interactions</span>, 2(1):21-25, January 1995.
+    </p><p class="bibitem"><span class="biblabel">
+  [4]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XBuschmann96a"></a>F.&nbsp;Buschmann, R.&nbsp;Meunier, H.&nbsp;Rohnert, P.&nbsp;Sommerlad, and M.&nbsp;Stal.  <span 
+class="ptmri7t-">A System of Patterns</span>.  John Wiley
+    &amp; Sons, Chichester, 1995.
+    </p><p class="bibitem"><span class="biblabel">
+  [5]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XCampione98a"></a>M.&nbsp;Campione, K.&nbsp;Walrath, and A.&nbsp;Huml. <span 
+class="ptmri7t-">The Java Tutorial Continued</span>. Addison-Wesley, Reading, MA,
+    1999.
+    </p><p class="bibitem"><span class="biblabel">
+  [6]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XColdewey98a"></a>J.&nbsp;Coldewey.    User  interface  software.    In  <span 
+class="ptmri7t-">Pattern  Languages  of  Program  Design  1998</span>,  1998.
+    http://jerry.cs.uiuc.edu/plop/plop98/final_submissions/. Accessed March 30, 1999.
+    </p><p class="bibitem"><span class="biblabel">
+  [7]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XDell00a"></a>Dell&nbsp;Computer Corporation. Dell computer website, 2000. http://www.dell.com. Accessed December
+    27, 2000.
+    </p><p class="bibitem"><span class="biblabel">
+  [8]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XCoutaz94b"></a>J.&nbsp;Coutaz. Architectural design for user interfaces. In J.&nbsp;J. Marciniak, editor, <span 
+class="ptmri7t-">Encyclopaedia of Software</span>
+    <span 
+class="ptmri7t-">Engineering</span>, pages 38-49. John Wiley &amp; Sons, New York, 1994.
+
+    </p><p class="bibitem"><span class="biblabel">
+  [9]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XDanton90a"></a>P.&nbsp;Danton&nbsp;de Rouffignac. <span 
+class="ptmri7t-">How to Sell to Europe</span>. Pitman, New York, 1989.
+    </p><p class="bibitem"><span class="biblabel">
+ [10]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XDelgaldo90a"></a>E.&nbsp;del Galdo. Internationalization and translation: Some guidelines for the design of human-computer
+    interfaces.    In  J.&nbsp;Nielsen,  editor,  <span 
+class="ptmri7t-">Designing  User  Interfaces  for  International  Use</span>,  pages  39-44.
+    Elsevier, Amsterdam, 1990.
+    </p><p class="bibitem"><span class="biblabel">
+ [11]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XEvers97a"></a>V.&nbsp;Evers  and  D.&nbsp;Day.    The  role  of  culture  in  interface  acceptance.    In  S.&nbsp;Howard,  J.&nbsp;Hammond,
+    and  G.&nbsp;Lindgaard,  editors,  <span 
+class="ptmri7t-">Human-Computer  Interaction:  Interact  &#8217;97</span>,  chapter&nbsp;44,  pages  260-267.
+    Chapman &amp; Hall, London, 1997.
+    </p><p class="bibitem"><span class="biblabel">
+ [12]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XFernandes95a"></a>T.&nbsp;Fernandes. <span 
+class="ptmri7t-">Global Interface Design</span>. AP Professional, Chesnut Hill, MA, 1995.
+    </p><p class="bibitem"><span class="biblabel">
+ [13]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XGamma95a"></a>E.&nbsp;Gamma,   R.&nbsp;Helm,   R.&nbsp;Johnson,   and   J.&nbsp;Vlissides.       <span 
+class="ptmri7t-">Design   Patterns:   Elements   of   Reusable</span>
+    <span 
+class="ptmri7t-">Object-Oriented Software</span>. Addison-Wesley, Reading, MA, 1995.
+    </p><p class="bibitem"><span class="biblabel">
+ [14]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XGrosjean82a"></a>J.&nbsp;Grosjean. <span 
+class="ptmri7t-">Life with Two Languages</span>. Harvard University Press, Cambridge, MA, 1982.
+    </p><p class="bibitem"><span class="biblabel">
+ [15]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XHall90a"></a>E.&nbsp;T. Hall and M.&nbsp;R. Hall. <span 
+class="ptmri7t-">Understanding Cultural Differences</span>. Intercultural Press, Yarmouth, Maine,
+    1990.
+    </p><p class="bibitem"><span class="biblabel">
+ [16]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XHerman96a"></a>L.&nbsp;Herman.   Towards  effective  usability  evaluation  in  Asia.   In  J.&nbsp;Grundy  and  M.&nbsp;Apperly,  editors,
+    <span 
+class="ptmri7t-">Proceedings of OZCHI 96</span>, pages 135-136. IEEE Computer Society, Los Alamitos, CA, 1996.
+    </p><p class="bibitem"><span class="biblabel">
+ [17]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XHoft96a"></a>N.&nbsp;Hoft.  Developing a cultural model.  In E.&nbsp;M. del Galdo and J.&nbsp;Nielsen, editors, <span 
+class="ptmri7t-">International User</span>
+    <span 
+class="ptmri7t-">Interfaces</span>, pages 41-73. John Wiley &amp; Sons, New York, 1996.
+    </p><p class="bibitem"><span class="biblabel">
+ [18]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XHynson90a"></a>L.&nbsp;M. Hynson, Jr.  <span 
+class="ptmri7t-">Doing Business with South Korea: A handbook for Executives in the Public and</span>
+    <span 
+class="ptmri7t-">Private Sector</span>. Quorum, New York, 1990.
+    </p><p class="bibitem"><span class="biblabel">
+ [19]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XIto96a"></a>M.&nbsp;Ito and K.&nbsp;Nakakoji.  Impact of culture on user interface design.  In E.&nbsp;M. del Galdo and J.&nbsp;Nielsen,
+    editors, <span 
+class="ptmri7t-">International User Interfaces</span>, chapter&nbsp;6, pages 105-126. John Wiley &amp; Sons, New York, 1996.
+    </p><p class="bibitem"><span class="biblabel">
+ [20]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XJain93a"></a>S.&nbsp;C. Jain. <span 
+class="ptmri7t-">Marketing Planning and Strategy</span>. South-Western Publishing, Cincinanati, OH, 1993.
+    </p><p class="bibitem"><span class="biblabel">
+ [21]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XKreft97a"></a>K.&nbsp;Kreft and A.&nbsp;Langer. The Locale Framework. <span 
+class="ptmri7t-">C++ Report</span>, 9(9):58-59,62-63,69, sep 1997.
+    </p><p class="bibitem"><span class="biblabel">
+ [22]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XLuong95a"></a>T.V.  Luong,  J.S.H.  Lok,  D.&nbsp;Taylor,  and  K.&nbsp;Driscoll.   <span 
+class="ptmri7t-">Internationalization:  Developing  Software  for</span>
+    <span 
+class="ptmri7t-">Global Markets</span>. John Wiley &amp; Sons, USA, 1995.
+    </p><p class="bibitem"><span class="biblabel">
+ [23]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XMahemoff98b"></a>M.&nbsp;J. Mahemoff and L.&nbsp;J. Johnston. Principles for a usability-oriented pattern language. In P.&nbsp;Calder and
+    B.&nbsp;Thomas, editors, <span 
+class="ptmri7t-">OZCHI &#8217;98 Proceedings</span>, pages 132-139. IEEE Computer Society, Los Alamitos,
+    CA, 1998.
+
+    </p><p class="bibitem"><span class="biblabel">
+ [24]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XMahemoff99tools"></a>M.&nbsp;J. Mahemoff and L.&nbsp;J. Johnston.  Handling multiple domain objects with Model-View-Controller.
+    In C.&nbsp;Mingins and B.&nbsp;Meyer, editors, <span 
+class="ptmri7t-">Technology of Object-Oriented Languages and Systems 32</span>, pages
+    28-39. IEEE Computer Society, Los Alamitos, CA, 1999.
+    </p><p class="bibitem"><span class="biblabel">
+ [25]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XMeloan98a"></a>T.&nbsp;W. Melaon. <span 
+class="ptmri7t-">International and Global Marketing: Concepts and Cases</span>. Irwin/McGraw Hill, Boston,
+    MA, 2nd edition, 1998.
+    </p><p class="bibitem"><span class="biblabel">
+ [26]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="Xmooij98a"></a>M.&nbsp;K. Mooij. <span 
+class="ptmri7t-">Global Marketing and Advertising: Understanding Cultural Paradoxes</span>. Sage, Thousand
+    Oaks, CA, 1998.
+    </p><p class="bibitem"><span class="biblabel">
+ [27]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XNielsen90a"></a>J.&nbsp;Nielsen. Usability testing of international interfaces. In J.&nbsp;Nielsen, editor, <span 
+class="ptmri7t-">Designing User Interfaces</span>
+    <span 
+class="ptmri7t-">for International Use</span>, pages 39-44. Elsevier Science Publishers, Amsterdam, 1990.
+    </p><p class="bibitem"><span class="biblabel">
+ [28]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XRafii95a"></a>F.&nbsp;Rafii  and  S.&nbsp;Perkins.   Internationalizing  software  with  concurrent  engineering.   <span 
+class="ptmri7t-">IEEE  Software</span>,
+    12(5):39-46, September 1995.
+    </p><p class="bibitem"><span class="biblabel">
+ [29]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XRogers97a"></a>G.&nbsp;F. Rogers.  <span 
+class="ptmri7t-">Framework-Based Software Development in C++</span>.  Prentice-Hall PTR, Upper Saddle
+    River, NJ, 1997.
+    </p><p class="bibitem"><span class="biblabel">
+ [30]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XRusso93a"></a>P.&nbsp;Russo and S.&nbsp;Boor.  How fluent is your interface? Designing for international users.  In S.&nbsp;Ashlund,
+    A.&nbsp;Henderson,  E.&nbsp;Hollnagel,  K.&nbsp;Mullet,  and  T.&nbsp;White,  editors,  <span 
+class="ptmri7t-">InterCHI  1993</span>,  pages  342-347.  IOS
+    Press, Amsterdam, 1993.
+    </p><p class="bibitem"><span class="biblabel">
+ [31]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XSukaviriya90a"></a>P.&nbsp;Sukaviriya and L.&nbsp;Moran.  User interface for Asia.  In J.&nbsp;Nielsen, editor, <span 
+class="ptmri7t-">Designing User Interfaces</span>
+    <span 
+class="ptmri7t-">for International Use</span>, pages 189-218. Elsevier, Amsterdam, 1990.
+    </p><p class="bibitem"><span class="biblabel">
+ [32]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XTaylor92a"></a>D.&nbsp;Taylor.  <span 
+class="ptmri7t-">Global software: Developing Applications for the International Market</span>.  Springer-Verlag,
+    New York, 1992.
+    </p><p class="bibitem"><span class="biblabel">
+ [33]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="Xias00a"></a>United Nations University (Institute of Advanced Studies).  One web, one language - UNL, 2000.
+    <a 
+href="http://www.iai.uni-sb.de/UNL/unl-en.html" class="url" >http://www.iai.uni-sb.de/UNL/unl-en.html</a>. Accessed November 12, 2000.
+    </p><p class="bibitem"><span class="biblabel">
+ [34]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XUren93a"></a>E.&nbsp;Uren, R.&nbsp;Howard, and T&nbsp;Perinotti.   <span 
+class="ptmri7t-">Software Internationalization and Localization</span>.   Van Nostrand
+    Reinhold, New York, 1993.
+    </p><p class="bibitem"><span class="biblabel">
+ [35]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XVim99a"></a>Vim Development Team. Vim.   <a 
+href="http://www.vim.org" class="url" >http://www.vim.org</a>. Accessed March 15, 1999.
+    </p><p class="bibitem"><span class="biblabel">
+ [36]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XYeo95a"></a>A.&nbsp;Yeo.   World-wide  CHI:  Cultural  user  interfaces,  a  silver  lining  in  cultural  diversity.   <span 
+class="ptmri7t-">SIGCHI</span>,
+    28(3):4-7, July 1996.
+    </p><p class="bibitem"><span class="biblabel">
+ [37]<span class="bibsp">&nbsp;&nbsp;&nbsp;</span></span><a 
+  name="XZlotnick91a"></a>F.&nbsp;Zlotnick.   <span 
+class="ptmri7t-">The POSIX.1 Standard: A Programmer&#8217;s Guide</span>.   Benjamin/Cumming, Redwood City,
+    CA, 1991.
+    </p></div>
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+</p>
+

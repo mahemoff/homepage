@@ -1,0 +1,645 @@
+<html>
+
+  <TITLE>Internationalization (i18) Pattern Language (Newer Available)</TITLE>
+  <Meta name="description" content="Internationalization Patterns - Software
+  Design/Requirements for Multicultural Systems involving
+  Internationalization/Localization">
+</head>
+
+<body>
+<a href="/">Mahemoff.com</a>
+
+
+<BR>
+<H1>The Planet Pattern Language for Software Internationalisation</H1>
+<BR><A href="/paper/patternLanguages.shtml">Newer version here</A>
+
+<P>Converted using Latex2HTML
+
+<strong><A name=page1> Page 1</A></strong>
+<A href=#page2>2</A>
+
+<P>
+Michael J. Mahemoff <BR>
+Department of C. S.&amp; S. E. <BR>
+The University of Melbourne <BR>
+Parkville, 3052, Australia <BR>
+m. mahemoff@ csse. unimelb. edu. au <BR>
+Tel: +61 3 9344-9100 <BR>
+Fax: +61 3 9348-1184 <BR>
+<P>
+Lorraine J. Johnston <BR>
+School of I. T. <BR>
+Swinburne University of Technology <BR>
+Hawthorn, 3122, Australia <BR>
+ljohnston@ swin. edu. au <BR>
+Tel: +61 3 9214-8742 <BR>
+Fax: +61 3 9214-5501 <BR>
+<P>
+<B>KEYWORDS </B>Pattern Languages, Design Reuse, Internationalisation, Usability. <BR>
+<B>Planet: An Overview <BR>
+</B>Software is becoming an increasingly international affair. The internet has brought users closer together, <BR>
+and there is more outsourcing to overseas firms than ever before [16]. Since good software takes into ac-count <BR>
+the characteristics of typical users, internationalisation produces challenges because of user diversity. <BR>
+The Planet pattern language aids in the specification of such systems, with a goal of making them usable <BR>
+and useful to people from different locations and backgrounds. <BR>
+The overall process for producing software which fits the needs of particular cultures is termed <I>cul-turalisation <BR>
+</I>(after [2]). It is not enough to provide one global version of software with the intention of <BR>
+satisfying everyone. Some software features, such as images and text, must be developed with specific cul-tures <BR>
+in mind. To this end, the culturalisation process entails two phases. In the <I>internationalisation </I>phase <BR>
+(also called <I>localisation-enabling), </I>databases and other structures are set up within the core system. These <BR>
+structures are then populated in the <I>localisation </I>phase, when programmers, translators, graphic artists, and <BR>
+others decide what is appropriate for a particular user community. <BR>
+Figure 1 provides an overview of the fourteen patterns and indicates the seven patterns we have de-tailed <BR>
+in this paper. The remaining patterns are summarised in Section 8. The cycle between <TT>Flexible <BR>
+Function( 4) </TT>and <TT>Elastic User-Interface( 5) </TT>reflects the idea that functionality and user-interface <BR>
+should be iterated until satisfactory. <BR>
+You begin applying the language when you have been presented with a project that delivers to multiple <BR>
+cultures, or may do so in the future. In this case, begin with <TT>Export Schedule( 1). </TT>If there are no such <BR>
+projects, but you anticipate they will come later on, you can get started by developing some <TT>Culture <BR>
+Models( 2). <BR>
+</TT><P>
+Copyright c  1999, The University of Melbourne. Permission is granted to copy for the PLoP 1999 conference. All other rights <BR>
+reserved. <BR>
+<P>
+1 
+1
+<BR>
+<A href=#page1>1</A>
+<strong><A name=page2> Page 2</A></strong>
+<A href=#page3>3</A>
+<BR>
+Simultaneous <BR>
+Feature <BR>
+<P>
+Metaphor <BR>
+Meaningful <BR>
+<P>
+Metamodel <BR>
+Vector <BR>
+<P>
+System <BR>
+Multicultural <BR>
+<P>
+Universal <BR>
+Default( 7) <BR>
+<P>
+ <BR>
+ <BR>
+ <BR>
+ <BR>
+<P>
+ <BR>
+   <BR>
+  <BR>
+<P>
+ <BR>
+ <BR>
+<P>
+ <BR>
+<P>
+ <BR>
+  <BR>
+ <BR>
+ <BR>
+<P>
+ Citizen ID <BR>
+All-In-One <BR>
+<P>
+Policy <BR>
+Language <BR>
+<P>
+Schedule( 1) <BR>
+Culture <BR>
+Model( 2) <BR>
+Online <BR>
+<P>
+Element( 6) <BR>
+Repository( 3) <BR>
+Targeted <BR>
+Function( 4) <BR>
+Flexible <BR>
+User Interface( 5) <BR>
+Elastic <BR>
+<P>
+Export <BR>
+<P>
+ <BR>
+ <BR>
+<P>
+Figure 1: A map of the Planet language. The number after some patterns represents its position in this <BR>
+document. Section 8 outlines the remaining patterns. <BR>
+<P>
+<B>1 Export Schedule <BR>
+Context: </B>You are beginning a project where users will come from a wide range of cultural backgrounds. <BR>
+<B>Problem: </B>Culturalisation is a resource-intensive exercise. <BR>
+<B>How can you allocate resource to cultures at a level befitting their individual needs, and at the <BR>
+same time ensure that no more attention than necessary is devoted to any particular culture? <BR>
+</B><P>
+<B>Forces: </B> You should know which cultures will use your software, otherwise you cannot provide features which meet their needs. <BR>
+<P>
+ It is often too expensive to produce for all audiences at the same time. Sometimes, a local version is prepared first and overseas users are considered later on. <BR>
+ Introducing a new culture may not be a simple localisation procedure. The new culture may ne-cessitate changes to the internationalisation framework and this can be painful. As one example, different cultures use different rules for sorting words. An English-language implementation <BR>
+can sort using the "  " and " 	 " operators, but what if a culture with a different alphabet order <BR>
+is introduced? If the comparisons are scattered across the code, then a programmer will have <BR>
+the unenviable task of replacing each one with a generic comparison function. <BR>
+<P>
+<B>Solution: Produce a schedule which indicates </B><I><B>when </B></I><B>each target culture will be supported, and </B><I><B>how <BR>
+important </B></I><B>it is to support each target culture. </B>Some cultures will not use the system until version <BR>
+3.0 is released, but these cultures should still be considered when version 1.0 is developed. The <BR>
+repository can be consulted to determine which factors vary across the supported cultures. The <BR>
+localisation phase can then address this variation. <BR>
+<P>
+In most businesses, interaction with the marketing department will be essential. When considering <BR>
+attractiveness of foreign markets, consider size and value of customer demand, competitive import-ance <BR>
+of the market, and availability of expertise [19]. <BR>
+<P>
+2 
+2
+<BR>
+<A href=#page2>2</A>
+<strong><A name=page3> Page 3</A></strong>
+<A href=#page4>4</A>
+<BR>
+At this stage, establish the importance each culture places on different aspects of software. For <BR>
+instance, Evers and Day [7] found that Indonesians, compared with Chinese, are more attracted <BR>
+towards usability than certain other qualities. Since you cannot maximise every quality, this kind of <BR>
+information will tell you which areas to focus on for a given culture. <BR>
+<P>
+<B>Rationale: </B>Identification of cultures in advance ensures that the functional core and internationalisation <BR>
+framework are flexible enough to make changes relatively straightforward. <BR>
+<P>
+<B>Examples: </B>Searching for target markets, choosing how intensive the operation will be, and planning future <BR>
+expansion is a well-established international marketing practice [14]. <BR>
+<P>
+Uren et al. [23] suggest that marketing staff should develop a list of target countries, even if transla-tion <BR>
+is not immediately required. Luong et al. [15] suggest that developers need to decide between a <BR>
+full localisation and a partial localisation, and also consider whether to ship overseas simultaneously <BR>
+with the local release. <BR>
+<P>
+<B>Resulting Context: </B>If your organisation has not already done so, start creating <TT>Culture Models( 2). </TT>You <BR>
+may need to update existing <TT>Culture Models( 2) </TT>to reflect any new cultures being considered or to <BR>
+account for aspects of the cultures which are relevant to the new project. Once you have collected <BR>
+<TT>Culture Models( 2) </TT>into an <TT>Online Repository( 3), </TT>you will be able to create a <TT>Multicultural <BR>
+System </TT>suitable for cultures mentioned in the schedule. <BR>
+<P>
+Note: For the remainder of this paper, the cultures mentioned in the <TT>Export Schedule( 1) </TT>are <BR>
+referred to as <I>Target Cultures. <BR>
+</I><P>
+<B>2 Culture Model <BR>
+Context: </B>You are working on software projects with <TT>Export Schedules( 1) </TT>identifying which cultures <BR>
+will use the system. <BR>
+<P>
+<B>Problem: </B>Like beauty, usability and utility are in the eye of the beholder. You have to understand the user <BR>
+before you can begin working towards these qualities. <B>How do you support development decisions <BR>
+which depend on information about specific cultures? <BR>
+</B><P>
+<B>Forces: </B> Extensive information may be required to support development decisions, necessitating poten-tially <BR>
+expensive research activity. This effort will have to be repeated on new projects involving <BR>
+the same cultures unless explicit attempts are made to reuse it. <BR>
+<P>
+ It is difficult— sometimes impossible— to reverse-engineer details about cultures just by look-ing at the resultant product. The Walkman has been successful in America largely due to the fact that people do not want to be disturbed by the outside world, but it was originally conceived <BR>
+by Sony's co-founder to help listeners avoid disturbing others [17]. <BR>
+ Even if you can access process documentation such as meeting minutes, information about cultures will be scattered. This will be difficult to find specific information when it is needed during internationalisation and localisation. <BR>
+<P>
+<B>Solution: Construct models of cultures which are relevant to your projects. When you discover new <BR>
+information about a culture, add it to the culture model. </B>To improve opportunities for reuse, <BR>
+these models can be held in common by the entire organisation, rather than pertaining to a specific <BR>
+project. They are an asset which is refined over time, just like a software library or an estimation <BR>
+technique. <BR>
+<P>
+The culture model can also include issues regarding the development process. Luong et al. [15] dis-cuss <BR>
+the English-language ability of the quality assurance engineers they deal with in Japan. Another <BR>
+culture-dependent process is user testing; some cultures are more reluctant than others to criticise a <BR>
+product (e. g. [11]). <BR>
+<P>
+3 
+3
+<BR>
+<A href=#page3>3</A>
+<strong><A name=page4> Page 4</A></strong>
+<A href=#page5>5</A>
+<BR>
+<B>Rationale: </B>Consistent culture models provide a central point for culture-specific details and also help <BR>
+developers compare and contrast cultures. If a developer notices that all of the cultures for a particular <BR>
+program use Latin characters, then the internationalisation phase need not consider the possibility of <BR>
+non-Latin character sets. Localisation will also be more efficient if similarities between cultures can <BR>
+be exploited. <BR>
+<P>
+<B>Examples: </B>There are several well-known culture models in anthropological and marketing literature. In <BR>
+"Understanding Cultural Differences" [10], Hall and Hall explain several culture-dependent vari-ables, <BR>
+e. g. the level of detail people desire when presented with information, attitudes to personal <BR>
+space, whether or not people like to perform tasks in parallel. <BR>
+<P>
+Luong et al. [15] provide details on localising for Asia. Numerous business texts describe the <BR>
+intricacies of doing business with, or creating products for, a particular country [12] or region [6]. <BR>
+<P>
+<B>Resulting Context: </B>Once you've decided to create a culture model, you'll need a way to structure it. A <BR>
+culture model can be conceptualised in different ways; an extremely simple form is just an arbitrarily-ordered <BR>
+collection of relevant documentation gathered from various projects. In this pattern language, <BR>
+we focus on one means of characterising a culture: the <TT>Vector Metamodel </TT>form. <BR>
+<P>
+<B>3 Online Repository <BR>
+Context: </B>You have begun to maintain <TT>Culture Models( 2) </TT>according to the same <TT>Vector Metamodel <BR>
+</TT>(i. e. same factors for each culture). <BR>
+<P>
+<B>Problem: </B>As you start accumulating <TT>Culture Models( 2), </TT>you will realise the need to organise them <BR>
+together. <B>How can a collection of culture models be organised in a manner which is useful for <BR>
+software projects? <BR>
+</B><P>
+<B>Forces: </B> Culture Models should be organisation-wide to avoid duplication; it is feasible and desirable to transfer information learnt from one project into other projects. <BR>
+<P>
+ Information about cultures should be shared, but is often discovered in physically-distant loca-tions. <BR>
+ If developers can't access the models quickly and easily, the information will be ignored. <BR>
+ If developers can't update the models easily, the repository will lose accuracy over time. <BR>
+ Cultures have relationships with one another. We should be able to capture associations, such as one group being a sub-culture of another group. <BR>
+<P>
+ It is useful to look up a specific <TT>Culture Model( 2), </TT>but there are many other ways people might like to access information during the culturalisation process. Depending on the task at hand, developers may wish to explore the information in unanticipated ways, e. g. comparing <BR>
+two cultures, considering a single factor across numerous cultures. <BR>
+<B>Solution: Create an online repository, accessible to the entire organisation. Compose it of </B><B><TT>Culture <BR>
+Models( 2) </TT></B><B>all based on the same </B><B><TT>Vector Metamodel. <BR>
+</TT></B><P>
+The following guidelines make it easy to <I>access </I>information in the repository: <BR>
+<P>
+ Provide browsing facilities which present each culture and factor. Let the user select a factor (and show how each culture varies on it), a culture (and show all of its factors), or a combination of both. <BR>
+<P>
+ Provide facilities to search the <TT>Culture Models( 2). <BR>
+</TT> Link from one model to another if it helps to demonstrate a point of similarity or difference. <BR>
+ Link to the original artefacts if they are online, or identify the source if they are not. The following guidelines make it easy to <I>update </I>the repository: <BR>
+<P>
+4 
+4
+<BR>
+<A href=#page4>4</A>
+<strong><A name=page5> Page 5</A></strong>
+<A href=#page6>6</A>
+<BR>
+ Facilitate discussion among contributors, e. g. via a mailing list or within the repository system. <BR>
+ For each <TT>Culture Model( 2), </TT>make one or more people responsible for maintaining it. Large repositories can group <TT>Culture Models( 2) </TT>together, e. g. according to continent. This ap-proach <BR>
+<P>
+can follow the <TT>Composite </TT>pattern [9], e. g. a model of Europe contains its own information <BR>
+and also contains child models (France, Italy, etc.). When a user looks up a model, information about <BR>
+its ancestor models are also shown. <BR>
+<P>
+<B>Rationale: </B>Like pattern languages, repositories of this nature help people reuse existing, tested, know-ledge. <BR>
+Reuse of proven concepts involving human-computer interaction are particularly helpful, <BR>
+because people's reactions can be difficult to predict. In the case of interaction with international <BR>
+systems, the case for reuse is even stronger, because more work is required to obtain original know-ledge <BR>
+(e. g. travelling overseas, establishing partnerships with foreign consultants). <BR>
+<P>
+<B>Examples: </B>Fernandes [8] contains some tables showing factors versus culture. However, the text stops <BR>
+short of exhaustively listing this information. One table might show cultures A, B, and C, and a table <BR>
+on other factors might show A, D, and E. <BR>
+<P>
+Ito and Nakakoji have prototyped a system for retrieving culture-specific details [13]. <BR>
+The authors are currently undertaking a project to build a web-based repository. The intention is that <BR>
+developers and users from around the world will use and contribute to the database. <BR>
+<P>
+<B>Resulting Context: </B>The repository enables developers to easily access a corpus of culture-specific inform-ation. <BR>
+You can use this information to specify a <TT>Multicultural System. <BR>
+</TT><P>
+<B>4 Flexible Function <BR>
+Context: </B>You are producing a <TT>Multicultural System </TT>and an <TT>Online Repository( 3) </TT>has been estab-lished. <BR>
+You have begun to specify the user-interface according to <TT>Elastic User-Interface( 5) </TT>or <BR>
+you feel that it is more appropriate to specify functionality before the user-interface. <BR>
+<P>
+<B>Problem: </B>A culture-sensitive user-interface may contribute to <I>usability, </I>but it is still possible that the <BR>
+software does not support the tasks users would like to perform, i. e. lacks utility. These tasks and <BR>
+the context in which they occur can be related to culture. <BR>
+<P>
+<B>How do you ensure the software performs functions which are meaningful and useful to people <BR>
+from different cultures? <BR>
+</B><P>
+<B>Forces: </B> Software is typically written with specific domains in mind, whether broad (e. g. a spreadsheet) or narrow (e. g. a code inspection tool). <BR>
+<P>
+ Domains— whether broad or narrow— are not homogeneous with respect to culture. <BR>
+ Usability is also influenced by the user's culture, and usability derives from more than just the user-interface. Flexible searching, for instance, cannot be achieved just by applying <TT>Elastic User-Interface( 5). <BR>
+</TT><P>
+<B>Solution: When you generate a new function, check if it is culture-specific, and if so, refine it to meet <BR>
+the needs of your target cultures. <BR>
+</B><P>
+Break the requirements phase into several smaller stages. This way, you can progress incrementally, <BR>
+so that planning for the subsequent stage can take into consideration the cultures mentioned in the <BR>
+<TT>Export Schedule( 1). </TT>Whenever you create a new requirement or refine an existing one, consider <BR>
+its impact on the target cultures. Some cues which might suggest culture is an important factor <BR>
+include: <BR>
+<P>
+ a requirement depends upon legislation (a taxation rule). <BR>
+5 
+5
+<BR>
+<A href=#page5>5</A>
+<strong><A name=page6> Page 6</A></strong>
+<A href=#page7>7</A>
+<BR>
+ a requirement implies an organisational role (only certain people are authorised to shut down the assembly line). <BR>
+ a requirement is based on a philosophical stance (a teacher can annotate text, but students can't [18]). <BR>
+ a requirement is underpinned by certain ethical values (an employee's actions will be logged). This process may generate new questions about cultures which the repository should be consulted to <BR>
+solve. If it cannot solve them, seek the most important answers by alternative means (e. g. interviews <BR>
+with domain experts) and update the repository. Once the answers to these questions are known, you <BR>
+will be in a better position to refine the requirements. Your initial idea for a requirement may form <BR>
+the basis of a suitable default, but you may need to extend it to satisfy all target cultures. <BR>
+<P>
+<B>Examples: </B>Time-keeping variations imply more than just differences in user-interfaces. Each supported <BR>
+calendar format requires functionality dedicated to handle standard operations (e. g. finding weekday <BR>
+from date, incrementing date). The situation becomes even more complex when differences in other <BR>
+areas, like timezones and work cycles, are considered. <BR>
+<P>
+Currency differences can lead to complicated functionality, especially when conversions are required. <BR>
+The introduction of the Euro is a familiar example. <BR>
+<P>
+Nielson discussed a French educational product which enables teachers to annotate poems [18]. <BR>
+He noted that in some countries, it would more appropriate to give students the same ability. The <BR>
+decision to include this kind of functionality rests on cultural values such as attitudes to learning and <BR>
+authority. <BR>
+<P>
+<B>Resulting Context: </B>Iterate between this pattern and <TT>Elastic User-Interface( 5). </TT>until you are satis-fied <BR>
+with functionality and user-interface structure. Establish a <TT>Universal Default( 7) </TT>for each <BR>
+function in case the user's culture has not been specifically catered for. <BR>
+<P>
+<B>5 Elastic User-Interface <BR>
+Context: </B>You are producing a <TT>Multicultural System </TT>and an <TT>Online Repository( 3) </TT>has been es-tablished. <BR>
+You have a solid understanding of general functionality after applying <TT>Flexible <BR>
+Function( 4), </TT>or you feel that it is more appropriate to specify the user-interface before concen-trating <BR>
+on functionality. <BR>
+<P>
+<B>Problem: </B>The same functionality can be presented to the user in different ways. <B>How do you create a <BR>
+user-interface which can be used easily and effectively by all targeted cultures? <BR>
+</B><P>
+6 
+6
+<BR>
+<A href=#page6>6</A>
+<strong><A name=page7> Page 7</A></strong>
+<A href=#page8>8</A>
+<BR>
+<B>Forces: </B> Different cultures use different schemes for representing information. Text direction, for ex-ample, can be left-to-right, top-to-bottom, right-to-left, and even circular. Relative positioning <BR>
+of graphics and highlighting mechanisms also vary [21]. <BR>
+<P>
+ Some cultures want more information, or different information, than others. Some cultures are more accustomed than others to inferring missing details [10]. Cultures may also vary in the nature of information required. The right feature cannot just be plugged in later on (e. g. a <BR>
+culture-specific icon or language-specific string). <BR>
+ Human-human interaction varies considerably across cultures. Some notions of interaction are relevant to the human-computer dialogue, e. g. reactivity versus proactivity exhibited by participants. <BR>
+<P>
+<B>Solution: Design the overall structure for the user-interface flexibly, so that GUI elements can sub-sequently <BR>
+be re-defined and rearranged without massive design changes. <BR>
+</B><P>
+The precise details about what information you are presenting, and how it is arranged will not be-come <BR>
+clear until the localisation phase. Therefore, develop an elastic user-interface so that the user-interface <BR>
+is not fixed during the internationalisation phase. <BR>
+<P>
+As with <TT>Flexible Function( 4), </TT>break the user-interface specification process into several stages, <BR>
+so that you can plan each subsequent stage in the light of the cultures being targeted. <BR>
+<P>
+Two general guidelines apply: <BR>
+<P>
+ Consult the repository or use other means (e. g. user testing) to discover how elastic the user-interface structure must be. A culture's writing direction can indicate the order in which ma-terial of a non-textual nature is also perceived. Also, text size will vary due to variations in <BR>
+alphabet, word lengths, grammar, and conventions. This will affect the space allocated for <BR>
+writing. <BR>
+<P>
+ Once the overall structure is present, you will have identified the GUI elements. However, the precise details of GUI elements depend on culture. Therefore, at this stage, identify which GUI elements are culture-specific and leave them abstract, e. g. a button to delete a file could be <BR>
+called <I>delete-file </I>and its type simply declared as a button with a bitmap and a label. After this <BR>
+pattern has been applied, an artist performing localisation might create a cross for one culture <BR>
+and a skull-and-crossbones for another, with accompanying labels in the appropriate language. <BR>
+<P>
+<B>Rationale: </B>Complicated changes to the user-interface, such as reversing order of elements, can necessitate <BR>
+widespread code changes if they are not designed for. Also, a common problem is the introduction of <BR>
+a language with text too large to fit in its usual location (e. g. a menu bar or dialogue box) [15]. This <BR>
+would be fairly trivial to prevent if it was known that the language was scheduled for introduction. <BR>
+<P>
+According to the Slinky meta-model [5], it is possible to split user-interface, human-computer dia-logue, <BR>
+and functional core. Architectures based on Slinky should provide adequate support for de-velopers <BR>
+who wish to create <TT>Elastic User-Interfaces( 5). </TT>Coldewey's "User Interface Soft-ware" <BR>
+pattern language also covers separation of user-interface and domain [3]. <BR>
+<P>
+<B>Examples: </B>Some programs enable text to be shown and inserted in right-to-left as well as left-to-right <BR>
+modes. Farsi support within the VIM text editor lets users dynamically switch between orientations, <BR>
+and can simultaneously show one file in two different windows presented in separate orientations. <BR>
+<P>
+The web supports various layouts. Horizontal orientation of layout (e. g. whether links are on left <BR>
+or right) is correlated with the orientation of text in the originating country [1]. It is worth noting, <BR>
+though, that an individual site generally does not provide more than one layout. <BR>
+<P>
+<B>Resulting Context: </B>Iterate between this pattern and <TT>Flexible Function( 4) </TT>until you are satisfied with <BR>
+functionality and user-interface structure. You can design specific features according to <TT>Targeted <BR>
+Element( 6). </TT>Establish a <TT>Universal Default( 7) </TT>for the UI structure in case the user's culture has <BR>
+not been specifically catered for. <BR>
+<P>
+7 
+7
+<BR>
+<A href=#page7>7</A>
+<strong><A name=page8> Page 8</A></strong>
+<A href=#page9>9</A>
+<BR>
+<B>6 Targeted Element <BR>
+Context: </B>You have prepared an <TT>Elastic User-Interface( 5). <BR>
+</TT><B>Problem: How can you create specific elements to plug into the user-interface framework? <BR>
+Forces: </B> The purpose, state, and workings of a user-interface element should be clear from its appear-ance. <BR>
+<P>
+ A user-interface element's appearance can be misinterpreted if the user's culture was not con-sidered in designing it. An extreme case is when users are presented with foreign languages, but there are more subtle instances. The famous Macintosh trashcan looked like a postal box to <BR>
+Britons, causing great frustration when they tried to e-mail their work [22]! <BR>
+ It is also possible for a feature to be correctly interpreted, but still be inappropriate. Many applications use hand gestures to represent certain concepts, but some of these are offensive in some countries [8]. Similarly, a given colour can convey different moods, depending on the <BR>
+culture in question [20]. <BR>
+<B>Solution: For each abstract element contained in the </B><B><TT>Elastic User-Interface( 5) </TT></B><B>specifica-tion, <BR>
+provide an instantiation targeted to each culture in the </B><B><TT>Export Schedule( 1). <BR>
+</TT></B><P>
+The <TT>Online Repository( 3) </TT>can be consulted for guidance. If it proves insufficient, investigate <BR>
+further and remember to feed results back in to the repository for next time. <BR>
+<P>
+Many elements will have a common instantiation for an entire group of cultures. This is where the <BR>
+idea of composite cultures discussed in the <TT>Online Repository( 3) </TT>can be useful. For instance, <BR>
+a group of cultures called "English-language" can share the same text (of course, this would be a <BR>
+compromise because it is preferable to have "USA-English", "UK-English", etc.). <BR>
+<P>
+The <TT>Online Repository( 3) </TT>can help to identify features which are misleading or offensive. How-ever, <BR>
+user testing is also essential since people from external cultures can overlook this kind of <BR>
+problem. <BR>
+<P>
+<B>Examples: </B>This pattern is exemplified by any software which supports different languages, address <BR>
+formats, units of measurement, currency, etc. Tools and libraries like Java's MessageFormat class <BR>
+support the corresponding development process. <BR>
+<P>
+The culture-specific partners of the <I>Yahoo! </I>website are another example. They are organised in the <BR>
+same way as their parent, but contain information specialised to their culture, such as weather for <BR>
+certain cities and status of local stockmarkets. <BR>
+<P>
+<B>Resulting Context: </B>Adopt a <TT>Language Policy </TT>to help you decide which languages will be supported and <BR>
+to what extent. If your user-interface contains metaphors, ensure they are <TT>Meaningful Metaphors. <BR>
+</TT>Since it can be expensive to target every element to every culture, provide a <TT>Universal Default( 7) <BR>
+</TT>in case the user's culture has not been specifically catered for. <BR>
+<P>
+<B>7 Universal Default <BR>
+Context: </B>You have prepared functionality and the user-interface according to <TT>Flexible Function( 4), <BR>
+Elastic User-Interface( 5), </TT>and <TT>Targeted Element( 6). <BR>
+</TT><P>
+<B>Problem: </B>Localisation is costly and requires substantial knowledge about target cultures. Providing many <BR>
+features for many cultures can lead to work in the order of n 2 . <B>How do you optimise resources when <BR>
+there are many features (functions, user-interface arrangements, user-interface elements), each <BR>
+of which depends on a wide cross-cultural base? <BR>
+</B><P>
+<B>Forces: <BR>
+</B><P>
+8 
+8
+<BR>
+<A href=#page8>8</A>
+<strong><A name=page9> Page 9</A></strong>
+<A href=#page10>10</A>
+<BR>
+ Features should generally be tailored, because a single version of a feature is rarely adequate for all cultures. If the single version is targeted to one culture, other cultures may suffer; if the version is intended to be universal and not belong to any particular culture, it may be too <BR>
+general and suit no-one at all. <BR>
+ Tailoring software features to a culture is an expensive, time-consuming activity. It may involve extensive research and requires local experts. <BR>
+<P>
+ It is not always feasible to tailor software for small cultures or to cultures which have unique needs which are difficult to implement. <BR>
+ An <TT>Export Schedule( 1) </TT>cannot always correctly anticipate which cultures will use the soft-ware. People from unsupported cultures might move to targeted areas or download software from a website. <BR>
+<P>
+<B>Solution: For each culture-dependent feature, make a default which is universally meaningful. </B>The <BR>
+aim is to a fallback setting in case nothing has been tailored for some cultures. This will never be as <BR>
+good as a tailored feature, but it is better than producing a default which does not consider the cultural <BR>
+issue at all (e. g. one which is only suitable for the developer's culture). The following guidelines <BR>
+will help. <BR>
+<P>
+ Provide text in the most familiar language among supported cultures. <BR>
+ Endeavour to produce images which are easy to understand and free from cultural bias.  Since not everyone will know the most familiar language, try to replace text, e. g. button labels, <BR>
+<P>
+with meaningful images. <BR>
+<P>
+ The familiar language may still be non-native for many users. Avoid the use of jargon and concepts which would only be familiar to a small subset of supported cultures. <BR>
+<P>
+ Avoid concepts which might offend some cultures. <B>Rationale: </B>This pattern resembles the na ¨ ive approach to culturalisation which claims that we should <BR>
+simply provide universal features. The difference here is that the pattern is seen as a fallback to help <BR>
+reduce development effort, and is certainly not claimed to be ideal from the user's point-of-view. <BR>
+<P>
+<B>Examples: </B>Numerous websites provide versions in two languages: one in the native language and one in <BR>
+English. English is being used as the language which will reach the most people. <BR>
+<P>
+Some icons and metaphors from popular software paradigms are well-understood in different cul-tures. <BR>
+Web browsers often use left and right navigation arrows. Word-processors and painting pro-grams <BR>
+use a blank page to represent a new document and scissors for cutting. Help is often repres-ented <BR>
+by a question-mark. <BR>
+<P>
+<B>Resulting Context: </B>There is now a default for each user-interface feature, to account for cases when the <BR>
+user's culture has not been specifically catered for. <BR>
+<P>
+<B>8 Remaining Patterns: A Summary <BR>
+</B>The following is a summary of patterns which were not covered above. <BR>
+<B>Vector Metamodel </B>Determine the dimensions of cultures that interest you, and characterise each <TT>Culture <BR>
+Model( 2) </TT>as a vector with a value for each dimension. <BR>
+<P>
+<B>Multicultural System </B>Identify culture-dependent features of the functionality and user-interface. Create <BR>
+an appropriate form of each feature for each target culture. Package the various forms together <BR>
+according to <TT>All-In-One. <BR>
+</TT><P>
+<B>Language Policy </B>Form a policy explaining to what extent each culture will be supported, i. e. how much <BR>
+will be translated to the culture's primary and/ or secondary languages. <BR>
+<P>
+9 
+9
+<BR>
+<A href=#page9>9</A>
+<strong><A name=page10> Page 10</A></strong>
+<A href=#page11>11</A>
+<BR>
+<B>Meaningful Metaphor </B>Since metaphors should relate to everyday experience, tailor metaphors to meet <BR>
+cultural expectations. <BR>
+<P>
+<B>All-In-One </B>To avoid stereotyping users and ensure the software is flexible, produce one version with all <BR>
+forms of all features, so the user can tweak settings to their own needs. To accelerate the process, <BR>
+provide a profile of default settings for each target culture. <BR>
+<P>
+<B>Citizen ID </B>To decide which cultural profile to use, determine the user's culture on first use and ensure the <BR>
+choice persists until the user changes it. <BR>
+<P>
+<B>Simultaneous Feature </B>To support domains or users which deal with more than one culture, present a <BR>
+feature in more than one form at the same time. <BR>
+<P>
+<B>9 Concluding Remarks <BR>
+</B>The Planet language is intended to spark a few thoughts in the minds of developers about what it means to <BR>
+create a truly international application, as opposed to one which is simply multilingual or culturally-neutral. <BR>
+The language can be expanded in at least two directions. Firstly, Planet helps users but confronts <BR>
+developers with a more complicated development context. We have commented on technical details occa-sionally, <BR>
+but only to justify the efficacy of some of our patterns. It would be useful to develop a pattern <BR>
+language which encapsulates the complex details of issues such as language translation and time conver-sions. <BR>
+<P>
+A second expansion would be broadening the domain from single-user applications to encompass <BR>
+Computer-Supported Collaborative Work (CSCW). When computer systems are used to mediate inter-action <BR>
+among humans from different cultures, a whole new set of challenges open up [4]. At this stage, <BR>
+we have deliberately avoided such complications. The patterns here would still be relevant, but numerous <BR>
+additions and modifications could also be expected. <BR>
+<P>
+<B>10 Acknowledgements <BR>
+</B>The authors would like to thank Todd Coram, whose many insightful comments throughout the shepherding <BR>
+process led to a greatly-improved structure and description. <BR>
+<P>
+<B>References <BR>
+</B>[1] W. Barber and A. Badre. Culturability: The merging of culture and usability, 1998. http: -// www. research. att. com/ conf/ hfweb/ proceedings/ proceedings/ barber/. Accessed March 28, 1999. <BR>
+<P>
+[2] P. Bourges-Waldegg and S. A. R. Scrivener. Meaning, the central issue in cross-cultural HCI design. <I>Interacting with Computers, </I>9( 3): 287– 309, January 1998. <BR>
+[3] J. Coldewey. User interface software, 1998. http:// jerry. cs. uiuc. edu/ plop/ plop98/ final submissions/. Accessed March 30, 1999. <BR>
+[4] J. Connolly. Developing a cultural model. In E. M. del Galdo and J. Nielson, editors, <I>International User Interfaces, </I>pages 20– 40. John Wiley &amp; Sons, New York, 1996. <BR>
+<P>
+[5] J. Coutaz. Architectural design for user interfaces. In J. J. Marciniak, editor, <I>Encyclopaedia of Software Engineering, </I>pages 38– 49. John Wiley &amp; Sons, New York, 1994. <BR>
+[6] P. Danton de Rouffignac. <I>How to Sell to Europe. </I>Pitman, New York, 1989. <BR>
+[7] V. Evers and D. Day. The role of culture in interface acceptance. In S. Howard, J. Hammond, and G. Lindgaard, editors, <I>Human-Computer Interaction: Interact '97, </I>chapter 44, pages 260– 267. <BR>
+<P>
+Chapman &amp; Hall, London, 1997. <BR>
+[8] T. Fernandes. <I>Global Interface Design. </I>AP Professional, Chesnut Hill, MA, 1995. <BR>
+<P>
+10 
+10
+<BR>
+<A href=#page10>10</A>
+<strong><A name=page11> Page 11</A></strong>
+<BR>
+[9] E. Gamma, R. Helm, R. Johnson, and R. Vlissides. <I>Design Patterns: Elements of Reusable Object-Oriented Software. </I>Addison-Wesley, Reading, MA, 1995. <BR>
+[10] E. T. Hall and M. R. Hall. <I>Understanding Cultural Differences. </I>Intercultural Press, Yarmouth, Maine, 1990. <BR>
+[11] L. Herman. Towards effective usability evaluation in Asia. In J. Grundy and M. Apperly, editors, <I>Proceedings of OZCHI 96, </I>pages 135– 136. IEEE Computer Society, Los Alamitos, CA, 1996. <BR>
+<P>
+[12] L. M. Hynson, Jr. <I>Doing Business with South Korea: A handbook for Executives in the Public and Private Sector. </I>Quorum, New York, 1990. <BR>
+[13] M. Ito and K. Nakakoji. Impact of culture on user interface design. In E. M. del Galdo and J. Nielson, editors, <I>International User Interfaces, </I>chapter 6, pages 105– 126. John Wiley &amp; Sons, New York, <BR>
+1996. <BR>
+[14] S. C. Jain. <I>Marketing Planning and Strategy. </I>South-Western Publishing, Cincinanati, OH, 1993. <BR>
+[15] T. V. Luong, J. S. H. Lok, D. Taylor, and K. Driscoll. <I>Internationalization: Developing Software for Global Markets. </I>John Wiley &amp; Sons, USA, 1995. <BR>
+<P>
+[16] K. Maney. Technology is "demolishing" time, distance. USA Today, September 2 1997. http:// www. usatoday. com. Accessed January 20, 1998. <BR>
+[17] M. K. Mooij. <I>Global Marketing and Advertising: Understanding Cultural Paradoxes. </I>Sage, Thou-sand Oaks, CA, 1998. <BR>
+[18] J. Nielson. Usability testing of international interfaces. In J. Nielson, editor, <I>Designing User Inter-faces for International Use, </I>pages 39– 44. Elsevier Science Publishers, Amsterdam, 1990. <BR>
+<P>
+[19] F. Rafii and S. Perkins. Internationalizing software with concurrent engineering. <I>IEEE Software, </I>12( 5): 39– 46, September 1995. <BR>
+[20] P. Russo and S. Boor. How fluent is your interface? Designing for international users. In S. Ashlund, A. Henderson, E. Hollnagel, K. Mullet, and T. White, editors, <I>InterCHI 1993, </I>pages 342– 347. IOS <BR>
+Press, Amsterdam, 1993. <BR>
+[21] P. Sukaviriya and L. Moran. User interface for Asia. In J. Nielson, editor, <I>Designing User Interfaces for International Use, </I>pages 189– 218. Elsevier, Amsterdam, 1990. <BR>
+<P>
+[22] D. Taylor. <I>Global software: Developing Applications for the International Market. </I>Springer-Verlag, New York, 1992. <BR>
+[23] E. Uren, R. Howard, and T Perinotti. <I>Software Internationalization and Localization. </I>Van Nostrand Reinhold, New York, 1993. <BR>
+<P>
+11 
+11
+<H1> <A name=PageLinks>Page Navigation Panel </H1>
+<A href=#page1>1</A>
+<A href=#page2>2</A>
+<A href=#page3>3</A>
+<A href=#page4>4</A>
+<A href=#page5>5</A>
+<A href=#page6>6</A>
+<A href=#page7>7</A>
+<A href=#page8>8</A>
+<A href=#page9>9</A>
+<BR>
+<A href=#page10>10</A>
+<A href=#page11>11</A>
+
+<H1>About This Document</H1>
+
+<A href="#DocumentBody">Document Body</A>
+<A href="#PageLinks">Page Navigation Panel</A>
+ <H1><A name="DocumentBody">Planet Pattern Language (Newer Version Available)</A></H1>
+<BR>
+
+<B>Note: This is an HTMLised version of the paper that was submitted to PLOP
+'99.  The pattern language has moved on (partly in response to the workshop at
+that conference). A newer version is available from <a
+href="/paper/patternLanguages.shtml">here</A>.</B>
+
+
+</BODy></HTML>

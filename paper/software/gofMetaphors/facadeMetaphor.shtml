@@ -1,0 +1,97 @@
+<html>
+
+  <TITLE>Mahemoff.com - Facade Metaphor</TITLE>
+</head>
+
+<body>
+<a href="/">Mahemoff.com</a>
+
+
+<H1>Facade Metaphor: Detailed Example</H1>
+
+        <span class="note"><span class="title">Note:</span> This is a detailed
+    example of <A href="./">the GoF Metaphors</A>.  If you are learning the
+    patterns, you might try writing your own detailed description of other
+    patterns.</span>
+
+
+
+
+<H2>Motivation</H2>
+
+<P>The company was moving smoothly, but there are some tasks that involved
+way too
+much micromanagement by the CEO. He arranged the last Christmas party with
+<I>Transparent Hospitality</I>, a hospitality company offering a range of
+services.
+But the company was not very well co-ordinated, so he found himself having to
+deal with several people there. One to organise the catering, one to send
+invites, another regarding meal requirements. He had to pass information
+between
+them as well - for instance, ask the invite-sender how many replies and then
+pass this on to the meal manager.
+
+<P>The cart was pushing the horse.
+
+<P>The CEO, acting as a client, was having to work according to all the
+particular details of organising a function and co-ordinating various people
+within the company. This might have been understandable if he had very
+unusual
+needs, but seemed ridiculous for a typical business fuction.
+
+<P>The next year, he came across a more organised outfit, <I>Service
+Orientat</I>. They provided a single person, a <TT>Facade</TT>, to handle the
+reuqests in the CEO's terms. The CEO could issue straightforward directives,
+such as "We will have a function on December 12 with 80 people in a
+contemporary
+setting". Behind the scenes, the Facade would talk to catering and everyone
+else, but the CEO didn't need to know about it.
+
+<H2>About The Pattern</H2>
+
+<P>The <TT>Facade</TT> presents a simple interface to the CEO oriented around
+the
+services he requires. To appreciate the benefit, there are two
+perspectives you
+can take:
+
+<P>From the CEO's point of view, he can concentrate on what he's good at:
+broad
+  strategy rather than micromanagement of the Christmas party.  Ideally,
+the CEO
+  will have a Facade for every task he needs to perform - the <TT>Hospitality
+  Manager</TT> will be joined by an <TT>Operations Manager</TT>, a
+<TT>Marketing
+  Manager</TT>, and so on. They would each take orders according to how
+the CEO
+  thinks, and transform those orders into low-level details.
+
+  <P>In software, the approach is called "Service-Oriented Architecture".  It
+    ensures code regarding core business logic is not tangled up with the
+    specifics of lower-level libraries - that is, it prevents coupling. It is
+    easier to understand and change the code if these elements are separated
+    from each other.
+
+  <P><I> From <I>Service Orientat's</I> point of view, the <TT>Facade</TT>
+offers a
+    simple interface to the outside world. This makes it easier for a
+potential
+    client to decide if they are a good fit and reduces learning effort in
+using
+    the services.
+
+    <P> Many software modules are unfortunately more like <I>Transparent
+    Hospitality</I> than <I>Service Orientat</I>. The client is confronted
+with
+    perhaps 20 classes, and no idea how to use them. That's fine if you
+want to
+    achieve maximum flexibility. But usually there are only a handful of
+typical
+    tasks which the developer really needs. The Facade object makes it clear
+    what the developer can do with the module and provides an "one-stop shop"
+    for using it.
+
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+</p>
+

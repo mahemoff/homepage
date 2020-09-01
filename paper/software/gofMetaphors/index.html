@@ -1,0 +1,472 @@
+<html>
+
+  <TITLE>Lerning GoF/Gamma Patterns via Metaphor - Design patterns in Real Life</TITLE>
+  <Meta name="description" content="Lerning GoF/Gamma Patterns via Metaphor - Design patterns in Real Life">
+
+  <STYLE type="text/css" media="screen">
+    h2.pattern { margin-bottom: -1em; }
+  </STYLE>
+
+</head>
+
+<body>
+<a href="/">Mahemoff.com</a>
+
+
+  <H1>GoF Pattern Metaphors</H1>
+
+    The  <A
+    Href="http://www.amazon.com/exec/obidos/tg/detail/-/0201633612?v=glance">GoF
+    Patterns</A> can be presented using real-life examples. This is useful for
+    educational purposes and might even evoke a geeky chuckle as well.  <LI><A
+    Href="#background">Background info below.</A>
+
+    <P class="sideNote">A personal assistant is a <span class="pattern">Proxy</span> and a
+    pair of glasses is a <span class="pattern">Decorator</span>. Use real-world metaphors to ramp up
+    on your design pattern education.</P>
+
+    <H1>Creational Patterns</H1>
+
+      <H2 class="pattern">Abstract Factory (87)</h2>
+
+      <UL>
+          <LI> Imagine a manufacturer producing interior design parts ---
+          lights, cabinets, tables. The company produces each part in two
+          styles, and has a factory for each style: a Traditional Asian Factory
+          (<span class="pattern">ConcreteFactory1</span>) and a Contemporary
+          European Factory (<span class="pattern">ConcreteFactory2</span>). Both
+          provides exactly the same part types (e.g. a Door; <span
+          class="pattern">AbstractProductA</span>), but using completely
+          different methods to arrive at completely different styles (asked for
+          a "Door", the Traditional Asian Factory produces an oak door, <span
+          class="pattern">ProductA1</span>, while the Contemporary European
+          factory produces a steel door, <span class="pattern">ProductA2</span>).
+
+          <P>At any time, a <span class="pattern">Client</span> will either be
+          designing a house in one of the two styles, so the client will simply
+          choose one factory and all requests will go there. The expectation
+          and requests will be exactly the same whether the client has chosen
+          Asian or European, with style-independent requests like "I'll have
+          three Desks and four Doors for each".  </UL>
+
+      <H2 class="pattern">Builder (97)</h2>
+
+        <UL>
+          <LI>In manufacturing, a <span class="pattern">Director</span> manages
+          the overall process (e.g. "get parts, run machine, test, deliver,
+          bill") and delegates product-specific detail to <span
+          class="pattern">Builders</span>. <A
+          href="/paper/software/gofMetaphors/builder.shtml">Detailed Builder
+          Example here.</A> </UL>
+
+      <H2 class="pattern">Prototype (117)</h2>
+
+      <UL>
+
+        <LI> Dolly the Sheep, amoeba, and other clones. The researcher (<span
+        class="pattern">Client</span>) "requested" Dolly's mum (<span
+        class="pattern">ConcretePrototype1</span>) to produce a clone of herself.
+
+        <LI> In a word processor, cut-and-paste some text. You now have a
+        separate, identical, copy, which you can modify.
+
+      </UL>
+
+      <H2 class="pattern">Singleton (127)</h2>
+
+        <UL>
+
+          <LI>A monotheistic viewpoint argues God is a <span
+          class="pattern">Singleton</span> - to
+          quote the Highlander movie about a completely underlated topic,
+          "There can be only One".  <LI>
+
+          <LI>Scientists also have their version of <span
+          class="pattern">Singleton</span>: this
+          universe and its universal laws.
+
+          <LI>Postmodern family structures aside, a child may view
+          <span class="pattern">Father</span> as a singleton and <span
+          class="pattern">Mother</span> as another <span
+          class="pattern">Singleton</span> (one of each, even though both belong
+          to the same
+          superclass).
+
+      </UL>
+
+    <H1>Structural Patterns</H1>
+
+      <H2 class="pattern">Adapter (139)</h2>
+
+        <UL>
+
+          <LI> The name is a giveaway: a power adapter. A machine (<span
+          class="pattern">Target</span>) has a slot to provide power. There is
+          a power point (<span class="pattern">Adaptee</span>). You know the
+          power point does what the machine needs, but they don't "know" about
+          each other, i.e. their creators did not directly design with the
+          other in mind. Furthermore, you can't change either of them. The
+          solution? Stick an Adapter in between them.
+
+          <LI> Someone who translates between Japanese and English is
+          performing an <span class="pattern">Adapter</span> role (I won't call
+          it an Interpreter, which is another pattern). When the Emperor of
+          Japan gets together with the President of the USA, neither has the
+          skill to speak in the others' language, and you can't change that! So
+          you stick an Interpreter (<span class="pattern">Adaptor</span>) in
+          between them to pass messages between the two in terms they
+          understand.
+
+      </UL>
+
+      <H2 class="pattern">Bridge (151)</h2>
+
+        <UL>
+          <LI>Utility industries such as telecommunications and power often
+            follow the <span class="pattern">Bridge</span> pattern. A regulator
+            sets standards to allow interoperability and ensure
+            quality-of-service (<span class="pattern">Abstraction</span>),
+            while companies (<span class="pattern">Implementors</span>) are
+            flexible to use whatever means to satisfy this standard
+            "interface".</UL>
+
+      <H2 class="pattern">Composite (163)</h2>
+
+        <P>Note: Most recursive structures are examples of <span
+        class="pattern">Composite</span>.
+
+        <UL>
+          <LI>Many organisations structure their personnel around <span
+          class="pattern">Composite</span> patterns. When a manager is
+          requested to "report progress", he "loops" through each worker,
+          requesting them to "report progress", and combines the results.
+        </UL>
+
+      <H2 class="pattern">Decorator (175)</h2>
+
+        <UL>
+          <LI>Many humans wrap <span class="pattern">Decorators</span> around
+            themselves to enhance their input. Put on a pair of glasses, for
+            example, to intercecpt incoming light and provide modified light to
+            the eyes. The eyes still get the same kind of stuff - i.e. a stream
+            of light into the eyes - only the content of this stuff has
+            changed. A <span class="pattern">Decorator</span> decorates - or
+            transforms - information, but it always outputs the same type as
+            came in. A pair of glasses would not be a <span
+            class="pattern">Decorator</span> if it converted light to sound or
+            smell. The eyes take in light, and will perform the same procedures
+            with light whether or not the Decorator is present. This
+            "transparent" property of <span class="pattern">Decorator</span> is
+            what allows <span class="pattern">Decorators</span> to be chained
+            together.
+
+          <LI>Terminator 2 demonstrates how we might one day enhance our vision
+            even further by slapping on a set of augmented reality glasses.
+            The guy in front of you - is he a predatory robot from the future
+            that you have been sent to destroy? What's his model number? Any
+            chance he could one day become a state governor? The augmented
+            overlay answers all this and more.
+
+          <LI>You can decorate output too. Singers without musical ability,
+            such as boy bands and females "performers", use <span
+            class="pattern">Decorators</span> to filter their voices, leading
+            to something more closely resembling music.  The interface, i.e. an
+            audio stream, remains the same, but the content undergoes a radical
+            improvement. It is common with musical instruments to apply a chain
+            of <span class="pattern">Decorators</span> (low-pass filters,
+            high-pass filters, etc.) which the sound passes through.  </UL>
+
+      <H2 class="pattern">Facade (185)</h2>
+
+        <UL>
+          <LI> <A Href="./facadeMetaphor.shtml">Detailed example here.</A>
+        </UL>
+
+      <H2 class="pattern">Flyweight (195)</h2>
+
+        <UL>
+          <LI>Some companies maintain a pool (<span class="pattern">Flyweight
+          Factory</span>) of
+          flexible software developers (<span class="pattern">Flyweights</span>), instead of
+          keeping developers always assigned to certain projects.  When a
+          project needs work, one of the developers
+          (<span class="pattern">ConcreteFlyweight</span>) is "awoken", briefed, and set to work
+          for a while, before being returned to the pool. The benefit is the
+          programmers can be shared across different projects; the downside is
+          a more complex process, as well as the overhead of frequent briefing
+          sessions. (Comment: this mode of working would fit better in <A
+          Href="http://www.culture-at-work.com/highlow.html">Low Context</A>
+          societies.)
+      </UL>
+
+      <H2 class="pattern">Proxy (207)</h2>
+
+        <UL>
+          <LI>A CEO's personal assistant (PA) acts as a <span
+          class="pattern">Proxy</span> when
+            negotiating an appoinment time. The PA provides the same interface
+            as the CEO would, (e.g. discussing the time on the telephone), and
+            may or may not delegate some questions to the CEO. But anyone
+            seeking an appointment may only talk to the PA and never to the
+            CEO.
+        </UL>
+
+    <H1>Behavioral Patterns</H1>
+
+      <H2 class="pattern">Chain of Responsibility (223)</h2>
+
+        <UL>
+          <LI>Helpdesks use several lines of support. An internet user calls
+          her ISP to complain about the slow connection. The computerised
+          answering system offers some generic advice, and, since that doesn't
+          work, she holds on and a helpdesk operator in a faraway country
+          eventually picks up and tries to solve the problem by asking her to
+          reboot. Unable to suggest anything else useful, the operator
+          delegates responsibility to his boss. The boss asks if she has
+          recently changed modem, but unable to suggest anything else useful,
+          delegates responsibility to the system administrator in the user's
+          local call centre. The system administrator explains to her that the
+          lines have been slow in her area due to an accident. The issue is
+          closed, and the chain of responsibility need proceed no further.
+
+          <LI>The chain can also work from senior to junior. When someone
+          knocks on the door during a <A
+          href="http://www.ironworks.com/comedy/youngone/boring.htm"><I>Young
+          Ones</I> episode</A>, the task of answering is delegated from Mike,
+          the ringleader, down to whipping boy Neil:
+
+          <BR>MIKE: "There's someone at the door, Rick!"<BR>
+          RICK: "There's someone at the door, Vyvyan!"<BR>
+          VYVYAN: "There's someone at the door, Neil!"<BR>
+
+          <P>(In passing, I should note my pleasure in finally being able to
+          reference the "Bachelor Boys" in a software engineering context.)
+
+        </UL>
+
+      <H2 class="pattern">Commmand (233)</h2>
+
+        <UL>
+          <LI>A General writes down a "Strike at Dawn" directive (<span
+            class="pattern">Command</span>) for his Lieutetant, with an
+            "Instructions" section (<span class="pattern">execute()</span>
+            method).  To streamline the process, all directives are
+            standardised, with a single Instructions section, so it can be
+            assumed that the Lieutetant can execute any <span
+            class="pattern">Command</span> he is supplied.
+        </UL>
+
+      <H2 class="pattern">Interpreter (257)</h2>
+
+        <UL>
+          <LI>Human languages can be represented in the same way as the
+            computer languages that this pattern helps to parse. For instance,
+            the English sentence, "John stubbornly coded." is a
+            <span class="pattern">NonterminalExpression</span> consisting of one
+            <span class="pattern">TerminalExpression</span>, "John", and one
+            <span class="pattern">NonTerminalExpression</span>, "stubbornly coded".
+        </UL>
+
+      <H2 class="pattern">Iterator (257)</h2>
+
+        <UL>
+          <LI> You sit down at a full dinner table and the host wants to
+            introduce you to all the guests - what order does he use? In some
+            circumstances, he will simply go around the table; but if the
+            Overlord Dictator of the Central Galaxies Concern happens to be
+            sitting somewhere near the middle, perhaps he will prefer to
+            introduce in order of importance. The collection of people has a
+            fixed order, but the iteration strategy is flexible.
+            <!-- TODO rewrite as if you are the host -->
+       </UL>
+
+      <H2 class="pattern">Mediator (273)</h2>
+
+        <UL>
+          <LI>A stock exchange acts as a <span class="pattern">Mediator</span>. It mediates among
+          public companies, investors, government regulators, tax agencies, and
+          others (<span class="pattern">Colleagues</span>). This limits (and sometimes eliminates),
+          direct interaction between these parties, so they are not very
+          tightly coupled to each other.
+        </UL>
+
+      <H2 class="pattern">Memento (283)</h2>
+
+        <UL>
+
+          <LI>You create a simple calculator with Undo capability. It is not
+          enough to reverse operations, because some cause loss of information.
+          For example, the user types "6" then multiplies by "0". The current
+          value is now "0" and the previous operation was "multiplyBy(0)": Not
+          enough informatio to get our "6" back if the user wants to Undo. The
+          solution is to retain a <span class="pattern">Memento</span> for
+          unreversable (and maybe more) operations.
+
+          <LI>You (<span class="pattern">Caretaker</span>) are about to head
+          abroad and move into your wealthy parents-in-law's vacation home for
+          six months (<span class="pattern">Originator</span> state). You don't
+          really care what it's like now - all that matters is that it must be
+          restored to the same state when you leave. Before arriving, you
+          arrange for the house butler (<span class="pattern">Originator</span>
+          behaviour) to take a photograph (<span
+          class="pattern">Memento</span>) so the place can be restored later,
+          and to send them to you for safekeeping. You retain the photos and
+          upon leaving, give them to the butler so he can restore the state of
+          the place.  Note that you procured and stored the <span
+          class="pattern">Memento</span>, but never had to look at, or use, its
+          contents.
+        </UL>
+
+      <H2 class="pattern">Observer (293)</h2>
+
+        <UL>
+
+          <LI>People (<span class="pattern">Observers</span>) register to
+          discover when a website (<span class="pattern">Subject</span>) has
+          been updated. A change to the website triggers a brief email to all
+          people who have registered simply telling them the website has
+          updated. If they want, they can see how it changed by surfing to the
+          website and inspecting its contents. This is a <span
+          class="em">Pull</span> model because only a change notification is
+          sent; the observer still has to inspect the subject to discover its
+          new state.
+
+          <LI>People register themselves as magazine subscribers
+            (<span class="pattern">Observer</span>). Then, each magazine (<span
+            class="pattern">Subject</span>) is sent to anyone who has
+            registered as a subscriber. This is a <I>Push</I> model because the
+            entire magazine is sent; no further inspection is required.
+
+       </UL>
+
+      <H2 class="pattern">State (305)</h2>
+
+        <UL>
+          <LI>People's behaviour depends heavily on their emotional state
+            (<I>State</I>), even when all other factors are the same. If an
+            angry driver is overtaken, he might treat it as an invitation for a
+            spontaneous game of Grand Prix. If the same driver is in a good
+            mood, he might chuckle and ask why some people are in such a hurry.
+            The stimulus (input data) is the same in both cases, i.e. how do
+            you respond to a driver overtaking you? It is your current
+            <I>State</I> that dictates the response.
+        </UL>
+
+      <H2 class="pattern">Strategy (315)</h2>
+
+        <UL>
+          <LI>A recipe is the archetypal <span class="pattern">Strategy</span>.
+          Whether for Mississipi Mud Cake or Sauteed Giraffe Steak, the
+          structure and "interface" remains the same - you can query a menu for
+          ingredients, required appliances, and the steps to make it.
+        </UL>
+
+      <H2 class="pattern">Template Method (325)</h2>
+
+        <UL>
+          <LI>You're sick of programming and decide to become a lion-tamer. You
+            must first sit an "animal-tamer" course, where you study alongside
+            would-be wolf-tamers and elephant-tamers. You each learn the
+            generic technique for associating an action with a command: (1)
+            wait for the animal to do something interesting, (2) shout the
+            corresponding command, (3) reward the animal. Another generic
+            technique involves building a rapport with the animal: (1) remain
+            at a distance, (2) wait for the animal to approach.
+
+            <P> When you finish the course, you are an "abstract animal-tamer".
+            You have lots of generic techniques but you must plug in the gaps
+            with lion-specific information. For instance, how do "reward the
+            animal?". For a lion, you reward it by offering a nice animal to
+            eat. For an elephant, the answer will be completely different - who
+            knows, maybe you give the elephant an end-of-year bonus? In any
+            event, "reward the animal" is a template method. It is referenced
+            and relied upon by the high-level animal taming process, but cannot
+            actually be stated at that generic level. It can only be stated in
+            a manner specialised for each individual animal to be tamed.
+        </LI>
+      </UL>
+
+      <H2 class="pattern">Visitor (331)</h2>
+
+        <UL>
+            <LI>
+                Imagine you manage a ThemePark (<span
+                class="pattern">ObjectStructure</span>) with plenty of
+                Attractions (<span class="pattern">Elements</span>) - Rides,
+                VideoGames, Restaraunts (<span
+                class="pattern">ConcreteElements</span>). Sometimes, you need
+                to arrange a visit to all <span
+                class="pattern">Attractions</span>.
+            
+                <P>
+                For example, one type of "Visit Everywhere" would be to collect
+                cash once every two hours - performed by a
+                CashCollectingVisitor (<span
+                class="pattern">ConcreteVisitor</span>). Another type would be
+                to observe staff behaviour - performed by a covert
+                StaffObservingVisitor (a second <span
+                class="pattern">ConcreteVisitor</span>), maybe every few
+                months. These Visitors perform different tasks, but share a
+                common problem: how to traverse the park to visit all
+                Attractions. Thus, each Visitor is imbued with a mechanism for
+                visiting all Attractions, such as an ordered list or a set of
+                heuristics.
+                
+                <P>Each Visitor then differs in how it approaches the various
+                Attractions - so there is a concrete procedure for each
+                combination of (Visitor, Attraction). For example, what happens
+                when CashCollectingVisitor visits a VideoGame (<span
+                class="pattern">CashCollectingVisitor.visitVideoGame()</span>)?
+                The concrete procedure is to open the game with a key and
+                collect the cash. What does StaffObservingVisitor do in the
+                same situation (<span
+                class="pattern">StaffObservingVisitor.visitVideoGame()</span>)?
+                In this case, the concrete procedure is to do absolutely
+                nothing. But on visiting a Restaurant ((<span
+                class="pattern">StaffObservingVisitor.visitRestaraunt()</span>),
+                she will be very busy, as the procedure here is to
+                surreptitiously make an order, sit down and make notes while
+                sipping a cafe latte.
+              </LI>
+           </UL>
+
+  <H1 id="background">Background - About the Pattern Metaphors</H1>
+
+    <P>The  <A
+    Href="http://www.amazon.com/exec/obidos/tg/detail/-/0201633612?v=glance">GoF
+    Patterns</A> are at once utterly powerful and absurdly simple. Yet,
+    my experience indicates many pattern novices grasp neither their power nor
+    their simplicity. A likely reason is lack of experience with
+    object-oriented architectures. Many pattern learners are students who have
+    not felt the pain of a complex system that has been mis-architected.
+    Many others have sadly worked on systems so mis-architected that the
+    confused tangle of code offered no afforances as to where patterns might
+    prove useful.
+
+    <P>It's useful to <span class="keyText">complement software design
+    patterns with stories from the real-world</span>. Many of the GoF patterns
+    do apply to real-world structures - structures of human organisations, work
+    practices, buildings, towns, and so on. <span class="keyText">People
+    learning patterns can relate to these things, so why not exploit the
+    associations to improve learning?</span> Amazing how even expert
+    software developers are prone to discuss ideas in terms of real-life
+    metaphors. In fact, some of the best architects I know frequently
+    anthropomorphise their software when explaining how it works: &quot;So this
+    guy sends the message to him, but he's busy so he says 'send it
+    later, or send it to one of my delegates now if you want'&quot.
+
+    <P>Here, I present examples of real-world metaphors based on the GoF
+    patterns. A good exercise for learners is to think of your own. In a
+    learning context, the patterns can even be acted out. It might seem a bit
+    funny, but activities like that are examples of elaborate learning, meaning
+    you remember them.
+
+    <P> For ease of reference, the patterns are listed in the same order as the
+    text. However, if you are learning the patterns, I recommend learning the
+    patterns in <A href="/paper/software/learningGoFPatterns/">this more
+    effective order</A>.
+
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+</p>
+

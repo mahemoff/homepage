@@ -1,0 +1,334 @@
+<html>
+
+  <TITLE>HCI/Usability Pattern Languages - I18N, Safety, MVC</TITLE>
+  <Meta name="description" content="HCI/Usability Pattern Languages -
+    internationalization, Safety, Model-View-Controller">
+</head>
+
+<body>
+<a href="/">Mahemoff.com</a>
+
+
+<H1>Pattern Languages For Usability (PLUS)</H1>
+
+  <H2>Putting the Patterns in Context</H2>
+
+  <P> My thesis was an investigation of design reuse in
+  human-computer interaction. Several techniques were considered, including
+  design patterns.  But &quot;design patterns&quot; is a very broad concept;
+  thus, three different approaches to design patterns were considered. The
+  three resulting pattern languages are summarised here.
+
+  <P><span class="title">Published Papers:</span>
+
+    These are the most important papers published during the thesis.
+
+    <UL>
+
+      <LI><A Href="/paper/"><span class="listTitle">Index of All Thesis Papers,
+        with full abstracts ...</span></A>
+
+      <LI><A Href="language/">Usability Pattern Languages: The "Language"
+      Aspect</A> Surveys HCI pattern approaches to demonstrate that constraints
+      on the scope -- e.g. internationalisation (sometimes referred to as
+      "internationalization"), safety-criticality -- facilitate produce
+      well-connected pattern languages.
+
+      <LI><A Href="principles/">Principles for a Usability-Oriented Pattern
+      Language</A> Includes a summary/analysis of usability style guides.</A>
+
+      <LI><A Href="generic/html/">Brainstorming with Generic Tasks: An Empirical
+      Investigation</A> A non-pattern approach to design reuse: generic tasks,
+      such as "Copy", "Preview", "Compose".
+
+      <LI><A Href="planetreuse.pdf">Reusing Knowledge about Users</A>
+       Another non-pattern approach: organisation-wide user profiles.
+
+  </UL>
+
+  <P>The pattern languages are summarised below.
+
+  <H2> How the Languages Vary </H2>
+
+  <P> At a superficial level, the languages vary in their scope, i.e. the type
+  of system they can support. However, a deeper point of variation is their
+  integration of HCI issues with detailed design/implementation. That is, the
+  activities which would be performed by a requirements or HCI specialist,
+  versus those which would be conducted by a software designer or programmer.
+
+  <P> <span class="keyText">The Safety-Usability Patterns language is purely
+  concerned with "high-level" system aspects</span> - i.e. requirements,
+  user-interface, usage context. (This language was developed in conjunction
+  withth Andrew Hussey at the University of Queensland.)
+
+  <P>The other two languages incorporate detailed software design, and in
+  different ways. <span class="keyText">Planet begins with a number of
+  high-level patterns, and then follows through to detailed design patterns
+  which support their implementation.</span> Thus, there is a distinct split
+  between high-level and low-level patterns.
+
+  <P>An alternative strategy to incorporation of detailed software design is
+  followed by Multiple Model-View-Controller. <span class="keyText">In Multiple
+  Model-View-Controller, each individual pattern is a hybrid of HCI and
+  software design</span>.  Essentially, the language guides on developing
+  scalable systems under the Model-View-Controller paradigm. This basic goal
+  concerns detailed design, but each pattern also incorporates usability advice
+  that developers should consider when architecting and implementing their MVC
+  system. For example, how should typical user tasks (e.g.  edit, create,
+  remove) be supported under an MVC architecture? The solution takes into
+  account software usability as well as code maintainability.
+
+  <H2>Planet Pattern Language For Software Internationalisation</H2>
+
+    <UL>
+      <LI><span class="listTitle">View The Language:</span> <A
+      Href="/paper/fullplanet/all/fullplanet.shtml">View Planet</A>
+      <LI><span class="listTitle">Synopsis:</span> Planet supports development of internationalised
+      systems.  It guides on development process, high-level design, and
+      detailed software design.
+      <LI><span class="listTitle">Credits:</span> Developed under supervision of Lorraine Johnston.
+      <LI><span class="listTitle">Pattern Summaries:</span>
+          <UL>
+
+<LI><span class="listTitle">Global Data Model</span>
+Encapsulate data required to support all cultures in a global data model,
+independent of the user-interface.
+
+<LI><span class="listTitle">Preference Dictionary</span>
+Encapsulate all of the user's current preferences,
+        whether culture-specific or not, in a single dictionary (i.e. key-value
+        pairs) entity.
+
+<LI><span class="listTitle">Best-Guess Locale</span>
+Create a ``global culture'' <span class="pattern">Preference Dictionary</span>
+        object which contains <span class="pattern">Universal Defaults</span>. For each supported
+        culture mentioned in your <span class="pattern">Export Schedule</span>, create a
+        <span class="pattern">Preference Dictionary</span> object which overrides the global
+        <span class="pattern">Preference Dictionary</span>.
+
+<LI><span class="listTitle">Independent View</span>
+Create one or more views of the data model, and store the user's preferred view
+within the <span class="pattern">Preference Dictionary</span>.
+
+<LI><span class="listTitle">Expression Template</span>
+Encapsulate each culture-specific expression in a template string. Store the
+template string in the culture's <span class="pattern">Preference Dictionary</span>.
+
+<LI><span class="listTitle">Flexible Strategy</span>
+Create an abstract class which declares the
+interface for the algorithm, then create culture-specific implementations of
+this class.
+
+<LI><span class="listTitle">Global Data Model</span>
+Encapsulate data required to support all cultures in a global data model,
+independent of the user-interface.
+
+<LI><span class="listTitle">Preference Dictionary</span>
+Encapsulate all of the user's current preferences, whether culture-specific or
+not, in a single dictionary (i.e. key-value pairs) entity.
+
+<LI><span class="listTitle">Best-Guess Locale</span>
+Create a ``global culture'' <span class="pattern">Preference Dictionary</span> object which contains
+<span class="pattern">Universal Defaults</span>. For each supported culture mentioned in your
+<span class="pattern">Export Schedule</span>, create a <span class="pattern">PreferenceDictionary</span> object which
+overrides the global <span class="pattern">Preference Dictionary</span>.
+
+<LI><span class="listTitle">Independent View</span>
+Create one or more views of the data model, and store the user's preferred view
+within the <span class="pattern">Preference Dictionary</span>.
+
+<LI><span class="listTitle">Expression Template</span>
+Encapsulate each culture-specific expression in a template string. Store the
+template string in the culture's <span class="pattern">Preference Dictionary</span>.
+
+<LI><span class="listTitle">Flexible Strategy</span>
+Create an abstract class which declares the interface for the algorithm, then
+create culture-specific implementations of this class.
+
+<LI><span class="listTitle">Global Data Model</span>
+Encapsulate data required to support all cultures in a global data model,
+independent of the user-interface.
+
+<LI><span class="listTitle">Preference Dictionary</span>
+Encapsulate all of the user's current preferences, whether culture-specific or
+not, in a single dictionary (i.e. key-value pairs) entity.
+
+<LI><span class="listTitle">Best-Guess Locale</span>
+Create a ``global culture'' <span class="pattern">Preference Dictionary</span> object which contains
+<span class="pattern">Universal Defaults</span>. For each supported culture mentioned in your
+<span class="pattern">Export Schedule</span>, create a <span class="pattern">PreferenceDictionary</span> object which
+overrides the global <span class="pattern">Preference Dictionary</span>.
+
+<LI><span class="listTitle">Independent View</span>
+Create one or more views of the data model, and store the user's preferred view
+within the <span class="pattern">Preference Dictionary</span>.
+
+<LI><span class="listTitle">Expression Template</span>
+Encapsulate each culture-specific expression in a template string. Store the
+template string in the culture's <span class="pattern">Preference Dictionary</span>.
+
+<LI><span class="listTitle">Flexible Strategy</span>
+Create an abstract class which declares the interface for the algorithm, then
+create culture-specific implementations of this class.
+
+</UL>
+
+    </UL>
+
+  <H2>Multiple Model-View-Controller (MMVC) Pattern Language</H2>
+
+    <UL>
+      <LI><span class="listTitle">View The Language:</span> This work was done as part of my thesis,
+      related to other concepts, and I am in the process of preparing a
+      summarised form to place online.
+      <LI><span class="listTitle">Synopsis:</span> Patterns to deal with usability in safety-critical
+      systems.
+      <LI><span class="listTitle">Credits:</span> Developed under supervision of Lorraine Johnston.
+      <LI><span class="listTitle">Pattern Summaries:</span>
+            <UL>
+
+<LI><span class="listTitle">MMVC Application</span>
+Create a single Model to represent the state of the application at any time.
+Create a View of the Application Model which the user will execute when
+starting the program.
+
+<LI><span class="listTitle">Domain-UI Separation</span>
+Continue decomposing the Application Model until all Model classes are known
+and related to each other. Generate one or more View classes for each Model
+class, starting with the Application View.
+
+<LI><span class="listTitle">Dependent Views</span>
+When the View's Model is set, the View should store the Model, redisplay
+itself, and request the Model to send it property change notifications. At the
+same time, it should remove itself as a listener of any previous Models.
+
+<LI><span class="listTitle">Model Summary</span>
+Include controls on your View which summarise one or more properties of the
+Model.
+
+<LI><span class="listTitle">Model Comparison</span>
+Analyse user needs to determine when simultaneous Views are required. Then
+create these Views and use <span class="pattern">Dependent Views</span> pattern to ensure they are
+synchronised.
+
+<LI><span class="listTitle">View Placeholder</span>
+When a <I>containing View</I> contains a <I>contained View</I>,
+(semantically) detach the two Views via a <I>Placeholder</I>, i.e. the
+<I>containing View</I> holds a <I>Placeholder</I>, and the
+<I>Placeholder</I> holds one object: the <I>contained View</I>.
+
+<LI><span class="listTitle">Vector</span>
+When there is a list of Models, use <span class="pattern">Vector Model</span> and <span class="pattern">Vector View
+Catalog</span>. Consider
+using these classes to support adding new Models, and editing or removing
+existing Models.
+
+<LI><span class="listTitle">Vector Sort</span>
+When the user requires lists to be able to be sorted in different ways, create
+Comparators to reflect the user's expectations, and pass them to
+<span class="pattern">Vector View Summary</span>.
+
+<LI><span class="listTitle">Model Chain</span>
+When a View reflects a Model that is associated with other Models, request the
+View's Model to listen to the other Models.
+
+</UL>
+
+    </UL>
+
+  <H2>Safety-Usability Patterns</H2>
+
+    <UL>
+      <LI><span class="listTitle">View The Language:</span> Please refer to <A
+      href="/paper/index.shtml#safetyTech">the papers page</A>.
+      <LI><span class="listTitle">Synopsis:</span>A Software Framework, consisting of a pattern language and
+      software library, for developing scaleable interactive systems.</LI>
+      <LI><span class="listTitle">Credits:</span> Developed with equal contribution from Andrew Hussey
+      of the Software Verification Research Centre, The University of
+      Queensland, while under supervision of Lorraine Johnston.
+        <LI><span class="listTitle">Pattern Summaries:</span>
+              <UL>
+
+  <LI><span class="listTitle">Recover</span> Enable users to recover from hazardous actions they have
+  performed.
+
+  <LI><span class="listTitle">Stepladder</span> Identify complex tasks and explicitly split them into
+  sequences of simpler tasks.
+
+  <LI><span class="listTitle">Conjunction</span> Reduce errors by requiring that the user perform tasks
+  multiply.
+
+  <LI><span class="listTitle">Transaction</span> Bundle several related task steps into a transaction,
+  such that the effect of each step is not realised until all the task steps
+  are completed and the user commits the transaction
+
+  <LI><span class="listTitle">Affordance</span> Provide cues to an operator that enhance the likelihood
+  that the operator will perform the physical actions appropriate to performing
+  a particular action.
+
+  <LI><span class="listTitle">Separation</span> Separate two controls (physically or logically) if they
+  are operated in a similar way. 
+
+  <LI><span class="listTitle">Distinct Interaction</span> Distinct actions that can be confused,
+  leading to hazardous consequences, should be accessed by distinct physical
+  interactions.
+
+  <LI><span class="listTitle">Behaviour Constraint</span> For any given system state, anticipate
+  erroneous actions and disallow the user from performing them.
+
+  <LI><span class="listTitle">Abstract Mapping</span> Provide an abstract representation of complex
+  information so that it is comprehensible by the user.
+
+  <LI><span class="listTitle">Redundant Information</span> Provide more than one way of viewing the
+  information, so that the likelihood that it is misunderstood or ignored is
+  lessened
+
+  <LI><span class="listTitle">Reality Mapping</span> Provide a close mapping to reality where possible
+  and supplement it with abstract representations.
+
+  <LI><span class="listTitle">Trend</span> Allow the user to compare and contrast the current state
+  with previous states.
+
+  <LI><span class="listTitle">Interrogation</span> Provide ways for the user to request additional
+  information.
+
+  <LI><span class="listTitle">Memory Aid</span> Provide ways to record the completion status of steps.
+
+  <LI><span class="listTitle">Interlock</span> Anticipate errors and place interlocks in the system to
+  detect and block the hazards that would otherwise arise.
+
+  <LI><span class="listTitle">Automation</span> Automate tasks which are either too difficult or too
+  tedious for the user to perform.
+
+  <LI><span class="listTitle">Shutdown</span> When shutdown is simple and inexpensive, and leads to a
+  safe, low risk state, the straightforward solution is to shut down
+  automatically.
+
+  <LI><span class="listTitle">Warning</span> Provide warning devices that are triggered when identified
+  safety-critical margins are approached.
+
+  <LI><span class="listTitle">Recover</span> Enable users to recover from hazardous actions they have
+  performed.
+
+  <LI><span class="listTitle">Stepladder</span> Identify complex tasks and explicitly split them into
+  sequences of simpler tasks.
+
+  <LI><span class="listTitle">Conjunction</span> Reduce errors by requiring that the user perform tasks
+  multiply.
+
+  <LI><span class="listTitle">Transaction</span> Bundle several related task steps into a transaction,
+  such that the effect of each step is not realised until all the task steps
+  are completed and the user commits the transaction
+
+  <LI><span class="listTitle">Affordance</span> Provide cues to an operator that enhance the likelihood
+  that the operator will perform the physical actions appropriate to performing
+  a particular action.
+
+</UL>
+
+    </UL>
+
+<p>
+<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+</p>
+
